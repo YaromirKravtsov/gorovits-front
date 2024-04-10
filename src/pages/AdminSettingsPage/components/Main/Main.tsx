@@ -43,7 +43,7 @@ const Main = () => {
           fetchData={(page, itemsPerPage, searchQuery) => AdminSettingPageService.getRackets(page, itemsPerPage, searchQuery)}
           searchQuery={racketsSearchQeuery}
           renderItem={racket => <RacketCard racket={racket} key={racket.id} />}
-          itemsPerPage={9}
+          itemsPerPage={12}
           className={style.list}
         />
       </FoldingComponent>

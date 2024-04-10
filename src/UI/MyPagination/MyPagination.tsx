@@ -10,31 +10,61 @@ import { AxiosResponse } from 'axios';
 }
  */
 interface Props {
-    fetchData: (currentPage: number, itemsPerPage: number,searchQuery: string) => Promise<AxiosResponse<{ totalCount: number; data: any[] }>>;
+    fetchData: (currentPage: number, itemsPerPage: number, searchQuery: string) => Promise<AxiosResponse<{ totalCount: number; data: any[] }>>;
     itemsPerPage: number;
     renderItem: (item: any) => ReactNode;
     className: string;
     searchQuery: string
 }
 
-const MyPagination: FC<Props> = ({  fetchData, itemsPerPage, renderItem, className,searchQuery }) => {
+const MyPagination: FC<Props> = ({ fetchData, itemsPerPage, renderItem, className, searchQuery }) => {
     const [items, setItems] = useState<any[]>([]);
     const [currentPage, setCurrentPage] = useState(0);
     const [totalItems, setTotalItems] = useState(0);
     const [isLoading, setIsLoading] = useState(true);
     const containerRef = useRef<HTMLDivElement>(null); // Создание ссылки на div
-  
-    
+    const itemsRef = useRef<any[]>([]);
+    const totalItemsRef = useRef<number>(0);
+    const isFirstRender = useRef(true);
+
     useEffect(() => {
-        // Сброс состояний
-        setCurrentPage(0);
-        setTotalItems(0);
-        setItems([]);
-        // Вызов fetchMoreItems с актуальными значениями
-        fetchMoreItems(0, searchQuery); // Передаем currentPage = 0 и актуальный searchQuery как аргументы
-    }, [searchQuery]);
+        itemsRef.current = items;
+        totalItemsRef.current = totalItems;
+    }, [items, totalItems]);
+
+
+    useEffect(() => {
+        containerRef.current?.addEventListener('scroll', scrollHandler)
+        return function () {
+            containerRef.current?.removeEventListener('scroll', scrollHandler)
+        }
+    }, [])
+
+    const scrollHandler = (e: Event) => {
+        const { scrollTop, clientHeight, scrollHeight } = e.target as HTMLDivElement;
+        if (scrollHeight - scrollTop === clientHeight && itemsRef.current.length < totalItemsRef.current) {
+            setIsLoading(true)
+        }
+    };
+    useEffect(() => {
+        if (isLoading)
+            fetchMoreItems()
+
+    }, [isLoading]);
+    useEffect(() => {
+        if (isFirstRender.current) {
+            // Пропускаем выполнение кода внутри useEffect при первом рендере
+            isFirstRender.current = false;
+            return;
+        }
+
     
+        fetchMoreItems(0, searchQuery);
+
+    }, [searchQuery]);
+
     const fetchMoreItems = async (page = currentPage, query = searchQuery) => {
+
         if (containerRef.current) {
             const currentScrollPosition = containerRef.current.scrollTop;
             console.log(query, page, itemsPerPage);
@@ -44,7 +74,7 @@ const MyPagination: FC<Props> = ({  fetchData, itemsPerPage, renderItem, classNa
                 setTotalItems(response.data.totalCount);
                 setItems(prev => [...prev, ...response.data.data]);
                 setCurrentPage(prevPage => prevPage + 1);
-    
+
                 setTimeout(() => {
                     if (containerRef.current) {
                         containerRef.current.scrollTop = currentScrollPosition;
@@ -57,10 +87,10 @@ const MyPagination: FC<Props> = ({  fetchData, itemsPerPage, renderItem, classNa
             }
         }
     };
-    
 
-    
-    
+
+
+
 
     const hasMoreItems = items.length < totalItems;
 
@@ -71,11 +101,11 @@ const MyPagination: FC<Props> = ({  fetchData, itemsPerPage, renderItem, classNa
             ) : (
                 items.map(item => <React.Fragment key={item.id}>{renderItem(item)}</React.Fragment>)
             )}
-            {hasMoreItems && (
+            {/*  {hasMoreItems && (
                 <MyButton mode='black' onClick={fetchMoreItems} className={style.mehrLaden}>
                     Mehr laden
                 </MyButton>
-            )}
+            )} */}
         </div>
     );
 };
