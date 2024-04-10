@@ -1,0 +1,158 @@
+.selectDateMenu{
+    width: 935px;
+    height: 700px;
+    padding: 40px;
+    margin-bottom: 60px;
+    display: flex;
+    flex-direction: column;
+}
+.blockTitle{
+    width: 100%;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 27px;
+    line-height: 32px;
+    text-align: center;
+    color: #30484D;
+}
+.weeksBlock{
+    margin-top: 10px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.arrowBLock{
+    cursor: pointer;
+    width: 120px;
+    height: 25px;
+    background-color: #ffff;
+    border: 1px solid #232323;
+    border-radius: 3px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.arrow{
+    width: 50px;
+    height: 10px;
+}
+.rotate{
+    transform: rotate(180deg);
+}
+.weekBlock{
+    width: 155px;
+    height: 25px;
+    border: 1px solid #232323;
+    border-radius: 3px;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 22px;
+    text-align: center;
+    color: #181818;
+    cursor: pointer;
+
+}
+.noActive{
+    background: rgba(217, 217, 217, 0.3);
+    border: 0.5px solid #BCBCBC;  
+}
+.noActive >img{
+    opacity: 0.5;
+}
+.currentWeek{
+    
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-top: 15px;
+    max-height: 420px;
+
+}
+.daysBlock{
+    padding-left: 5px;
+    padding-right: 13px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    border-bottom: 1px solid #BCBCBC;
+}
+.weekDay{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 100px;
+
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 22px;
+
+    color: #BCBCBC;
+}
+.dateTimeBlock{
+    padding: 5px 5px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 10px;
+    max-height: 100%;
+    overflow-y: auto;
+}
+.dateTimeColumn{
+    width: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 10px;
+}
+.dateTime{
+    cursor: pointer;
+    width: 100%;
+    min-height: 42px;
+    background: #fff;
+    border-radius: 8px;
+    border: 1px solid #BCBCBC;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 17px;
+    line-height: 150%;
+
+    color: #232323;
+
+
+}
+.buttonRow{
+    margin-top: 50px !important;
+    margin-top: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.button{
+    width: 360px;
+    height: 50px;
+}
+.booked{
+    background: rgba(217, 217, 217, 0.3);
+    border: 0.5px solid #BCBCBC;
+    color: #BCBCBC;
+}
+.selected{
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.8);
+}

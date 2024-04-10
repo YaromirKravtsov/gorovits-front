@@ -1,0 +1,58 @@
+
+.fluter{
+
+    padding: 32px 0;
+    display: flex;
+    flex-direction: column;
+    width: 625px;
+}
+.title{
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 27px;
+    line-height: 28px;
+    color: #000000;
+    margin-bottom: 10px;
+    text-align: center;
+    }
+    
+.flutterRow{
+    display: flex;
+    flex-direction: row;
+    column-gap: 50px;
+    justify-content: center;
+    margin: 25px 0;
+}
+.buttonRow{
+    margin-top: 30px;
+    display: flex;
+    flex-direction: row;
+    column-gap: 30px;
+    justify-content: center;
+}
+
+.rateButton{
+    width: 80px !important;
+    height: 80px !important;
+    border-radius: 100%;
+}
+.rateImg{
+    width: 80px !important;
+    height: 80px !important;
+    border-radius: 100%;
+}
+
+.button{
+    width: 230px;
+    height: 50px;
+}
+.none{
+    display: none ;
+}
+.selected{
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 1) !important;
+}
+.error{
+    border: 3px solid #FF2430 !important;
+}

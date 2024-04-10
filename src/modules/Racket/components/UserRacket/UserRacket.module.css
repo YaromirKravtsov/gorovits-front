@@ -1,0 +1,102 @@
+.racketBlock{
+    width: 310px;
+    height: 800px;
+    padding: 15px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.racketNumber{
+font-family: 'Montserrat';
+font-style: normal;
+font-weight: 600;
+font-size: 25px;
+line-height: 30px;
+letter-spacing: 0.04em;
+color: #FFFFFF;
+}
+.racketCode{
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 24px;
+    letter-spacing: 0.04em;
+    color: #FFFFFF;
+    margin-bottom: 7px;
+}
+.borderBlock{
+    padding: 10px 0;
+    width: 270px;
+    height: 187px;
+    border-radius:20px ;
+    border: 1px solid #fff !important;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.borderBlockTitle{
+
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 24px;
+    text-align: center;
+    color: #FFFFFF;
+}
+.borderBlockSubTitle{
+    margin-top: 5px;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 35px;
+    line-height: 35px;
+    text-align: center;
+    color: #FFFFFF;
+}
+.borderBlockStrings{
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 18px;
+    color: #FFFFFF;
+    padding: 0 9px;
+    text-align: center;
+    margin-top: 10px;
+}
+.RacketButton{
+    margin-top: auto;
+    width: 216px;
+    height: 40px;
+    font-size: 20px;
+}
+.imageBlock{
+    height: 310px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+.stringImage{
+    transform: rotate(-90deg) translate(-30px,-45px);
+    position: absolute;
+
+    width: 120px;
+    height: 120px;
+
+}
+.racketgImage{
+    transform: rotate(-90deg) translateY(30px);
+
+    width: 308px;
+    min-height: 124px;
+  
+
+}
+.borderBlockTuning{
+    margin: auto;
+}

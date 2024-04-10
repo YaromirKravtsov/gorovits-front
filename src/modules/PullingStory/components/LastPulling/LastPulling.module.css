@@ -1,0 +1,28 @@
+.noPulling{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+/* Du hast noch nichts besaitet. Höchste Zeit uns zu besuchen! */
+
+.noPullingText{
+    margin: auto 0;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 27px;
+    line-height: 32px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: #232323;
+}
+.noPullingButton{
+    width: 450px;
+    height: 60px;
+}
+
+
+

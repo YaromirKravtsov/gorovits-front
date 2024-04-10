@@ -1,0 +1,8 @@
+.recordsRow{
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+    overflow-y: auto;
+}
+

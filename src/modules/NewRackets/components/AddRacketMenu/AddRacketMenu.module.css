@@ -1,0 +1,41 @@
+.main{
+    padding: 30px 60px;
+    display: flex;
+    flex-direction: column;
+}
+.title{
+font-family: 'Roboto';
+font-style: normal;
+font-weight: 500;
+font-size: 27px;
+line-height: 32px;
+
+text-align: center;
+
+color: #30484D;
+
+
+}
+.mainRow{
+    margin-top: 25px;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 60px;
+    row-gap: 30px;
+}
+.button{
+    margin-top: 10px;
+    width: 100%;
+    height: 50px;
+}
+.errorInput{
+    position: absolute;
+    transform: translateY(80px);
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    color: #FF2430;
+}

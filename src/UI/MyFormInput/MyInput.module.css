@@ -1,0 +1,72 @@
+.input{
+    box-sizing: border-box;
+    border: 2px solid #232323;
+    border-radius: 5px;
+    color: #232323;
+    padding-left: 10px;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 20px;
+
+
+
+
+
+}
+.input:focus {
+    
+    border:none
+}
+
+.input::placeholder{
+    font-family: 'Poppins';
+font-style: normal;
+font-weight: 400;
+font-size: 18px;
+line-height: 20px;
+
+
+color: #181818;
+
+opacity: 0.5;
+}
+
+.label{
+    display: flex;
+    flex-direction: column;
+}
+.span{
+    margin-bottom: 10px;
+    /* Email */
+
+
+
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 400;
+font-size: 18px;
+line-height: 20px;
+
+color: #232323;
+}
+
+.error{
+    background: rgba(255, 133, 139, 0.2);
+    border: 1px solid #FF2430;
+
+}
+
+.errorText{
+    position: absolute;
+
+color: #FF2430;
+   transform: translateY(80px); 
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    margin-top: 4px; 
+}

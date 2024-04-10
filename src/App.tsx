@@ -1,26 +1,25 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
 
-function App() {
+import './App.css'
+import AuthGuard from './app/components/AuthGuard/AuthGuard'
+import AppRouter from './app/router/AppRouter'
+import NavBar from './app/components/NavBar/NavBar'
+import AppLayout from './components/Layout/AppLayout/AppLayout'
+import Content from './components/Layout/Content/Content'
+import ErrorInterceptor from './app/components/ErrorInterceptor/ErrorInterceptor'
+
+
+export default function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <AuthGuard>
+      <ErrorInterceptor>
+        <AppLayout>
+          <NavBar/>
+          <Content>
+            <AppRouter/>
+            </Content>
+        </AppLayout>
+      </ErrorInterceptor>
+    </AuthGuard>
+  )
 }
-
-export default App;

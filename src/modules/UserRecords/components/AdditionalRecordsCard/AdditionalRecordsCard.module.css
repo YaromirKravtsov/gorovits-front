@@ -1,0 +1,41 @@
+.mainBlock{
+    width: 100%;
+    height: 115px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 25px;
+}
+
+.leftBlock{
+    width: 320px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 23px;
+    line-height: 28px;
+
+}
+.centerBlock{
+    width: 435px;
+    height: 60px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 23px;
+    line-height: 28px;
+    color: #ffff;
+}
+.button{
+    width: 325px;
+    height: 65px;
+}

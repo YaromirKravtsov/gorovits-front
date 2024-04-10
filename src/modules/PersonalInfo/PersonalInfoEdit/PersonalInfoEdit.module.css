@@ -1,0 +1,9 @@
+.main{
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+}
+.input{
+    width: 260px !important;
+    height: 45px !important;
+}

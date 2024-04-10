@@ -1,0 +1,31 @@
+.main{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 450px;
+    margin-top: 30px;
+    padding: 20px 30px;
+}
+.topRow{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+.topTitle{
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 33px;
+    line-height: 39px;
+    color: #232323;
+}
+.topButton{
+    width: 570px;
+    height: 60px;
+ 
+}
+
+

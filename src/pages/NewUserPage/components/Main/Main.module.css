@@ -1,0 +1,10 @@
+.main {
+    display: flex;
+    flex-direction: column;
+    height: 100vh; /* Растянуть блок на 100% высоты окна браузера */
+}
+.topRow{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}

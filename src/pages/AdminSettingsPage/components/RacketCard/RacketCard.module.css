@@ -1,0 +1,27 @@
+.racketBlock {
+    position: relative;
+    width: 397px;
+    height: 185px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+
+}
+
+.racketImg {
+    width: 312px;
+    height: 125px;
+}
+
+.racketName {
+    margin-top: 5px;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 25px;
+    line-height: 30px;
+    color: #FFFFFF;
+
+}

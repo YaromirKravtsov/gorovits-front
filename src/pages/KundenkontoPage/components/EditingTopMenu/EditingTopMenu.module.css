@@ -1,0 +1,18 @@
+.topEdit{
+    display: flex;
+    flex-direction: row;
+    
+}
+.submitChanges{
+    margin-right: 30px;
+}
+.submitChangesIcon{
+    width: 35px !important;
+    height: 35px !important;
+
+}
+.button{
+    width: 250px;
+    height: 55px;
+    margin-right: 100px;
+}

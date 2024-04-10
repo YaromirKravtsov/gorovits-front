@@ -1,0 +1,64 @@
+.button {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.buttonImage {
+    width: 37px;
+    height: 37px;
+}
+
+.green {
+    background-color: #13B257;
+}
+
+.yellow {
+    background-color: #FFBA00;
+}
+
+.red {
+    background-color: #C44637;
+}
+
+.recordFlutter {
+    width: 600px;
+    height: auto;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.recordFlutterTitle {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 27px;
+    line-height: 28px;
+    color: #000000;
+
+
+}
+.recordFlutterText{
+    margin-top: 20px;
+    text-align: center;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 28px;
+    color: #000000;
+}
+.buttonRow{
+    margin-top: 30px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    column-gap: 20px;
+}
+.changeTimeInput{
+    margin-top: 30px;
+}

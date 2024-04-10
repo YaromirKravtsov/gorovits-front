@@ -1,0 +1,43 @@
+.flutterMenu{
+    width: 100%;
+    padding: 25px 40px;
+    position: relative;
+    transform: translateY(20px);
+    height: 420px ;
+    display: flex;
+    flex-direction: column;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.topRow{
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+}
+.title,.nullError{
+    text-align: center;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 33px;
+    line-height: 32px;
+    color: #232323;
+    margin-bottom: 30px;
+}
+.button{
+  
+    width: 450px;
+    height: 57px !important;
+    border-radius: 10px;
+}
+.nullError{
+    margin: auto;
+    /* Du hast noch nichts besaitet. Höchste Zeit uns zu besuchen! */
+}
+.editShadow{
+    background: rgba(0, 0, 0, 0.4);
+ 
+    opacity: 0.9;
+}

@@ -1,0 +1,8 @@
+.recordRow{
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    row-gap: 30px;
+    overflow-y: auto;
+    max-height: 700px;
+}

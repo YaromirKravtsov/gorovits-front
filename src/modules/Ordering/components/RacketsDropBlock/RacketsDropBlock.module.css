@@ -1,0 +1,28 @@
+
+.inputLabelBlock{
+    display: flex;
+    flex-direction: column;
+    row-gap: 8px;
+
+    z-index: 100;
+}
+.inputLabel{
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 20px;
+    color: #232323;
+}
+.errorInput{
+    position: absolute;
+    transform: translateY(80px);
+    /* Error text */
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    /* FF2430 */
+    color: #FF2430;
+}

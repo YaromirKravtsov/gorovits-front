@@ -1,0 +1,24 @@
+.main{
+    display: flex;
+    flex-direction: column;
+    column-gap: 8px;
+}
+.title{
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 22px;
+    line-height: 22px;
+    letter-spacing: 0.01em;
+    color: #000000;
+    opacity: 0.5;
+}
+.text{
+    margin-top: 10px;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 22px;
+    line-height: 27px;
+    color: #232323;
+}

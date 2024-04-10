@@ -1,0 +1,61 @@
+.racketsBlock{
+    width: 100%;
+    padding: 14px;
+    min-height: 150px;
+    display: flex;
+    flex-direction: column;
+}
+.racketBlockTitle{
+
+font-family: 'Roboto';
+font-style: normal;
+font-weight: 500;
+font-size: 23px;
+line-height: 28px;
+color: #FFFFFF;
+
+
+}
+.racketsList{
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    column-gap: 10px;
+    row-gap: 10px;
+    flex-wrap: wrap;
+    margin-top: 10px;
+}
+.racketItem{
+    height: 33px;
+    padding: 7px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    column-gap: 10px;
+    background: #FFFFFF;
+    border-radius: 8px;
+
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 19px;
+    color: #000000;
+
+
+}
+
+.deleteButton{
+    cursor: pointer;
+    background: #FFFFFF;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 21px;
+    height: 21px;
+}
+.deleteImage{
+    width: 21px;
+    height: 21px;
+}

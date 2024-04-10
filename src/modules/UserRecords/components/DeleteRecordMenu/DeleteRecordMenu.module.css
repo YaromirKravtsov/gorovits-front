@@ -1,0 +1,36 @@
+.menu{
+    width: 570px;
+    height: 260px;
+    padding: 40px 45px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.title{
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 27px;
+    line-height: 32px;
+    text-align: center;
+    color: #000000;
+}
+.text{
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 28px;
+    text-align: center;
+    color: #000000;
+    margin-top: 15px;
+}
+.buttonRow{
+    margin-top: auto;
+    justify-content: space-between;
+    width: 100%;
+}
+.button{
+    width: 220px;
+    height: 50px;
+}

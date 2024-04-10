@@ -1,0 +1,76 @@
+.foldingComponent {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 20px 30px;
+
+}
+
+.topMenu {
+    align-items: center;
+    width: 100%;
+    height: 50px;
+    display: flex;
+    flex-direction: row;
+}
+
+.topMenuTitle {
+    width: 110px;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 27px;
+    line-height: 32px;
+    color: #232323;
+    margin-right: 90px;
+}
+
+.searchInput{
+    width: 400px;
+    margin-left: 130px;
+}
+
+.searchButton{
+    width: 200px;
+    margin-left: 30px;
+}
+.folderingButton{
+    margin-left: auto;
+    width: 50px;
+    height: 50px;
+}
+.folderingButton:last-child{
+    margin-left: 50px;
+}
+.folderingImgage{
+    transition: 0.3s transform ease-in-out;
+    width: 28px;
+    height: 15px;
+}
+.plusImgage{
+    width: 30px;
+    height: 30px;
+    margin: auto;
+}
+.mainRow{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    row-gap: 20px;
+    flex-wrap: wrap;
+    margin-top: 30px;
+    height: 590px;
+    max-height: 590px;
+   
+    transition: 0.3s height ease-in-out,  0.3s margin-top linear;
+}
+.foldedMainRow{
+    height: 0 !important;
+    margin-top: 0 !important;
+}
+.rotate{
+    transform: rotate3d(10, 0, 0, 180deg);
+}
+.inputError{
+    transform: translate(130px, 2px);
+}
