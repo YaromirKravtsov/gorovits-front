@@ -25,3 +25,22 @@
     color: #FFFFFF;
 
 }
+
+.dimBlock {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    column-gap: 50px;
+}
+
+.actionsButton{
+    width: 60px;
+    height: 60px;
+}
+
+.actionsImg{
+    width: 40px;
+    height: 40px;
+    margin: auto;
+}

@@ -11,7 +11,6 @@ import MyPagination from '../../../../UI/MyPagination/MyPagination';
 const Main = () => {
   const [isRacketAddOpen, setIsRacketOpen] = useState<boolean>(true);
   const [isStringAddOpen, setIsStringOpen] = useState<boolean>(false);
-  
   const [isRacketsFoldering, setIsRacketsFoldering] = useState<boolean>(true);
   const [isStringsFoldering, setIsStringsFoldering] = useState<boolean>(false);
   const [racketsSearchQeuery, setRacketsSearchQeuery] = useState<string>('')
@@ -20,24 +19,21 @@ const Main = () => {
       setIsStringsFoldering(false)
     } 
     setIsRacketsFoldering(!isRacketsFoldering);
-
   }
+
   const handelStringsFoldering = () =>{
     if(isRacketsFoldering){
       setIsRacketsFoldering(false)
     } 
     setIsStringsFoldering(!isStringsFoldering);
-
   }
-  const onSearch = (value: string) => {
 
-  }
-   
+
 
   return (
     <div className={style.mainRow}>
       <FoldingComponent
-        onSearch={onSearch}
+        onSearch={setRacketsSearchQeuery}
         onAdd={() => setIsRacketOpen(true)}
         title='Schläger'
         isFolded={isRacketsFoldering}
@@ -47,12 +43,12 @@ const Main = () => {
           fetchData={(page, itemsPerPage, searchQuery) => AdminSettingPageService.getRackets(page, itemsPerPage, searchQuery)}
           searchQuery={racketsSearchQeuery}
           renderItem={racket => <RacketCard racket={racket} key={racket.id} />}
-          itemsPerPage={15}
+          itemsPerPage={9}
           className={style.list}
         />
       </FoldingComponent>
       <FoldingComponent
-        onSearch={onSearch}
+        onSearch={setRacketsSearchQeuery}
         onAdd={() => setIsStringOpen(true)}
         title='Schläger'
         isFolded={isStringsFoldering}
@@ -62,7 +58,7 @@ const Main = () => {
           fetchData={(page, itemsPerPage, searchQuery) => AdminSettingPageService.getRackets(page, itemsPerPage, searchQuery)}
           searchQuery={racketsSearchQeuery}
           renderItem={racket => <RacketCard racket={racket} key={racket.id} />}
-          itemsPerPage={15}
+          itemsPerPage={9}
           className={style.list}
         />
       </FoldingComponent>

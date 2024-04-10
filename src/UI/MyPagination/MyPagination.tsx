@@ -23,26 +23,28 @@ const MyPagination: FC<Props> = ({  fetchData, itemsPerPage, renderItem, classNa
     const [totalItems, setTotalItems] = useState(0);
     const [isLoading, setIsLoading] = useState(true);
     const containerRef = useRef<HTMLDivElement>(null); // Создание ссылки на div
-    const [scrollTop, setScrollTop] = useState<number>(0)
+  
     
     useEffect(() => {
-        setCurrentPage(0)
-        setTotalItems(0)
-        setItems([])
-        fetchMoreItems();
+        // Сброс состояний
+        setCurrentPage(0);
+        setTotalItems(0);
+        setItems([]);
+        // Вызов fetchMoreItems с актуальными значениями
+        fetchMoreItems(0, searchQuery); // Передаем currentPage = 0 и актуальный searchQuery как аргументы
     }, [searchQuery]);
-
-    const fetchMoreItems = async () => {
+    
+    const fetchMoreItems = async (page = currentPage, query = searchQuery) => {
         if (containerRef.current) {
             const currentScrollPosition = containerRef.current.scrollTop;
-            console.log(searchQuery,currentPage, itemsPerPage)
+            console.log(query, page, itemsPerPage);
             setIsLoading(true);
             try {
-                const response = await fetchData(currentPage, itemsPerPage, searchQuery);
+                const response = await fetchData(page, itemsPerPage, query);
                 setTotalItems(response.data.totalCount);
                 setItems(prev => [...prev, ...response.data.data]);
                 setCurrentPage(prevPage => prevPage + 1);
-
+    
                 setTimeout(() => {
                     if (containerRef.current) {
                         containerRef.current.scrollTop = currentScrollPosition;
@@ -55,20 +57,15 @@ const MyPagination: FC<Props> = ({  fetchData, itemsPerPage, renderItem, classNa
             }
         }
     };
+    
 
     
     
-    
-    const handelScroll = () => {
-        if (containerRef.current)
-      
-            setScrollTop(containerRef.current.scrollTop)
-    }
 
     const hasMoreItems = items.length < totalItems;
 
     return (
-        <div ref={containerRef} className={className} onScroll={handelScroll}>
+        <div ref={containerRef} className={className}>
             {isLoading ? (
                 <Loader />
             ) : (

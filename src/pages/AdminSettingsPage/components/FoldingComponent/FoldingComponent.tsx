@@ -13,38 +13,28 @@ interface Props {
     children: ReactNode,
     isFolded: boolean,
     setIsFolded: (value: boolean) => void,
-
-
 }
+
 const FoldingComponent: FC<Props> = ({ isFolded, ...props }) => {
     const [inputValue, setInputValue] = useState<string>('');
-    const [error, setError] = useState<string>('');
     const handelSearch = () => {
-
-        if (inputValue == '') {
-            setError('Bitte füllen Sie das Suchfeld aus')
-        }
-        else {
-            props.onSearch(inputValue);
-            setError('')
-        }
-
+        props.onSearch(inputValue);
     }
 
     return (
         <FlutterMenu className={`${style.foldingComponent}`} shadow='small'>
             <div className={style.topMenu}>
                 <div className={style.topMenuTitle}>{props.title}</div>
-                <div>
-                    <MyInput value={inputValue} onChange={setInputValue} placeholder={`${props.title} suchen`}
-                        className={style.searchInput} />
-                    {error !== '' &&
-                        <div className={`inputError ${style.inputError}`}>{error}</div>
-                    }
-                </div>
-
+                <form onSubmit={()=> alert(123)} className={style.form}>
+            
+                <MyInput value={inputValue} onChange={setInputValue} placeholder={`${props.title} suchen`}
+                    className={style.searchInput} />
+                  
+                
                 <MyButton mode='black' className={style.searchButton} onClick={handelSearch}>Suchen</MyButton>
-                <MyButton mode='black' className={style.folderingButton} onClick={() => console.log(!isFolded)}><img className={style.plusImgage} src={plusIcon} alt="" /></MyButton>
+                </form>
+                <MyButton type = 'submit'mode='black' className={style.folderingButton} onClick={() => console.log(!isFolded)}><img className={style.plusImgage} src={plusIcon} alt="" /></MyButton>
+              
                 <MyButton mode='black' className={style.folderingButton} onClick={() => props.setIsFolded(!isFolded)}><img className={`${style.folderingImgage} ${isFolded && style.rotate}`} src={arrowIcon} alt="" /></MyButton>
 
             </div>
