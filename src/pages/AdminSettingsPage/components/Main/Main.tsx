@@ -18,8 +18,8 @@ import StringFlutterMenu from '../StringFlutterMenu/StringFlutterMenu';
 const Main = () => {
   const [isRacketAddOpen, setIsRacketOpen] = useState<boolean>(false);
   const [isStringAddOpen, setIsStringOpen] = useState<boolean>(false);
-  const [isRacketsFoldering, setIsRacketsFoldering] = useState<boolean>(false);
-  const [isStringsFoldering, setIsStringsFoldering] = useState<boolean>(true);
+  const [isRacketsFoldering, setIsRacketsFoldering] = useState<boolean>(true);
+  const [isStringsFoldering, setIsStringsFoldering] = useState<boolean>(false);
   const [racketsSearchQeuery, setRacketsSearchQeuery] = useState<string>('')
   const [stringsSearchQeuery, setStringsSearchQeuery] = useState<string>('')
   const { setGlobalError } = useActions();

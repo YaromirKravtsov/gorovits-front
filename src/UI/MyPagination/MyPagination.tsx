@@ -38,9 +38,9 @@ const MyPagination: FC<Props> = ({ fetchData, itemsPerPage, renderItem, classNam
 
         fetchMoreItems(0, searchQuery); // Передаем currentPage = 0 и актуальный searchQuery как аргументы
     }, [searchQuery]);
-    useEffect(()=>{
+    useEffect(() => {
         setItems(props.list);
-    },[props.list])
+    }, [props.list])
 
     const fetchMoreItems = async (page = currentPage, query = searchQuery) => {
 
@@ -52,7 +52,7 @@ const MyPagination: FC<Props> = ({ fetchData, itemsPerPage, renderItem, classNam
                 const response = await fetchData(page, itemsPerPage, query);
                 setTotalItems(response.data.totalCount);
                 console.log('save')
-             
+
                 setItems(prev => [...prev, ...response.data.data]);
                 props.setList(prev => [...prev, ...response.data.data])
                 setCurrentPage(prevPage => prevPage + 1);
@@ -85,9 +85,10 @@ const MyPagination: FC<Props> = ({ fetchData, itemsPerPage, renderItem, classNam
             }
             {hasMoreItems && (
                 <div className={style.buttonContainer}>
-                <MyButton mode='black' onClick={fetchMoreItems} className={style.mehrLaden}>
-                    Mehr laden
-                </MyButton>
+                    
+                    <MyButton mode='black' onClick={fetchMoreItems} className={style.mehrLaden}>
+                        Mehr laden
+                    </MyButton>
                 </div>
             )}
 
