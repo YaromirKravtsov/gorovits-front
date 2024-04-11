@@ -1,5 +1,6 @@
 
 .centerBlock{
+    position: relative;
     width: 100%;
     margin: 0 auto;
     border-bottom: 1px solid #fff;
@@ -8,14 +9,15 @@
 }
 .racketImage{
     width: 530px;
+    max-width: 530px;
     height: 220px;
-    transform: translate(40px,35px);
+    transform: translate(40px,20px);
 }
 .stringImage{
     width: 120px;
     height: 120px;
-    position: relative;
-    transform: translate(60px,-150px);
+    position: absolute;
+    transform: translate(60px,0);
 
 
 }
