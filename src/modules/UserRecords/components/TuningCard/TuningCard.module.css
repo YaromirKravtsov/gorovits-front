@@ -53,7 +53,7 @@ text-align: center;
 color: #FFFFFF;
 }
 .stateBlock{
-    width: 325px;
+    width: 350px;
     height: auto;
     padding: 20px 10px;
     display: flex;
@@ -61,8 +61,10 @@ color: #FFFFFF;
     align-items: center;
 }
 .button{
-    width: 325px;
-    height: 65px;
+    width: 350px;
+    min-width: 350px;
+    min-height: 63px;
+    height:63px
 }
 .TuningParametrs{
     font-family: 'Montserrat';

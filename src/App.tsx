@@ -10,8 +10,6 @@ import ErrorInterceptor from './app/components/ErrorInterceptor/ErrorInterceptor
 
 
 export default function App() {
-  console.log(window.innerWidth)
-  console.log(window.innerHeight)
   return (
     <AuthGuard>
       <ErrorInterceptor>

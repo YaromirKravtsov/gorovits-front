@@ -13,7 +13,7 @@ import MyButton from '../../UI/MyButton/MyButton';
 import { Pulling } from '../../modules/PullingStory/store/pulling/types';
 import RacketStringPhoto from '../../UI/RacketStringPhoto/RacketStringPhoto';
 
-type CardSize = 'small' | 'normal';
+
 type PullingType = 'racketStory' | 'userStory';
 interface Props {
 

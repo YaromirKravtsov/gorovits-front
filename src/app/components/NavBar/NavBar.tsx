@@ -26,10 +26,11 @@ interface Props{
 }
 const NavBar: FC<Props> = ({setWidth,className,setHeight}) => {
   const { userInfo, photoLink, role } = useTypedSelector(state => state.user);
-  const [navBarActiveItem] = useState('');
+  const [navBarActiveItem,setNavBarActiveItem] = useState('');
   const location = useLocation();
   useEffect(() => {
-    /* setNavBarActiveItem(location.pathname); */
+    setNavBarActiveItem(location.pathname);
+
   }, [location.pathname])
   
   return (
@@ -38,10 +39,10 @@ const NavBar: FC<Props> = ({setWidth,className,setHeight}) => {
       {role == 'user' &&
         <>
           <SidebarItem text='Besaitung & Tuninng' src={ptIcon} rout={RouteNames.BESAITUNG_AND_TUNING}
-            isActive={navBarActiveItem === 'Besaitung & Tuninng'}
+            isActive={navBarActiveItem === '/besaitung-tuning'}
           />
           <SidebarItem text='Termine' src={termineIcon} rout={RouteNames.TERMINE}
-            isActive={navBarActiveItem === 'Termine'}
+            isActive={navBarActiveItem === '/termine'}
 
           />
           <SiderBottomMenu
@@ -53,7 +54,7 @@ const NavBar: FC<Props> = ({setWidth,className,setHeight}) => {
             }
             secondComponent={
               <SidebarItem text={userInfo.fullName} src={ptIcon} rout={RouteNames.LOGIN}
-                isActive={navBarActiveItem === 'Kundenkonto'}
+                isActive={navBarActiveItem === '/account'}
                 profileImage={photoLink}
               />
             } />

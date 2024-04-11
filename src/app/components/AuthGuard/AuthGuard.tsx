@@ -19,7 +19,6 @@ const AuthGuard: FC<AuthGuardProps> = (props) => {
         setIsLoadingAuth(false)
       }
     },[])
-    console.log(isLoading)
     return (
       <>
           {(isAuth && (role === 'admin' || role === 'user') ) ?

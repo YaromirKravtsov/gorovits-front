@@ -26,6 +26,9 @@
 
 }
 .dropDownItem{
+    background-color: #FFFFFF;
+    border: none;
+    text-align: start;
     cursor: pointer;
     font-family: 'Poppins';
     font-style: normal;

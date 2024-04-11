@@ -29,7 +29,7 @@ const DropDownButton:FC<Props> = (props) => {
         {isOpen&&
             <div className={style.dropDownList}>
                 {props.options.map((option,index)=>
-                    <div className={style.dropDownItem} key={index} onClick={()=> handleSelect(option.value)}>{option.text}</div>
+                    <button className={style.dropDownItem} key={index} onClick={()=> handleSelect(option.value)}>{option.text}</button>
                 )}
             </div>
         }

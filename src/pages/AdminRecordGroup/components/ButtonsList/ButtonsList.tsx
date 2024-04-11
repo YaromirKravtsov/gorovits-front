@@ -8,11 +8,12 @@ import orderCheckoutIcon from '../../../../assets/images/order-release-icon.png'
 import sumbitIcon from '../../../../assets/images/sumbit-icon.png'
 import changeTimeIcon from '../../../../assets/images/change-time.png'
 import deleteIcon from '../../../../assets/images/delete-racket-icon.png'
-import { useNavigate } from 'react-router-dom'
+import { useLocation, useNavigate  } from 'react-router-dom'
 import FlutterMenu from '../../../../UI/FlutterMenu/FlutterMenu';
 import { useTypedSelector } from '../../../../hooks/useTypedSelector'
 import MyInput from '../../../../components/MyInput/MyInput'
 import FormatDate from '../../../../helpers/dates'
+
 type Type = 'single' | 'group'
 interface Props {
     record: IRecord | GroupedRecords,
@@ -24,6 +25,15 @@ const ButtonsList: FC<Props> = ({ record, type }) => {
     const { recordGroup, isLoading } = useTypedSelector(state => state.recordGroup)
     const [isDeleteMenuOpen, setIsDeleteMenuOpen] = useState<boolean>(false);
     const [isDateChanging, setIsDateSchanging] = useState<boolean>();
+    const location = useLocation();
+
+  
+    // Получение параметров из query string
+    const queryParams = new URLSearchParams(location.search);
+
+
+
+
     const handelDone = async () => {
         if (type == 'group') {
             (record as GroupedRecords).records.forEach(async record => {
@@ -72,25 +82,30 @@ const ButtonsList: FC<Props> = ({ record, type }) => {
             navigate('/current-orders');
         }
     }, [recordGroup]);
-    useEffect(()=>{
+    useEffect(() => {
         console.log(record.pickupTime)
-        if(record.pickupTime&& record.pickupTime !== 'null'&&!isLoading ){
-        setSelectedDate(FormatDate.dateToInput(new Date(record.pickupTime)))
+        if (record.pickupTime && record.pickupTime !== 'null' && !isLoading) {
+            setSelectedDate(FormatDate.dateToInput(new Date(record.pickupTime)))
         }
-       
-    },[record.pickupTime,isLoading])
 
+    }, [record.pickupTime, isLoading])
+
+    const updateQueryParam = (param:string, value:string) => {
+        queryParams.set(param, value);
+        const newSearch = queryParams.toString();
+        navigate(`?${newSearch}`, { replace: true });
+      };
 
     const [selectedDate, setSelectedDate] = useState<string>('');
     const changePichUpTime = async () => {
         if (type == 'single') {
-
-
             await changePickUpTime((record as IRecord).id, new Date(selectedDate))
+            updateQueryParam('pickupTime',selectedDate)
         } else if (type == 'group') {
             (record as GroupedRecords).records.forEach(async (record) => {
                 await changePickUpTime((record as IRecord).id, new Date(selectedDate))
             })
+            updateQueryParam('pickupTime',selectedDate)
         }
         setIsDateSchanging(false)
     }

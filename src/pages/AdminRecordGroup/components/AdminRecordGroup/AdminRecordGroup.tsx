@@ -18,18 +18,13 @@ const AdminRecordGroup: FC = () => {
   // Получение параметров из query string
   const recordType = queryParams.get('recordType');
   const dateTime = queryParams.get('dateTime');
-  let pickupTime = queryParams.get('pickupTime');
+  const pickupTime = queryParams.get('pickupTime');
   useEffect(() => {
     const fetch = async () => {
       if (dateTime && recordType) {
+        console.log(recordType,dateTime,pickupTime)
         const formattedDateTime = FormatDate.dateToSql(dateTime)
-        let formattedpickupTime = new Date()
-        console.log(pickupTime)
-        /* if (pickupTime == 'null') {
-          formattedpickupTime = null
-        } else */ if(pickupTime !== null){
-          formattedpickupTime = new Date(FormatDate.dateToSql(pickupTime))
-        }
+        let formattedpickupTime = pickupTime == 'null'?null: new Date(FormatDate.dateToSql(String(pickupTime)));
         await getRecordGroup(Number(recordType), new Date(formattedDateTime), formattedpickupTime);
 
       }

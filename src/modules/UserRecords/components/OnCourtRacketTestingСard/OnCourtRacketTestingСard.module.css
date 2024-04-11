@@ -1,12 +1,14 @@
-.mainBlock{
-    padding: 25px;
+.mainBlock {
+    padding: 20px;
     height: 115px;
     min-height: 115px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    align-items: center;
 }
-.leftMenu{
+
+.leftMenu {
     width: 425px;
     height: 100%;
     display: flex;
@@ -21,7 +23,8 @@
     line-height: 28px;
 }
 
-.centralBlock{
+.centralBlock {
+    min-height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -32,33 +35,38 @@
     font-size: 25px;
     line-height: 29px;
     display: flex;
-
     text-align: center;
     color: #FFFFFF;
 
 }
-.buttonRow{
+
+.buttonRow {
     display: flex;
     flex-direction: row;
     column-gap: 35px;
 }
-.moreInfoButton{
+
+.moreInfoButton {
     width: 63px;
     height: 63px;
     display: flex;
     justify-content: center;
     align-items: center;
 }
-.iImage{
+
+.iImage {
     width: 39px;
     height: 39px;
 }
-.delteButton{
-    width: 322px;
-    height: 63px;
+
+.delteButton {
+    width: 350px;
+    min-width: 350px;
+    min-height: 100%;
+    height: 63px
 }
 
-.flutter{
+.flutter {
     width: 825px;
     padding: 28px 0;
     display: flex;
@@ -66,7 +74,8 @@
     justify-content: center;
     align-items: center;
 }
-.flutterTitle{
+
+.flutterTitle {
     font-family: 'Roboto';
     font-style: normal;
     font-weight: 500;
@@ -75,14 +84,16 @@
     text-align: center;
     color: #000000;
 }
-.flutterRacketsList{
+
+.flutterRacketsList {
     text-align: center;
     margin-top: 20px;
     margin-bottom: 25px;
     display: flex;
     flex-direction: column;
 }
-.flutterRacketsItem{
+
+.flutterRacketsItem {
 
     font-family: 'Roboto';
     font-style: normal;
@@ -93,7 +104,8 @@
 
 
 }
-.flutterButton{
+
+.flutterButton {
     width: 400px;
     height: 60px;
 }

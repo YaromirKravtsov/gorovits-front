@@ -57,15 +57,15 @@ const DropDownInput: FC<Props> = (props) => {
     }
     return (
         <div>
-            <div className={`${props.className} ${style.select}`} onClick={handleSelectClick}>
+            <button className={`${props.className} ${style.select}`} onClick={handleSelectClick}>
                 <div className={style.defaultValue} ref={selectRef} style={{ color: `${!isPlaceholder ? '#232323' : ''}` }}>{label}</div>
                 <MyImage alt='arrow' src={arrow} className={`${style.arrow} ${isOpen && style.grad}`} />
-            </div>
+            </button>
             {isOpen &&
                 <div className={style.optionList} >
                     <div className={style.vorgeschlagene}>Vorgeschlagene</div>
                     {props.options.map((option) => (
-                        <div key={option.value} className={style.option} onClick={() => handleOptionSelect(option)}>{option.label}</div>
+                        <button key={option.value} className={style.option} onClick={() => handleOptionSelect(option)}>{option.label}</button>
                     ))}
                 </div>
             }

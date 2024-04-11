@@ -1,4 +1,5 @@
 import { Option } from "../../../UI/DropDownInput/DropDownInput";
+import RecordHeler from "../../../helpers/recordHelper";
 import { OrderRecord, UserRackets } from "../models/OrderModel";
 import { OrderPulling } from "../models/OrderModel";
 
@@ -6,7 +7,7 @@ export class OrderHelper{
     static getRacketOptions(userRackets: UserRackets[]){
         let options: Option[] =[];
         userRackets.forEach(racket=>{
-            const label = `Schläger Nr. ${racket.number} Code ${racket.code}`
+            const label = `Schläger Nr. ${racket.number} Code ${RecordHeler.splitString(racket.code,9)}`
             
             options.push({
                 label,

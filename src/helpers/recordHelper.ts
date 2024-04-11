@@ -43,7 +43,7 @@ export default class RecordHeler {
                 return [string, color];
             case -1:
                 color = '#13B257';
-                const stringPlus = (record.pickupTime ==  'null' || record.pickupTime == null)? '':FormatDate.SqlToDateTime(record.pickupTime);
+                const stringPlus = (record.pickupTime ==  'null' || record.pickupTime == null)? FormatDate.SqlToDateTime(record.dateTime):FormatDate.SqlToDateTime(record.pickupTime);
                 string = "Verarbeitet " +stringPlus
             
                 return [string, color];
@@ -125,7 +125,7 @@ export default class RecordHeler {
         return processedWords.join(' ');
     }
     static splitString(string: string,value:number): string {
-        let finalString = string.length>value ? string.slice(0,value) + '.': string
+        let finalString = string.length>value ? string.slice(0,value) + '...': string
         return finalString ;
     }
 
@@ -159,5 +159,15 @@ export default class RecordHeler {
             };
         });
     }
+
+    static generateString= (length:number) => {
+        const charset = 'abcdefghijklmnopqrstuvwxyz0123456789--';
+        let password = '';
+        for (let i = 0; i < length; i++) {
+            const randomIndex = Math.floor(Math.random() * charset.length);
+            password += charset[randomIndex];
+        }
+        return password;
+    };
     
 }

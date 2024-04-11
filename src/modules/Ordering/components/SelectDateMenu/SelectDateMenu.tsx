@@ -27,7 +27,7 @@ interface Props{
     onClose: ()=> void,
 }
 const SelectDateMenu:FC<Props> = (props) => {
-  const {getBusyDates,setIsDateBlockOpen,setOrderRecords} = useActions();
+  const {getBusyDates,setIsDateBlockOpen,setOrderRecords,setCurrentOrderRecord} = useActions();
   const { isLoading, busyDates } = useTypedSelector(state => state.order);
   const [weeks, setWeeks] = useState<WeekDay[][]>([[]]);
   const [showWeekNumber, setShowWeekNumber] = useState<number>(0);
@@ -126,7 +126,7 @@ const SelectDateMenu:FC<Props> = (props) => {
     if(selectedSlot == '') return;
     setIsDateBlockOpen(false);
     setOrderRecords([]);
-    
+    setCurrentOrderRecord(0)
     props.onSubmit();
    
   }

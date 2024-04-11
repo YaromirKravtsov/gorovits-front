@@ -16,6 +16,7 @@ import { NewRacketsService } from '../../api/NewRacketsService'
 import { getErrorText } from '../../../../helpers/FormDataGeneration'
 import { v4 as uuidv4 } from 'uuid';
 import QRCode from 'qrcode.react'
+import RecordHeler from '../../../../helpers/recordHelper'
 
 interface ModelManufacturereDefault{
   model: string, 
@@ -164,8 +165,8 @@ const AddRacketMenu:FC<Props> = (props) => {
 
     if (isValid) {
      
-        const uniqueString = newRacketData.code == ''? uuidv4().substring(0, 12): newRacketData.code;
-        const racketData = {...newRacketData, code: uniqueString}
+        
+        const racketData = {...newRacketData, code: RecordHeler.generateString(12)}
         if(props.racket){
           if(props.editMode){
             try{

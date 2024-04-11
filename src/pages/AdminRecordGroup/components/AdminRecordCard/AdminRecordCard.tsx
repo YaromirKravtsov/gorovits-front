@@ -1,19 +1,10 @@
-import React, { FC, useEffect, useState } from 'react'
+import  { FC, useEffect, useState } from 'react'
 import { IGriffreparaturRecord, IOsebandwechselRecord, IPullingRecord, IRacketsTestRecord, IRecord, ITuningRecord, Tuning } from '../../../../models/IRecord';
 import style from './AdminRecordCard.module.css'
 import GradientBlackBlock from '../../../../UI/GradientBlackBlock/GradientBlackBlock';
-import MyButton from '../../../../UI/MyButton/MyButton';
-import MyImage from '../../../../UI/MyImage/MyImage';
-import sumbitIcon from '../../../../assets/images/sumbit-icon.png'
-import changeTimeIcon from '../../../../assets/images/change-time.png'
-import deleteIcon from '../../../../assets/images/delete-racket-icon.png'
-import orderCheckoutIcon from '../../../../assets/images/order-release-icon.png'
 import { AdminRecordGroupService } from '../../api/AdminRecordGroupService';
 import RecordHeler from '../../../../helpers/recordHelper';
-import { useActions } from '../../../../hooks/useActions';
 import ButtonsList from '../ButtonsList/ButtonsList';
-import { Link } from 'react-router-dom';
-import { UserRackets } from '../../../../modules/Ordering/models/OrderModel';
 
 
 interface Props {
@@ -62,10 +53,9 @@ const AdminRecordCard: FC<Props> = ({ record }) => {
           racketModelId = (record as IOsebandwechselRecord).userRacketId
           break;
         case 8:
-
           const reckets = (record as IRacketsTestRecord).testRackets;
           const testModelsName = reckets.map(racket => {
-            return racket.racketModel.manufacturer.name + " " + racket.racketModel.name;
+            return racket.racketModel? racket?.racketModel?.manufacturer.name + " " + racket.racketModel.name: 'Schläger wurde nicht gefunden';
           })
           setMainConent(testModelsName)
           setRacketNeed(false)
