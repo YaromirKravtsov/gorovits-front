@@ -1,4 +1,4 @@
-import React, { FC, ReactNode } from 'react'
+import React, { FC, ReactNode, useRef } from 'react'
 import style from './PageLayout.module.css';
 import QuestionMark from '../../../UI/QuestionMark/QuestionMark';
 interface PageLayoutProps {

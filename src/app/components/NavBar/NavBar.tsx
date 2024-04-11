@@ -1,5 +1,5 @@
 
-import React, { FC, useEffect, useState } from 'react'
+import React, { FC, LegacyRef, useEffect, useState } from 'react'
 
 import logo from '../../../assets/images/logo.png'
 import style from './NavBar.module.css'
@@ -18,7 +18,13 @@ import SidebarItem from '../../../components/Layout/Sidebar/SidebarItem/SidebarI
 import SiderBottomMenu from '../../../components/Layout/Sidebar/SliderBottomMenu/SiderBottomMenu'
 import { useActions } from '../../../hooks/useActions'
 import { useLocation, useNavigate } from 'react-router-dom'
-const NavBar: FC = () => {
+import { classicNameResolver } from 'typescript'
+interface Props{
+  setWidth: (value:number) => void,
+  setHeight: (value:number) => void,
+  className:string
+}
+const NavBar: FC<Props> = ({setWidth,className,setHeight}) => {
   const { userInfo, photoLink, role } = useTypedSelector(state => state.user);
   const [navBarActiveItem] = useState('');
   const location = useLocation();
@@ -27,7 +33,7 @@ const NavBar: FC = () => {
   }, [location.pathname])
   
   return (
-    <Sidebar>
+    <Sidebar  setWidth = {setWidth} setHeight ={setHeight} className ={className}>
       <MyImage src={logo} alt='Gorovits logo' width={155} height={75} className={style.logo} />
       {role == 'user' &&
         <>

@@ -15,12 +15,7 @@ export default function App() {
   return (
     <AuthGuard>
       <ErrorInterceptor>
-        <AppLayout>
-          <NavBar/>
-          <Content>
-            <AppRouter/>
-            </Content>
-        </AppLayout>
+        <AppLayout/>
       </ErrorInterceptor>
     </AuthGuard>
   )
