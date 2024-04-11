@@ -14,11 +14,13 @@ interface Props {
     defaultValue: string,
     onChange: (value: number) => void,
     value: number,
-    defaultOptions?:  Option[]
+    defaultOptions?: Option[],
+    error?: boolean;
+    setError?: (valeu: boolean) => void
 }
 
 const DropDownInput: FC<Props> = (props) => {
-   
+
     const [isOpen, setIsOpen] = useState<boolean>(false);
     const [label, setLabel] = useState<string>(props.defaultValue);
     const selectRef = useRef<HTMLDivElement>(null);
@@ -27,8 +29,9 @@ const DropDownInput: FC<Props> = (props) => {
 
         if (props.value !== undefined) {
             const selectedOption = props?.defaultOptions?.find(option => option.value === props.value);
-  
+            console.log(selectedOption,props.value)
             if (selectedOption) {
+                console.log('setLabel')
                 setLabel(selectedOption.label);
             }
         }
@@ -42,9 +45,10 @@ const DropDownInput: FC<Props> = (props) => {
 
     const handleSelectClick = () => {
         setIsOpen(prev => !prev);
-       
+        if (props.setError)
+            props.setError(false);
     }
-    
+
     const handleOptionSelect = (option: Option) => {
         props.onChange(option.value);
         setLabel(option.label);
@@ -65,6 +69,9 @@ const DropDownInput: FC<Props> = (props) => {
                     ))}
                 </div>
             }
+            {props.error &&
+          <div className={` ${style.errorInput}`}>Mindestens eine Option muss ausgewählt werden</div>
+        }
         </div>
     );
 };

@@ -27,9 +27,10 @@ const TopMenu = () => {
   },[])
   return (
     <div className={style.topMenu}>
-        <MyButton mode='black' onClick={()=> setIsOpen(true)}>
+       <MyButton mode='black' onClick={()=> setIsOpen(true)}>
             Passwort ändern 
         </MyButton>
+     
         {isOpen&&
           <ChangePasswordMenu isOpenChange={setIsOpen} userId ={adminInfo.id as number}/>
         }

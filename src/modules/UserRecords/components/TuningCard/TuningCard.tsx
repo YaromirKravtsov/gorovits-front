@@ -40,10 +40,9 @@ const TuningCard:FC<Props> = ({record}) => {
             }
                 
           </div>
-       
         </BorderMenu>
       </Column>
-      <RacketStringPhoto racketSrc={(record as IPullingRecord).pulling.userRacket.racketModel.imgLink} stringSrc={(record as IPullingRecord).pulling.string.imgLink}/>
+      <RacketStringPhoto /* mode */ racketSrc={(record as IPullingRecord).pulling.userRacket?.racketModel?.imgLink || ''} stringSrc={(record as IPullingRecord).pulling?.string?.imgLink || ''}/>
       <Column className={style.blockColumn}>
         <BorderMenu className={style.stateBlock}>
         <div className={style.topLeftBlockTitle} style={{color:`${stateColor}`}}>{stateString}</div>

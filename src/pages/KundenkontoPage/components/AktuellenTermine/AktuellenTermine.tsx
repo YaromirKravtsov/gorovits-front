@@ -31,7 +31,7 @@ const AktuellenTermine:FC<Porps> = (props) => {
                         {FormatDate.SqlToDateTime(termin.dateTime)}
                     </BorderMenu>
                     <BorderMenu className={style.recordType}>
-                        {Record.insertSpaceIfNeeded(Record.getNameByRecordType(termin?.recordType))}
+                        {Record.insertSpaceIfNeeded(Record.getNameByRecordType(termin?.recordType),10)}
                     </BorderMenu>
                 </GradientBlackBlock>
             ))}

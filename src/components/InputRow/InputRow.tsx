@@ -9,14 +9,16 @@ interface Props {
   children: ReactNode;
   questionMark?: boolean;
   questionText?: string;
-  questionTextClass?: string
+  questionTextClass?: string,
+  className?:string
+ 
 }
 
 const InputRow: FC<Props> = (props) => {
   const [isQuestionOpen, setIsQuestionOpen] = useState<boolean>(false);
 
   return (
-    <Column className={style.inputsRow}>
+    <Column className={`${style.inputsRow} ${props.className}`}>
       <div className={style.label}>
         {props.label} {props.questionMark && (
           <div>

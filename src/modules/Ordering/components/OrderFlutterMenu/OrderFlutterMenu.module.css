@@ -19,6 +19,7 @@
     color: #30484D;
 }
 .inputsRow{
+
     justify-content: space-between;
     flex-wrap: wrap;
     column-gap: 53px;

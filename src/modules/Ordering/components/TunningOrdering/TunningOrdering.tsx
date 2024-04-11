@@ -106,6 +106,7 @@ const TunningOrdering: FC = () => {
                     error ={(inputsErrors as OrderTuningssErrors).balancePoint}
                     setError = {(value: boolean) => setInputsErrors({...inputsErrors,balancePoint: value })}
                     value ={(orderRecordData as OrderTuning).balancePoint}
+                    className='order_input'
                 />
             </InputRow>
             <InputRow label='Gesamtgewicht' questionText ={questionText} questionMark questionTextClass = {style.questionTextClass}>
@@ -115,6 +116,7 @@ const TunningOrdering: FC = () => {
                     error ={(inputsErrors as OrderTuningssErrors).totalWeight}
                     setError = {(value: boolean) => setInputsErrors({...inputsErrors,totalWeight: value })}
                     value ={(orderRecordData as OrderTuning).totalWeight}
+                    className='order_input'
                 />
             </InputRow>
             <InputRow label='Schwunggewicht' questionText ={questionText} questionMark questionTextClass = {style.questionTextClass}>
@@ -124,6 +126,7 @@ const TunningOrdering: FC = () => {
                     error ={(inputsErrors as OrderTuningssErrors).swingWeight}
                     setError = {(value: boolean) => setInputsErrors({...inputsErrors,swingWeight: value })}
                     value ={(orderRecordData as OrderTuning).swingWeight}
+                    className='order_input'
                 />
             </InputRow>
             <OrderComment onChange={(value:string) => setRecordData(prev=> ({...prev, comment: value}))} value = {orderRecordData.comment}/>

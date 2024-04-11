@@ -5,3 +5,10 @@
 .mehrLaden{
     margin: 0 auto;
 }
+.buttonContainer{
+    width: 100% !important;
+    min-width: 100% !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

@@ -3,6 +3,9 @@
     display: flex;
     flex-direction: column;
 }
+.main input{
+    width: 100%;
+}
 .title{
 font-family: 'Roboto';
 font-style: normal;

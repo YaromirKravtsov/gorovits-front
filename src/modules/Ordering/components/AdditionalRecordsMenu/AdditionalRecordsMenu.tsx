@@ -55,7 +55,7 @@ const AdditionalRecordsMenu:FC<Props> = (props) => {
       >
         <OrderComment onChange={(value:string) => setComment(value)} value = {comment}/>
       </OrderFlutterMenu>
-      {String(isDateBlockOpen)}
+     
         {isDateBlockOpen&&
             <SelectDateMenu  recordType={props.type == 5? 1 :2} onSelect={(value:Date)=>setDateTime(value)} onSubmit={handelSubmit} onClose={() => {setOrderBlockHidden(false);setIsDateBlockOpen(false)}}/>
         }

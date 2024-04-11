@@ -69,9 +69,9 @@ export const UserActionCreators = {
             await $api.put('/users/password',dto)
             dispatch(UserActionCreators.setEditUserInfoError(''))
         }catch(error){
+            dispatch(UserActionCreators.setEditUserInfoError(getErrorText(error)))
             dispatch(AuthActionCreators.setGlobalError(getErrorText(error)))
-            dispatch(UserActionCreators.setEditUserInfoError((error as HTTPError).response.data.message))
-            console.log((error as HTTPError).response.data.message)
+           
         }
     }
     

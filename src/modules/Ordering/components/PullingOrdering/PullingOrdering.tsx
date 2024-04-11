@@ -11,7 +11,7 @@ import OrderMenuWithRackets from '../OrderMenuWithRackets/OrderMenuWithRackets';
 import { OrderPullingsErrors, OrderRecordErrors } from '../../models/OrderRecordErrors';
 import SearchStrings, { StringOption } from '../../../../components/SearchStrings/SearchStrings';
 import InputRow from '../../../../components/InputRow/InputRow';
-
+import style from './PullingOrdering.module.css'
 const PullingOrdering: FC = () => {
 
     // in redux state, actions
@@ -97,6 +97,7 @@ const PullingOrdering: FC = () => {
                     error ={(inputsErrors as OrderPullingsErrors).stringHardnes}
                     setError = {(value: boolean) => setInputsErrors({...inputsErrors,stringHardnes: value })}
                     value ={(pullingData as OrderPulling).stringHardnes}
+                    className={'order_input'}
                 />
             </InputRow>
             <InputRow label='Längstsaite'>
