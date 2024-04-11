@@ -73,3 +73,14 @@
     color: #232323;
     margin-bottom: 5px;
 }
+
+.errorInput {
+    position: absolute;
+    transform: translateY(0px);
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    color: #FF2430;
+}

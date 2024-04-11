@@ -33,7 +33,7 @@ const FoldingComponent: FC<Props> = ({ isFolded, ...props }) => {
                 
                 <MyButton mode='black' className={style.searchButton} onClick={handelSearch}>Suchen</MyButton>
                 </form>
-                <MyButton type = 'submit'mode='black' className={style.folderingButton} onClick={() => console.log(!isFolded)}><img className={style.plusImgage} src={plusIcon} alt="" /></MyButton>
+                <MyButton mode='black' className={style.folderingButton} onClick={props.onAdd}><img className={style.plusImgage} src={plusIcon} alt="" /></MyButton>
               
                 <MyButton mode='black' className={style.folderingButton} onClick={() => props.setIsFolded(!isFolded)}><img className={`${style.folderingImgage} ${isFolded && style.rotate}`} src={arrowIcon} alt="" /></MyButton>
 

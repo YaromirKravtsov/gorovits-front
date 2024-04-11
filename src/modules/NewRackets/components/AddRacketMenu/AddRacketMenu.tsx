@@ -70,8 +70,8 @@ const AddRacketMenu:FC<Props> = (props) => {
       stringId: stringId === 0,
       racketModelId: racketModelId === 0
     };
-    setErrors(errors);
-    
+    setErrors(errorsL);
+    console.log(errorsL)
     return !Object.values(errorsL).some(error => error);
 };
 
@@ -204,7 +204,7 @@ const AddRacketMenu:FC<Props> = (props) => {
   
    
     <FlutterMenu shadow='all' className={style.main}>
-      <div className={style.title}>Neuen Schläger registrieren</div>
+      <div className={style.title}> {props.editMode? 'Schläger bearbeiten' : 'Neuen Schläger registrieren'}</div>
       <div className={style.mainRow}>
         <InputRow label='Schlägernummer'>
           <MyInput onChange={(value:string)=> setNewRacketData(prev => ({...prev, number:value}))} value={newRacketData.number} 
@@ -299,7 +299,7 @@ const AddRacketMenu:FC<Props> = (props) => {
               Schließen
             </MyButton>
             <MyButton mode='black' className={style.button} onClick={handelSubmit}>
-              Registrieren
+             {props.editMode? 'Bearbeiten ' : 'Registrieren'} 
             </MyButton>
       </div>
     </FlutterMenu>

@@ -5,6 +5,8 @@ import MyButton from '../../UI/MyButton/MyButton';
 import { useTypedSelector } from '../../hooks/useTypedSelector';
 import { useActions } from '../../hooks/useActions';
 import MyInput from '../MyInput/MyInput';
+import $api from '../../app/api/http';
+import { getErrorText } from '../../helpers/FormDataGeneration';
 
 export interface ChangePasswordDto {
   currentPassword: string,
@@ -36,11 +38,14 @@ const ChangePasswordMenu: FC<Props> = (props) => {
     setInputsError(editUserInfoError);
   }, [editUserInfoError])
 
+
   const validateInputs = (): boolean => {
     if (passwordsData.newPassword !== passwordsData.confirmPassword || passwordsData.newPassword == '') {
       setInputsError('Die Passwörter stimmen nicht überein.');
       return false;
     }
+    console.log(passwordsData.newPassword ,passwordsData.confirmPassword ,passwordsData.newPassword == '')
+    setInputsError('')
     return true;
   }
 
@@ -51,13 +56,26 @@ const ChangePasswordMenu: FC<Props> = (props) => {
         newPassword: passwordsData.newPassword,
         userId: props.userId
       }
-      await changePasword(changePasswordDto)
-      if (editUserInfoError == '') {
-        props.isOpenChange(false)
+      try{
+        await $api.put('/users/password',changePasswordDto)
+      
+          props.isOpenChange(false)
+          console.log(inputsError)
+    
+        
+      }catch(error){
+        setEditUserInfoError(getErrorText(error))
+      }finally{
+        setEditUserInfoError('')
       }
+
+     
+       
+     
+     
     }
   }
-  console.log(inputsError)
+
   return (
     <div>
       <FlutterMenu className={style.flutterMenu} shadow='all'>

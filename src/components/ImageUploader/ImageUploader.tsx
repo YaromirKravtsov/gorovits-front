@@ -7,7 +7,7 @@ className:string;
 }
 const ImageUploader: FC<ImageUploaderProps> = (props) => {
   const [imageSrc, setImageSrc] = useState<string | undefined>(undefined);
-
+  
   const handleImageChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
     if (file) {

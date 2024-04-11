@@ -3,9 +3,11 @@ import React,{ FC } from 'react'
 import MyImage from '../MyImage/MyImage';
 import style from './RacketStringPhoto.module.css'
 import Column from '../../components/Layout/Column/Column';
+type Mode = 'vertical' | 'horizontal'
 interface Props{
     racketSrc:string;
     stringSrc: string;
+    mode?: Mode
 }
 const RacketStringPhoto:FC<Props> = (props) => {
   return (

@@ -33,7 +33,7 @@ const MainDopFlutter: FC<Props> = ({ record, toUser }) => {
             </BorderMenu>
 
             <BorderMenu className={style.recordType}>
-              <div className={style.topLeftBlockTitle}>{RecordHeler.insertSpaceIfNeeded(RecordHeler.getNameByRecordType(record.recordType))}</div>
+              <div className={style.topLeftBlockTitle}>{RecordHeler.insertSpaceIfNeeded(RecordHeler.getNameByRecordType(record.recordType),10)}</div>
             </BorderMenu>
             {toUser ?
               <></>

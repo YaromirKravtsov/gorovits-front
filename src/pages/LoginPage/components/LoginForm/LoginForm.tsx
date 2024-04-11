@@ -25,10 +25,9 @@ const LoginForm = () => {
   const validate = () => {
     const errorsL = {
       email: !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email),
-      password: password.trim() !== ''
+      password: password.trim() == ''
     };
     setErrors(errorsL);
-    
     return Object.values(errorsL).some(field => field === false);
   };
   
@@ -70,7 +69,7 @@ const LoginForm = () => {
               value={password}
               onChange={setPassword}
             />
-            {!errors.password &&
+            {errors.password &&
               <div className={style.errorTextField}>Das Passwort darf nicht leer sein  </div>
             }
           </InputRow>

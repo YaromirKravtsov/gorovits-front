@@ -80,3 +80,11 @@ input:focus {
   line-height: 17px;
   color: #FF2430;
 }
+
+input::-ms-reveal,
+input::-ms-clear {
+    display: none;
+}
+.order_input{
+  width: 360px !important;
+}

@@ -19,7 +19,7 @@ const FlutterMenu: FC<FlutterMenuProps> = (props) => {
         width: props.width,
         height:props.height,
         display: props.hidden ? 'none' : 'flex', // Устанавливаем display: none, если hidden = true
-        boxShadow: props.focus ? '0px 0px 40px rgba(0, 0, 0, 0.7)': '',
+        boxShadow: props.focus ? '0px 0px 40px rgba(0, 0, 0, 0.1)': '',
 
     };
     

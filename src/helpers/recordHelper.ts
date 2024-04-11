@@ -114,17 +114,20 @@ export default class RecordHeler {
         return tuningElements;
     };
 
-    static insertSpaceIfNeeded(sentence: string): string {
+    static insertSpaceIfNeeded(sentence: string,value:number): string {
         const words = sentence.split(' ');
         const processedWords = words.map(word => {
-            if (word.length > 10) {
-                return word.slice(0, 10) + '.';
+            if (word.length > value) {
+                return word.slice(0, value) + '.';
             }
             return word;
         });
         return processedWords.join(' ');
     }
-
+    static splitString(string: string,value:number): string {
+        let finalString = string.length>value ? string.slice(0,value) + '.': string
+        return finalString ;
+    }
 
     static groupRecords(records: IRecord[]): GroupedRecords[] {
         const groupedRecords: { [key: string]: IRecord[] } = {};

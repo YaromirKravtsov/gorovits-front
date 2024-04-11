@@ -17,7 +17,7 @@ const PageLayout: FC<PageLayoutProps> = (props) => {
         <div className={`${style.topMenuElemet}`}>
         <div style ={{marginLeft: "auto"}}></div>
             {props.topMenu}
-        {/*   <div style ={{marginLeft: "auto"}}></div> */}
+       
             <QuestionMark text={props.questionMarkText} />
          
         </div>

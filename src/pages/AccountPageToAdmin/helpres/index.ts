@@ -8,7 +8,7 @@ export function mapRacketsResponseToINewRacket(response: RacketsResponse[]): INe
         racketModelId: item.racketModelId,
         number: item.number.toString(),
         code: item.code,
-        racketModelName: item.racketModel.manufacturer.name + " " + item.racketModel.name,
+        racketModelName: item.racketModel?.manufacturer.name + " " + item?.racketModel?.name || '',
         balancePoint: item.tuning ? item.tuning.balancePoint : '',
         totalWeight: item.tuning ? item.tuning.totalWeight : '',
         swingWeight: item.tuning ? item.tuning.swingWeight : '',
