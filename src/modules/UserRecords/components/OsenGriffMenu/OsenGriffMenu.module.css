@@ -47,3 +47,27 @@
     width: 325px;
     height: 65px;
 }
+
+
+@media (max-width: 600px){
+    .recordCard{
+        
+    }
+    .blockColumn{
+        width: 47%;
+    }
+    .longBlock,.rightTopBlock,.button{
+        width: 100%;
+        font-size: 16px;
+    }
+    .longBlock{
+    line-height: 20px;
+    }
+    .button{
+        font-size: 18px;
+        height: 40px;
+    }
+    .blockColumn:first-child{
+        flex-direction: column-reverse !important;
+    }
+}

@@ -15,6 +15,8 @@ export interface OrderState{
     //==
     racketsModels: ModelAndManufactureres[],
     racketsManufactureres: ModelAndManufactureres[]
+    //==
+    recordTitle: string
 }
 export enum OrderActionEnum{
     SET_IS_OPEN = "SET_IS_ORDERING_OPEN",
@@ -25,8 +27,14 @@ export enum OrderActionEnum{
     SET_BUSY_DATE = "SET_BUSY_DATE",
     SET_IS_LOADING = "SET_IS_ORDERING_LOADING",
     SET_RACKETS_MODELS = "SET_RACKETS_MODELS",
-    SET_MANUFACTURERES = "SET_MANUFACTURERES"
+    SET_MANUFACTURERES = "SET_MANUFACTURERES",
+    SET_RECORD_TITLE = "SET_RECORD_TITLE"
 }
+export interface SetRecordTitleAction {
+    type: OrderActionEnum.SET_RECORD_TITLE; 
+    payload: string;
+}
+
 
 export interface SetIsOpenAction {
     type: OrderActionEnum.SET_IS_OPEN; 
@@ -72,4 +80,4 @@ export interface SetRacketsManufactureres {
 
 
 export type OrderAction = SetIsOpenAction |SetUserRacketsAction |SetErrorAction |SetStringsAction |SetIsDateBlockOpenAction|SetBusyDateAction|SetIsOrderingLoadingAction|
-SetRacketsModels |SetRacketsManufactureres;
+SetRacketsModels |SetRacketsManufactureres| SetRecordTitleAction;

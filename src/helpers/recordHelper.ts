@@ -88,13 +88,14 @@ export default class RecordHeler {
         });
         return [werkstatt, beratung];
     }
-    static getOrderingByType(recordType: number): FC<{ type: number }> | undefined {
+    static getOrderingByType(recordType: number): FC<{ type: number}> | undefined {
         const record = RecordTypes.find((record) => recordType === record.type);
         if (record) {
             return record.ordering;
         }
         return undefined; // Если запись не найдена, вернуть undefined
     }
+    
 
     static renderTuningData = (tuning: Tuning): string[] => {
         const tuningElements: string[] = [];

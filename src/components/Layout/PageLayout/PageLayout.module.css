@@ -15,14 +15,20 @@
     border-bottom: 4px solid #232323;
     align-items: center;
     padding: 0 40px;
+
 }
-.flex{
+
+.flex {
     display: flex;
     flex-direction: row;
 }
-.title {
 
-    min-width: 240px;
+.title {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    column-gap: 20px;
+  /*   min-width: 240px; */
     font-family: "Montserrat", sans-serif;
     font-style: normal;
     font-weight: 600;
@@ -36,11 +42,11 @@
     width: 100%;
     min-height: 100vw;
     height: 100vh;
-
 }
 
 .topMenuElemet {
-    width: 70%;
+    width: auto;
+    margin-left: auto;
     height: 90px;
     margin-left: auto;
     display: flex;
@@ -55,4 +61,79 @@
     width: 100%;
     display: flex;
     flex-direction: row;
+}
+
+.BurderMenuIcon {
+    display: none;
+}
+
+.BurderMenuIcon {
+    width: 30px;
+    height: 24px;
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    cursor: pointer;
+}
+
+.BurderMenuIcon div {
+    width: 100%;
+    height: 2px;
+    background-color: #000;
+}
+
+/* Состояние иконки бургера - крест */
+.BurderMenuIcon.cross .line1 {
+    transform: translateY(50%) rotate(45deg);
+}
+
+.BurderMenuIcon.cross .line2 {
+    opacity: 0;
+}
+
+.BurderMenuIcon.cross .line3 {
+    transform: translateY(-50%) rotate(-45deg);
+}
+
+@media (max-width: 600px) {
+    .topMenu {
+        border-bottom: 0px solid #232323;
+        display: flex;
+        max-height: 56px;
+        height: 56px;
+        padding: 0 15px;
+        align-items: center;
+        justify-content: space-between;
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        z-index: 10;
+
+    }
+
+    .main {
+        overflow-x: hidden;
+        overflow-y: auto;
+        padding: 0 10px;
+        padding-top: 10px;
+
+    }
+
+    .title {
+        line-height: 20px;
+        font-size: 18px;
+        letter-spacing: -0.02em;
+    }
+
+    .BurderMenuIcon {
+        display: flex;
+        margin-right: -5px;
+    }
+    .topMenuElemet{
+        width: 40%;
+    }
+}
+
+@media (max-width: 400px) {
+    .title {
+        font-size: 17px !important;
+    }
 }

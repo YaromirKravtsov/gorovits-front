@@ -1,4 +1,4 @@
-import  { FC, useEffect, useState } from 'react'
+import { FC, useEffect, useState } from 'react'
 import PageLayout from '../../../../components/Layout/PageLayout/PageLayout';
 import { useTypedSelector } from '../../../../hooks/useTypedSelector';
 import { useActions } from '../../../../hooks/useActions';
@@ -13,34 +13,20 @@ import FlutterMenu from '../../../../UI/FlutterMenu/FlutterMenu';
 import LastPulling from '../LastPulling/LastPulling';
 import UserInfo from '../UserInfo/UserInfo';
 import { Helmet } from 'react-helmet';
+import Main from '../Main/Main';
 
-const KundenkontoPage:FC= () => {
-  const {getUserInfo} = useActions();
-  const {userInfo} = useTypedSelector(state => state.user);
-  const [aktuellenTermine,setAktuellenTermine] = useState<GetAktuallenTermineResponse[]>([])
-  useEffect(()=>{
-        const effect = async()=>{
-          getUserInfo(userInfo.userId);
-          const {data} = await KundenKontoService.getAktuallenTermine(userInfo.userId);
-          setAktuellenTermine(data);
-        }
-        effect();
-  }, []);
+const KundenkontoPage: FC = () => {
+  
   const pageText = 'Auf der Seite "Dein Kundenkonto" kannst du dein Profilbild, deinen Namen, deine E-Mail-Adresse und Telefonnummer sowie deine aktuellen Themen und Laufzeiten ohne iTunes anzeigen. Außerdem kannst du dein Passwort ändern und deine Benutzerinformationen aktualisieren.'
   return (
-      <>
-    <Helmet>
-      <title>Dein Kundenkonto</title>
-    </Helmet>
-        <PageLayout topMenu ={<KundenKontoTopMenu/>} title = 'Dein Kundenkonto' questionMarkText={pageText}>
-          <Row className={style.topRow}>
-            <UserInfo/>
-            <AktuellenTermine aktuellenTermine ={aktuellenTermine}/>
-            </Row>
-            <LastPulling /* pulling = {} *//>
-      
-        </PageLayout>
-      </>
+    <>
+      <Helmet>
+        <title>Dein Kundenkonto</title>
+      </Helmet>
+      <PageLayout topMenu={<KundenKontoTopMenu />} title='Dein Kundenkonto' questionMarkText={pageText}>
+        <Main />
+      </PageLayout>
+    </>
 
   )
 }

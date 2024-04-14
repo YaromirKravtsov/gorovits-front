@@ -11,7 +11,7 @@ const OsebandwechselCard :FC<Props> = ({record}) => {
     <>
     <OsenGriffMenu record={record} 
     recordName='Ösebandwechsel'
-    leftBottomText={` Schläger Nr. ${(record as IOsebandwechselRecord).userRacket.number}   Code: ${(record as IOsebandwechselRecord).userRacket.code} `}/>
+    leftBottomText={` Schläger Nr. ${(record as IOsebandwechselRecord).userRacket.number} </br> ${(record as IOsebandwechselRecord).userRacket.code} `}/>
     </>
   )
 }

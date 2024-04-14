@@ -3,36 +3,43 @@ import { AuthResponse } from "../../models/AuthResponse";
 import ErrorInterceptor from "../../components/ErrorInterceptor/ErrorInterceptor";
 
 
-export const API_URL = "http://localhost:5000"
+export const API_URL = "http://192.168.0.119:5000"
 const $api = axios.create({
     withCredentials: true,
-    baseURL:API_URL
+    baseURL: API_URL
 });
 
-$api.interceptors.request.use((config)=>{
+$api.interceptors.request.use((config) => {
     config.headers.Authorization = `Bearer ${localStorage.getItem('token')}`;
     return config;
 })
 
-$api.interceptors.response.use((config)=>{
+$api.interceptors.response.use((config) => {
 
     return config;
-},async (error)=>{
+}, async (error) => {
     const originRequest = error.config;
 
-    if(error.response.status == 401 && error.config && !error.config._isRetry){
+    if (error.response.status == 401 && error.config && !error.config._isRetry) {
         originRequest._isRetry = true;
-        try{
-            
-            const response = await axios.get<AuthResponse>(`http://localhost:5000/token/refresh`,{withCredentials:true});
-            localStorage.setItem('token',response.data.accessToken);
+        try {
+
+            const response = await axios.get<AuthResponse>(`http://192.168.0.119:5000/token/refresh`, {
+                withCredentials: true, // отправляет куки
+                headers: {
+                    'Content-Type': 'application/json',
+                    // Другие заголовки, если необходимо
+                },
+
+            });
+            localStorage.setItem('token', response.data.accessToken);
             return $api.request(originRequest);
-        }catch(e){
+        } catch (e) {
             console.log("НЕ АВТОРИЗОВАН")
         }
     }
 
-    
+
     throw error;
 })
 

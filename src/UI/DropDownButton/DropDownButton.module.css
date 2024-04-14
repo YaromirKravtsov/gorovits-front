@@ -40,3 +40,12 @@
 .grad{
     transform: rotate(180deg);
 }
+
+@media (max-width: 600px) {
+    .button{
+  /*       font-size: 20px; */
+    }
+    .dropDownList{
+
+    }
+}

@@ -10,6 +10,7 @@ import RacketStringPhoto from '../../../../UI/RacketStringPhoto/RacketStringPhot
 import MyButton from '../../../../UI/MyButton/MyButton';
 import { useActions } from '../../../../hooks/useActions';
 import DeleteRecordMenu from '../DeleteRecordMenu/DeleteRecordMenu';
+import { useTypedSelector } from '../../../../hooks/useTypedSelector';
 interface Props {
   record: IRecord
 }
@@ -17,6 +18,7 @@ interface Props {
 const BesaitungCard: FC<Props> = ({ record }) => {
   const [stateString, stateColor] = RecordHeler.getStateInfo(record);
   const { deleteUserRecord } = useActions();
+  const { windowWidth } = useTypedSelector(state => state.adaptive)
   const [isDelteMenuOpen, setIsDeleteMenuOpen] = useState<boolean>(false);
   const handelRecordDelete = () => {
     deleteUserRecord((record as IPullingRecord).id)
@@ -32,10 +34,12 @@ const BesaitungCard: FC<Props> = ({ record }) => {
           </BorderMenu>
           <BorderMenu className={style.BottomLeftBlock}>
             <div className={style.stringHardnes}> {RecordHeler.formatStringHardnes((record as IPullingRecord).pulling.stringHardness)}</div>
-            <div className={style.topLeftBlockTitle}>  {RecordHeler.formatStringsName((record as IPullingRecord).pulling.longString, (record as IPullingRecord).pulling.crossString)}</div>
+            <div className={`${style.topLeftBlockTitle} ${style.strings}`}>  {RecordHeler.formatStringsName((record as IPullingRecord).pulling.longString, (record as IPullingRecord).pulling.crossString)}</div>
           </BorderMenu>
         </Column>
-        <RacketStringPhoto racketSrc={(record as IPullingRecord).pulling.userRacket?.racketModel?.imgLink || ''} stringSrc={(record as IPullingRecord).pulling?.string?.imgLink || ''} />
+        {windowWidth >= 600 &&
+          <RacketStringPhoto racketSrc={(record as IPullingRecord).pulling.userRacket?.racketModel?.imgLink || ''} stringSrc={(record as IPullingRecord).pulling?.string?.imgLink || ''} />
+        }
         <Column className={style.blockColumn}>
           <BorderMenu className={style.stateBlock}>
             <div className={style.topLeftBlockTitle} style={{ color: `${stateColor}` }}>{stateString}</div>

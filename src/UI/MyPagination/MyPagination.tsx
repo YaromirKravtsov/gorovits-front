@@ -32,10 +32,8 @@ const MyPagination: FC<Props> = ({ fetchData, itemsPerPage, renderItem, classNam
     useEffect(() => {
         setCurrentPage(0);
         setTotalItems(0);
-
         props.setList([])
         setItems([]);
-
         fetchMoreItems(0, searchQuery); // Передаем currentPage = 0 и актуальный searchQuery как аргументы
     }, [searchQuery]);
     useEffect(() => {
@@ -51,7 +49,7 @@ const MyPagination: FC<Props> = ({ fetchData, itemsPerPage, renderItem, classNam
             try {
                 const response = await fetchData(page, itemsPerPage, query);
                 setTotalItems(response.data.totalCount);
-                console.log('save')
+          
 
                 setItems(prev => [...prev, ...response.data.data]);
                 props.setList(prev => [...prev, ...response.data.data])

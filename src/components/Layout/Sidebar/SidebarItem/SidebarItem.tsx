@@ -2,6 +2,8 @@ import React, { FC } from 'react';
 import { Link } from 'react-router-dom';
 import style from './SidebarItem.module.css';
 import MyImage from '../../../../UI/MyImage/MyImage';
+import { useActions } from '../../../../hooks/useActions';
+import { useTypedSelector } from '../../../../hooks/useTypedSelector';
 
 interface SidebarItemProps {
     src: string;
@@ -15,12 +17,20 @@ interface SidebarItemProps {
 
 const SidebarItem: FC<SidebarItemProps> = (props) => {
     const activeClass = props.isActive ? style.active : '';
-
+    const {setIsNavOpen} = useActions()
+    const {windowWidth} = useTypedSelector(state => state.adaptive)
+    const handelClick = () =>{
+        if(props.onClick)
+        props.onClick();
+    if(windowWidth <=600){
+        setIsNavOpen(false)
+    }
+    }
     return (
-        <Link to={props.rout} className={`${style.item} ${activeClass}`} onClick={props.onClick}>
+        <Link to={props.rout} className={`${style.item} ${activeClass}`} onClick={ handelClick}>
              {props.profileImage ?
                 <div className={style.profileImage}>
-                     <MyImage src={props.profileImage} alt={props.text} className={style.profilePhoto}/>
+                     <MyImage src={`${props.profileImage}`} alt={props.text} className={`${style.profilePhoto}`}/>
                 </div>
                 :
             <MyImage src={props.src} alt={props.text}  className={style.image}/>

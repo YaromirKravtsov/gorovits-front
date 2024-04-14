@@ -5,7 +5,15 @@
     justify-content: center;
     align-items: center;
   }
-  
+  .loaderSmal{
+    height: 150px;
+    max-height: 150px;
+    min-height: 150px;
+  }
+  .loaderSmal  .LoaderIcon{
+    width: 50px;
+    height: 50px;
+  }
   .LoaderIcon {
     width: 250px;
     height: 250px;

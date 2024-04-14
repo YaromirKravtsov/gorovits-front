@@ -14,7 +14,6 @@ import InputRow from '../../../../components/InputRow/InputRow';
 
 const TunningOrdering: FC = () => {
 
-    // in redux state, actions
     const {userInfo} = useTypedSelector(state=> state.user)
     const {orderRecords} = useTypedSelector(state=> state.orderRecord);
     const {createRecord} = useActions();
@@ -106,7 +105,7 @@ const TunningOrdering: FC = () => {
                     error ={(inputsErrors as OrderTuningssErrors).balancePoint}
                     setError = {(value: boolean) => setInputsErrors({...inputsErrors,balancePoint: value })}
                     value ={(orderRecordData as OrderTuning).balancePoint}
-                    className='order_input'
+                    className={` ${style.input}`}
                 />
             </InputRow>
             <InputRow label='Gesamtgewicht' questionText ={questionText} questionMark questionTextClass = {style.questionTextClass}>
@@ -116,7 +115,7 @@ const TunningOrdering: FC = () => {
                     error ={(inputsErrors as OrderTuningssErrors).totalWeight}
                     setError = {(value: boolean) => setInputsErrors({...inputsErrors,totalWeight: value })}
                     value ={(orderRecordData as OrderTuning).totalWeight}
-                    className='order_input'
+                    className={` ${style.input}`}
                 />
             </InputRow>
             <InputRow label='Schwunggewicht' questionText ={questionText} questionMark questionTextClass = {style.questionTextClass}>
@@ -126,7 +125,7 @@ const TunningOrdering: FC = () => {
                     error ={(inputsErrors as OrderTuningssErrors).swingWeight}
                     setError = {(value: boolean) => setInputsErrors({...inputsErrors,swingWeight: value })}
                     value ={(orderRecordData as OrderTuning).swingWeight}
-                    className='order_input'
+                    className={` ${style.input}`}
                 />
             </InputRow>
             <OrderComment onChange={(value:string) => setRecordData(prev=> ({...prev, comment: value}))} value = {orderRecordData.comment}/>

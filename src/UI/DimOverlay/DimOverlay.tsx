@@ -3,13 +3,16 @@ import ReactDOM from 'react-dom';
 import style from './DimOverlay.module.css'
 
 interface Props{
-    className: string, 
-    children: ReactNode
+    className?: string, 
+    children?: ReactNode,
+    isDim?: boolean
 }
-const DimOverlay:FC<Props> = (props) => {
-
-
-   
+const DimOverlay:FC<Props> = ({isDim = false,...props}) => {
+    if(isDim){
+        return (
+            <>{props.children}</>
+        )
+    }
     return (
         <>
             <div className={style.dim}></div>

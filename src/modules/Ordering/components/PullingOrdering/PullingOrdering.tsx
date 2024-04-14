@@ -97,7 +97,7 @@ const PullingOrdering: FC = () => {
                     error ={(inputsErrors as OrderPullingsErrors).stringHardnes}
                     setError = {(value: boolean) => setInputsErrors({...inputsErrors,stringHardnes: value })}
                     value ={(pullingData as OrderPulling).stringHardnes}
-                    className={'order_input'}
+                    className={style.input}
                 />
             </InputRow>
             <InputRow label='Längstsaite'>

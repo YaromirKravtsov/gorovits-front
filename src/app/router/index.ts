@@ -1,17 +1,20 @@
-import KundenkontoPage from "../../pages/KundenkontoPage/components/KundenkontoPage/KundenkontoPage";
-import ForgotPasswordPage from "../../pages/ForgotPasswordPage/ForgotPasswordPage";
-import LoginPage from "../../pages/LoginPage/LoginPage";
-import TerminePage from "../../pages/TerminePage/components/TerminePage/TerminePage";
-import BesaitungAndTuning from "../../pages/BesaitungAndTuning/components/BesaitungAndTuningPage/BesaitungAndTuning";
-import UserPullingHistory from "../../pages/UserPullingHistory/components/UserPullingHistory/UserPullingHistory";
-import RacketPullingStoryPage from "../../pages/RacketPullingStory/RacketPullingStoryPage";
-import NewUserPage from "../../pages/NewUserPage/NewUserPage";
-import AccountPageToAdmin from "../../pages/AccountPageToAdmin/components/AccountPageToAdmin/AccountPageToAdmin";
-import AllCurrentOrders from "../../pages/AllCurrentOrders/components/AllCurrentOrders";
-import SearchKundenPage from "../../pages/SearchKundenPage/components/SearchKundenPage/SearchKundenPage";
-import AdminRecordGroup from "../../pages/AdminRecordGroup/components/AdminRecordGroup/AdminRecordGroup";
-import UserRecordsStoryPage from "../../pages/UserRecordsStoryPage/components/UserRecordsStoryPage";
-import AdminSettingsPage from "../../pages/AdminSettingsPage/components/AdminSettingsPage";
+import React from 'react';
+
+const LoginPage = React.lazy(() => import('../../pages/LoginPage/LoginPage'));
+const ForgotPasswordPage = React.lazy(() => import('../../pages/ForgotPasswordPage/ForgotPasswordPage'));
+const KundenkontoPage = React.lazy(() => import('../../pages/KundenkontoPage/components/KundenkontoPage/KundenkontoPage'));
+const TerminePage = React.lazy(() => import('../../pages/TerminePage/components/TerminePage/TerminePage'));
+const BesaitungAndTuning = React.lazy(() => import('../../pages/BesaitungAndTuning/components/BesaitungAndTuningPage/BesaitungAndTuning'));
+const UserPullingHistory = React.lazy(() => import('../../pages/UserPullingHistory/components/UserPullingHistory/UserPullingHistory'));
+const RacketPullingStoryPage = React.lazy(() => import('../../pages/RacketPullingStory/RacketPullingStoryPage'));
+const NewUserPage = React.lazy(() => import('../../pages/NewUserPage/NewUserPage'));
+const AccountPageToAdmin = React.lazy(() => import('../../pages/AccountPageToAdmin/components/AccountPageToAdmin/AccountPageToAdmin'));
+const AllCurrentOrders = React.lazy(() => import('../../pages/AllCurrentOrders/components/AllCurrentOrders'));
+const SearchKundenPage = React.lazy(() => import('../../pages/SearchKundenPage/components/SearchKundenPage/SearchKundenPage'));
+const AdminRecordGroup = React.lazy(() => import('../../pages/AdminRecordGroup/components/AdminRecordGroup/AdminRecordGroup'));
+const UserRecordsStoryPage = React.lazy(() => import('../../pages/UserRecordsStoryPage/components/UserRecordsStoryPage'));
+const AdminSettingsPage = React.lazy(() => import('../../pages/AdminSettingsPage/components/AdminSettingsPage'));
+const OrderPage = React.lazy(() => import('../../modules/Ordering/components/OrderPage/OrderPage'));
 
 
 
@@ -27,7 +30,7 @@ export enum RouteNames{
     BESAITUNG_AND_TUNING = '/besaitung-tuning',
     TERMINE = '/termine',
     BESAITUNG_DES_BENUTZERS= '/besaitungen-des-benutzers',
-    BesaitungsverlauFürSchläger= '/besaitungsverlauf-für-Schläger/:id',
+    BesaitungsverlauFürSchläger= '/besaitungsverlauf-für-Schläger',
     NEUER_BENUTZER= '/neuer-benutzer',
     ACCOUNT_TO_ADMIN= '/user-account/:userId',
     ALL_CURRENT_ORDERS= '/current-orders',
@@ -35,6 +38,7 @@ export enum RouteNames{
     BESTELLUNG=  '/bestellung',
     BENUTZER_BESTELLUNG=  '/benutzer-bestellung',
     EINSTELLUNGEN=  '/einstellungen',
+    Terminbuchung ="/terminbuchung/:type"
 }
 export const adminRoutes:IRoute[] = [
     {path: RouteNames.NEUER_BENUTZER, element: NewUserPage},
@@ -52,6 +56,7 @@ export const userRoutes:IRoute[] = [
     {path: RouteNames.TERMINE, element: TerminePage},
     {path: RouteNames.BESAITUNG_DES_BENUTZERS, element: UserPullingHistory},
     {path: RouteNames.BesaitungsverlauFürSchläger, element: RacketPullingStoryPage},
+    {path: RouteNames.Terminbuchung , element: OrderPage},
 ]
 
 

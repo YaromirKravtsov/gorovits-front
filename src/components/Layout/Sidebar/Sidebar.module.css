@@ -1,7 +1,7 @@
 .slider{
-  
     min-height: 100vh;
     max-height: 100vh;
+    height: 100vh;
     background-color: #232323;
     color: #fff;
     font-size: 20px;
@@ -9,4 +9,15 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+@media (max-width: 600px) {
+    .slider{
+        padding: 25px 25px;
+    }
+}
+@media (max-width: 400px) {
+    .slider{
+        padding: 25px 25px;
+    }
 }

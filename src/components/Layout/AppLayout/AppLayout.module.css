@@ -1,12 +1,38 @@
 .app{
+  position: fixed;
   display: flex;
   flex-direction: row;
   width: 100%;
   max-width: 100%;
   min-height: 100%;
+  transition: left .2s ease-in-out; /* Убираем !important */
+
 }
 .navBar{
+
   width: 450px;
   min-width: 450px;
 
+  left: 0 !important; /* Убираем !important */
+  z-index: 100;
+}
+.openNavBar{
+  left: 0 !important;
+}
+.dim{
+  border-radius: 0 !important;
+}
+@media (max-width: 600px){
+  .navBar{
+    width: 340px;
+    min-width: 340px;
+  }
+  
+}
+
+@media (max-width: 400px){
+  .navBar{
+    width: 320px;
+    min-width: 320px;
+  }
 }

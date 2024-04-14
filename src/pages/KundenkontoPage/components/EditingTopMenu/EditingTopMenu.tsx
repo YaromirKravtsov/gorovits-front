@@ -12,6 +12,7 @@ import ChangePasswordMenu from '../../../../components/ChangePasswordMenu/Change
 
 const EditingTopMenu:FC = () => {
     const {userEdititngInfo,userInfo} = useTypedSelector(state => state.user);
+    const {windowWidth} = useTypedSelector(state => state.adaptive);
     const {setIsEditing,putUserInfo} = useActions()
     const [isPassMenuOpen, isetIsPassMenuOpen] = useState<boolean>()
 
@@ -19,15 +20,15 @@ const EditingTopMenu:FC = () => {
         putUserInfo(userEdititngInfo);
         setIsEditing(false);
     }
-/*     console.log(userInfo) */
   return (
     <>
     {isPassMenuOpen&&
     <ChangePasswordMenu userId={Number(userInfo.userId)} isOpenChange={(value:boolean) => isetIsPassMenuOpen(value)}/>
     }
     <div className={style.topEdit}>
-       <MyButton onClick={()=> isetIsPassMenuOpen(true)} mode='black' className={style.button}>Passwort ändern </MyButton>
-       <RoundIconButton onClick={submitChanges} src={SumbitChangesIcon} className={style.submitChanges} imageClassName ={style.submitChangesIcon}/>
+      {}
+      {windowWidth >=600&& <MyButton onClick={()=> isetIsPassMenuOpen(true)} mode='black' className={style.button}>Passwort ändern </MyButton>}
+       <RoundIconButton onClick={submitChanges} src={SumbitChangesIcon} className={style.submitChanges} imageClassName = {style.submitChangesIcon}/>
     </div>
     </>
   )

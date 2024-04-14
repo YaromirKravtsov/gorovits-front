@@ -7,4 +7,12 @@ border: 20px solid #7877;
 }
 .input{
     width: 360px;
+    padding: 15px;
+}
+
+
+@media (max-width: 600px) {
+    .input{
+        width: 100% !important;
+    }
 }

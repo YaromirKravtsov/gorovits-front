@@ -79,7 +79,7 @@ const Main = () => {
     console.log(data)
     setStrings(data);
   }
-  console.log(rackets)
+
   return (
 
     <>

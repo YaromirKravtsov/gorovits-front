@@ -11,7 +11,7 @@ const PersonalnfoNormal:FC = () => {
   return (
     <div className={style.container}>
       <TitleText title = 'Name' text={userInfo.fullName }/>
-      <TitleText title = 'Email' text={userInfo.email || 'Unknown'} className={style.center}/>
+      <TitleText title = 'Email' text={userInfo.email || 'Unknown'} />
       <TitleText title = 'Telefonnummer' text={userInfo.phoneNumber || 'Unknown'}/>
     </div>
   )

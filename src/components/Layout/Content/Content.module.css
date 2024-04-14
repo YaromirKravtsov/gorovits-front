@@ -1,5 +1,13 @@
 .content{
-    width: 100%;
-    max-width: 100%;
-    min-height: 100%;
+    width: 100vw;
+    max-width: 100vw;
+}
+
+@media (max-width: 600px) {
+    .content{
+        width: 100vw;
+        max-width: 100vw;
+        min-width: 100vw;
+    
+    } 
 }

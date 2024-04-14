@@ -11,7 +11,6 @@ import RateMenu from '../RateMenu/RateMenu'
 
 const LastPulling:FC = () => {
     const {userInfo,isEditing} = useTypedSelector(state=> state.user);
-    const [pullingId,setPullingId] = useState<number>(0)
     const {pullings,isLoaded} = useTypedSelector(state=> state.pulling);
     /* const [isRateOpen,setIsRateOpen] = useState<boolean>(false) */
     const {setLastPulling, setIsInRating,setRatingPillingId} = useActions()

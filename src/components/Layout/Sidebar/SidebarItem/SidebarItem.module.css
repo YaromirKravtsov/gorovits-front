@@ -1,4 +1,4 @@
-.item{
+.item {
     width: 100%;
     height: 65px;
     display: flex;
@@ -6,17 +6,19 @@
     align-items: center;
     padding: 0 20px;
 }
-.active{
+
+.active {
     background-color: #333333;
 
 }
-.image{
+
+.image {
     width: 40px;
     height: 40px;
-    
+
 }
 
-.text{
+.text {
     display: flex;
     align-items: center;
     flex-direction: row;
@@ -31,7 +33,8 @@
 
 
 }
-.profileImage{
+
+.profileImage {
     overflow: hidden;
     width: 40px;
     height: 40px;
@@ -41,10 +44,18 @@
     justify-content: center;
     align-items: center;
 }
-.profilePhoto{
-    width: 35px;
-    height: 35px;
+
+.profilePhoto {
+    width: 100%;
+    height: 100%;
 }
-.title{
-    
+
+@media (max-width: 600px) {
+    .text {
+        font-size: 20px;
+    }
+    .image{
+        width: 30px;
+        height: 30px;
+    }
 }

@@ -9,7 +9,8 @@ interface Props{
       value: number;
     }[], 
     onSelect: (option:number) => void,
-    title: string
+    title: string,
+    className?:string
 }
 const DropDownButton:FC<Props> = (props) => {
      const [isOpen,setIsOpen] = useState<boolean>(false);
@@ -25,9 +26,9 @@ const DropDownButton:FC<Props> = (props) => {
     }
     return (
       <div>
-        <MyButton onClick={()=>handleClick()} className={style.button} mode='black'>{props.title} <MyImage alt ='arrow' src ={arrow} className={`${style.arrow} ${isOpen&&style.grad}`} /> </MyButton>
+        <MyButton onClick={()=>handleClick()} className={`${style.button} ${props.className}`} mode='black'>{props.title} <MyImage alt ='arrow' src ={arrow} className={`${style.arrow} ${isOpen&&style.grad}`} /> </MyButton>
         {isOpen&&
-            <div className={style.dropDownList}>
+            <div className={`${style.dropDownList} ${props.className}`}>
                 {props.options.map((option,index)=>
                     <button className={style.dropDownItem} key={index} onClick={()=> handleSelect(option.value)}>{option.text}</button>
                 )}

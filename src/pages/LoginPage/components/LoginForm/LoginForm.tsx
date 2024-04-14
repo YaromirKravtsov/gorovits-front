@@ -36,6 +36,7 @@ const LoginForm = () => {
       console.log(email, password)
       await login(email, password);
     }
+
   
   }
   console.log(error)

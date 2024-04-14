@@ -3,3 +3,12 @@
     height: 74px;
     margin-bottom: 60px;
 }
+@media (max-width: 600px){
+    .navBar{
+      width: 340px;
+      min-width: 340px;
+    }
+    .logo{
+        margin-bottom: 45px;
+    }
+  }

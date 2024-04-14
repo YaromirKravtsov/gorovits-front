@@ -9,6 +9,11 @@ body{
   overflow: hidden;
 
 }
+/* @media (max-width:600px) {
+  body{
+    overflow: auto;
+  }
+} */
 *{
   box-sizing: border-box;
 

@@ -56,9 +56,6 @@ const StringFlutterMenu: FC<Props> = (props) => {
         if (validate()) {
             const formData = new FormData();
 
-
-        
-  
             formData.append('name', stringModel)
             if (props.action == 'edit') {
                 formData.append('id', String(props.string?.id));

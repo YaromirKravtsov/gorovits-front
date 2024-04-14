@@ -1,5 +1,7 @@
 import auth from '../../app/state/auth';
+
 import user from './user';
+import adaptive from './adaptive';
 import pulling from '../../modules/PullingStory/store/pulling';
 import racket from '../../modules/Racket/store';
 import record from '../../modules/UserRecords/state'
@@ -7,6 +9,7 @@ import order from '../../modules/Ordering/store/order'
 import orderRecord from '../../modules/Ordering/store/orderRecord'
 import newRackets from '../../modules/NewRackets/store/newRackets/index'
 import recordGroup from '../../pages/AdminRecordGroup/store'
+
 export default {
     auth,
     user,
@@ -16,6 +19,8 @@ export default {
     order,
     orderRecord,
     newRackets,
-    recordGroup
+    recordGroup,
+    adaptive
+
 
 }

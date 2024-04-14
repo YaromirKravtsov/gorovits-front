@@ -1,3 +1,10 @@
-.personalnfo{
+.personalnfo {
     width: 220px;
 }
+
+/* @media (max-width: 600px) {
+    .personalnfo {
+        margin-left: auto;
+    }
+
+} */

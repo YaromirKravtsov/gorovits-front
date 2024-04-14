@@ -17,6 +17,7 @@ interface RecordType {
     name: string;
     component: FC<{ record: IRecord }>;
     ordering: FC<{type: number}>;
+    orderingLink: string;
     type: number;
 
 }
@@ -29,59 +30,69 @@ export const RecordTypes: RecordType[] = [
         name: "Besaitung",
         component: BesaitungCard,
         ordering: PullingOrdering,
+        orderingLink:''
     },
      {
         name: "Tuning",
         type: 2,
         component: TuningCard,
-        ordering: TunningOrdering,        
+        ordering: TunningOrdering,     
+        orderingLink:''   
     },
      {
         type: 3,
         name: "Ösebandwechsel",
         component: OsebandwechselCard,
         ordering: OsebandwechselOrdering, 
+        orderingLink:''
     },
      {
         type: 4,
         name: "Griffreparatur",
         component: GriffreparaturCard,
-        ordering: GriffreparaturOrdering,      
+        ordering: GriffreparaturOrdering,   
+        orderingLink:''   
     },
     {
         type: 5,
         name: "Sonstiges",
         component: AdditionalRecordsCard,
-        ordering: AdditionalRecordsMenu,      
+        ordering: AdditionalRecordsMenu, 
+        orderingLink:''    
     },
     {
         type: 7,
         name: "Tennisschläger - Beratung",
         component: AdditionalRecordsCard,
-        ordering: AdditionalRecordsMenu,      
+        ordering: AdditionalRecordsMenu,  
+        orderingLink:''    
     },
     {
         type: 8,
         name: "On Court Tennisschläger - Test",
         component: OnCourtRacketTestingСard,
-        ordering: OnCourtRacketTesting,      
+        ordering: OnCourtRacketTesting,    
+        orderingLink:''  
     },
      {
         type: 9,
         name: "On Court Tuning",
         component: AdditionalRecordsCard,
-        ordering: AdditionalRecordsMenu,   
+        ordering: AdditionalRecordsMenu, 
+        orderingLink:''  
     },
     {
         type: 10,
         name: "Manschaftskletypeung - Beratung",
         component: AdditionalRecordsCard,
         ordering: AdditionalRecordsMenu,   
+        orderingLink:''
     },
     {
         type: 11,
         name: "Sonstiges",
         component: AdditionalRecordsCard,
-        ordering: AdditionalRecordsMenu,    
+        ordering: AdditionalRecordsMenu,   
+        orderingLink:'' 
     }
 ]

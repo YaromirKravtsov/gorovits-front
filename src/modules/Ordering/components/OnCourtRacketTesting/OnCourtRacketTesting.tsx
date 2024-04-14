@@ -14,6 +14,8 @@ import MyButton from '../../../../UI/MyButton/MyButton';
 import MyImage from '../../../../UI/MyImage/MyImage';
 import { CreateRecordType } from '../../../../models/IRecord';
 import InputRow from '../../../../components/InputRow/InputRow';
+import { useNavigate } from 'react-router-dom';
+import { RouteNames } from '../../../../app/router';
 interface ModelManufacturereDefault{
   model: string, 
   manufactiors: string
@@ -108,7 +110,12 @@ const OnCourtRacketTesting:FC = () => {
     }
 
     //====
+    const {windowWidth}  = useTypedSelector(state=> state.adaptive);
+    const navigate = useNavigate()
     const handelCloseOrderBlock = () =>{
+      if(windowWidth <= 600){
+        navigate(RouteNames.TERMINE)
+    }
       setIsOrderOpen(false)
     }
 
@@ -166,7 +173,7 @@ const OnCourtRacketTesting:FC = () => {
                     value={0}
                     options={formatOption(racketsManufactureres)}
                     onChange={(value: number) => renderRacketModels(value)}
-
+                    className={style.button}
                 />
             </InputRow>
 
@@ -176,6 +183,7 @@ const OnCourtRacketTesting:FC = () => {
                     value={0}
                     options={formatOption(currentRacketModels)}
                     onChange={(value: number) =>  addModelToList(value)}
+                    className={style.button}
                 />
             </InputRow>
           <GradientBlackBlock className={style.racketsBlock}>
@@ -194,7 +202,7 @@ const OnCourtRacketTesting:FC = () => {
           </GradientBlackBlock>
         <OrderComment onChange={(value:string) => setComment(value)} value = {comment}/>
         </OrderFlutterMenu>
-        {String(isDateBlockOpen)}
+       
         {isDateBlockOpen&&
             <SelectDateMenu  recordType={2} onSelect={(value:Date)=>setDateTime(value)} onSubmit={handelSubmit} onClose={() => {setOrderBlockHidden(false);setIsDateBlockOpen(false)}}/>
         }

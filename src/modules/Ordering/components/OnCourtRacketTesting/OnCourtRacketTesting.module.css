@@ -59,3 +59,9 @@ color: #FFFFFF;
     width: 21px;
     height: 21px;
 }
+
+@media (max-width: 600px) {
+    .button{
+        width: 100%;
+    }
+}

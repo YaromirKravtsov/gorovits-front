@@ -1,6 +1,7 @@
 .inputsRow{
     /* width: 100%; */
     row-gap: 8px;
+
 }
 .label{
     display: flex;
@@ -38,4 +39,20 @@
     font-size: 16px;
     line-height: 20px;
     color: #232323;
+}
+
+
+@media (max-width: 600px) {
+    .input{
+        width: 100%;
+    }
+    .inputsRow{
+        width: 100% !important;
+        
+    }
+    .questionBlock{
+        width: 100%;
+        left: 50%;
+        transform: translateX(-50%);
+    }
 }

@@ -17,7 +17,9 @@ const internalState:OrderState = {
     userRackets: [] as UserRackets[],
     //==
     racketsModels: [] as ModelAndManufactureres[],
-    racketsManufactureres:[] as ModelAndManufactureres[]
+    racketsManufactureres:[] as ModelAndManufactureres[],
+    //==
+    recordTitle: ''
 }
 
 export default function(state =internalState, action: OrderAction ){
@@ -50,6 +52,8 @@ export default function(state =internalState, action: OrderAction ){
             return {...state, racketsManufactureres: action.payload }
         case OrderActionEnum.SET_RACKETS_MODELS:
             return {...state, racketsModels: action.payload }
+            case OrderActionEnum.SET_RECORD_TITLE:
+                return {...state, recordTitle: action.payload }
         default: 
             return {...state}
     }

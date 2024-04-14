@@ -46,3 +46,12 @@
 .prevArrowIcon {
     transform: rotate(90deg);
 }
+
+
+@media (max-width: 600px) {
+    .racketsRow{
+        padding: 0;
+    } 
+    .slick-slider {
+    }
+}

@@ -5,8 +5,12 @@ import { IUser } from "../../../../models/IUser";
 import { GetAktuallenTermineResponse, GetPullungResponse, GetUserInfoResponse, PutPhotoResponse } from "../responses/UserInfoResponse";
 
 export default class UserInfoService{
-    static async getAktuallenTermine(userId:number): Promise<AxiosResponse <GetAktuallenTermineResponse[]> >{
-        return $api.get<GetAktuallenTermineResponse[]>(`records/short-reserved/${userId}`);
+    static async getAktuallenTermine(userId:number,limit:number): Promise<AxiosResponse <GetAktuallenTermineResponse[]> >{
+        return $api.get<GetAktuallenTermineResponse[]>(`records/short-reserved`,{
+          params:{
+            userId, limit
+          }
+        });
     }
    
     static async putUserPhoto(userId:number,formData: FormData): Promise<AxiosResponse<PutPhotoResponse>>{

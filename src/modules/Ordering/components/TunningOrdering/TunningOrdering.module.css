@@ -8,3 +8,14 @@
 .questionTextClass{
     width: 400px !important;
 }
+
+
+.input{
+    width: 360px/*  !important */;
+}
+
+@media (max-width: 600px){
+    .input{
+        width: 100%;
+    }
+}

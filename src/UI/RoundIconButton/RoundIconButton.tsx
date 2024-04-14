@@ -21,7 +21,7 @@ const RoundIconButton:FC<RoundIconButton> = (props) => {
     <button className={`${style.button} ${props.className}`} onClick={clickHandler}  
     onMouseLeave={props.onMouseLeave}
     onMouseOut ={props.onMouseOut}>
-        <MyImage src={props.src} width={44} height={44} alt='icon-button' className={props.imageClassName}/>
+        <MyImage src={props.src} alt='icon-button' className={`${props.imageClassName} ${style.img}`}/>
     </button>
   )
 }

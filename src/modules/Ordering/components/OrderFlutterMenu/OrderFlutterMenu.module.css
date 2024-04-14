@@ -16,7 +16,7 @@
     font-size: 27px;
     line-height: 32px;
     text-align: center;
-    color: #30484D;
+    color: #232323;
 }
 .inputsRow{
 
@@ -31,11 +31,52 @@
 }
 .buttonRow{
     width: 100%;
-   /*  margin-top: 50px; */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.actioveButtons{
+    width: 100%;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    margin-top: 20px;
 }
 .hidden{
     display: none !important;
 }
+
+
+@media (max-width: 600px){
+    .flutterMenu{
+        width: 100%;
+
+        padding: 0;
+    }
+    .buttonRow{
+    /*     position: absolute;
+        bottom: 10px; */
+        width: 100%;
+  /*       margin-top: auto; */
+        
+    }
+    .actioveButtons{
+        width: 100%;
+        min-width: 100%;
+        flex-direction:column-reverse;
+        row-gap: 20px;
+ /*        margin-top: 0; */
+    }
+    .button{
+        width: 100%;
+        font-size: 22px;
+    }
+    .inputsRow{
+        justify-content: start;
+        flex-direction: column !important;
+        height: auto;
+        min-height: auto;
+        max-height: auto;
+        padding-bottom: 5px;
+    }
+} 

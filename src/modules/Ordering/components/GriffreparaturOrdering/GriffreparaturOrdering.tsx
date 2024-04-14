@@ -102,7 +102,7 @@ const GriffreparaturOrdering:FC = () => {
                 value={1}
                 options={grifSize}
                 onChange={(value: number) => { setInputsErrors(prev => ({...prev, handleSize: false})); setRecordData(prev => ({...prev, handleSize:value })) }}
-             
+                className={style.input}
             />
              {(inputsErrors as OrderGriffreparaturErrors).handleSize &&
                 <span className={style.errorInput}>Das Feld muss ausgefüllt werden </span>

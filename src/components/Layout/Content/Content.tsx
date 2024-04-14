@@ -7,7 +7,7 @@ interface ContentProps{
 }
 const Content:FC<ContentProps> = ({children, topStyle}) => {
   return (
-    <div className = {style.content} style = {topStyle}>
+    <div className = {style.content} style = {topStyle} >
       {children}
     </div>
   )

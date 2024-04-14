@@ -33,7 +33,7 @@
 .BottomLeftBlock{
     margin-top: auto;
     width: 320px;
-    height: 155px;
+    height: 135px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -74,4 +74,66 @@ color: #FFFFFF;
     line-height: 35px;
     text-align: center;
     color: #FFFFFF;
+}
+
+@media (max-width: 600px) {
+    .besaitungCard {
+        padding: 10px;
+        height: 190px;
+        max-height: 190px;
+        min-height: 190px;
+    }
+
+    .blockColumn {
+        width: 45%;
+    }
+
+    .topBlock,
+    .BottomLeftBlock {
+        width: 100%;
+    }
+
+    .topBlock,.stateBlock {
+        width: 100%;
+        height: 60px;
+        padding: 20px 0;
+    
+    }
+
+    .topLeftBlockTitle,
+    .topLeftBlockSubTitle {
+        font-size: 16px;
+    }
+
+    .topLeftBlockSubTitle {
+        margin-top: -7px;
+    }
+
+    .BottomLeftBlock {
+        height: 90px;
+    }
+
+    .stringHardnes {
+        font-size: 24px;
+    }
+
+    .strings {
+        margin-top: -10px;
+    }
+
+ 
+    .topLeftBlockTitle{
+        line-height: 23px;
+    }
+    .button{
+        font-size: 20px !important;
+        width: 100% !important;
+        height: 45px !important;
+        min-width: 100% !important;
+        min-height: 35px !important;
+    }
+    .TuningParametrs{
+        font-size: 20px;
+        line-height: 25px;
+    }
 }

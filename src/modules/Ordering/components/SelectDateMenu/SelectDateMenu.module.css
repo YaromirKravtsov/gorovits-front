@@ -156,3 +156,51 @@
 .selected{
     box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.8);
 }
+@media (max-width: 600px){
+    .currentWeek{
+    
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        margin-top: 15px;
+   /*      max-height: calc(100% - 300px); */
+    
+    }
+    .buttonRow{
+
+        width: 100%;
+        margin-top: auto;
+        flex-direction: column-reverse !important;
+        row-gap: 25px;
+        margin-bottom: 5                                                                                                                                                                                                                                                       px;
+    }
+    .dateTimeColumn{
+        width: 15.3%;
+    }
+    .dateTime{
+        height: 35px ;
+        min-height: 35px;
+    }
+    .button{
+        width: 100%;
+        height: 60px;
+    }
+    .selectDateMenu{
+     
+        width: 100%;
+        height: 100%;
+        padding: 0;
+    }
+    .weekBlock{
+        width: 100px;
+        font-size: 16px;
+    }
+    .arrowBLock{
+        width: 40px;
+    }
+    .arrow{
+        width: 30px;
+        height: 8px;
+    }
+}
+

@@ -12,6 +12,7 @@ import { feedbackPhotos } from '../../constants/feedback';
 import MyButton from '../../UI/MyButton/MyButton';
 import { Pulling } from '../../modules/PullingStory/store/pulling/types';
 import RacketStringPhoto from '../../UI/RacketStringPhoto/RacketStringPhoto';
+import { useTypedSelector } from '../../hooks/useTypedSelector';
 
 
 type PullingType = 'racketStory' | 'userStory';
@@ -23,7 +24,7 @@ interface Props {
 }
 
 const PullingCard: FC<Props> = (props) => {
-
+  const {windowWidth} = useTypedSelector(state => state.adaptive)
   return (
     <GradientBlackBlock className={style.pullingCard}>
       <Row className={style.mainRow}>
@@ -37,10 +38,14 @@ const PullingCard: FC<Props> = (props) => {
             <div className={style.stringName}>{RecordHeler.formatStringsName(props?.pulling?.longString, props?.pulling?.crossString)}</div>
           </BorderMenu>
         </Column>
-        <RacketStringPhoto
-          racketSrc={props?.pulling.userRacket.racketModel.imgLink}
-          stringSrc={props?.pulling.string.imgLink}
-        />
+        {windowWidth >= 600 &&
+           <RacketStringPhoto
+           racketSrc={props?.pulling.userRacket.racketModel.imgLink}
+           stringSrc={props?.pulling.string.imgLink}
+         />
+        
+        }
+     
         <Column>
           {props.type == 'userStory' &&
             <BorderMenu className={`${style.dateTimeBlock} ${style.leftTop}`}>

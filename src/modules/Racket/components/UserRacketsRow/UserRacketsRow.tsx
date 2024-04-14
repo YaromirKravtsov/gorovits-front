@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { FC, useEffect, useState } from 'react'
 import { useActions } from '../../../../hooks/useActions';
 import { useTypedSelector } from '../../../../hooks/useTypedSelector';
 import UserRacket from '../UserRacket/UserRacket';
@@ -11,62 +11,83 @@ import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import MyButton from '../../../../UI/MyButton/MyButton';
-
-const UserRacketsRow = () => {
-      const {fetchRackets} = useActions();
-  const {userInfo} = useTypedSelector(state=> state.user)
-  const {rackets,isLoading} = useTypedSelector(state=> state.racket)
+const NextArrow: FC = () => {
+  return (
+    <div className={style.nextArrow} ><img src={arrow} alt="" className={style.nextArrowIcon} /> </div>
+  )
+}
+const PrevArrow: FC = () => {
+  return (
+    <div className={style.prevArrow} ><img src={arrow} alt="" className={style.prevArrowIcon} /> </div>
+  )
+}
+const UserRacketsRow: FC = () => {
+  const { fetchRackets } = useActions();
+  const { userInfo } = useTypedSelector(state => state.user)
+  const { rackets, isLoading } = useTypedSelector(state => state.racket);
+  const { windowWidth, windowHeight } = useTypedSelector(state => state.adaptive);
+  const [sliderSettings, setSliderSettings] = useState<{}>({})
   useEffect(() => {
-
     fetchRackets(userInfo.userId);
-  }, []);
-  // Slider
-  const sliderSettings = {
-    infinite: true,
-    speed: 300,
-    slidesToShow: 4, // Количество видимых слайдов
-    slidesToScroll: 1, // Количество прокручиваемых слайдов за раз
-    variableWidth: true, // Разрешить переменную ширину слайдов
-    centerMode: false, // Отключить центральный режим
-    centerPadding: '0', // Отступы для центрирования (0, чтобы расположить слайды по краям)
-    cssEase: 'ease-in-out', // Сглаживание анимации
-    nextArrow: <div className={style.nextArrow} ><img src={arrow} alt=""className={style.nextArrowIcon} /> </div>,
-    prevArrow: <div className={style.prevArrow} ><img src={arrow} alt="" className={style.prevArrowIcon} /> </div>
+    console.log(windowWidth, windowHeight)
+    // Создаем объект с настройками слайдера
+    const newSliderSettings: {} = {
+      infinite: true,
+      speed: 300,
+      slidesToShow: windowWidth <= 600 ? 1 : 4,
+      slidesToScroll: 1,
+      variableWidth: true,
+      centerMode: false,
+      centerPadding: '0',
+      cssEase: 'ease-in-out',
+      dots: windowWidth <= 600
+    };
 
-  };
-  console.log()
-  if(rackets.length <=4){
+    // Если ширина окна больше или равна 600, добавляем к настройкам стрелки
+    if (windowWidth >= 600) {
+      // @ts-ignore
+      newSliderSettings.nextArrow = NextArrow;
+      // @ts-ignore
+      newSliderSettings.prevArrow = PrevArrow;
+    }
+    
+    // Устанавливаем новые настройки слайдера
+    setSliderSettings(newSliderSettings);
+  }, [windowWidth, windowHeight]);
+  
+
+  if (rackets.length <= 4 && windowWidth >= 600) {
+    return (
+      <div className={`${style.racketsRow}`}>
+        {isLoading ?
+          <Loader />
+          :
+          <>
+            {rackets.map((racket) =>
+              <UserRacket key={racket.id} racket={racket} />
+            )}
+          </>
+        }
+      </div>
+    )
+
+  }
 
   return (
-    <div className={`${style.racketsRow}`}>
-      {isLoading?
-          <Loader/>
+    <div className={`${style.racketsRow} ${windowWidth >= 600 && style.racketsRowPadding}`}>
+      {isLoading ?
+        <Loader />
         :
         <>
-          {rackets.map((racket)=>
-            <UserRacket key = {racket.id} racket={racket}/>   
-          )}
+          <Slider {...sliderSettings}>
+            {rackets.map((racket) =>
+              <UserRacket key={racket.id} racket={racket} />
+            )}
+
+          </Slider>
+
         </>
       }
-    </div>
-  )
-    
-  }
-  return (
-    <div className={`${style.racketsRow} ${style.racketsRowPadding}`}>
-      {isLoading?
-        <Loader/>
-      :
-      <>
-        <Slider {...sliderSettings}>
-        {rackets.map((racket)=>
-              <UserRacket key = {racket.id} racket={racket}/>   
-        )}
-  
-         </Slider>
-      </>
-    }
- 
     </div>
   )
 }

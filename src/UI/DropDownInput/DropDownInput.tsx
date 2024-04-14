@@ -2,6 +2,7 @@ import React, { FC, useRef, useState, useEffect } from 'react';
 import style from './DropDownInput.module.css';
 import MyImage from '../MyImage/MyImage';
 import arrow from '../../assets/images/black-arrow.png';
+import { useTypedSelector } from '../../hooks/useTypedSelector';
 
 export interface Option {
     value: number,
@@ -24,22 +25,26 @@ const DropDownInput: FC<Props> = (props) => {
     const [isOpen, setIsOpen] = useState<boolean>(false);
     const [label, setLabel] = useState<string>(props.defaultValue);
     const selectRef = useRef<HTMLDivElement>(null);
-    const [isPlaceholder, setIsPlaceholder] = useState<boolean>(true)
+    const [isPlaceholder, setIsPlaceholder] = useState<boolean>(true);
+ 
     useEffect(() => {
-
         if (props.value !== undefined) {
             const selectedOption = props?.defaultOptions?.find(option => option.value === props.value);
-            console.log(selectedOption,props.value)
             if (selectedOption) {
-                console.log('setLabel')
+       
                 setLabel(selectedOption.label);
             }
         }
+        if(props.value == -1){
+            setIsPlaceholder(true)
+        }
+        
     }, [props.value, props.options]);
 
     useEffect(() => {
-        // Обновление label при изменении defaultValue
+       
         setLabel(props.defaultValue);
+        
         setIsPlaceholder(true)
     }, [props.defaultValue]);
 
@@ -56,7 +61,7 @@ const DropDownInput: FC<Props> = (props) => {
         setIsOpen(false);
     }
     return (
-        <div>
+        <div className={style.main}>
             <button className={`${props.className} ${style.select}`} onClick={handleSelectClick}>
                 <div className={style.defaultValue} ref={selectRef} style={{ color: `${!isPlaceholder ? '#232323' : ''}` }}>{label}</div>
                 <MyImage alt='arrow' src={arrow} className={`${style.arrow} ${isOpen && style.grad}`} />

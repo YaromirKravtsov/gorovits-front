@@ -10,6 +10,8 @@ import arrow from '../../../../assets/images/arrow-line.png';
 import Row from '../../../../components/Layout/Row/Row'
 import MyButton from '../../../../UI/MyButton/MyButton'
 import { weekShortDays } from '../../constants/WeekConstant'
+import { useNavigate } from 'react-router-dom'
+import RecordHeler from '../../../../helpers/recordHelper'
 export type TimeSlot = {
     time: string;
     isBooked: boolean;
@@ -36,7 +38,8 @@ const SelectDateMenu:FC<Props> = (props) => {
   const leftWeekButton = useRef<HTMLDivElement>(null);
   const rightWeekButton = useRef<HTMLDivElement>(null);
   const [selectedSlot, setSelectedSlot] = useState<string>('');
-
+  const {windowWidth} = useTypedSelector(state => state.adaptive)
+  const navigate = useNavigate();
   useEffect(() => {
     console.log("Date block start", isLoading)
     const effect = async () => {
@@ -128,17 +131,20 @@ const SelectDateMenu:FC<Props> = (props) => {
     setOrderRecords([]);
     setCurrentOrderRecord(0)
     props.onSubmit();
+    if(windowWidth <=600){
+      navigate('/termine')
+    }
    
   }
 
   const handelClose = () => {
+
     setIsDateBlockOpen(false) 
     props.onClose();
   }
   return (
-    <FlutterMenu shadow='all' className={style.selectDateMenu}>
+    <FlutterMenu shadow={windowWidth >=600?'all': 'normal'} className={style.selectDateMenu}>
       <div className={style.blockTitle}>Termin auswählen</div>
-
         {isLoading?
         <Loader/>
             :
@@ -187,7 +193,7 @@ const SelectDateMenu:FC<Props> = (props) => {
         }
         <Row className={style.buttonRow}>
           <MyButton className={style.button} border onClick={handelClose}>Zurück</MyButton>
-          <MyButton className={style.button} mode='black' onClick={handelSubmit}>Besaitung buchen</MyButton> 
+          <MyButton className={style.button} mode='black' onClick={handelSubmit}>Termin buchen</MyButton> 
         </Row>
     </FlutterMenu>
   )

@@ -34,3 +34,22 @@
   .slick-prev::before ,.slick-next::before{
     content: '' !important;
   }
+
+  @media (max-width: 600px) {
+    .slick-prev, .slick-next {  
+      display: none !important;  
+    }
+    .slick-slide {
+     
+      margin-right: 20px; /* Расстояние между слайдами */
+    }
+    .slick-dots{
+      display: block !important;
+      bottom: 0px !important;
+    }
+    .slick-slide{
+      width: 100vw !important;
+      display: flex !important;
+      justify-content: center !important;
+    }
+  }

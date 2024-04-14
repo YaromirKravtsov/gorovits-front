@@ -84,3 +84,18 @@ margin-bottom: 15px;
 
     opacity: 0.9;
 }
+
+@media (max-width: 600px) {
+    .title, .noRecordText{
+        font-size: 24px;
+    }
+    .terminsRow{
+        justify-content: center;
+    }
+    .gradientBlock{
+        
+    }
+    .noRecordButton{
+        width: 100% !important;
+    }
+}

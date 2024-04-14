@@ -17,19 +17,20 @@ interface Props {
 
 const RacketsDropBlock: FC<Props> = (props) => {
     const [defaultRacket, setDefaultRacket] = useState<string>(props.defaultValue);
-    const {userRackets} = useTypedSelector(state=> state.order)
 
     useEffect(() => {
         if(props.value == 0){
             setDefaultRacket('')  
             setTimeout(()=>{
                 setDefaultRacket('Wählen Sie einen Schläger')  
-            })
+            },10)
+            return; 
         }
     }, [props.value]);
-
-    const userRacketsOptions = OrderHelper.getRacketOptions(props.userRackets);
-
+    const {windowWidth} = useTypedSelector(state=> state.adaptive)
+    const {userRackets} = useTypedSelector(state=> state.order)
+    const userRacketsOptions = OrderHelper.getRacketOptions(props.userRackets,windowWidth);
+    
     return (
         <div className={style.inputLabelBlock}>
             <div className={style.inputLabel}>Schlägerauswahl</div>
@@ -38,7 +39,8 @@ const RacketsDropBlock: FC<Props> = (props) => {
                 value={props.value}
                 options={userRacketsOptions}
                 onChange={(value: number) => { props.setError(false); props.onChange(value) }}
-                defaultOptions={OrderHelper.getRacketOptions(userRackets)}
+                defaultOptions={OrderHelper.getDefaultRacketOptions(userRackets,windowWidth)}
+                className={style.dropDown}
             />
             {props.error &&
                 <span className={style.errorInput}>Das Feld muss ausgefüllt werden </span>

@@ -30,12 +30,12 @@ const NavBar: FC<Props> = ({setWidth,className,setHeight}) => {
   const location = useLocation();
   useEffect(() => {
     setNavBarActiveItem(location.pathname);
-
+    
   }, [location.pathname])
   
   return (
     <Sidebar  setWidth = {setWidth} setHeight ={setHeight} className ={className}>
-      <MyImage src={logo} alt='Gorovits logo' width={155} height={75} className={style.logo} />
+      <MyImage src={logo} alt='Gorovits logo'  className={style.logo} />
       {role == 'user' &&
         <>
           <SidebarItem text='Besaitung & Tuninng' src={ptIcon} rout={RouteNames.BESAITUNG_AND_TUNING}

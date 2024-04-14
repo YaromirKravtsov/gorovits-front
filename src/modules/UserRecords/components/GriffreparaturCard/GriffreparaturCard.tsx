@@ -6,7 +6,7 @@ interface Props{
     record: IRecord
 }
 const GriffreparaturCard:FC<Props> = ({record}) => {
-  const  leftBottomText=` Schläger Nr. ${(record as IGriffreparaturRecord).userRacket.number}   Code: ${(record as IGriffreparaturRecord).userRacket.code}
+  const  leftBottomText=` Schläger Nr. ${(record as IGriffreparaturRecord).userRacket.number}  </br> ${(record as IGriffreparaturRecord).userRacket.code}</br>
   Griffgröße: ${record.handleSize}
   `
   return (

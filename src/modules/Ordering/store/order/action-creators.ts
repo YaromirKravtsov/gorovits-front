@@ -7,7 +7,7 @@ import BusyDateService from "../../api/services/BusyDateService";
 import { OrderServise } from "../../api/services/OderingService";
 import { ModelAndManufactureres, UserRackets } from "../../models/OrderModel";
 
-import { OrderActionEnum, SetBusyDateAction, SetErrorAction, SetIsOrderingLoadingAction, SetIsOpenAction, SetStringsAction, SetUserRacketsAction, SetIsDateBlockOpenAction, SetRacketsModels, SetRacketsManufactureres } from "./types";
+import { OrderActionEnum, SetBusyDateAction, SetErrorAction, SetIsOrderingLoadingAction, SetIsOpenAction, SetStringsAction, SetUserRacketsAction, SetIsDateBlockOpenAction, SetRacketsModels, SetRacketsManufactureres, SetRecordTitleAction } from "./types";
 
 
 export const OrderActionCreators  ={
@@ -18,10 +18,11 @@ export const OrderActionCreators  ={
     setIsDateBlockOpen:(value:boolean): SetIsDateBlockOpenAction => ({type: OrderActionEnum.SET_IS_DATE_BLOCK_OPEN, payload: value}),
     setBusyDatesSelect:(dates:BusyDateResponse): SetBusyDateAction => ({type: OrderActionEnum.SET_BUSY_DATE, payload: dates}),
     setIsLoadingSelect:(value:boolean): SetIsOrderingLoadingAction => ({type: OrderActionEnum.SET_IS_LOADING, payload: value}),
+    setRecordTitleSelect:(value:string): SetRecordTitleAction => ({type: OrderActionEnum.SET_RECORD_TITLE, payload: value}),
     getUsersRackets: (userId:number) => async (dispatch: AppDispatch) =>{
         try{
             const {data} = await OrderServise.getRackets(userId);
-            dispatch(OrderActionCreators.setUserOrderRackets(data))
+            dispatch(OrderActionCreators.setUserOrderRackets(data));
        
         }catch(error){
             console.log(error);

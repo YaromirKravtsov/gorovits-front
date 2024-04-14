@@ -38,6 +38,7 @@ const MyButton: FC<MyButtonProps> = ({...props}) => {
         className={`${props.className} ${style.button} ${modeClass} `} 
         style={buttonStyles} 
         disabled={props.disabled} 
+        onClick={handleClick}
         >
           {props.children}
         </button>

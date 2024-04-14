@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import { Route, Routes, Navigate } from 'react-router-dom';
 import { RouteNames, adminRoutes, publicRoutes, userRoutes } from '.';
 import { useTypedSelector } from '../../hooks/useTypedSelector';
+import Loader from '../../UI/Loader/Loader';
 
 const AppRouter = () => {
     const {isAuth} = useTypedSelector(state => state.auth)
@@ -15,7 +16,7 @@ const AppRouter = () => {
                         <Route
                             key={route.path}
                             path={route.path}
-                            element={<route.element />}
+                            element={   <Suspense fallback={<Loader/>}><route.element /></Suspense>}
                         />
                     ))}
                     <Route path="*" element={<Navigate to={RouteNames.NEUER_BENUTZER} replace />} />
@@ -27,7 +28,7 @@ const AppRouter = () => {
                      <Route
                             key={route.path}
                             path={route.path}
-                            element={<route.element />}
+                            element={ <Suspense fallback={<Loader/>}><route.element /></Suspense>}
                         />
                       
                     ))}

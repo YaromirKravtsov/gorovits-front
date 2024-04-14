@@ -13,7 +13,7 @@ interface Props {
   className?: string
 }
 const UserPhoto: FC<Props> = (props) => {
-  const { photoLink, isEditing, role } = useTypedSelector(state => state.user)
+  const { photoLink, isEditing } = useTypedSelector(state => state.user)
 
   const [flutterIsOpen, setFlutterIsOpen] = useState<boolean>(false);
   useEffect(() => {

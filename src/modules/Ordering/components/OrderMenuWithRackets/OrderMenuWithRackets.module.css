@@ -5,3 +5,25 @@
         width: 390px;
         height: 60px;
     }
+    .buttonRow{
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+    }
+    .buttonLeft{
+        margin-left: auto;
+    }
+    @media (max-width: 600px) {
+        .button{
+            width: 100%;
+            font-size: 22px;
+        }
+        .buttonRow{
+
+            margin-top: auto;
+            width: 100%;
+            display: flex;
+            flex-direction: column-reverse;
+            row-gap: 25px;
+        }
+    }

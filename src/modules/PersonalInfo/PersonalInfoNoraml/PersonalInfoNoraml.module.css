@@ -1,9 +1,15 @@
 .container{
     display: flex;
     flex-direction: column;
-    
+    row-gap: 30px;
     height: 100%;
 }
 .center{
     margin: 30px 0;
+}
+
+@media (max-width: 600px) {
+    .container{
+        row-gap: 10px;
+    }
 }

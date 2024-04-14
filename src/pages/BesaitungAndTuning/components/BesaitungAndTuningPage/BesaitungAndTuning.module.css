@@ -1,0 +1,11 @@
+@media (max-width: 600px) {
+
+
+
+    .main {
+        overflow-y: hidden;
+        padding: 0;
+        padding-top: 10px;
+        /*     padding-left: 30px; */
+    }
+}

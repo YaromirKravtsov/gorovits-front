@@ -83,10 +83,10 @@ const PhotoSelection:FC<Props> = (props) => {
         </div>
         {props.shadow !== 'admin' && 
             <div className={style.buttons}>
-                <MyButton mode='white' border onClick={()=>props.setIsOpen(false)}>
+                <MyButton mode='white' border onClick={()=>props.setIsOpen(false)} className={style.actionButton}>
                     Schließen
                 </MyButton>
-                <MyButton mode='black' onClick={()=>handlePhotoChange()}>
+                <MyButton mode='black' onClick={()=>handlePhotoChange()} className={style.actionButton}>
                  Ändern 
                 </MyButton>
             </div>

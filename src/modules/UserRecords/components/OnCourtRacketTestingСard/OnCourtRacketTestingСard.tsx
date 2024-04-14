@@ -10,6 +10,7 @@ import iIocn from '../../../../assets/images/i_icon.png';
 import { useActions } from '../../../../hooks/useActions';
 import FlutterMenu from '../../../../UI/FlutterMenu/FlutterMenu';
 import DeleteRecordMenu from '../DeleteRecordMenu/DeleteRecordMenu';
+import { useTypedSelector } from '../../../../hooks/useTypedSelector';
 interface Props {
     record: IRecord
 }
@@ -21,13 +22,13 @@ const OnCourtRacketTestingСard: FC<Props> = ({ record }) => {
         deleteUserRecord((record as IPullingRecord).id)
     }
     const [isMOreInfoOpen, setIsMOreInfoOpen] = useState<boolean>();
-
+    const { windowWidth } = useTypedSelector(state => state.adaptive)
     return (
         <>
             {isDelteMenuOpen &&
                 <DeleteRecordMenu onDelete={handelRecordDelete} setIsOpen={(value: boolean) => setIsDeleteMenuOpen(value)} />
             }
-            <GradientBlackBlock className={style.mainBlock}><>{console.log(record)}</>
+            <GradientBlackBlock className={style.mainBlock}>
                 <BorderMenu className={style.leftMenu}>
                     <div className={style.topLeftBlockTitle} style={{ color: `${stateColor}` }}>{stateString}</div>
                 </BorderMenu>
@@ -35,9 +36,16 @@ const OnCourtRacketTestingСard: FC<Props> = ({ record }) => {
                     On Court Tennisschläger - Test
                 </BorderMenu>
                 <div className={style.buttonRow}>
-                    <MyButton className={style.moreInfoButton} mode='white' onClick={() => setIsMOreInfoOpen(true)}>
-                        <MyImage src={iIocn} alt='' className={style.iImage} />
-                    </MyButton>
+                    {windowWidth >= 600 ?
+                        <MyButton className={style.moreInfoButton} mode='white' onClick={() => setIsMOreInfoOpen(true)}>
+                            <MyImage src={iIocn} alt='' className={style.iImage} />
+                        </MyButton>
+                        :
+                        <MyButton className={style.moreInfoButton} mode='white' onClick={() => setIsMOreInfoOpen(true)}>
+                            Schläger Liste 
+                        </MyButton>
+                    }
+
                     <MyButton className={style.delteButton} mode='white' onClick={(() => setIsDeleteMenuOpen(true))}>
                         Stornieren
                     </MyButton>
@@ -51,7 +59,7 @@ const OnCourtRacketTestingСard: FC<Props> = ({ record }) => {
                             <div className={style.flutterRacketsItem}>{racket.racketModel.manufacturer.name} {racket.racketModel.name}</div>
                         )}
                     </div>
-                    <MyButton className={style.flutterButton} mode='black' onClick={() => setIsMOreInfoOpen(false)}>
+                    <MyButton className={style.flutterButton} mode='black' onClick={() => setIsMOreInfoOpen(false)} >
                         Schließen
                     </MyButton>
                 </FlutterMenu>

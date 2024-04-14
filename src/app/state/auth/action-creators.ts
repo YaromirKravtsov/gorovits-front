@@ -33,7 +33,8 @@ export const AuthActionCreators = {
             dispatch(AuthActionCreators.setIsAuth(true));
             dispatch(AuthActionCreators.setGlobalError(''))
         }catch(error: any){
-            console.log(error.response?.data?.message)
+            console.log(error)
+     
             dispatch(AuthActionCreators.setGlobalError(getErrorText(error)))
         }
     },
@@ -67,7 +68,7 @@ export const AuthActionCreators = {
             console.log(error.response?.data?.message)
         }finally{
             dispatch(AuthActionCreators.setIsLoadingAuth(false));
-            console.log('final')
+
         }
     },
     
