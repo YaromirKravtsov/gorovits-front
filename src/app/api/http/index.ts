@@ -3,7 +3,7 @@ import { AuthResponse } from "../../models/AuthResponse";
 import ErrorInterceptor from "../../components/ErrorInterceptor/ErrorInterceptor";
 
 
-export const API_URL = "http://192.168.0.119:5000"
+export const API_URL = "http://87.106.232.167:5000"
 const $api = axios.create({
     withCredentials: true,
     baseURL: API_URL
@@ -24,7 +24,7 @@ $api.interceptors.response.use((config) => {
         originRequest._isRetry = true;
         try {
 
-            const response = await axios.get<AuthResponse>(`http://192.168.0.119:5000/token/refresh`, {
+            const response = await axios.get<AuthResponse>(`http://87.106.232.167:5000/token/refresh`, {
                 withCredentials: true, // отправляет куки
                 headers: {
                     'Content-Type': 'application/json',
