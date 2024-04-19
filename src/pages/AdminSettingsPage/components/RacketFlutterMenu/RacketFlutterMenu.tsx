@@ -10,6 +10,12 @@ import InputRow from '../../../../components/InputRow/InputRow';
 import ImageUploader from '../../../../components/ImageUploader/ImageUploader';
 import MyButton from '../../../../UI/MyButton/MyButton';
 import { IRacket } from '../../models/IRacket';
+import addNewPhotoIcon from '../../../../assets/images/settings/add_new.png';
+import CheckBox from '../../../../UI/CheckBox/CheckBox';
+import FileInput from '../../../../components/FileInput/FileInput';
+import ImageCropper from '../../../../components/ImageCropper/ImageCropper';
+import { Area } from 'react-easy-crop';
+import { DataActions } from '../../../../helpers/DataActions';
 type Action = 'add' | 'edit'
 interface Props {
     action: Action,
@@ -24,11 +30,12 @@ interface Errors {
     image: boolean
 }
 const RacketFlutterMenu: FC<Props> = (props) => {
+
     const [manufactursOptions, setManufactursOptions] = useState<Option[]>([])
     const [racketManufacterId, setRacketManufacterId] = useState<number>(0);
     const [racketModel, setRacketModel] = useState<string>('')
     const [isToTest, setIsToTest] = useState<boolean>(false);
-    const [image, setImage] = useState<File>()
+    const [image, setImage] = useState<string>('')
     const { setGlobalError } = useActions();
     const [errors, setErrors] = useState<Errors>({
         racketManufacterId: false,
@@ -36,11 +43,14 @@ const RacketFlutterMenu: FC<Props> = (props) => {
         image: false
     })
     useEffect(() => {
+        if(props.racket?.imgLink !== '' &&props.racket?.imgLink){
+            setImage(props.racket.imgLink)
+        }
         const fetch = async () => {
             try {
                 const { data } = await AdminSettingPageService.getRacketsManufactureres();
                 setManufactursOptions(mapOptions(data))
-                console.log(data)
+                
             } catch (error) {
                 setGlobalError(getErrorText(error))
             }
@@ -59,9 +69,7 @@ const RacketFlutterMenu: FC<Props> = (props) => {
             return { label: element.name, value: element.id }
         });
     }
-    const handleCheckboxChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        setIsToTest(event.target.checked); // Обновляем состояние в соответствии с текущим состоянием чекбокса
-    };
+
     const validate = () => {
         const errorsL: Errors = {
             racketManufacterId: racketManufacterId == 0,
@@ -69,8 +77,7 @@ const RacketFlutterMenu: FC<Props> = (props) => {
             image: props.action == 'add' ? image == undefined : false
         }
         setErrors(errorsL)
-        console.log(errorsL)
-        console.log("Returned " + Object.values(errors).some(field => field === false))
+       
         return !Object.values(errorsL).some(error => error);
     }
     //== main
@@ -82,23 +89,29 @@ const RacketFlutterMenu: FC<Props> = (props) => {
             formData.append('isTestAvailable', isToTest.toString())
             formData.append('rocketManufacturerId', racketManufacterId.toString())
             formData.append('name', racketModel)
+            const blob = DataActions.base64ToBlob(image,'image/png')
+            const file = new File([blob], '1', {
+                type: 'image/png'
+            });
+  
             if (props.action == 'edit') {
                 formData.append('modelId', String(props.racket?.id));
-                if (image) {
+                if (file) {
                     formData.append('imageChanged', 'true');
-                    formData.append('image', image);
+                 
+                    formData.append('image', (file))
 
                 } else {
                     formData.append('imageChanged', 'false');
                 }
 
             } else {
-                if (image)
-                    formData.append('image', image)
+                if (file)
+                    formData.append('image', (file))
             }
             try {
                 if (props.action == 'add') {
-                    const {data} = await AdminSettingPageService.createracketModel(formData)
+                    const { data } = await AdminSettingPageService.createracketModel(formData)
                     if (props.handelAdd)
                         props.handelAdd(data)
                 } else {
@@ -113,15 +126,20 @@ const RacketFlutterMenu: FC<Props> = (props) => {
             }
 
         }
-        console.log(image)
     }
     useEffect(() => {
         setErrors(prev => ({ ...prev, image: false }));
     }, [image])
+
+
+
+
+
+
     return (
         <div>
             <FlutterMenu shadow='all' className={style.flutterMenu}>
-                <div className={style.title}>{props.action == 'add'? 'Schläger hinzufügen':'Schläger bearbeiten'} </div>
+                <div className={style.title}>{props.action == 'add' ? 'Schläger hinzufügen' : 'Schläger bearbeiten'} </div>
                 <div className={style.mainRow}>
                     <InputRow label='Hersteller'>
                         <DropDownInput options={manufactursOptions} defaultValue={'Wählen Sie einen Hersteller'}
@@ -141,22 +159,18 @@ const RacketFlutterMenu: FC<Props> = (props) => {
                             setError={value => setErrors(prev => ({ ...prev, racketModel: value }))}
                         />
                     </InputRow>
-                    <div className={style.isToTestRow}>
-                        <div className={style.checkboxContainer}>
-                            <input type='checkbox' className={style.testCheckBox} checked={isToTest} onChange={handleCheckboxChange} />
-                            <span className={style.checkmark}></span>
-                        </div>
-                        <div className={style.isToTestText}>Display für Tests auf dem Spielfeld </div>
-                    </div>
+                    <CheckBox text='als Testschläger im Sortiment' setIsChecked={setIsToTest} />
                     <div className={`${style.photoSelect} ${errors.image && style.photoSelectError}`}>
-                        <div className={style.addPhotoIcon}>
-                            <svg width="29" height="29" viewBox="0 0 29 29" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <rect x="12.5" width="4" height="29" fill="white" />
-                                <rect y="16.5" width="4" height="29" transform="rotate(-90 0 16.5)" fill="white" />
-                            </svg>
+          
 
-                        </div>
-                        {<ImageUploader onFileChange={setImage} src={props.racket?.imgLink} className='' />}
+                    <ImageCropper
+                            onCropDone={setImage}
+                            aspect ={2.75}
+                            className={style.imageCropper}
+                            internalImage ={image}
+                        />
+             
+
                     </div>
                 </div>
                 <div className={style.buttonsRow} >
@@ -164,10 +178,11 @@ const RacketFlutterMenu: FC<Props> = (props) => {
                         Schließen
                     </MyButton>
                     <MyButton mode='black' onClick={handelSubmit}>
-                        Schläger hinzufüg
+                        Schläger hinzufügen
                     </MyButton>
                 </div>
             </FlutterMenu>
+
         </div>
     )
 }

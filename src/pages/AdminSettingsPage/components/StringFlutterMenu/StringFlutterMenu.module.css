@@ -119,8 +119,8 @@
 }
 
 .photoSelect {
-    width: 360px;
-    height: 135px;
+    width: 142px;
+    height: 142px;
     border: 2px dashed #232323;
     display: flex;
     justify-content: center;
@@ -152,4 +152,17 @@
 .button {
     width: 100%;
     height: 50px;
+}
+.imageCropper{
+    min-width: 142px;
+    min-height: 142px;
+
+    position: relative;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    column-gap: 50px;
 }

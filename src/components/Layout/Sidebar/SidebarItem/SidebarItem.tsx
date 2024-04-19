@@ -4,6 +4,7 @@ import style from './SidebarItem.module.css';
 import MyImage from '../../../../UI/MyImage/MyImage';
 import { useActions } from '../../../../hooks/useActions';
 import { useTypedSelector } from '../../../../hooks/useTypedSelector';
+import { navBarAdaptive } from '../../../../constants/adaptive';
 
 interface SidebarItemProps {
     src: string;
@@ -22,7 +23,7 @@ const SidebarItem: FC<SidebarItemProps> = (props) => {
     const handelClick = () =>{
         if(props.onClick)
         props.onClick();
-    if(windowWidth <=600){
+    if(windowWidth <=navBarAdaptive){
         setIsNavOpen(false)
     }
     }

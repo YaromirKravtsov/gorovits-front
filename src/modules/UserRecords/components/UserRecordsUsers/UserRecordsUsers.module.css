@@ -8,12 +8,12 @@
 }
 
 
-@media (max-width: 600px) {
+@media (max-width: 1520px) {
     .recordRow{
         overflow-y: none;
         overflow-x: hidden;
         max-height: 100%;
         margin-top: 20px;
-        margin-bottom: 10px;
+        
     }
 }

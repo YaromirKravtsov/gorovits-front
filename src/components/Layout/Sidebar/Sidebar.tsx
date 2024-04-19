@@ -1,7 +1,7 @@
 import React, { FC, LegacyRef, ReactNode, useEffect, useRef } from 'react'
 import style from "./Sidebar.module.css"
 import { useTypedSelector } from '../../../hooks/useTypedSelector';
-import DimOverlay from '../../../UI/DimOverlay/DimOverlay';
+
 interface SidebarProps {
     children: ReactNode; // ReactNode поддерживает элементы, строки, числа, фрагменты и т.д.
     className:string

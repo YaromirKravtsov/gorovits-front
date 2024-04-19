@@ -21,3 +21,20 @@
 
 
 }
+
+@media (max-height:1520px) {
+    .racketImage{
+        width: 460px;
+        max-width: 420px;
+        height: 182px;
+        transform: translate(10px,50px);
+    }
+    .stringImage{
+        width: 105px;
+        height: 105px;
+        position: absolute;
+        transform: translate(60px,15px);
+    
+    
+    } 
+}

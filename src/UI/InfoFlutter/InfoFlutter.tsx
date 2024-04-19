@@ -6,7 +6,8 @@ interface Props{
     title: string,
     text:string,
     onisOpen: (value:boolean)=>void,
-    onCLick?: ()=> void
+    onCLick?: ()=> void,
+    actionString?:string
 }
 const InfoFlutter:FC<Props> = (props) => {
   return (
@@ -16,7 +17,7 @@ const InfoFlutter:FC<Props> = (props) => {
             {props.onCLick?
               <div className={style.buttonRow}>
                  <MyButton mode='white' border className={style.button} onClick={()=> props.onisOpen(false)}>Schließen</MyButton>
-                  <MyButton mode='black' className={style.button} onClick={()=> {props.onisOpen(false) ; props.onCLick&& props.onCLick()}}>Löschen</MyButton>
+                  <MyButton mode='black' className={style.button} onClick={()=> {props.onisOpen(false) ; props.onCLick&& props.onCLick()}}>{props.actionString? props.actionString: 'Löschen'}</MyButton>
             
               </div>
             :

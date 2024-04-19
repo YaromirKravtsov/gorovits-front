@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import FlutterMenu from '../../../../UI/FlutterMenu/FlutterMenu'
 import style from './LoginFrom.module.css'
 import { useActions } from '../../../../hooks/useActions';
@@ -15,13 +15,15 @@ interface Errors {
 }
 const LoginForm = () => {
   const { error } = useTypedSelector(state => state.auth);
-  const { login } = useActions()
+  const { login, setGlobalError} = useActions()
   const [email, setEmail] = useState<string>('')
   const [password, setPassword] = useState<string>('')
+  const {windowWidth} = useTypedSelector(state=> state.adaptive)
   const [errors, setErrors] = useState<Errors>({
     email: false,
     password: false
   })
+  
   const validate = () => {
     const errorsL = {
       email: !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email),
@@ -33,19 +35,21 @@ const LoginForm = () => {
   
   const handelLogin = async () => {
     if(validate()){
-      console.log(email, password)
       await login(email, password);
     }
 
   
   }
-  console.log(error)
+
+  useEffect(()=>{
+    setGlobalError('')
+  },[])
   return (
-    <div>
-      <FlutterMenu className={style.flutter} shadow='small'>
+    <>
+      <FlutterMenu className={style.flutter} shadow={windowWidth >=600 ?'small': 'all'}>
 
         <MyImage alt='sds' src={logo} className={style.image} />
-        <div>
+        <div >
           <InputRow label='Email' > 
   
             <MyInput
@@ -74,8 +78,6 @@ const LoginForm = () => {
               <div className={style.errorTextField}>Das Passwort darf nicht leer sein  </div>
             }
           </InputRow>
-
-          <>{console.log(errors)}</>
           {
             error &&
             <div className={style.errorText}>{error}</div>
@@ -83,10 +85,11 @@ const LoginForm = () => {
 
 
           <MyButton mode='black' className={style.button} onClick={handelLogin}>Anmelden</MyButton>
+          <Link to='/passwort-vergessen' className={style.passwordVergessen}>Hast du dein Passwort vergessen?</Link>
         </div>
-        <Link to='/passwort-vergessen'>passwort-vergessen</Link>
+       
       </FlutterMenu >
-    </div >
+    </ >
   )
 }
 

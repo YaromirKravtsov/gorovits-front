@@ -10,7 +10,9 @@ border: 20px solid #7877;
     padding: 15px;
 }
 
-
+.checkBox{
+    margin-top: 10px;
+}
 @media (max-width: 600px) {
     .input{
         width: 100% !important;

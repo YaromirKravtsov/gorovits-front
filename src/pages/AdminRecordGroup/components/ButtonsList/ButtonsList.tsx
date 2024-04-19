@@ -83,7 +83,6 @@ const ButtonsList: FC<Props> = ({ record, type }) => {
         }
     }, [recordGroup]);
     useEffect(() => {
-        console.log(record.pickupTime)
         if (record.pickupTime && record.pickupTime !== 'null' && !isLoading) {
             setSelectedDate(FormatDate.dateToInput(new Date(record.pickupTime)))
         }

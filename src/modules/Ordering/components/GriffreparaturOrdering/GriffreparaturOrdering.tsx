@@ -71,6 +71,10 @@ const GriffreparaturOrdering:FC = () => {
     
     const grifSize:Option[] =[
         {
+            value: 0,
+            label: '0'
+        },
+        {
             value: 1,
             label: '1'
         },
@@ -86,6 +90,10 @@ const GriffreparaturOrdering:FC = () => {
             value: 4,
             label: '4'
         },
+        {
+            value: 5,
+            label: '5'
+        }
     ]
     return (
         <>
@@ -96,7 +104,7 @@ const GriffreparaturOrdering:FC = () => {
         inputsErrors = {inputsErrors}
         setInputsErrors = { (errors: OrderRecordErrors) => setInputsErrors(errors)}
         >
-            <InputRow label='Balancepunkt'>
+            <InputRow label='Griffgröße'>
             <DropDownInput
                 defaultValue='Wählen Sie die Griffgröße' 
                 value={1}

@@ -65,7 +65,7 @@ const NavBar: FC<Props> = ({setWidth,className,setHeight}) => {
           <SidebarItem text='Neuer Benutzer' src={newUserIcon} rout={RouteNames.KUNDENKONTO}
             isActive={navBarActiveItem === '/neuer-benutzer'}
           />
-          <SidebarItem text='Aktuelle Bestellungen' src={termineIcon} rout={RouteNames.ALL_CURRENT_ORDERS}
+          <SidebarItem text='Aktuelle Aufträge' src={termineIcon} rout={RouteNames.ALL_CURRENT_ORDERS}
             isActive={navBarActiveItem === '/current-orders'}
           />
           <SidebarItem text='Kunden' src={kundenIcon} rout={RouteNames.SEARCH_KUNDEN}

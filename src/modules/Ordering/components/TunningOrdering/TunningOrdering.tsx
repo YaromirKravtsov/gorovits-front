@@ -98,6 +98,16 @@ const TunningOrdering: FC = () => {
         inputsErrors = {inputsErrors}
         setInputsErrors = { (errors: OrderRecordErrors) => setInputsErrors(errors)}
         >
+               <InputRow label='Schwunggewicht' questionText ={questionText} questionMark questionTextClass = {style.questionTextClass}>
+                <OderInput
+                    onChange={(value: string) => setRecordData(prev=> ({...prev, swingWeight: value}))}
+                    placeholder='Swingweight eingeben'
+                    error ={(inputsErrors as OrderTuningssErrors).swingWeight}
+                    setError = {(value: boolean) => setInputsErrors({...inputsErrors,swingWeight: value })}
+                    value ={(orderRecordData as OrderTuning).swingWeight}
+                    className={` ${style.input}`}
+                />
+            </InputRow>
             <InputRow label='Balancepunkt' questionText ={questionText} questionMark questionTextClass = {style.questionTextClass}>
                 <OderInput
                     onChange={(value: string) => setRecordData(prev=> ({...prev, balancePoint: value}))}
@@ -118,16 +128,7 @@ const TunningOrdering: FC = () => {
                     className={` ${style.input}`}
                 />
             </InputRow>
-            <InputRow label='Schwunggewicht' questionText ={questionText} questionMark questionTextClass = {style.questionTextClass}>
-                <OderInput
-                    onChange={(value: string) => setRecordData(prev=> ({...prev, swingWeight: value}))}
-                    placeholder='Swingweight eingeben'
-                    error ={(inputsErrors as OrderTuningssErrors).swingWeight}
-                    setError = {(value: boolean) => setInputsErrors({...inputsErrors,swingWeight: value })}
-                    value ={(orderRecordData as OrderTuning).swingWeight}
-                    className={` ${style.input}`}
-                />
-            </InputRow>
+         
             <OrderComment onChange={(value:string) => setRecordData(prev=> ({...prev, comment: value}))} value = {orderRecordData.comment}/>
         </OrderMenuWithRackets>
         </>

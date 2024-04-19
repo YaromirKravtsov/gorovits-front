@@ -9,6 +9,7 @@ import Content from './components/Layout/Content/Content'
 import ErrorInterceptor from './app/components/ErrorInterceptor/ErrorInterceptor'
 import { useActions } from './hooks/useActions'
 import $api from './app/api/http'
+import { navBarAdaptive } from './constants/adaptive'
 
 
 export default function App() {
@@ -16,7 +17,7 @@ export default function App() {
   useEffect(() => {
     const handleResize = () =>{
       const ww = window.innerWidth
-      setIsNavOpen(ww >= 600);
+      setIsNavOpen(ww >= navBarAdaptive);
       setWindowWidth(window.innerWidth)
       setWindowHight(window.innerHeight)
     }
@@ -36,6 +37,8 @@ export default function App() {
     }
   }, [])
   
+
+
   return (
     <AuthGuard>
       <ErrorInterceptor>

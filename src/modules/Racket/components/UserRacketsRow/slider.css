@@ -34,7 +34,11 @@
   .slick-prev::before ,.slick-next::before{
     content: '' !important;
   }
-
+  @media (max-width: 1500px) {
+    .slick-slide {
+      margin-right: 20px; /* Расстояние между слайдами */
+    }
+  }
   @media (max-width: 600px) {
     .slick-prev, .slick-next {  
       display: none !important;  
@@ -51,5 +55,25 @@
       width: 100vw !important;
       display: flex !important;
       justify-content: center !important;
+    }
+  }
+
+  @media (max-height:721px) {
+    .slick-dots{
+      display: block !important;
+      bottom: 20px !important;
+    }
+  }
+  @media (max-height:700px) {
+    .slick-dots{
+      display: block !important;
+      bottom: 40px !important;
+    }
+    
+  }
+  @media (max-height:670px) {
+    .slick-dots{
+      display: block !important;
+      bottom: 30px !important;
     }
   }

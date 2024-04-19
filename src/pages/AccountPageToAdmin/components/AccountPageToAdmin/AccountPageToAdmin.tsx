@@ -9,7 +9,7 @@ import Main from '../Main/Main';
 const AccountPageToAdmin:FC = () => {
 
   const questionMarkText= `
-  Auf der Kundenkonto-Seite finden Sie Informationen über den Kunden, seine Schläger, Tunings 
+  Auf der Kundenkonto-Saite finden Sie Informationen über den Kunden, seine Schläger, Tunings 
   und Besaitungen sowie seine Bestellhistorie, aktuelle Bestellungen und die Möglichkeit, 
   das Konto dieses Benutzers zu löschen.`
   return (

@@ -41,23 +41,25 @@ const SelectDateMenu:FC<Props> = (props) => {
   const {windowWidth} = useTypedSelector(state => state.adaptive)
   const navigate = useNavigate();
   useEffect(() => {
-    console.log("Date block start", isLoading)
+
     const effect = async () => {
+
       await getBusyDates(props.recordType);
-      console.log("Date dates loaded", isLoading)
+    
     };
     effect();
   }, []);
-  console.log("selectedSlot "+selectedSlot)
+
   useEffect(() => {
-    if (!isLoading) {
-      console.log(isLoading)
-      const week = DatesHelper.generateSchedule(String(busyDates.date), busyDates?.records, props.recordType);
+  
+    if (!isLoading && Object.keys(busyDates).length !== 0) {
+      console.log(busyDates)
+      const week = DatesHelper.generateSchedule(String(new Date()), busyDates?.records, props.recordType);
       setWeeks(week);
       setCurrentWeek(week[0]);
       updateWeeksDays(0); 
     }
-  }, [isLoading, busyDates]);
+  }, [ isLoading,busyDates]);
 
   useEffect(() => {
     updateWeeksDays(showWeekNumber); // Обновление при изменении недели
@@ -97,7 +99,6 @@ const SelectDateMenu:FC<Props> = (props) => {
       }else{
         leftWeekButton.current.classList.add(style.noActive)
       }
-      //leftWeekButton.current.style.visibility = weekNumber > 0 ? 'visible' : 'hidden';
     }
     if (rightWeekButton.current) {
       if(weekNumber < weeks.length - 3){
@@ -105,7 +106,6 @@ const SelectDateMenu:FC<Props> = (props) => {
       }else{
         rightWeekButton.current.classList.add(style.noActive)
       }
-      //rightWeekButton.current.style.visibility = weekNumber < weeks.length - 3 ? 'visible' : 'hidden';
     }
   };
 

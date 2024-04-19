@@ -69,7 +69,11 @@
   /* Гарантирует, что слой будет наверху других элементов */
   border-radius: 40px;
 }
-
+@media (max-width: 1700px) {
+ /*  .flutter{
+    width: 600px;
+  } */
+}
 
 @media (max-width: 600px) {
   .flutter{

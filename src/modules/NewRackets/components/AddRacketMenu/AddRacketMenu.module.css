@@ -42,3 +42,10 @@ color: #30484D;
     line-height: 17px;
     color: #FF2430;
 }
+
+
+@media (max-height: 920px) {
+    .mainRow{
+        height: 600px;
+    }
+}

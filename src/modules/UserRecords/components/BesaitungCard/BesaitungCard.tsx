@@ -23,6 +23,7 @@ const BesaitungCard: FC<Props> = ({ record }) => {
   const handelRecordDelete = () => {
     deleteUserRecord((record as IPullingRecord).id)
   }
+  console.log(record)
 
   return (
     <>

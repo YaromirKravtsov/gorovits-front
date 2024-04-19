@@ -8,37 +8,53 @@ import { getErrorText } from '../../../../helpers/FormDataGeneration'
 import { IUser } from '../../../../models/IUser'
 import RoundIconButton from '../../../../UI/RoundIconButton/RoundIconButton'
 import logoutIcon from '../../../../assets/images/logout-icon.png'
+import BlockeDateTime from '../BlockeDateTime/BlockeDateTime'
 const TopMenu = () => {
-  const [isOpen,setIsOpen] = useState<boolean>(false);
-  const [adminInfo,setAdminInfo] = useState<IUser>({} as IUser)
-  const {setGlobalError,logout} = useActions()
+  const [isOpen, setIsOpen] = useState<boolean>(false);
+  const [adminInfo, setAdminInfo] = useState<IUser>({} as IUser)
+  const { setGlobalError, logout } = useActions()
 
-  useEffect(()=>{
-    
-    const effect = async() =>{
-      try{
-          const {data} = await AdminSettingPageService.getAdminInfo()
+  useEffect(() => {
 
-          setAdminInfo(data)
-      }catch(error){
+    const effect = async () => {
+      try {
+        const { data } = await AdminSettingPageService.getAdminInfo()
+
+        setAdminInfo(data)
+      } catch (error) {
         setGlobalError(getErrorText(error))
       }
-      
-    
+
+
     }
     effect()
-  },[])
+  }, [])
+
+
+
+  const [isTimeBlockOpen, setIsTimeBlockOpen] = useState<boolean>(false);
+
   return (
-    <div className={style.topMenu}>
-       <MyButton mode='black' onClick={()=> setIsOpen(true)}>
-            Passwort ändern 
+    <>
+      {isOpen &&
+        <ChangePasswordMenu isOpenChange={setIsOpen} userId={adminInfo.id as number} />
+      }
+      {
+        isTimeBlockOpen&&
+        <>
+          <BlockeDateTime close = {() =>setIsTimeBlockOpen(false) }/>
+        </>
+      }
+      <div className={style.topMenu}>
+        <MyButton mode='black' onClick={() => setIsTimeBlockOpen(true)} className={style.button}>
+          Terminzeit blockieren
         </MyButton>
-        <RoundIconButton onClick={() =>logout()} src={logoutIcon} className={style.logOutIcon}/>
-        {isOpen&&
-          <ChangePasswordMenu isOpenChange={setIsOpen} userId ={adminInfo.id as number}/>
-        }
-       
-    </div>
+        <MyButton mode='black' onClick={() => setIsOpen(true)} className={style.button}>
+          Passwort ändern
+        </MyButton>
+        <RoundIconButton onClick={() => logout()} src={logoutIcon} className={style.logOutIcon} />
+      </div>
+    </>
   )
 }
 

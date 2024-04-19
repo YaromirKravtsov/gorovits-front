@@ -33,12 +33,12 @@ const MyInput: FC<Props> = (props) => {
       <>
         <div className={style.passwordRow}>
           <input
-            className={`${style.input} ${style.passwordInput} ${props.className} ${props.error ? style.error : ''}`}
+            className={`${style.input} ${isPasswordHidden && style.isPasswordHidden} ${style.passwordInput} ${props.className} ${props.error ? style.error : ''}`}
             placeholder={props.placeholder}
             value={props.value}
             onChange={e => handleChange(e.target.value)}
             type={isPasswordHidden ? 'password' : 'text'}
-       /*      id ='password-input' */
+   
           />
           {props.value !== ''&&
           <button className={style.eyeIconButton}>

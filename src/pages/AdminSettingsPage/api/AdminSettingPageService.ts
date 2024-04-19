@@ -59,4 +59,9 @@ export class AdminSettingPageService {
     static async deleteString(id:number): Promise<AxiosResponse> {
         return await $api.delete(`/strings/${id}`,);
     }
+    static async blockRecordsDates(datesToBlock: Date[], datesToUnblock: Date[]) : Promise<AxiosResponse> {
+        return await $api.post(`/records/block-dates`,{
+            datesToBlock,datesToUnblock
+        });
+    }
 }

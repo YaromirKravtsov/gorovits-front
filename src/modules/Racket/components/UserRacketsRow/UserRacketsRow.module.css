@@ -17,41 +17,39 @@
     min-width: 100% !important;
 }
 
-.nextArrow,
-.prevArrow {
-    width: 50px !important;
-    position: absolute !important;
-    width: 100% !important;
-    height: 100% !important;
-    left: 0 !important;
-    top: 0 !important;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
 
 .nextArrowIcon,
 .prevArrowIcon {
-
     margin: auto;
     width: 27px;
     height: 15px;
 }
 
 .nextArrowIcon {
-
     transform: rotate(-90deg) /* translateX(10px) */ !important;
 }
 
 .prevArrowIcon {
     transform: rotate(90deg);
 }
-
+@media (max-width: 1450px) {
+    
+}
+@media (max-width: 1520px) {
+    .racketsRow{
+        padding: 0 20px;
+    } 
+}
 
 @media (max-width: 600px) {
     .racketsRow{
+       
         padding: 0;
     } 
+    .one{
+        justify-content: center;
+        align-items: center;
+    }
     .slick-slider {
     }
 }

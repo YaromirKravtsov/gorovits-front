@@ -15,7 +15,7 @@ const DimOverlay:FC<Props> = ({isDim = false,...props}) => {
     }
     return (
         <>
-            <div className={style.dim}></div>
+            <div  className={`${style.dim} ${props.className}`}></div>
             <div className={`${style.main} ${props.className}`}>
                  {props.children}
             </div>

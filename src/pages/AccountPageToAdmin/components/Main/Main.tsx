@@ -52,11 +52,8 @@ const Main = () => {
         <Personalnformation isEditing={false} />
         <div className={style.buttonRow}>
           <MyButton mode='black' className={style.button} link={`/benutzer-bestellung/?userId=${userInfo.userId}&fullName=${userInfo.fullName}`}>
-            Geschichte der Bestellung
+            Geschichte zu Aufträgen
           </MyButton>
-{/*           <MyButton mode='black' className={style.button}>
-            Aktuelle Bestellungen
-          </MyButton> */}
           <MyButton mode='black' className={`${style.button} ${style.delete}`} onClick={() => setIsAccountDelete(true)}>
             Account löschen
           </MyButton>

@@ -18,10 +18,35 @@
     line-height: 20px;
     color: #232323;
     z-index: 1000;
+    opacity: 0;
+    transition: .2s ease-in-out opacity,.1s ease-in-out display;
+    display: none;
+}
+.open{
+    opacity: 1;
+    display: block;
 }
 .icon{
     width: 50px;
     height: 50px;
+}
+
+
+.bottomRight{
+    transform: translate(30px, 0px);
+}
+.small{
+    transform: translateY(-6px);
+    width: 17px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 17px;
+}
+.smallIcon{
+    margin: auto;
+    width: 15px;
+    height: 15px;
 }
 @media (max-width: 600px){
     .icon{

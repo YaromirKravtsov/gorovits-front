@@ -22,7 +22,6 @@ const AdminRecordGroup: FC = () => {
   useEffect(() => {
     const fetch = async () => {
       if (dateTime && recordType) {
-        console.log(recordType,dateTime,pickupTime)
         const formattedDateTime = FormatDate.dateToSql(dateTime)
         let formattedpickupTime = pickupTime == 'null'?null: new Date(FormatDate.dateToSql(String(pickupTime)));
         await getRecordGroup(Number(recordType), new Date(formattedDateTime), formattedpickupTime);
@@ -31,7 +30,6 @@ const AdminRecordGroup: FC = () => {
     }
     fetch()
   }, [])
-
   const pageTitle = `${RecordHeler.getNameByRecordType(recordGroup.recordType)}, ${recordGroup.user?.fullName}`
   return (
     <PageLayout title={pageTitle} questionMarkText='' topMenu={<TopMenu />}>

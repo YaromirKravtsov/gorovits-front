@@ -9,7 +9,7 @@ import AdminCommentBlock from '../AdminCommentBlock/AdminCommentBlock'
 import AdminRecordCard from '../AdminRecordCard/AdminRecordCard'
 const Main = () => {
     const { recordGroup, isLoading } = useTypedSelector(state => state.recordGroup)
-    console.log(isLoading,recordGroup)
+
     return (
         <div>
             {

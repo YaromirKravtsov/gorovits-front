@@ -1,6 +1,6 @@
 import { FC, useState } from 'react'
 import style from './TerminePageMain.module.css'
-import DropDownButton from '../../../../UI/DropDownButton/DropDownButton'
+import DropDownButton from '../DropDownButton/DropDownButton'
 import UserRecords from '../../../../modules/UserRecords/components/UserRecords/UserRecords';
 import RecordHeler from '../../../../helpers/recordHelper';
 import Ordering from '../../../../modules/Ordering/components/Ordering/Ordering';

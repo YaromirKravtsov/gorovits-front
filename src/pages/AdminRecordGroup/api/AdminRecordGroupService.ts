@@ -1,6 +1,7 @@
 import { AxiosResponse } from "axios";
 import $api from "../../../app/api/http";
 import { IRecord } from "../../../models/IRecord";
+import { EditPullingDto } from "../models/EditPullingDto";
 
 export class AdminRecordGroupService {
     static async setState(recordId: number, state:number) {
@@ -37,5 +38,10 @@ export class AdminRecordGroupService {
         return $api.put(`records/pick-up-time`,{
             recordId,time
         });
+    }
+
+
+    static async putStrings(dto:EditPullingDto ): Promise<AxiosResponse> {
+        return $api.put(`/pullings/strings`,dto);
     }
 }

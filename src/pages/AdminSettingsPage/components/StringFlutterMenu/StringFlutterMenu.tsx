@@ -10,6 +10,8 @@ import { AdminSettingPageService } from '../../api/AdminSettingPageService'
 import { useActions } from '../../../../hooks/useActions'
 import { IString } from '../../models/IString'
 import { getErrorText } from '../../../../helpers/FormDataGeneration'
+import ImageCropper from '../../../../components/ImageCropper/ImageCropper'
+import { DataActions } from '../../../../helpers/DataActions'
 type Action = 'add' | 'edit'
 interface Props {
     action: Action,
@@ -26,7 +28,7 @@ const StringFlutterMenu: FC<Props> = (props) => {
 
 
     const [stringModel, setStringModel] = useState<string>('')
-    const [image, setImage] = useState<File>()
+    const [image, setImage] = useState<string>('')
     const { setGlobalError } = useActions();
     const [errors, setErrors] = useState<Errors>({
         stringModel: false,
@@ -36,6 +38,8 @@ const StringFlutterMenu: FC<Props> = (props) => {
         if (props.action == 'edit' && props.string) {
             setStringModel(props.string.name)
         }
+        if(props.string)
+        setImage(props.string.imgLink)
     }, [])
 
     //helpers
@@ -57,19 +61,25 @@ const StringFlutterMenu: FC<Props> = (props) => {
             const formData = new FormData();
 
             formData.append('name', stringModel)
+
+            const blob = DataActions.base64ToBlob(image,'image/png')
+            const file = new File([blob], '1', {
+                type: 'image/png'
+            });
+  
             if (props.action == 'edit') {
                 formData.append('id', String(props.string?.id));
-                if (image) {
+                if (file) {
                     formData.append('imageChanged', 'true');
-                    formData.append('image', image);
+                    formData.append('image', file);
 
                 } else {
                     formData.append('imageChanged', 'false');
                 }
 
             } else {
-                if (image)
-                    formData.append('image', image)
+                if (file)
+                    formData.append('image', file)
             }
             try {
                 if (props.action == 'add') {
@@ -96,10 +106,10 @@ const StringFlutterMenu: FC<Props> = (props) => {
     return (
         <div>
             <FlutterMenu shadow='all' className={style.flutterMenu}>
-                <div className={style.title}>{props.action == 'add'? 'Seite hinzufüg':'Seite bearbeiten'} </div>
+                <div className={style.title}>{props.action == 'add'? 'Saite hinzufügen':'Saite bearbeiten'} </div>
                 <div className={style.mainRow}>
-                    <InputRow label='Schlägermodell'>
-                        <MyInput placeholder='Schlägermodell eingeben'
+                    <InputRow label='Saitenname'>
+                        <MyInput placeholder='Saitenname eingeben'
                             value={stringModel}
                             onChange={setStringModel}
                             className={style.input}
@@ -107,17 +117,14 @@ const StringFlutterMenu: FC<Props> = (props) => {
                             setError={value => setErrors(prev => ({ ...prev, racketModel: value }))}
                         />
                     </InputRow>
-                    <InputRow label='Seite foto'>
+                    <InputRow label='Saiten Foto'>
                     <div className={`${style.photoSelect} ${errors.image && style.photoSelectError}`}>
-                        <div className={style.addPhotoIcon}>
-                            <svg width="29" height="29" viewBox="0 0 29 29" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <rect x="12.5" width="4" height="29" fill="white" />
-                                <rect y="16.5" width="4" height="29" transform="rotate(-90 0 16.5)" fill="white" />
-                            </svg>
-
-                        </div>
-                        
-                        {<ImageUploader onFileChange={setImage} src={props.string?.imgLink} className='' />}
+                        <ImageCropper
+                            onCropDone={setImage}
+                            aspect ={1}
+                            className={style.imageCropper}
+                            internalImage ={image}
+                        />
                
                     </div>
                     </InputRow>

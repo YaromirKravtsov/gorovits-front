@@ -13,7 +13,6 @@ interface Props {
 }
 const MainDopFlutter: FC<Props> = ({ record, toUser }) => {
 
-  const { setGlobalRecordGroup } = useActions()
   const queryParams = {
     recordType: record.recordType,
     dateTime: record.dateTime,
@@ -35,7 +34,7 @@ const MainDopFlutter: FC<Props> = ({ record, toUser }) => {
             <BorderMenu className={style.recordType}>
               <div className={style.topLeftBlockTitle}>{RecordHeler.insertSpaceIfNeeded(RecordHeler.getNameByRecordType(record.recordType),10)}</div>
             </BorderMenu>
-            {toUser ?
+            {!toUser ?
               <></>
               :
               <BorderMenu className={style.fullName}>

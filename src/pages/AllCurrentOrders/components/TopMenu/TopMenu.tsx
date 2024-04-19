@@ -14,7 +14,7 @@ const TopMenu:FC<Props> = (props) => {
     const stausOptions:Option[] = [
             {
                 value: 1,
-                label: 'Reserviert', 
+                label: 'Auftrag', 
             },
             {
                 value: 2,

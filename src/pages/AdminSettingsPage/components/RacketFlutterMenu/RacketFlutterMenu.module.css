@@ -104,23 +104,17 @@
 }
 
 .isToTestText {
-
-
     font-family: 'Poppins';
     font-style: normal;
     font-weight: 400;
     font-size: 18px;
     line-height: 20px;
-
-
     color: #232323;
-
-
 }
 
 .photoSelect {
     width: 360px;
-    height: 135px;
+    height: 142px;
     border: 2px dashed #232323;
     display: flex;
     justify-content: center;
@@ -152,4 +146,23 @@
 .button {
     width: 100%;
     height: 50px;
+}
+.editFlutter{
+    position: relative;
+    width: 900px;
+    height: 520px;
+}
+
+.imageCropper{
+    min-width: 360px;
+    min-height: 142px;
+
+    position: relative;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    column-gap: 50px;
 }

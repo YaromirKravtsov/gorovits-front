@@ -14,6 +14,7 @@ import LastPulling from '../LastPulling/LastPulling';
 import UserInfo from '../UserInfo/UserInfo';
 import { Helmet } from 'react-helmet';
 import Main from '../Main/Main';
+import ChangePasswordMenu from '../../../../components/ChangePasswordMenu/ChangePasswordMenu';
 
 const KundenkontoPage: FC = () => {
   
@@ -26,6 +27,8 @@ const KundenkontoPage: FC = () => {
       <PageLayout topMenu={<KundenKontoTopMenu />} title='Dein Kundenkonto' questionMarkText={pageText}>
         <Main />
       </PageLayout>
+
+      
     </>
 
   )

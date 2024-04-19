@@ -1,9 +1,10 @@
-import React, { FC, ReactNode, useEffect } from 'react'
+import React, { FC, ReactNode, Suspense, useEffect } from 'react'
 import { Navigate, Route, Routes } from 'react-router-dom';
 import { RouteNames, publicRoutes } from '../../router';
 import { useTypedSelector } from '../../../hooks/useTypedSelector';
 import { useActions } from '../../../hooks/useActions';
 import { AuthActionCreators } from '../../state/auth/action-creators';
+import Loader from '../../../UI/Loader/Loader';
 interface AuthGuardProps {
     children: ReactNode
 }
@@ -33,7 +34,7 @@ const AuthGuard: FC<AuthGuardProps> = (props) => {
                               <Route
                                   key={route.path}
                                   path={route.path}
-                                  element={<route.element />}
+                                  element={<Suspense fallback={<Loader/>}><route.element /></Suspense>}
                               />
                           ))}
                           <Route path="*" element={<Navigate to={RouteNames.LOGIN} replace />} />

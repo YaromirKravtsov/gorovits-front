@@ -7,7 +7,17 @@
     width: 260px !important;
     height: 45px !important;
 }
-
+@media (max-width: 1700px) {
+    .main{
+        display: flex;
+        flex-direction: column;
+        row-gap: 20px;
+    }
+    .input{
+        width: 220px !important;
+        height: 45px !important;
+    }
+}
 @media (max-width: 600px) {
     .main{
   

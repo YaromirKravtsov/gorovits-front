@@ -53,27 +53,45 @@ input:focus {
 }
 
 /* =============== */
-/* Убираем задний фон дорожки скроллбара */
 ::-webkit-scrollbar-track {
-  background: transparent; /* делаем фон прозрачным */
+  background: transparent; 
   width: 10px;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #888; /* цвет ползунка */
-  border-radius: 10px; /* закругление углов */
-  box-shadow: inset 0 0 2px rgba(0,0,0,0.5); /* добавляем тень внутри ползунка */
+  background: #888;
+  border-radius: 10px;
+  box-shadow: inset 0 0 2px rgba(0,0,0,0.5); 
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #555; /* цвет ползунка при наведении */
+  background: #555; 
 }
 
-/* Стилизация всего скроллбара (опционально, устанавливаем ширину) */
 ::-webkit-scrollbar {
-  width: 8px; /* ширина скроллбара */
+  width: 8px; 
 
 }
+
+@media (min-width: 1225px) {
+  ::-webkit-scrollbar-track {
+    background: transparent;
+    width: 10px;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 10px;
+    box-shadow: inset 0 0 2px rgba(0,0,0,0.5);
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+}
+
+
 .inputError {
   position: absolute;
 

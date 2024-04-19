@@ -70,7 +70,7 @@ const PageLayout: FC<PageLayoutProps> = (props) => {
 
         </div>
       </div>
-      <div className={`${style.main} ${props.mainStyle}`} ref = {main} style={{height:mainHeight}}>
+      <div className={`${style.main} ${props.mainStyle}`} ref = {main} style={{height: mainHeight }}>
         {isLoading&&<Loader size='small'/>}
         {!isLoading && 
            <> {props.children}</>

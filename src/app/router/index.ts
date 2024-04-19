@@ -1,4 +1,5 @@
 import React from 'react';
+import ResetPassword from '../../pages/ResetPassword/ResetPassword';
 
 const LoginPage = React.lazy(() => import('../../pages/LoginPage/LoginPage'));
 const ForgotPasswordPage = React.lazy(() => import('../../pages/ForgotPasswordPage/ForgotPasswordPage'));
@@ -38,7 +39,8 @@ export enum RouteNames{
     BESTELLUNG=  '/bestellung',
     BENUTZER_BESTELLUNG=  '/benutzer-bestellung',
     EINSTELLUNGEN=  '/einstellungen',
-    Terminbuchung ="/terminbuchung/:type"
+    Terminbuchung ="/terminbuchung/:type",
+    RESET_PASSWORD ="/passwort-zurücksetzen/:resetToken"
 }
 export const adminRoutes:IRoute[] = [
     {path: RouteNames.NEUER_BENUTZER, element: NewUserPage},
@@ -62,5 +64,6 @@ export const userRoutes:IRoute[] = [
 
 export const publicRoutes:IRoute[] =[
     {path: RouteNames.LOGIN, element: LoginPage},
-    {path: RouteNames.FORGOT_PASSWORD, element: ForgotPasswordPage}
+    {path: RouteNames.FORGOT_PASSWORD, element: ForgotPasswordPage},
+    {path: RouteNames.RESET_PASSWORD, element: ResetPassword}
 ]

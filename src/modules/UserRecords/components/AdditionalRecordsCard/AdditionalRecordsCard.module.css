@@ -41,11 +41,12 @@
 }
 
 
-.mobimeButton{
-
-}
-
-.mobimeButtonIcon{
+@media (max-width: 1520px){
+    .leftBlock,.centerBlock,.button{
+        width: 320px;
+        height: 60px;
+    }
+    
 
 }
 @media (max-width: 600px){

@@ -35,8 +35,8 @@ $api.interceptors.response.use((config) => {
             localStorage.setItem('token', response.data.accessToken);
             return $api.request(originRequest);
         } catch (e) {
-            console.log("НЕ АВТОРИЗОВАН")
-        }
+            console.log(e)
+        } 
     }
 
 

@@ -74,11 +74,13 @@ export default class RecordHeler {
         let werkstatt: {}[] = [];
         let beratung: {}[] = [];
         RecordTypes.forEach((record) => {
-            if (record.type >= 1 && record.type <= 5) {
+            if (record.type >= 0 && record.type <= 5) {
                 werkstatt.push({
                     text: record.name,
-                    value: record.type
+                    value: record.type,
+                    questionText: record.questionText ? record.questionText : ''
                 });
+  
             } if (record.type >= 6) {
                 beratung.push({
                     text: record.name,

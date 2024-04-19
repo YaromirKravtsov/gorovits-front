@@ -78,3 +78,9 @@
     display: flex;
     flex-direction: row;
 }
+
+@media (max-height: 920px) {
+    .mainRow{
+        height: 570px;
+    }
+}

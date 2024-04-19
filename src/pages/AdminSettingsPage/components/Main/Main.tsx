@@ -111,7 +111,7 @@ const Main = () => {
         <FoldingComponent
           onSearch={setStringsSearchQeuery}
           onAdd={() => setIsStringOpen(true)}
-          title='Seiten'
+          title='Saiten'
           isFolded={isStringsFoldering}
           setIsFolded={handelStringsFoldering}
         >

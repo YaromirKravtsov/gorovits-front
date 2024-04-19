@@ -64,7 +64,7 @@ const RacketsList:FC<Props> = (props) => {
                 <div className={style.contentText}>{racket.racketModelName}</div>
             </div>
             <div className={style.contentBlock}>
-                <div className={style.contentTitle}>Seiten</div>
+                <div className={style.contentTitle}>Saiten</div>
                 <div className={style.contentLine}></div>
                 <div className={style.contentText}>{RecordHeler.formatStringsName(racket.longString.name, racket.crossString.name)}</div> 
             </div>

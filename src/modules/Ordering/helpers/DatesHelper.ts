@@ -2,23 +2,24 @@ import { TimeSlot, WeekDay } from "../components/SelectDateMenu/SelectDateMenu";
 
 export default class DatesHelper{
 
-    static generateSchedule(currentDateString: string, bookedDates: { dateTime: string }[], recordType: number): WeekDay[][] {
-       
+    static generateSchedule(currentDateString: string, bookedDates: { dateTime: string ,recordType: number}[], recordType: number): WeekDay[][] {
+      console.log(bookedDates)
         const currentDate = new Date(currentDateString);
         let startDay = currentDate.getDay() === 0 ? -6 : 1; 
        
         let monday = new Date(currentDate.setDate(currentDate.getDate() - currentDate.getDay() + startDay));
         const generateTimeSlots = (date: Date): TimeSlot[] => {
           let slots: TimeSlot[] = [];
-          const timeArr: string[]  = recordType == 1 ?['00', '30'] : ['00']
+          const timeArr: string[]  = (recordType == 1 || recordType ==0) ?['00', '30'] : ['00']
           for (let hour = 12; hour <= 18; hour++) {
-            
             timeArr.forEach(minute => {
               let timeString = `${hour.toString().padStart(2, '0')}:${minute}`;
               let slotDateTime = new Date(date.getFullYear(), date.getMonth(), date.getDate(), hour, parseInt(minute));
-              let isBooked = bookedDates.some(bookedDate => 
+              
+              const isBooked = bookedDates.some(bookedDate =>
                 new Date(bookedDate.dateTime).getTime() === slotDateTime.getTime()
-              ) || slotDateTime.getTime() < new Date(currentDateString).getTime();
+             ) || slotDateTime.getTime() < new Date(currentDateString).getTime();
+             
               
               slots.push({ time: timeString, isBooked });
             });
@@ -39,6 +40,7 @@ export default class DatesHelper{
       
         
         }
+        
         return weeks;
     }
     static getDateMonth(newDate:Date) 

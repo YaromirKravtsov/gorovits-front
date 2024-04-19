@@ -16,4 +16,45 @@ export class DataActions{
     static addToStart(arr:any[], newElement:any){
         return [newElement, ...arr]
     } 
+
+    static base64ToBlob(base64:string, contentType:string) {
+        const byteCharacters = atob(base64.replace(/^data:image\/(png|jpeg|jpg);base64,/, ''));
+        const byteArrays = [];
+    
+        for (let offset = 0; offset < byteCharacters.length; offset += 512) {
+            const slice = byteCharacters.slice(offset, offset + 512);
+            const byteNumbers = new Array(slice.length);
+            for (let i = 0; i < slice.length; i++) {
+                byteNumbers[i] = slice.charCodeAt(i);
+            }
+            const byteArray = new Uint8Array(byteNumbers);
+            byteArrays.push(byteArray);
+        }
+    
+        const blob = new Blob(byteArrays, { type: contentType });
+        return blob;
+    }
+    
+    static convertImageToBase64(url:string, callback:(value:any) => void) {
+        // Загрузка изображения
+        fetch(url)
+            .then(response => {
+                if (!response.ok) throw new Error('Network response was not ok.');
+                return response.blob(); // Получаем изображение как Blob
+            })
+            .then(blob => {
+                // Используем FileReader для преобразования Blob в base64
+                const reader = new FileReader();
+                reader.onloadend = () => {
+                    // В reader.result содержится base64 строка
+                    callback(reader.result);
+                };
+                reader.readAsDataURL(blob); // Считываем Blob, получая результат в формате base64
+            })
+            .catch(error => {
+                console.error('Error fetching and parsing the image', error);
+            });
+    }
+  
+    
 }

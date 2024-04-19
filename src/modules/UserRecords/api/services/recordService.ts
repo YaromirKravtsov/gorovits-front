@@ -7,7 +7,6 @@ export class RecordService {
     return $api.get<IPullingRecord[]>('records/userId', {
       params: {
         userId: userId,
-        state: 'current',
       },
     });
   }

@@ -29,3 +29,9 @@
 .userPhoto {
     height: 300px;
 }
+/* 
+@media (max-width: 1520px) {
+    .topRow{
+        flex-direction: column;
+    }
+} */

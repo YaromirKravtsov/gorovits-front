@@ -61,7 +61,7 @@ const PhotoSelection:FC<Props> = (props) => {
     
   return (
     <FlutterMenu shadow={props.shadow == 'admin' ? 'small': 'all'} 
-    className={`${style.changePhotoFlutter} ${props.shadow == 'admin'&& style.adminFlutter}`}>
+    className={`${style.changePhotoFlutter} ${props.shadow == 'admin' ? style.adminFlutter: ''}`}>
         <div className={style.edditTitle}>Foto ändern</div>
         <div className={style.photosItems}>
 

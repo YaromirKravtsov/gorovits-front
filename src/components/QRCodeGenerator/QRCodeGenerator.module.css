@@ -3,3 +3,25 @@
     height: 30px  !important;
 
 }
+.flutter{
+    width: 825px;
+    height: 410px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    column-gap: 30px;
+}
+.flutter div{
+    cursor: pointer;
+}
+.flutterMain{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    column-gap: 30px;
+}
+.closeButton{
+    margin-top: auto;
+}

@@ -45,6 +45,7 @@ export const OrderActionCreators  ={
     getBusyDates: (recordType:number) => async (dispatch: AppDispatch) =>{
         dispatch(OrderActionCreators.setIsLoadingSelect(true))
         try{
+       
             const {data} = await BusyDateService.getBusyDates(recordType);
             dispatch(OrderActionCreators.setBusyDatesSelect(data));
 

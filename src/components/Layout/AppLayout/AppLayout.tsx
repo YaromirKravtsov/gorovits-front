@@ -5,6 +5,7 @@ import Content from '../Content/Content';
 import AppRouter from '../../../app/router/AppRouter';
 import { useActions } from '../../../hooks/useActions';
 import { useTypedSelector } from '../../../hooks/useTypedSelector';
+import { navBarAdaptive } from '../../../constants/adaptive';
 
 
 
@@ -17,7 +18,7 @@ const AppLayout: FC = () => {
   const { setIsNavOpen } = useActions()
   const { isNavOpen, windowHeight, windowWidth } = useTypedSelector(state => state.adaptive)
   useEffect(() => {
-    if (windowWidth >= 600) {
+    if (windowWidth >= navBarAdaptive) {
       setContentWidth(windowWidth - navBarWidth)
     } else {
       setContentWidth(windowWidth)
@@ -28,9 +29,9 @@ const AppLayout: FC = () => {
   }, [navBarWidth, navBarHeight, windowWidth]);
 
   useEffect(() => {
-    if (windowWidth <= 600 && !isNavOpen) { // Добавлено условие !isNavOpen
+    if (windowWidth <= navBarAdaptive && !isNavOpen) { // Добавлено условие !isNavOpen
       setIsNavOpen(false);
-    } else if (windowWidth > 600 && isNavOpen) { // Добавлено условие isNavOpen
+    } else if (windowWidth > navBarAdaptive && isNavOpen) { // Добавлено условие isNavOpen
       setIsNavOpen(true);
     }
   }, [windowWidth]);
@@ -42,7 +43,7 @@ const AppLayout: FC = () => {
       const blockElement = document.getElementById(id);
       return blockElement && !blockElement.contains(event.target as Node);
     });
-    if (isOutside && windowWidth <= 600) {
+    if (isOutside && windowWidth <= navBarAdaptive) {
       setIsNavOpen(false);
     }
   };
@@ -67,7 +68,7 @@ const AppLayout: FC = () => {
       <NavBar setWidth={setNavBarWidth} setHeight={setNavBarHeight} className={`${style.navBar}`} />
  
       
-       <Content className={style.content} topStyle={{ width: contentWidth, height: contentHeight }}>
+       <Content className={style.content} topStyle={{ height: contentHeight }}>
         <AppRouter />
       </Content>
       

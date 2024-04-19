@@ -1,5 +1,6 @@
 export interface Record{
-    dateTime: string
+    dateTime: string,
+    recordType: number
 }
 export interface BusyDateResponse{
     records: Record[],

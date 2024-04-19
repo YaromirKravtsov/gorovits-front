@@ -7,12 +7,12 @@ interface HoverEffectProps {
 }
 
 const HoverEffect: React.FC<HoverEffectProps> = (props) => {
-  const [isHovered, setIsHovered] = useState(false);
+
 
   return (
-    <div
-      onMouseEnter={() => {setIsHovered(true); props.setIsHovered(true)}}
-      onMouseLeave={() => {setIsHovered(false); props.setIsHovered(false)}}
+    <div 
+      onMouseEnter={() => {props.setIsHovered(true); props.setIsHovered(true)}}
+      onMouseLeave={() => {props.setIsHovered(false); props.setIsHovered(false)}}
     >
       {props.children}
     </div>

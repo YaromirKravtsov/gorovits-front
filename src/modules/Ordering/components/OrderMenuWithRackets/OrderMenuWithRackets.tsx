@@ -26,9 +26,10 @@ interface Props {
     //===
     inputsErrors: OrderRecordErrors
     setInputsErrors: (errors: OrderRecordErrors) => void
-    title: string
+    title: string,
+    recordType?: number
 }
-const OrderMenuWithRackets: FC<Props> = (props) => {
+const OrderMenuWithRackets: FC<Props> = ({recordType =1,...props}) => {
 
     // in redux state, actions
     const { isDateBlockOpen, userRackets } = useTypedSelector(state => state.order)
@@ -160,7 +161,7 @@ const OrderMenuWithRackets: FC<Props> = (props) => {
             </OrderFlutterMenu>
             {
                 isDateBlockOpen &&
-                <SelectDateMenu recordType={1} onSelect={(value: Date) => props.setDateTime(value)} onSubmit={createOrderRecord} onClose={() => setBlockHidden(false)} />
+                <SelectDateMenu recordType={recordType} onSelect={(value: Date) => props.setDateTime(value)} onSubmit={createOrderRecord} onClose={() => setBlockHidden(false)} />
             }
         </>
     );
