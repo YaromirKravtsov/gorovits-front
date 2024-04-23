@@ -1,7 +1,13 @@
 .personalnfo {
-    width: 220px;
+    max-width: auto;
+    max-width: 280px;
+    margin-right: 10px;
 }
-
+@media (max-width: 1150px){
+    .personalnfo {
+        max-width: 240px;
+    }
+}
 /* @media (max-width: 600px) {
     .personalnfo {
         margin-left: auto;

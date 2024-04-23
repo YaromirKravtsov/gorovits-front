@@ -1,17 +1,17 @@
 import React, { FC, useState } from 'react'
-import { GroupedRecords, IRecord } from '../../../../../models/IRecord'
-import GradientBlackBlock from '../../../../../UI/GradientBlackBlock/GradientBlackBlock';
+import { GroupedRecords, IRecord } from '../../../../models/IRecord'
+import GradientBlackBlock from '../../../../UI/GradientBlackBlock/GradientBlackBlock';
 import style from './MainDrop.module.css'
-import BorderMenu from '../../../../../UI/BorderMenu/BorderMenu';
-import RecordHeler from '../../../../../helpers/recordHelper';
+import BorderMenu from '../../../../UI/BorderMenu/BorderMenu';
+import RecordHeler from '../../../../helpers/recordHelper';
 import { useNavigate } from 'react-router-dom';
-import { useActions } from '../../../../../hooks/useActions';
+import { useActions } from '../../../../hooks/useActions';
 import { Link } from 'react-router-dom';
 interface Props {
   record: GroupedRecords,
   toUser?: boolean
 }
-const MainDopFlutter: FC<Props> = ({ record, toUser }) => {
+const AdminRecordCard: FC<Props> = ({ record, toUser }) => {
 
   const queryParams = {
     recordType: record.recordType,
@@ -27,17 +27,17 @@ const MainDopFlutter: FC<Props> = ({ record, toUser }) => {
       <Link to={`/bestellung/?${queryString}`}>
         <div className={style.clickedBlock} >
           <GradientBlackBlock className={style.gradient}>
-            <BorderMenu className={style.stateBlock}>
+            <BorderMenu className={style.borderBlock}>
               <div className={style.topLeftBlockTitle} style={{ color: `${stateColor}` }}>{stateString}</div>
             </BorderMenu>
 
-            <BorderMenu className={style.recordType}>
+            <BorderMenu className={style.borderBlock}>
               <div className={style.topLeftBlockTitle}>{RecordHeler.insertSpaceIfNeeded(RecordHeler.getNameByRecordType(record.recordType),10)}</div>
             </BorderMenu>
             {!toUser ?
               <></>
               :
-              <BorderMenu className={style.fullName}>
+              <BorderMenu className={style.borderBlock}>
                 <div className={style.topLeftBlockTitle}>{record.user?.fullName}</div>
               </BorderMenu>
             }
@@ -48,4 +48,4 @@ const MainDopFlutter: FC<Props> = ({ record, toUser }) => {
   )
 }
 
-export default MainDopFlutter
+export default AdminRecordCard

@@ -202,8 +202,6 @@ const AddRacketMenu: FC<Props> = (props) => {
   }
   return (
     <>
-
-
       <FlutterMenu shadow='all' className={style.main}>
         <div className={style.title}> {props.editMode ? 'Schläger bearbeiten' : 'Neuen Schläger registrieren'}</div>
         <div className={style.mainRow}>

@@ -54,6 +54,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  border-radius: 40px;
 }
 
 .blure::after {
@@ -68,6 +69,18 @@
   z-index: 1;
   /* Гарантирует, что слой будет наверху других элементов */
   border-radius: 40px;
+}
+@media (max-width: 1500px) {
+  .flutter{
+    width: 180px;
+    height: 230px;
+  }
+  .editButton{
+    width: 150px !important;
+    height: 40px !important;
+    font-size: 18px !important; 
+    padding: 0;
+  }
 }
 @media (max-width: 1700px) {
  /*  .flutter{

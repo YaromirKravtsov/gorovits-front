@@ -38,6 +38,9 @@
     margin-left: auto;
     width: 50px;
     height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .folderingButton:last-child{
     margin-left: 50px;
@@ -78,9 +81,86 @@
     display: flex;
     flex-direction: row;
 }
+@media (max-width: 1600px) {
+    .topMenu{
+
+    }
+    .topMenuTitle {
+        font-size: 24px;
+        width: 70px;
+        margin-right: 30px;
+    }
+    .foldingComponent {
+        width: 100%;
+
+    }
+    .searchInput{
+        margin-left: 60px;
+        width: 300px;
+    }
+    
+    .form{
+        margin-right:  10px;
+    }
+    .folderingButton:last-child{
+        margin-left: 10px;
+    }
+}
+@media (max-width: 1250px) {
+    .topMenuTitle {
+        font-size: 24px;
+        width: 40px;
+    }
+    .searchInput{
+        margin-left: 100px;
+        width: 250px;
+    }
+    .searchButton{
+        width: 150px; 
+    }
+}
+@media (max-width: 1350px) {
+    .searchInput,.searchButton,.folderingButton{
+        height: 45px;
+    }
+    .folderingButton{
+        width: 45px;
+    }
+}
 
 @media (max-height: 920px) {
     .mainRow{
         height: 570px;
     }
 }
+@media (max-height: 800px) {
+    .topMenu {
+        height: 40px;
+    }
+    .foldingComponent {
+        padding: 15px 30px;
+    }
+    .mainRow{
+        height: 390px;
+    }
+    .searchInput{
+      
+        height: 40px;
+    }
+    .searchButton{
+        height: 40px;
+    }
+    .folderingButton{
+        width: 40px;
+        height: 40px;
+    }
+    .plusImgage{
+        width: 25px;
+        height: 25px;
+    }
+    .folderingImgage{
+        width: 25px;
+        height: 13px;
+        margin-left: -2px;
+    }
+}  

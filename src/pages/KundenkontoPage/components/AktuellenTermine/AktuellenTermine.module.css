@@ -84,8 +84,49 @@ margin-bottom: 15px;
 
     opacity: 0.9;
 }
+@media (max-width: 1500px) {
+    .aktuellenTermine{
+        width: 360px;
+        height: 100%;
+    }
+    .title{
+        font-size: 24px;
+    }
+    .gradientBlock{
+        width: 155px;
+        height: 160px;
+        padding: 10px;
+        border-radius: 20px;
+    }
+    .dateTime{
+        border-radius: 6px ;
+        height: 35px;
+        font-size: 17px;
+    }
+    .recordType{
+        font-size: 17px;
+    }
+    .aktuellenTermine{
+        padding: 15px;
+    }
+    .noRecordText{
+        margin: 0px;
+        font-size: 20px;
+        padding: 0 20px;
+    }
+    .noRecordButton{
+        margin-top: 20px;
+        height: 40px;
+        font-size: 20px;
+   /*      width: 300px; */
 
+    }
+}
 @media (max-width: 600px) {
+    .aktuellenTermine{
+        margin-bottom: 20px;
+        width: 100%;
+    }
     .title, .noRecordText{
         font-size: 24px;
     }

@@ -53,7 +53,7 @@ const TopMenu:FC<Props> = (props) => {
     
   return (
     <div className ={style.topMenu}>
-        <MyInput onChange={setInputString} value={inputString} placeholder='Bestellungen suchen'/>
+        <MyInput onChange={setInputString} value={inputString} placeholder='Bestellungen suchen' className={style.input}/>
         <DropDownInput
         className={style.dwopDown}
         onChange={setStatus}

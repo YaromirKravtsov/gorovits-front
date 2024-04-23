@@ -9,7 +9,7 @@ const UserInfo = () => {
   return (
     <div className={style.userInfo}>
         <UserPhoto/>
-        <Personalnformation />
+        <Personalnformation/>
     </div>
   )
 }

@@ -89,17 +89,21 @@ const RacketFlutterMenu: FC<Props> = (props) => {
             formData.append('isTestAvailable', isToTest.toString())
             formData.append('rocketManufacturerId', racketManufacterId.toString())
             formData.append('name', racketModel)
-            const blob = DataActions.base64ToBlob(image,'image/png')
-            const file = new File([blob], '1', {
+            const isEditidImg = image.split(':')[0] == 'http'
+            let file
+            if(!isEditidImg){
+            const blob = DataActions.base64ToBlob(image, 'image/png')
+            file = new File([blob], '1', {
                 type: 'image/png'
             });
-  
+        }
             if (props.action == 'edit') {
-                formData.append('modelId', String(props.racket?.id));
-                if (file) {
+                formData.append('id', String(props.racket?.id));
+
+                if (file && !isEditidImg) {
+                
                     formData.append('imageChanged', 'true');
-                 
-                    formData.append('image', (file))
+                    formData.append('image', file);
 
                 } else {
                     formData.append('imageChanged', 'false');

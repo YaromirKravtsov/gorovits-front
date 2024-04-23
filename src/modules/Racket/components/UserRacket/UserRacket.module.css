@@ -159,6 +159,28 @@
         height: 90px;
     }
 }
+@media (max-height:780px) {
+    .racketBlock{
+        max-height: 660px;
+        justify-content: space-between;
+    }
+}
+@media (max-height:721px) {
+    .imageBlock{
+        display: none;
+    }
+    .racketBlock{
+        max-height: 580px;
+        justify-content: space-between;
+    }
+}
+
+@media (max-height:670px) {
+    .racketBlock{
+        max-height: 590px;
+        justify-content: space-between;
+    }
+}
 @media (max-width:600px) {
     .racketBlock {
         max-height: 650px;
@@ -206,19 +228,3 @@
     }
 }
 
-@media (max-height:721px) {
-    .imageBlock{
-        display: none;
-    }
-    .racketBlock{
-        max-height: 580px;
-        justify-content: space-between;
-    }
-}
-
-@media (max-height:670px) {
-    .racketBlock{
-        max-height: 540px;
-        justify-content: space-between;
-    }
-}

@@ -31,10 +31,6 @@ const TopMenu:FC<Props> = (props) => {
         setErrorText('Das Name-Feld ist nicht ausgefüllt ')
         setIsErrorMenuOpen(true)
         return false;
-      }else if(userInfo.phoneNumber == ''){
-        setErrorText('Das Telefonnummer-Feld ist nicht ausgefüllt ')
-        setIsErrorMenuOpen(true)
-        return false;
       }else if(props.photo.focusImage.name == ''){
         setErrorText('Foto nicht ausgewählt  ')
         setIsErrorMenuOpen(true)

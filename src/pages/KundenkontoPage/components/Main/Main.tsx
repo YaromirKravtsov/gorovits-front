@@ -11,14 +11,15 @@ import { GetAktuallenTermineResponse } from '../../api/responses/UserInfoRespons
 import ChangePasswordMenu from '../../../../components/ChangePasswordMenu/ChangePasswordMenu'
 import MyButton from '../../../../UI/MyButton/MyButton'
 const Main = () => {
-  const { getUserInfo } = useActions();
-  const { userInfo,isEditing } = useTypedSelector(state => state.user);
+  const { getUserInfo ,setIsEditing} = useActions();
+  const { userInfo,isEditing,role } = useTypedSelector(state => state.user);
   const { windowWidth } = useTypedSelector(state => state.adaptive);
   const [aktuellenTermine, setAktuellenTermine] = useState<GetAktuallenTermineResponse[]>([])
   const [isPassMenuOpen, isetIsPassMenuOpen] = useState<boolean>(false)
   useEffect(() => {
+    setIsEditing(false)
     const effect = async () => {
-
+      
       getUserInfo(userInfo.userId);
       const { data } = await UserInfoService.getAktuallenTermine(userInfo.userId, windowWidth >= 600 ? 2 : 1);
       setAktuellenTermine(data);
@@ -26,7 +27,7 @@ const Main = () => {
     effect();
   }, []);
   return (
-    <div>
+    <>
       <Row className={style.topRow}>
         <UserInfo />
         {(windowWidth < 600 &&isEditing) &&
@@ -34,12 +35,14 @@ const Main = () => {
         }
         <AktuellenTermine aktuellenTermine={aktuellenTermine} />
       </Row>
+
+      
       <LastPulling /* pulling = {} */ />
 
       {isPassMenuOpen &&
         <ChangePasswordMenu userId={Number(userInfo.userId)} isOpenChange={(value: boolean) => isetIsPassMenuOpen(value)} />
       }
-    </div>
+    </>
   )
 }
 

@@ -14,6 +14,7 @@ const AuthGuard: FC<AuthGuardProps> = (props) => {
     const {role} = useTypedSelector(state => state.user);
     const {checkAuth,setIsLoadingAuth} = useActions();
     useEffect(()=>{
+        
       if (localStorage.getItem('token') !== null) {
         checkAuth();
       }else{

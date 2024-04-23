@@ -4,6 +4,7 @@
 }
 .button{
     width: 100%;
+    min-height: 45px;
 }
 @media (max-width: 600px) {
     .topRow{

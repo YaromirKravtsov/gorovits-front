@@ -45,3 +45,30 @@
     height: 40px;
     margin: auto;
 }
+
+
+@media (max-width: 1500px){
+    .racketBlock {
+        width: 270px;
+        height: 125px;
+        padding-top: 5px;
+        border-radius: 20px;
+    }
+    .racketImg{
+        width: 200px;
+        height: 80px;
+    }
+    .racketName{
+        font-size: 18px;
+    }
+
+    .actionsButton{
+        width: 50px;
+        height: 50px;
+    }
+
+    .actionsImg{
+        width: 35px;
+        height: 35px;
+    }
+}

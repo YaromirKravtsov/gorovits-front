@@ -5,7 +5,7 @@ import RecordHeler from '../../../../helpers/recordHelper';
 import Loader from '../../../../UI/Loader/Loader';
 
 import style from './UserRecordsAdmin.module.css'
-import MainDopFlutter from '../DopFlutters/MainDopFlutter/MainDopFlutter';
+import AdminRecordCard from '../AdminRecordCard/AdminRecordCard';
 import { GroupedRecords } from '../../../../models/IRecord';
 import { RrcordsSearchParams } from '../../../../app/state/auth/types';
 interface Props {
@@ -31,7 +31,7 @@ const UserRecordsAdmin: FC<Props> = () => {
             {
               Array.isArray(currentRecords) &&
               currentRecords.map((record,index) =>
-                <MainDopFlutter record={record} toUser key ={index}/>
+                <AdminRecordCard record={record} toUser key ={index}/>
               )
             }
           </>

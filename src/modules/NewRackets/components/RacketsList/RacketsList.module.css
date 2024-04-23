@@ -3,6 +3,7 @@
     margin-top: 10px;
     display: flex;
     flex-direction: column;
+    overflow-y: auto;
     row-gap: 20px;
     overflow-y: auto;
 }
@@ -103,4 +104,33 @@
 .delete img{
     width: 40px;
     height: 40px;
+}
+
+
+@media (max-width: 1500px){
+    .contentBlock{
+        width: 190px;
+     
+    }
+    .contentTitle{
+        font-size: 20px;
+    }
+    .contentText{
+        font-size: 18px;
+        line-height: 20px;
+        overflow-y: auto;
+        padding-top: 13px;
+    }
+    .button{
+        width: 40px;
+        height: 40px;
+    }
+    .buttonImg{
+        width: 25px;
+        height: 25px;
+    }
+}
+
+@media (max-height: 750px){
+    
 }

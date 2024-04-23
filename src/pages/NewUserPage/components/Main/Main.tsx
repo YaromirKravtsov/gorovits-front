@@ -15,7 +15,7 @@ const Main: FC<Props> = (props) => {
     return (
         <div className={style.main}>
             <Row className={style.topRow}>
-                <Personalnformation isEditing={true} />
+                <Personalnformation isEditing={true} className={style.inputs}/>
                 <UserPhoto onChange={(value: SelectedImage) => props.onPhotoChange(value)} isEdditing />
             </Row>
             <NewRackets />

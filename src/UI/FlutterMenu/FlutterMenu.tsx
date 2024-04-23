@@ -40,7 +40,7 @@ const FlutterMenu: FC<FlutterMenuProps> = (props) => {
         return (
             <>
           
-            <div className={`${style.normal}`} onClick={handleWrapperClick} style={{ display: props.hidden ? 'none' : 'flex' }}>
+            <div className={style.normalClass} onClick={handleWrapperClick} style={{ display: props.hidden ? 'none' : 'flex' }}>
                 <div className={`${props.className} ${style.menu} ${style.index}`} style={menuStyle} onClick={props.onClick} id={props.id}>
                     {props.children}
                 </div>
@@ -48,11 +48,19 @@ const FlutterMenu: FC<FlutterMenuProps> = (props) => {
             </>
         );
     }
-
+    if (props.shadow === 'small') {
+        return (
+                    <div className={`${props.className} ${style.menu} ${props.shadow === 'small' ? style.small : style.index}`} style={menuStyle} onClick={props.onClick} id={props.id}>
+                        {props.children}
+                    </div>
+                
+           
+        );
+    }
     return (
         <React.Fragment>
             <div className={`${props.shadow === 'all' && style.defaultWraper}`} onClick={handleWrapperClick} style={{ display: props.hidden ? 'none' : 'flex' }}>
-                <div className={`${props.className} ${style.menu} ${props.shadow === 'small' ? style.small : style.index}`} style={menuStyle} onClick={props.onClick} id={props.id}>
+                <div className={`${props.className} ${style.menu} `} style={menuStyle} onClick={props.onClick} id={props.id}>
                     {props.children}
                 </div>
             </div>

@@ -49,9 +49,26 @@
     width: 100%;
     height: 100%;
 }
+@media (max-width: 1500px){
+    .item {
+        height: 55px;
+    }
+    .text {
+        font-size: 18px;
+        margin-left: 7px;
+    }
+    .image,.profileImage {
+        width: 30px;
+        height: 30px;
+    }
+}
 @media (max-width: 1180px){
     .text {
-        font-size: 22px;
+        font-size: 19px;
+    }
+    .image,.profileImage {
+        width: 30px;
+        height: 30px;
     }
 }
 @media (max-width: 600px) {

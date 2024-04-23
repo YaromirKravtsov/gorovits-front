@@ -6,12 +6,13 @@ import FlutterMenu from '../../../../UI/FlutterMenu/FlutterMenu'
 import InputRow from '../../../../components/InputRow/InputRow'
 import MyInput from '../../../../components/MyInput/MyInput'
 import style from './StringFlutterMenu.module.css'
-import { AdminSettingPageService } from '../../api/AdminSettingPageService'
+import { AdminSettingPageService, RacketsManufactureres } from '../../api/AdminSettingPageService'
 import { useActions } from '../../../../hooks/useActions'
 import { IString } from '../../models/IString'
 import { getErrorText } from '../../../../helpers/FormDataGeneration'
 import ImageCropper from '../../../../components/ImageCropper/ImageCropper'
 import { DataActions } from '../../../../helpers/DataActions'
+import DropDownInput, { Option } from '../../../../UI/DropDownInput/DropDownInput'
 type Action = 'add' | 'edit'
 interface Props {
     action: Action,
@@ -28,8 +29,12 @@ const StringFlutterMenu: FC<Props> = (props) => {
 
 
     const [stringModel, setStringModel] = useState<string>('')
+    const [stringManufacter, setStringManufacter] = useState<string>('');
+    const [stringManufacterId, setStringManufacterId] = useState<number>(0);
+    const [racketModel, setRacketModel] = useState<string>('')
     const [image, setImage] = useState<string>('')
     const { setGlobalError } = useActions();
+    const [manufactursOptions, setManufactursOptions] = useState<Option[]>([])
     const [errors, setErrors] = useState<Errors>({
         stringModel: false,
         image: false
@@ -38,13 +43,46 @@ const StringFlutterMenu: FC<Props> = (props) => {
         if (props.action == 'edit' && props.string) {
             setStringModel(props.string.name)
         }
-        if(props.string)
-        setImage(props.string.imgLink)
+        if (props.string)
+            setImage(props.string.imgLink)
     }, [])
 
-    //helpers
+    useEffect(() => {
 
-    
+        const fetch = async () => {
+            try {
+                const { data } = await AdminSettingPageService.getRacketsManufactureres();
+                const options = mapOptions(data)
+                setManufactursOptions([...options, { label: 'Luxilon', value: options.length + 1 }])
+
+            } catch (error) {
+                setGlobalError(getErrorText(error))
+            }
+        }
+        fetch();
+        if (props.action == 'edit' && props.string) {
+            const stringMan = props.string.name.split(' ')[0]
+            const manId = manufactursOptions.find(string => string.label == stringMan)?.value as number
+            setStringManufacter(stringMan); 
+            console.log(manId)
+            setStringManufacterId(manId)
+        }
+    }, [])
+
+    useEffect(()=>{
+        const stringMan = props.string?.name.split(' ')[0]
+        const manId = manufactursOptions.find(string => string.label == stringMan)?.value as number
+        setStringManufacterId(manId)
+    },[])
+
+    //helpers
+    const mapOptions = (data: RacketsManufactureres[]): Option[] => {
+        return data.map(element => {
+            return { label: element.name, value: element.id }
+        });
+    }
+
+
     const validate = () => {
         const errorsL: Errors = {
             stringModel: stringModel.trim() == '',
@@ -59,31 +97,36 @@ const StringFlutterMenu: FC<Props> = (props) => {
     const handelSubmit = async () => {
         if (validate()) {
             const formData = new FormData();
-
-            formData.append('name', stringModel)
-
-            const blob = DataActions.base64ToBlob(image,'image/png')
-            const file = new File([blob], '1', {
+            console.log(image.split(':')[0])
+            const stringMan = manufactursOptions.find(string => string.value == stringManufacterId)
+            
+            formData.append('name', (stringManufacterId == 0? '':stringMan?.label + ' ' )+ stringModel)
+            const isEditidImg = image.split(':')[0] == 'http'
+            let file
+            if(!isEditidImg){
+            const blob = DataActions.base64ToBlob(image, 'image/png')
+            file = new File([blob], '1', {
                 type: 'image/png'
             });
-  
+        }
             if (props.action == 'edit') {
                 formData.append('id', String(props.string?.id));
-                if (file) {
+
+                if (file && !isEditidImg) {
+                
                     formData.append('imageChanged', 'true');
                     formData.append('image', file);
 
                 } else {
                     formData.append('imageChanged', 'false');
                 }
-
             } else {
                 if (file)
                     formData.append('image', file)
             }
             try {
                 if (props.action == 'add') {
-                    const {data} = await AdminSettingPageService.createString(formData)
+                    const { data } = await AdminSettingPageService.createString(formData)
                     if (props.handelAdd)
                         props.handelAdd(data)
                 } else {
@@ -103,11 +146,22 @@ const StringFlutterMenu: FC<Props> = (props) => {
     useEffect(() => {
         setErrors(prev => ({ ...prev, image: false }));
     }, [image])
+
+
     return (
         <div>
             <FlutterMenu shadow='all' className={style.flutterMenu}>
-                <div className={style.title}>{props.action == 'add'? 'Saite hinzufügen':'Saite bearbeiten'} </div>
+                <div className={style.title}>{props.action == 'add' ? 'Saite hinzufügen' : 'Saite bearbeiten'} </div>
                 <div className={style.mainRow}>
+                    <InputRow label='Hersteller'>
+                        <DropDownInput options={manufactursOptions} defaultValue={'Wählen Sie einen Hersteller'}
+                            /*   error={errors.racketManufacterId}
+                              setError={value => setErrors(prev => ({ ...prev, racketManufacterId: value }))} */
+                            value={stringManufacterId} onChange={setStringManufacterId}
+                            defaultOptions={manufactursOptions}
+                        />
+
+                    </InputRow>
                     <InputRow label='Saitenname'>
                         <MyInput placeholder='Saitenname eingeben'
                             value={stringModel}
@@ -118,15 +172,15 @@ const StringFlutterMenu: FC<Props> = (props) => {
                         />
                     </InputRow>
                     <InputRow label='Saiten Foto'>
-                    <div className={`${style.photoSelect} ${errors.image && style.photoSelectError}`}>
-                        <ImageCropper
-                            onCropDone={setImage}
-                            aspect ={1}
-                            className={style.imageCropper}
-                            internalImage ={image}
-                        />
-               
-                    </div>
+                        <div className={`${style.photoSelect} ${errors.image && style.photoSelectError}`}>
+                            <ImageCropper
+                                onCropDone={setImage}
+                                aspect={1}
+                                className={style.imageCropper}
+                                internalImage={image}
+                            />
+
+                        </div>
                     </InputRow>
                 </div>
                 <div className={style.buttonsRow} >
@@ -134,7 +188,7 @@ const StringFlutterMenu: FC<Props> = (props) => {
                         Schließen
                     </MyButton>
                     <MyButton mode='black' onClick={handelSubmit}>
-                    Seite  hinzufüg
+                        Seite  hinzufüg
                     </MyButton>
                 </div>
             </FlutterMenu>

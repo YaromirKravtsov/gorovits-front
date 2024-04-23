@@ -15,7 +15,6 @@ const SearchKundenPage = () => {
     const [isLoading, setIsLoading] = useState<boolean>(false);
  
     const search = async (value:string)=>{
-   
         try{
             setIsLoading(true)
             const {data} =  await SearchKundenService.findUsers(value);
@@ -29,6 +28,7 @@ const SearchKundenPage = () => {
         }  
        
     }
+    
     useEffect(()=>{
       const fetch = async() =>{
         try{

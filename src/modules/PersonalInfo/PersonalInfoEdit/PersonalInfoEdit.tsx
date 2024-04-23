@@ -2,12 +2,11 @@ import React, { FC, useEffect, useState } from 'react'
 
 import style from './PersonalInfoEdit.module.css';
 import { IUser } from '../../../models/IUser';
-import ProfileInput from '../ProfileInput/ProfileInput';
 import { useTypedSelector } from '../../../hooks/useTypedSelector';
 import { useActions } from '../../../hooks/useActions';
-interface Props{
-  userInfo: IUser
-}
+import InputRow from '../../../components/InputRow/InputRow';
+import MyInput from '../../../components/MyInput/MyInput';
+
 const PersonalnfoEdit:FC = ({}) => {
   const {userInfo,role} = useTypedSelector(state => state.user);
   const {setUser,setUserEditingInfo} = useActions()
@@ -30,9 +29,15 @@ const PersonalnfoEdit:FC = ({}) => {
 
   return (
     <div className={style.main}>
-       <ProfileInput name ='fullName' onChange={(value)=> setFullName(value)} placeholder='Name eingeben' label='Name' value = {fullName}/>
-        <ProfileInput name ='email' onChange={(value)=> setEmail(value)} placeholder='E-Mail eingeben' label='Email' value = {email}/>
-        <ProfileInput name ='phoneNumber' onChange={(value)=> setPhoneNumber(value)} placeholder='E-Mail telefonnummer' label='Telefonnummer' value = {phoneNumber}/>
+        <InputRow label='Name' labelClass={style.inpitTitle} className={style.inputRow}>
+          <MyInput onChange={(value)=> setFullName(value)} placeholder='Name eingeben' name='fullName' value = {fullName} className={style.input}/>
+        </InputRow>
+        <InputRow label='Email' labelClass={style.inpitTitle} className={style.inputRow}>
+          <MyInput onChange={(value)=> setEmail(value)} placeholder='E-Mail eingeben'  value = {email}  name='email' className={style.input} />
+        </InputRow>
+        <InputRow label='Telefonnummer' labelClass={style.inpitTitle} className={style.inputRow}>
+          <MyInput name ='phoneNumber' onChange={(value)=> setPhoneNumber(value)} placeholder='E-Mail telefonnummer'value = {phoneNumber} className={style.input}/>
+        </InputRow>
     </div>
   )
 }

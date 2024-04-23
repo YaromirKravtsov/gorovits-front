@@ -43,7 +43,19 @@ color: #30484D;
     color: #FF2430;
 }
 
-
+@media (max-height: 1500px) {
+    .main{
+        height: 95vh;
+        padding: 15px 60px;
+    }
+    .mainRow{
+        column-gap: 60px;
+        row-gap: 15px;
+    }
+}
+@media (max-height: 920px) {
+    
+}
 @media (max-height: 920px) {
     .mainRow{
         height: 600px;

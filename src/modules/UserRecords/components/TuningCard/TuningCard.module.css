@@ -1,22 +1,25 @@
-.besaitungCard{
+.besaitungCard {
     width: 100%;
-    height: 306px;
+    height: 200px;
+    min-height: 270px;
     padding: 20px 20px;
     display: flex;
     flex-direction: row;
     column-gap: 60px;
 }
 
-.topBlock{
+.topBlock {
     width: 320px;
     height: 75px;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-   
+
 }
-.topLeftBlockTitle, .topLeftBlockSubTitle{
+
+.topLeftBlockTitle,
+.topLeftBlockSubTitle {
     font-family: 'Montserrat';
     font-style: normal;
     font-weight: 600;
@@ -24,47 +27,57 @@
     color: #FFFFFF;
     text-align: center;
 }
-.topLeftBlockTitle{
+
+.topLeftBlockTitle {
     font-size: 24px;
 }
-.topLeftBlockSubTitle{
+
+.topLeftBlockSubTitle {
     font-size: 20px;
 }
-.BottomLeftBlock{
+
+.BottomLeftBlock {
     margin-top: auto;
     width: 320px;
-    height: 135px;
+    height: 145px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
-.blockColumn{
+
+.blockColumn {
     justify-content: space-between;
     height: 100%;
+    row-gap: 15px;
+
+
 }
-.stringHardnes{
-font-family: 'Montserrat';
-font-style: normal;
-font-weight: 700;
-font-size: 45px;
-line-height: 53px;
-text-align: center;
-color: #FFFFFF;
+
+.stringHardnes {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 45px;
+    line-height: 53px;
+    text-align: center;
+    color: #FFFFFF;
 }
-.stateBlock{
-    width: 350px;
+
+.stateBlock {
+    width: 360px;
     height: auto;
     padding: 20px 10px;
     display: flex;
     justify-content: center;
     align-items: center;
 }
-.button{
-    width: 350px;
-    min-width: 350px;
-    min-height: 63px;
-    height:63px
+
+.button {
+    min-width: 360px;
+    width: 360px;
+    height: 65px;
+    min-height: 65px;
 }
 .TuningParametrs{
     font-family: 'Montserrat';
@@ -75,17 +88,61 @@ color: #FFFFFF;
     text-align: center;
     color: #FFFFFF;
 }
+@media (max-width: 1520px) {
+    .besaitungCard {
+        padding: 15px;
+        height: 200px;
+        max-height: 200px;
+        min-height: 200px;
+    }
+    .blockColumn {
+        width: 230px;
+        max-width: 230px;
+        min-width: 230px;
+    }
+    .topBlock,
+    .BottomLeftBlock {
+        width: 100%;
+    }
 
+    .topBlock,.stateBlock {
+        width: 100%;
+    }
+    .button{
+        min-width: 100%;
+        width: 100%;
+        height: 55px;
+        min-height: 55px;
+    }
+    .topLeftBlockSubTitle{
+        font-size: 18px;
+    }
+    .topBlock{
+        height: 75px;
+    }
+    .BottomLeftBlock{
+        height: 90px;
+    }
+}
+@media (max-width: 1350px) {
+    .besaitungCard {
+        column-gap: 20px;
+    }
+}
 @media (max-width: 600px) {
     .besaitungCard {
         padding: 10px;
         height: 190px;
         max-height: 190px;
         min-height: 190px;
+        column-gap: 0;
+        justify-content: space-between;
     }
 
     .blockColumn {
-        width: 45%;
+        width: 45% !important;
+        max-width: 45% !important;
+        min-width: 45% !important;
     }
 
     .topBlock,
@@ -116,12 +173,9 @@ color: #FFFFFF;
     .stringHardnes {
         font-size: 24px;
     }
-
     .strings {
         margin-top: -10px;
     }
-
- 
     .topLeftBlockTitle{
         line-height: 23px;
     }

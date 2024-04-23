@@ -20,7 +20,7 @@ interface Props {
 }
 
 const AdminRecordCard: FC<Props> = (props) => {
-  const [record,setRecord] = useState<IRecord>(props.record)
+  const [record, setRecord] = useState<IRecord>(props.record)
   const [racketModel, setRacketModel] = useState<string>()
   const [racketData, setRacketData] = useState<{
     number: string,
@@ -108,20 +108,20 @@ const AdminRecordCard: FC<Props> = (props) => {
 
   const [isStringEditOpen, setIsStringEditOpen] = useState<boolean>(false);
   const [strings, setStrings] = useState<IString[]>([])
-  const handelStringsEditOpen = async() => {
-    if ((record.recordType == 1 || record.recordType == 0)&&(record as IPullingRecord).pulling.stringId) {
-      const {data} = await MainServise.getStrins()
+  const handelStringsEditOpen = async () => {
+    if ((record.recordType == 1 || record.recordType == 0) && (record as IPullingRecord).pulling.stringId) {
+      const { data } = await MainServise.getStrins()
       setIsStringEditOpen(true)
       setStrings(data);
     }
   }
-  const {setGlobalError}= useActions()
+  const { setGlobalError } = useActions()
   const handelStringsEdit = async (dto: EditPullingDto) => {
     try {
       await AdminRecordGroupService.putStrings(dto);
 
       setIsStringEditOpen(false);
-      
+
       setRecord(prevRecord => ({
         ...prevRecord,
         pulling: {
@@ -135,22 +135,18 @@ const AdminRecordCard: FC<Props> = (props) => {
       setGlobalError(getErrorText(e));
     }
   }
-  useEffect(()=>{
-    if((record as IPullingRecord).pulling){
-
-    
-          const stringHardnes = RecordHeler.formatStringHardnes((record as IPullingRecord).pulling.stringHardness)
-          const strings = RecordHeler.formatStringsName((record as IPullingRecord).pulling.longString, (record as IPullingRecord).pulling.crossString);
-          const userRacket = (record as IPullingRecord).pulling.userRacket;
-          const racketModelId = (userRacket).racketModelId;
-          setMainConent([stringHardnes, strings])
+  useEffect(() => {
+    if ((record as IPullingRecord).pulling) {
+      const stringHardnes = RecordHeler.formatStringHardnes((record as IPullingRecord).pulling.stringHardness)
+      const strings = RecordHeler.formatStringsName((record as IPullingRecord).pulling.longString, (record as IPullingRecord).pulling.crossString);
+      setMainConent([stringHardnes, strings])
     }
-  },[record])
+  }, [record])
 
   return (
     <>
       {isStringEditOpen &&
-       <ChangeStringsFlutter handelEdit={handelStringsEdit} setIsOpen = {setIsStringEditOpen} strings={strings} record={(record as IPullingRecord)}/>
+        <ChangeStringsFlutter handelEdit={handelStringsEdit} setIsOpen={setIsStringEditOpen} strings={strings} record={(record as IPullingRecord)} />
       }
 
       <GradientBlackBlock className={style.recordBlock}>

@@ -26,9 +26,9 @@ const KundenKontoTopMenu:FC = () => {
               <EditingTopMenu/>
         :
             <>
-            <RoundIconButton onClick={editAccount} src={editAccountIcon}/>
-            <RoundIconButton onClick={onLogout} src={logoutIcon} className={style.middleIcon}/>
-           
+          
+            <RoundIconButton onClick={onLogout} src={logoutIcon} />
+            <RoundIconButton onClick={editAccount} src={editAccountIcon} className={style.middleIcon}/>
             </>
         }
        

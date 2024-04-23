@@ -22,6 +22,7 @@ export default function App() {
       setWindowHight(window.innerHeight)
     }
     handleResize()
+
     const fetch = async() =>{
         await $api.get('token/params',{params:{
           width: window.innerWidth,

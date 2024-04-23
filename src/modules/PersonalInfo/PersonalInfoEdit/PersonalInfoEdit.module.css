@@ -3,19 +3,42 @@
     flex-direction: column;
     row-gap: 20px;
 }
+
 .input{
-    width: 260px !important;
-    height: 45px !important;
+    width: 100%;
+    font-size: 22px;
 }
-@media (max-width: 1700px) {
+
+.inpitTitle{
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 22px;
+    line-height: 22px;
+    letter-spacing: 0.01em;
+    color: #000000;
+    opacity: 0.5;
+}
+
+.inputRow{
+
+}
+
+@media (max-width: 1500px) {
     .main{
         display: flex;
         flex-direction: column;
         row-gap: 20px;
     }
     .input{
-        width: 220px !important;
-        height: 45px !important;
+        height: 37px !important;
+
+    }
+    .inpitTitle,.input{
+        font-size: 18px;
+    }
+    .main{
+        row-gap: 10px;
     }
 }
 @media (max-width: 600px) {

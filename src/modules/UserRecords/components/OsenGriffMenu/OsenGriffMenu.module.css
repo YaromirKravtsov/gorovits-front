@@ -47,7 +47,21 @@
     width: 325px;
     height: 65px;
 }
-
+@media (max-width: 1520px) {
+    .longBlock{
+        width:470px;
+    }
+}
+@media (max-width: 950px) {
+    .longBlock{
+        width:360px;
+        height: 60px;
+    }
+    .rightTopBlock,.button{
+        width: 270px;
+        height: 60px;
+    }
+}
 
 @media (max-width: 600px){
     .recordCard{

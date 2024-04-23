@@ -19,6 +19,7 @@ const ImageCropper: FC<Props> = ({ onCropDone, aspect, className, internalImage 
     const [zoom, setZoom] = useState<number>(1);
     const [rotation, setRotation] = useState<number>(0);
     const [croppedArea, setCroppedArea] = useState<Area | null>(null);
+    console.log(internalImage)
     const [image, setImage] = useState<string>(internalImage)
     const [isInCrop, setIsInCrop] = useState<boolean>()
     const onCropComplete = (croppedAreaPercentage: Area, croppedAreaPixels: Area) => {
@@ -122,7 +123,7 @@ const ImageCropper: FC<Props> = ({ onCropDone, aspect, className, internalImage 
                     onChange={handleOnChange}
                     style={{ display: 'none' }}
                 />
-                {image == '' ?
+                {internalImage == '' ?
                     <button className={style.addPhotoIcon} onClick={onChooseImg} >
                         <svg width="29" height="29" viewBox="0 0 29 29" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <rect x="12.5" width="4" height="29" fill="white" />
@@ -199,8 +200,8 @@ const ImageCropper: FC<Props> = ({ onCropDone, aspect, className, internalImage 
                     <MyButton mode='white' border onClick={() => setIsInCrop(false)}>
                         Schließen
                     </MyButton>
-                    <MyButton mode='white' border onClick={() => { if (croppedArea) handelCropDone(croppedArea, rotation) }}>
-                        Crop
+                    <MyButton mode='black' border onClick={() => { if (croppedArea) handelCropDone(croppedArea, rotation) }}>
+                    Hinzufügen
                     </MyButton>
                     </div>
 

@@ -49,7 +49,7 @@
 .blockColumn {
     justify-content: space-between;
     height: 100%;
-
+    row-gap: 15px;
 
 }
 
@@ -82,9 +82,9 @@
 @media (max-width: 1520px) {
     .besaitungCard {
         padding: 15px;
-        height: 260px;
-        max-height: 260px;
-        min-height: 260px;
+        height: 200px;
+        max-height: 200px;
+        min-height: 200px;
     }
     .blockColumn {
         width: 230px;
@@ -94,6 +94,18 @@
     .topBlock,
     .BottomLeftBlock {
         width: 100%;
+    }
+    .BottomLeftBlock{
+        justify-content: start;
+        height: 90px;
+    }
+
+    .stringHardnes,.topLeftBlockTitle{
+        width: 100%;
+        margin: 0;
+/*         word-wrap: break-word;
+        height: auto; */
+        line-height: 30px;
     }
 
     .topBlock,.stateBlock {
@@ -105,8 +117,27 @@
         height: 55px;
         min-height: 55px;
     }
-}
+    .stringHardnes{
+        font-size: 30px;
+    }
+    .topLeftBlockSubTitle{
+        font-size: 18px;
+    }
+    .topLeftBlockTitle{
+        font-size: 20px;
 
+    }
+    .strings{
+        font-size: 18px;
+        margin: auto;
+        padding: 0 3px;
+    }
+}
+@media (max-width: 1350px) {
+    .besaitungCard {
+        column-gap: 20px;
+    }
+}
 @media (max-width: 600px) {
     .besaitungCard {
         padding: 10px;

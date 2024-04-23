@@ -52,7 +52,7 @@ const DropDownButton: FC<Props> = (props) => {
               <button className={style.dropDownItemButton} key={index} onClick={() => handleSelect(option.value)}>{option.text}</button>
               {option.questionText &&
                 <>
-                  <QuestionMark text={option.questionText} droPosition='bottom-right' size='small'/>
+                  <QuestionMark text={option.questionText} droPosition='bottom-right' size='small' />
                 </>
               }
             </div>

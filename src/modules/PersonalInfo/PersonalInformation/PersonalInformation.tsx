@@ -7,6 +7,7 @@ import { useActions } from '../../../hooks/useActions';
 import { IUser } from '../../../models/IUser';
 interface Props{
   isEditing?: boolean,
+  className?:string
 }
 const Personalnformation:FC<Props> = (props) => {
   const {isEditing,role} = useTypedSelector(user=> user.user);
@@ -21,7 +22,7 @@ const Personalnformation:FC<Props> = (props) => {
   },[]);
 
   return (
-    <div className={style.personalnfo}>
+    <div className={`${style.personalnfo} ${props.className ? props.className: ''}`}>
       {isEditing?
       <>
          <PersonalnfoEdit/>

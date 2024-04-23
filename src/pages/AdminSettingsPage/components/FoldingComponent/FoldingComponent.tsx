@@ -27,15 +27,11 @@ const FoldingComponent: FC<Props> = ({ isFolded, ...props }) => {
             <div className={style.topMenu}>
                 <div className={style.topMenuTitle}>{props.title}</div>
                 <form onSubmit={handelSearch} className={style.form}>
-            
                 <MyInput value={inputValue} onChange={setInputValue} placeholder={`${props.title} suchen`}
                     className={style.searchInput} />
-                  
-                
-                <MyButton mode='black' className={style.searchButton} onClick={handelSearch} type ='submit'>Suchen</MyButton>
+                <MyButton mode='black' className={style.searchButton} onClick={handelSearch} type ='submit' >Suchen</MyButton>
                 </form>
                 <MyButton mode='black' className={style.folderingButton} onClick={props.onAdd}><img className={style.plusImgage} src={plusIcon} alt="" /></MyButton>
-              
                 <MyButton mode='black' className={style.folderingButton} onClick={() => props.setIsFolded(!isFolded)}><img className={`${style.folderingImgage} ${isFolded && style.rotate}`} src={arrowIcon} alt="" /></MyButton>
 
             </div>

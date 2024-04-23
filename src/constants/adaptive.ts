@@ -1,1 +1,1 @@
-export const navBarAdaptive = 1520;
+export const navBarAdaptive = 1180;

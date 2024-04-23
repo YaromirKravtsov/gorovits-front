@@ -35,27 +35,15 @@
 .bottomRight{
     transform: translate(30px, 0px);
 }
-.small{
-    transform: translateY(-6px);
-    width: 17px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 17px;
-}
-.smallIcon{
-    margin: auto;
-    width: 15px;
-    height: 15px;
-}
-@media (max-width: 600px){
+
+@media (max-width: 1500px){
     .icon{
         width: 40px;
         height: 40px;
     }
     .icon img{
-        width: 35px !important;
-        height: 35px !important;
+        width: 35px ;
+        height: 35px ;
     }
 }
 
@@ -66,7 +54,20 @@
         height: 35px;
     }
     .icon img{
-        width: 30px !important;
-        height: 30px !important;
+        width: 30px ;
+        height: 30px ;
     } 
+}
+.small{
+    transform: translateY(-6px);
+    width: 17px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 17px;
+}
+.small img{
+    margin: auto;
+    width: 15px;
+    height: 15px;
 }

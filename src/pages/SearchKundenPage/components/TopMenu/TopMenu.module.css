@@ -20,3 +20,15 @@
 background: rgba(255, 133, 139, 0.2);
 
 }
+
+@media (max-width: 1400px) {
+    .input{
+        width: 350px;
+
+        height: 45px;
+    }
+    .button{
+        width: 170px;
+        height: 45px;
+    }
+}

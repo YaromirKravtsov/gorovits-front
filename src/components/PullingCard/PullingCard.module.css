@@ -1,16 +1,19 @@
-.pullingCard{
+.pullingCard {
     margin-top: 15px;
     width: 100%;
     height: 300px;
     border-radius: 20px;
     padding: 23px 18px;
 }
-.mainRow{
- width: 100%;
- height: 100%;
- column-gap: 50px;
+
+.mainRow {
+    width: 100%;
+    height: 100%;
+    column-gap: 50px;
 }
-.leftTop,.leftButton{
+
+.leftTop,
+.leftButton {
     display: flex;
     font-family: 'Montserrat';
     font-style: normal;
@@ -20,14 +23,16 @@
 
     color: #FFFFFF;
 }
-.leftTop{
+
+.leftTop {
     text-align: center;
     width: 300px;
-    height: 75px; 
+    height: 75px;
     justify-content: center;
     align-items: center;
 }
-.leftButton{
+
+.leftButton {
     width: 300px;
     padding: 25px 15px;
     flex-direction: column;
@@ -37,91 +42,143 @@
     height: 155px;
     text-align: center;
 }
-.stringHardnes{
+
+.stringHardnes {
     font-size: 45px;
 }
-.stringName{
-  
+
+.stringName {
+
     margin-top: 20px;
 }
-.centerBlock{
+
+.centerBlock {
     width: 100%;
     margin: 0 auto;
     border-bottom: 2px solid #fff;
     border-top: 2px solid #fff;
 }
-.racketImage{
+
+.racketImage {
     width: 530px;
     height: 220px;
-    transform: translate(40px,35px);
+    transform: translate(40px, 35px);
 }
-.stringImage{
+
+.stringImage {
     width: 120px;
     height: 120px;
     position: absolute;
-    transform: translate(60px,10px);
+    transform: translate(60px, 10px);
 }
-.feedbackPhoto{
+
+.feedbackPhoto {
     margin-left: 18px;
     width: 60px;
     height: 60px;
 }
-.button{
+
+.button {
     margin-top: auto;
     width: 100%;
     height: 50px;
 }
-.dateTimeBlock{
+
+.dateTimeBlock {
     margin-bottom: auto;
     display: flex;
     flex-direction: column;
     row-gap: 10px;
 }
-
+@media (max-width: 1500px) {
+    .pullingCard{
+        height: 200px;
+        padding: 10px;
+        
+    }
+    .leftTop{
+        width: 185px;
+        height: 45px;
+    }
+    .leftButton{
+        width: 185px;
+        height: 100px;
+     /*    padding: 10px 10px; */
+        padding: 1px;
+        justify-content: center;
+    }
+    .stringHardnes{
+        font-size: 30px;
+        margin: 0;
+    }
+    .stringName{
+        margin-top: 5px;
+        font-size: 16px;
+        margin: 0;
+    }
+    .mainRow{
+        column-gap: 15px;
+    }
+    .leftTop{
+        font-size: 18px;
+        row-gap: 0px;
+    }
+}
 
 @media (max-width: 600px) {
-    .pullingCard{
+    .pullingCard {
         padding: 10px 10px;
         height: 250px;
     }
-    .mainRow{
+
+    .mainRow {
         display: grid !important;
         grid-template-columns: 1fr 1fr;
         justify-content: space-between;
         column-gap: 20px !important;
-   
+
     }
-    .leftTop,  .leftButton,.dateTimeBlock,.leftTop{
+
+    .leftTop,
+    .leftButton,
+    .dateTimeBlock,
+    .leftTop {
         width: 100%;
         min-width: 100%;
         max-width: 100%;
-        
+
         font-size: 18px;
     }
-    .dateTimeBlock{
+
+
+    .dateTimeBlock {
         height: auto !important;
         padding: 5px !important;
     }
-    .leftTop{
+
+    .leftTop {
         line-height: 18px;
         height: 60px;
         padding: 10px;
     }
-    .leftButton{
+
+    .leftButton {
         width: 100%;
-        height: 87px;
+        height: 145px;
         padding: 10px 10px;
-        justify-content: start;
+        justify-content: center;
     }
-    .stringHardnes{    
+
+    .stringHardnes {
         font-size: 24px;
     }
-    .button{
+
+    .button {
         width: 100%;
     }
- 
-.feedbackPhoto{
-    width: 37px;
-    height: 37px;
-}
+
+    .feedbackPhoto {
+        width: 37px;
+        height: 37px;
+    }
 }

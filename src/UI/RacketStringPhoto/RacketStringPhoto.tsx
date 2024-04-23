@@ -12,8 +12,10 @@ interface Props{
 const RacketStringPhoto:FC<Props> = (props) => {
   return (
     <Column className={style.centerBlock}>
+      <div className={style.marginBlock}>
     <MyImage src ={props.racketSrc} alt ='' className={style.racketImage}/>
     <MyImage src ={props.stringSrc} alt ='' className={style.stringImage}/>
+    </div>
   </Column>
   )
 }

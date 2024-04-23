@@ -29,3 +29,27 @@
 }
 
 
+@media (max-width: 1500px){
+    .main{
+        height: 100%;
+        padding: 15px 20px;
+    }
+
+    .topTitle{
+        font-size: 24px;
+    }
+    
+    .topButton{
+        height: 45px;
+        width: 400px;
+        font-size: 20px;
+    }
+
+}
+
+@media (max-height: 700px){
+    .main{
+        max-height: 330px;
+
+    }
+}

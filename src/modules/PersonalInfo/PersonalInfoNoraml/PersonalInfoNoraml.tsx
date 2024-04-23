@@ -1,18 +1,27 @@
-import  { FC } from 'react'
+import { FC } from 'react'
 import style from './PersonalInfoNoraml.module.css'
-import TitleText from '../../../components/TitleText/TitleText'
 import { useTypedSelector } from '../../../hooks/useTypedSelector';
-import { IUser } from '../../../models/IUser';
-/* interface Props{
-  userInfo: IUser
-} */
-const PersonalnfoNormal:FC = () => {
-  const {userInfo} = useTypedSelector(state=> state.user)
+
+interface Props{
+  className?: string
+}
+const PersonalnfoNormal: FC<Props> = (props) => {
+  const { userInfo } = useTypedSelector(state => state.user)
   return (
-    <div className={style.container}>
-      <TitleText title = 'Name' text={userInfo.fullName }/>
-      <TitleText title = 'Email' text={userInfo.email || 'Unknown'} />
-      <TitleText title = 'Telefonnummer' text={userInfo.phoneNumber || 'Unknown'}/>
+    <div className={`${style.container} ${props.className? props.className: ''}`}>
+      <div className={`${style.textRow}`}>
+        <div className={style.title}>Name</div>
+        <div className={style.text}>{userInfo.fullName}</div>
+      </div>
+      <div className={`${style.textRow}`}>
+        <div className={style.title}>Email</div>
+        <div className={style.text}>{userInfo.email}</div>
+      </div>
+      <div className={`${style.textRow}`}>
+        <div className={style.title}>Telefonnummer</div>
+        <div className={style.text}>{userInfo.phoneNumber}</div>
+      </div>
+     
     </div>
   )
 }

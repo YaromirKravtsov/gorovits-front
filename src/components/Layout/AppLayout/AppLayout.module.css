@@ -9,10 +9,8 @@
 
 }
 .navBar{
-
   width: 450px;
   min-width: 450px;
-
   left: 0 !important; /* Убираем !important */
   z-index: 100;
 }
@@ -23,12 +21,20 @@
   border-radius: 0 !important;
 }
 
-@media (max-width: 1180px){
+@media (max-width: 1500px){
   .navBar{
     width: 340px;
     min-width: 340px;
   }
 }
+
+/* @media (max-width: 1180px){
+  .navBar{
+    width: 280px;
+    min-width: 280px;
+  }
+} */
+
 @media (max-width: 600px){
   .navBar{
     width: 340px;

@@ -10,11 +10,12 @@
     max-height: 105px;
     height: 105px;
     width: 100%;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+    display: flex;
+    flex-direction: row;
     border-bottom: 4px solid #232323;
     align-items: center;
     padding: 0 40px;
+    justify-content: center;
 
 }
 
@@ -28,7 +29,7 @@
     flex-direction: row;
     align-items: center;
     column-gap: 20px;
-  /*   min-width: 240px; */
+    /*   min-width: 240px; */
     font-family: "Montserrat", sans-serif;
     font-style: normal;
     font-weight: 600;
@@ -38,10 +39,12 @@
 }
 
 .main {
-    padding: 10px 40px;
+    padding: 10px 30px;
     width: 100%;
-    min-height: 100vw;
+    display: flex;
+    flex-direction: column;
     height: 100vh;
+    padding-bottom: 20px;
 }
 
 .topMenuElemet {
@@ -61,6 +64,7 @@
     width: 100%;
     display: flex;
     flex-direction: row;
+    align-items: center;
 }
 
 .BurderMenuIcon {
@@ -94,11 +98,33 @@
 .BurderMenuIcon.cross .line3 {
     transform: translateY(-50%) rotate(-45deg);
 }
-@media (max-width: 1520px) {
-    .main{
+
+@media (max-width: 1500px) {
+
+    .topMenu {
+        border-bottom: 2px solid #232323;
+        display: flex;
+        max-height: 80px;
+        height: 80px;
+        padding: 0 30px;
+        align-items: center;
+        justify-content: space-between;
+        z-index: 10;
+    }
+
+    .title {
+        line-height: 20px;
+        font-size: 22px;
+        letter-spacing: -0.02em;
+    }
+
+}
+
+@media (max-width: 1180px) {
+    .main {
         width: 100vw;
     }
-    
+
     .topMenu {
         border-bottom: 0px solid #232323;
         display: flex;
@@ -119,23 +145,57 @@
 
 }
 
-@media (max-width:1520px) {
+@media (max-width:1180px) {
     .BurderMenuIcon {
         display: flex;
         margin-right: -5px;
     }
 }
+
+@media (max-width: 780px) {
+    .title {
+        line-height: 20px;
+        font-size: 18px;
+        letter-spacing: -0.02em;
+    }
+
+    .main {
+        overflow-x: hidden;
+        overflow-y: auto;
+        padding: 10px;
+
+    }
+
+    .title {
+        line-height: 20px;
+        font-size: 18px;
+        letter-spacing: -0.02em;
+    }
+
+
+    .topMenuElemet {
+        width: 40%;
+    }
+}
+
+@media (max-height: 780px) {
+    .topMenu {
+        height: 60px;
+
+    }
+}
+
 @media (max-width: 600px) {
     .title {
         line-height: 20px;
         font-size: 18px;
         letter-spacing: -0.02em;
     }
+
     .main {
         overflow-x: hidden;
         overflow-y: auto;
-        padding: 0 10px;
-        padding-top: 10px;
+        padding: 10px;
 
     }
 
@@ -145,8 +205,8 @@
         letter-spacing: -0.02em;
     }
 
-  
-    .topMenuElemet{
+
+    .topMenuElemet {
         width: 40%;
     }
 }

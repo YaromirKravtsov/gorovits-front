@@ -43,7 +43,8 @@ const OsenGriffMenu: FC<Props> = ({ record, leftBottomText, recordName }) => {
           }
         
           <BorderMenu className={style.longBlock}>
-            {leftBottomText.split('</br>').map(el => 
+            {leftBottomText.split('</br>')[0]} 
+            {leftBottomText.split('</br>').slice(1).map(el => 
               <>
               {el}
               <br />

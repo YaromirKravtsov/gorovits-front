@@ -3,6 +3,8 @@
     height: 74px;
     margin-bottom: 60px;
 }
+
+
 @media (max-width: 600px){
     .navBar{
       width: 340px;

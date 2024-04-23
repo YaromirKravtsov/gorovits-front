@@ -21,10 +21,16 @@
     color: #232323;
 }
 .noPullingButton{
-    width: 450px;
-    height: 60px;
+    width: 370px;
+    height: 38px;
+    font-size: 20px;
 }
 
+@media (max-width: 1500px) {
+    .noPullingText{
+        font-size: 20px;
+    }
+}
 
 
 @media (max-width: 600px) {
