@@ -31,7 +31,6 @@ const StringFlutterMenu: FC<Props> = (props) => {
     const [stringModel, setStringModel] = useState<string>('')
     const [stringManufacter, setStringManufacter] = useState<string>('');
     const [stringManufacterId, setStringManufacterId] = useState<number>(0);
-    const [racketModel, setRacketModel] = useState<string>('')
     const [image, setImage] = useState<string>('')
     const { setGlobalError } = useActions();
     const [manufactursOptions, setManufactursOptions] = useState<Option[]>([])
@@ -53,27 +52,29 @@ const StringFlutterMenu: FC<Props> = (props) => {
             try {
                 const { data } = await AdminSettingPageService.getRacketsManufactureres();
                 const options = mapOptions(data)
-                setManufactursOptions([...options, { label: 'Luxilon', value: options.length + 1 }])
+                setManufactursOptions([{ label: '', value: -1 },...options, { label: 'Luxilon', value: options.length + 1 }])
 
             } catch (error) {
                 setGlobalError(getErrorText(error))
             }
         }
         fetch();
-        if (props.action == 'edit' && props.string) {
-            const stringMan = props.string.name.split(' ')[0]
-            const manId = manufactursOptions.find(string => string.label == stringMan)?.value as number
-            setStringManufacter(stringMan); 
-            console.log(manId)
-            setStringManufacterId(manId)
-        }
+      
     }, [])
 
-    useEffect(()=>{
-        const stringMan = props.string?.name.split(' ')[0]
-        const manId = manufactursOptions.find(string => string.label == stringMan)?.value as number
-        setStringManufacterId(manId)
-    },[])
+    useEffect(() => {
+        if (props.action == 'edit' && stringModel !== '') {
+
+            const stringMan = stringModel.split(' ')[0];
+            const manId = manufactursOptions.find(option => option.label === stringMan)?.value;
+            if (typeof manId === 'number') {
+                setStringManufacterId(manId);
+                setStringModel(stringModel.split(' ').slice(1).join(' '));
+            } else {
+
+            }
+        }
+    }, [props.string, stringModel, manufactursOptions])
 
     //helpers
     const mapOptions = (data: RacketsManufactureres[]): Option[] => {
@@ -99,21 +100,22 @@ const StringFlutterMenu: FC<Props> = (props) => {
             const formData = new FormData();
             console.log(image.split(':')[0])
             const stringMan = manufactursOptions.find(string => string.value == stringManufacterId)
-            
-            formData.append('name', (stringManufacterId == 0? '':stringMan?.label + ' ' )+ stringModel)
-            const isEditidImg = image.split(':')[0] == 'http'
+
+            formData.append('name', (stringManufacterId == 0 ? '' : stringMan?.label + ' ') + stringModel)
+            const isEditidImg = image.split(':')[0] == 'http';
+            console.log(image)
             let file
-            if(!isEditidImg){
-            const blob = DataActions.base64ToBlob(image, 'image/png')
-            file = new File([blob], '1', {
-                type: 'image/png'
-            });
-        }
+            if (!isEditidImg) {
+                const blob = DataActions.base64ToBlob(image, 'image/png')
+                file = new File([blob], '1', {
+                    type: 'image/png'
+                });
+            }
             if (props.action == 'edit') {
                 formData.append('id', String(props.string?.id));
 
                 if (file && !isEditidImg) {
-                
+
                     formData.append('imageChanged', 'true');
                     formData.append('image', file);
 

@@ -6,6 +6,11 @@ import MyButton from "../../UI/MyButton/MyButton";
 import HoverEffect from "../../UI/HoverEffect/HoverEffect";
 import DimOverlay from "../../UI/DimOverlay/DimOverlay";
 import { DataActions } from "../../helpers/DataActions";
+import $api from "../../app/api/http";
+import { AxiosResponse } from "axios";
+import { useActions } from "../../hooks/useActions";
+import { getErrorText } from "../../helpers/FormDataGeneration";
+import Loader from "../../UI/Loader/Loader";
 
 interface Props {
     onCropDone: (img: string) => void;
@@ -19,12 +24,13 @@ const ImageCropper: FC<Props> = ({ onCropDone, aspect, className, internalImage 
     const [zoom, setZoom] = useState<number>(1);
     const [rotation, setRotation] = useState<number>(0);
     const [croppedArea, setCroppedArea] = useState<Area | null>(null);
-    console.log(internalImage)
+   
     const [image, setImage] = useState<string>(internalImage)
     const [isInCrop, setIsInCrop] = useState<boolean>()
     const onCropComplete = (croppedAreaPercentage: Area, croppedAreaPixels: Area) => {
         setCroppedArea(croppedAreaPixels);
     };
+    const [isLoading,setIsLoading] = useState<boolean>(false)
     useEffect(() => {
         DataActions.convertImageToBase64(internalImage,img =>{
             setImage(img)
@@ -38,7 +44,6 @@ const ImageCropper: FC<Props> = ({ onCropDone, aspect, className, internalImage 
         setIsInCrop(false)
         const imageObj1 = new Image();
         imageObj1.src = image;
-
         imageObj1.onload = function () {
             // Создаём канвас с размером исходного изображения для начала
             const canvasEl = document.createElement('canvas');
@@ -61,7 +66,6 @@ const ImageCropper: FC<Props> = ({ onCropDone, aspect, className, internalImage 
 
                 // Рисуем исходное изображение
                 context.drawImage(imageObj1, 0, 0);
-                console.log('dataUrl')
                 // Рисуем обрезанное изображение в новый канвас
                 const croppedCanvas = document.createElement('canvas');
                 croppedCanvas.width = imgCroppedArea.width;
@@ -76,11 +80,7 @@ const ImageCropper: FC<Props> = ({ onCropDone, aspect, className, internalImage 
 
                     const dataUrl = croppedCanvas.toDataURL('image/png');
 
-/* 
-                    const blob = DataActions.base64ToBlob(image, 'image/png')
-                    const file = new File([blob], '1', {
-                        type: 'image/png'
-                    }); */
+                    console.log(dataUrl)
                     console.log(dataUrl)
                     setImage(dataUrl);
                     onCropDone(dataUrl)
@@ -113,7 +113,32 @@ const ImageCropper: FC<Props> = ({ onCropDone, aspect, className, internalImage 
 
         inputRef.current?.click(); // Убедитесь, что inputRef.current существует перед вызовом click
     };
-    const [isHovered, setIsHovered] = useState<boolean>(false)
+    const [isHovered, setIsHovered] = useState<boolean>(false);
+    const {setGlobalError} = useActions()
+    const fetchRemoveBg = async() =>{
+        setIsLoading(true)
+        try{
+            const {data} = await $api.post('racket/remove-bg',{
+                base64Image: image
+            }) as AxiosResponse<string>;
+            console.log(data)
+            setImage(data);
+        }catch(error){
+            setGlobalError(getErrorText(error));
+            console.log(error)
+        }finally{
+            setIsLoading(false)
+        }
+    }
+
+
+    const handelAddPhoto = () =>{
+    
+        if (croppedArea) {
+            handelCropDone(croppedArea, rotation) 
+        }
+
+    }
     return (
         <>
             <HoverEffect setIsHovered={setIsHovered}>
@@ -162,6 +187,10 @@ const ImageCropper: FC<Props> = ({ onCropDone, aspect, className, internalImage 
             {isInCrop &&
                 <FlutterMenu shadow='all' className={style.editFlutter}>
                     <div className={style.cropperMain}>
+                        {isLoading?
+                        <Loader/>
+                        :
+                        <>
                         <Cropper
                             image={image}
                             aspect={aspect}
@@ -182,6 +211,8 @@ const ImageCropper: FC<Props> = ({ onCropDone, aspect, className, internalImage 
                                 }
                             }}
                         />
+                        </>
+                    }
                         <MyButton mode='black' onClick={rotateImage} className={style.rotate}>
                             <svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" className={style.rotateImg}>
                                 <g clip-path="url(#clip0_1109_173)">
@@ -196,11 +227,14 @@ const ImageCropper: FC<Props> = ({ onCropDone, aspect, className, internalImage 
                             </svg>
                         </MyButton>
                     </div>
+                    <MyButton mode='black' border onClick={fetchRemoveBg} className={style.rmbg}>
+                    Den Hintergrund entfernen
+                    </MyButton>
                     <div className={style.buttonsRow}>
                     <MyButton mode='white' border onClick={() => setIsInCrop(false)}>
                         Schließen
                     </MyButton>
-                    <MyButton mode='black' border onClick={() => { if (croppedArea) handelCropDone(croppedArea, rotation) }}>
+                    <MyButton mode='black' border onClick={handelAddPhoto}>
                     Hinzufügen
                     </MyButton>
                     </div>

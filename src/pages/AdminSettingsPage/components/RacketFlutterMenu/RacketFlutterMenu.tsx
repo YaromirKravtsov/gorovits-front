@@ -43,14 +43,14 @@ const RacketFlutterMenu: FC<Props> = (props) => {
         image: false
     })
     useEffect(() => {
-        if(props.racket?.imgLink !== '' &&props.racket?.imgLink){
+        if (props.racket?.imgLink !== '' && props.racket?.imgLink) {
             setImage(props.racket.imgLink)
         }
         const fetch = async () => {
             try {
                 const { data } = await AdminSettingPageService.getRacketsManufactureres();
                 setManufactursOptions(mapOptions(data))
-                
+
             } catch (error) {
                 setGlobalError(getErrorText(error))
             }
@@ -77,7 +77,7 @@ const RacketFlutterMenu: FC<Props> = (props) => {
             image: props.action == 'add' ? image == undefined : false
         }
         setErrors(errorsL)
-       
+
         return !Object.values(errorsL).some(error => error);
     }
     //== main
@@ -91,24 +91,21 @@ const RacketFlutterMenu: FC<Props> = (props) => {
             formData.append('name', racketModel)
             const isEditidImg = image.split(':')[0] == 'http'
             let file
-            if(!isEditidImg){
-            const blob = DataActions.base64ToBlob(image, 'image/png')
-            file = new File([blob], '1', {
-                type: 'image/png'
-            });
-        }
+            if (!isEditidImg) {
+                const blob = DataActions.base64ToBlob(image, 'image/png')
+                file = new File([blob], '1', {
+                    type: 'image/png'
+                });
+            }
             if (props.action == 'edit') {
-                formData.append('id', String(props.racket?.id));
-
+                console.log(props.racket?.id)
+                formData.append('modelId', String(props.racket?.id));
                 if (file && !isEditidImg) {
-                
                     formData.append('imageChanged', 'true');
                     formData.append('image', file);
-
                 } else {
                     formData.append('imageChanged', 'false');
                 }
-
             } else {
                 if (file)
                     formData.append('image', (file))
@@ -165,15 +162,15 @@ const RacketFlutterMenu: FC<Props> = (props) => {
                     </InputRow>
                     <CheckBox text='als Testschläger im Sortiment' setIsChecked={setIsToTest} />
                     <div className={`${style.photoSelect} ${errors.image && style.photoSelectError}`}>
-          
 
-                    <ImageCropper
+
+                        <ImageCropper
                             onCropDone={setImage}
-                            aspect ={2.75}
+                            aspect={2.75}
                             className={style.imageCropper}
-                            internalImage ={image}
+                            internalImage={image}
                         />
-             
+
 
                     </div>
                 </div>
