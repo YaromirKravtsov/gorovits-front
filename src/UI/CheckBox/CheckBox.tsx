@@ -1,17 +1,23 @@
-import React, { FC, useState } from 'react'
+import React, { FC, useEffect, useState } from 'react'
 import style from './CheckBox.module.css';
 interface Props{
     setIsChecked: (value: boolean) => void,
     text: string,
-    className?:string
+    className?:string,
+    isChecked?: boolean
 }
 const CheckBox:FC<Props> = (props) => {
+
+
     const [isChecked, setIsChecked] = useState<boolean>(false);
     const handleCheckboxChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setIsChecked(event.target.checked);
         props.setIsChecked(event.target.checked)
     };
-
+    useEffect(()=>{
+        if(props.isChecked)
+        setIsChecked(props.isChecked)
+    },[props.isChecked])
     return (
         <div className={`${props.className} ${style.isToTestRow}`}>
             <div className={style.checkboxContainer}>

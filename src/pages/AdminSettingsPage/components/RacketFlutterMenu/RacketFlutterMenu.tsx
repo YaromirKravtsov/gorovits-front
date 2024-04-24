@@ -160,7 +160,7 @@ const RacketFlutterMenu: FC<Props> = (props) => {
                             setError={value => setErrors(prev => ({ ...prev, racketModel: value }))}
                         />
                     </InputRow>
-                    <CheckBox text='als Testschläger im Sortiment' setIsChecked={setIsToTest} />
+                    <CheckBox text='als Testschläger im Sortiment' setIsChecked={setIsToTest} isChecked ={isToTest}/>
                     <div className={`${style.photoSelect} ${errors.image && style.photoSelectError}`}>
 
 
