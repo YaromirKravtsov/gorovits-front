@@ -7,6 +7,12 @@
     display: flex;
     justify-content: space-between;
 }
+@media (max-width: 1500px) {
+/*     .button{
+        width: 300px;
+        height: 45px;
+    } */
+}
 @media (max-width: 600px) {
     .buttonRow{
         flex-direction: column;

@@ -33,8 +33,7 @@ const SearchKundenPage = () => {
       const fetch = async() =>{
         try{
           setIsLoading(true)
-          const {data} =  await SearchKundenService.findUsers('all-all-all-all');
-  
+          const {data} =  await SearchKundenService.findUsers('');
           setUserList(data)
           setIsLoading(false)
       }catch(e){

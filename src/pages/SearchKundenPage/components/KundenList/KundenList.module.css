@@ -1,53 +1,56 @@
-.main{
+.main {
     width: 100%;
     height: 100%;
     overflow-y: auto;
     display: flex;
     flex-direction: column;
-    row-gap: 30px;
-/*     border: 1px solid #000; */
+    row-gap: 20px;
+    /*     border: 1px solid #000; */
 }
-.gradientBlock{
+ 
+.gradientBlock {
     cursor: pointer;
-     width: 100%;
-     height: 100px;
-     display: flex;
-     flex-direction: row;
-     justify-content: space-between;
-     padding: 20px;
+    width: 100%;
+    height: 80px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 20px;
 
     font-family: 'Poppins';
     font-style: normal;
     font-weight: 500;
-    font-size: 24px;
+    font-size: 20px;
     line-height: 27px;
     color: #FFFFFF;
-
-
 }
-.block{
-    width: 31%;
+
+.block {
+    width: 32%;
     height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
 }
-.error{
+
+.error {
     font-family: 'Poppins';
     font-style: normal;
     font-weight: 500;
     font-size: 24px;
     line-height: 27px;
     color: #232323;
-
 }
 
-@media (max-width: 1400px){
-    .gradientBlock{
-        height: 90px;
-    } 
-    .block{
-        font-size: 20px;
+@media (max-width: 1400px) {
+    .gradientBlock {
+        height: 60px;
+        padding: 15px;
+        border-radius: 20px;
+    }
+
+    .block {
+        font-size: 18px;
         overflow-wrap: anywhere;
         text-align: center;
         padding: 10px;

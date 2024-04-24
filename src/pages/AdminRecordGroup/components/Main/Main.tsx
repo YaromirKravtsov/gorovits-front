@@ -7,9 +7,10 @@ import style from './Main.module.css'
 import MyButton from '../../../../UI/MyButton/MyButton'
 import AdminCommentBlock from '../AdminCommentBlock/AdminCommentBlock'
 import AdminRecordCard from '../AdminRecordCard/AdminRecordCard'
+import PDFLib from 'pdf-lib';
 const Main = () => {
     const { recordGroup, isLoading } = useTypedSelector(state => state.recordGroup)
-
+  
     return (
         <div>
             {
@@ -28,7 +29,7 @@ const Main = () => {
                                             </>
                                         )}
                                 </div>
-
+                                
                                 <AdminCommentBlock />
                             </>
                         }

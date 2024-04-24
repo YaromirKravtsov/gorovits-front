@@ -47,4 +47,15 @@ export default class FormatDate {
         const formattedDate = `${year}-${month}-${day}T${hours}:${minutes}`;
         return formattedDate;
     }
+
+    static wrapText(lines: string[]): string {
+        let wrappedText = '';
+      
+        for (let i = 0; i < lines.length; i++) {
+          const line = lines[i];
+          wrappedText += line + '\n';
+        }
+      
+        return wrappedText;
+      }
 }

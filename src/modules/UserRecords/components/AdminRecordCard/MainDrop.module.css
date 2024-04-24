@@ -1,7 +1,7 @@
 .gradient{
     display: flex;
     flex-direction: row;
-    height: 100px;
+    height: 80px;
     padding: 20px;
     align-items: center;
     justify-content: space-between;
@@ -19,8 +19,8 @@
 
     font-family: 'Montserrat';
     font-style: normal;
-    font-weight: 600;
-    font-size: 23px;
+    font-weight: 500;
+    font-size: 20px;
     line-height: 28px;
     color: #FFF;
 }
@@ -39,10 +39,13 @@
 
 @media (max-width: 1400px) {
     .gradient{
-        height: 90px;
+        height: 60px;
+        padding: 15px;
+        border-radius: 20px;
+     
     }
     .borderBlock{
         
-        font-size: 20px;
+        font-size: 18px;
     }
 }
