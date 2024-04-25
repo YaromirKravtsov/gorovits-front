@@ -12,5 +12,17 @@ export default class AuthService{
     static async logout(): Promise<AxiosResponse<AuthResponse>>{
         return $api.post('users/logout');
     }
+    static async getIsNew(id:number): Promise<AxiosResponse<boolean>>{
+        return $api.get(`users/is-new`,{
+            params:{
+                userId: id
+        }});
+    }
+    static async setIsNewUser(id:number): Promise<AxiosResponse<boolean>>{
+        return $api.put(`users/is-new`,{
+            
+                userId: id
+        });
+    }
 }
 

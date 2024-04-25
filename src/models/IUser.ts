@@ -3,7 +3,7 @@ export interface IUser{
     userId:number;
     fullName: string;
     email?:string;
-    /* photoLink: string; */
+    isNew?: boolean
    
     phoneNumber?: string;
 }

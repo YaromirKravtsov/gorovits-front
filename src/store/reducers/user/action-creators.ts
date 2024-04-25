@@ -21,11 +21,13 @@ export const UserActionCreators = {
     getUserInfo: (userId:number) => async (dispatch: AppDispatch) =>{
         try{
             const {data} = await UserInfoService.getUserInfo(userId)
+            console.log(data)
             const userData: IUser = {
                 fullName: data.fullName,
                 userId: data.id,
                 email: data.email,
                 phoneNumber: data.phoneNumber,
+        
             }
             dispatch(UserActionCreators.setUserPhoto(data.photoLink));
             dispatch(UserActionCreators.setUser(userData));

@@ -1,0 +1,94 @@
+.flutter {
+    width: 700px;
+    height: 420px;
+    padding: 20px 40px;
+    display: flex;
+    flex-direction: column;
+}
+
+.title {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 32px;
+    text-align: center;
+    color: #232323;
+}
+.mainText{
+    margin-top: 15px;
+    height: 50%;
+    overflow-y: auto;
+
+}
+.subTitle{
+    margin-top: 5px;
+    width: 100%;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 32px;
+
+    color: #232323;
+}
+
+.text{
+    width: 100%;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 16px;
+
+    color: #232323;
+}
+ul > li{
+    width: 100%;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 16px;
+
+    color: #232323;
+}
+
+.firstCheck{
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.button{
+    margin: 0 auto;
+    margin-top: auto;
+}
+
+@media (max-width: 745px){
+    .flutter{
+        width: 90vw;
+        height: auto;
+        padding: 15px;
+    }
+    .firstCheck div{
+        font-size: 14px;
+    }
+    .mainText{
+        height: 200px;
+        margin-top: 10px;
+    }
+    ul > li,.text{
+        font-size: 16px;
+    }
+    .subTitle{
+        font-size: 18px;
+    }
+    .button{
+        margin: 0 auto;
+        margin-top: auto;
+        width: 100%;
+        height: 40px;
+        font-size: 18px;
+    }
+
+}

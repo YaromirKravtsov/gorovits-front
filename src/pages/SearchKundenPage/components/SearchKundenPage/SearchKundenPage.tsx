@@ -37,7 +37,7 @@ const SearchKundenPage = () => {
           setUserList(data)
           setIsLoading(false)
       }catch(e){
-          setIsLoading(false)
+          setIsLoading(false);
           console.log(e)
           setGlobalError(getErrorText(e))
       }  

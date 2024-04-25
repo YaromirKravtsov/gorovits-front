@@ -11,6 +11,7 @@ export interface GetUserInfoResponse{
     fullName:string;
     photoLink:string;
     phoneNumber:string;
+    isNew: boolean
 }
 
 
