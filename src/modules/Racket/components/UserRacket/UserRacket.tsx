@@ -31,10 +31,8 @@ const UserRacket: FC<Props> = ({ racket }) => {
         </BorderMenu>
         </div>
         <div className={style.imageBlock}>
-          <MyImage alt='' src={racket.pulling.string.imgLink} className={style.stringImage} />
+          <MyImage alt='' src={racket?.racketModel?.imgLink || ''} className={style.stringImage} />
           <MyImage alt='' src={racket?.racketModel?.imgLink || ''} className={style.racketgImage} />
-
-
         </div>
         <BorderMenu className={style.borderBlock}>
           <div className={style.borderBlockTitle}>Tuning</div>
