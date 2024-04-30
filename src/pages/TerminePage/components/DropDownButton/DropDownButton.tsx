@@ -44,7 +44,9 @@ const DropDownButton: FC<Props> = (props) => {
     <div>
 
 
-      <MyButton onClick={() => handleClick()} className={`${style.button} ${props.className}`} mode='black'>{props.title} <MyImage alt='arrow' src={arrow} className={`${style.arrow} ${isOpen && style.grad}`} /> </MyButton>
+      <MyButton onClick={() => handleClick()} className={`${style.button} ${props.className}`} mode='black'>{props.title} 
+      <MyImage alt='arrow' src={arrow} className={`${style.arrow} ${isOpen && style.grad}`} /> 
+      </MyButton>
       {isOpen &&
         <div className={`${style.dropDownList} ${props.className}`}>
           {props.options.map((option, index) =>

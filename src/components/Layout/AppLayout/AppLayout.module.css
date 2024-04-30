@@ -9,10 +9,11 @@
 
 }
 .navBar{
-  width: 450px;
-  min-width: 450px;
+  width: 350px;
+  min-width: 350px;
   left: 0 !important; /* Убираем !important */
   z-index: 100;
+  row-gap: 20px;
 }
 .openNavBar{
   left: 0 !important;

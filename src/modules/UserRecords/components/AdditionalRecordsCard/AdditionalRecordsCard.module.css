@@ -1,29 +1,33 @@
 .mainBlock{
     width: 100%;
-    height: 115px;
+    height: 80px;
+    min-height: 80px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    padding: 20px;
+    padding: 15px;
 }
 
+.leftBlock,.centerBlock,.button{
+    width: 30%;
+    height: 100%;
+}
 .leftBlock{
-    width: 425px;
-    height: 60px;
+
+
     display: flex;
     justify-content: center;
     align-items: center;
     font-family: 'Montserrat';
     font-style: normal;
     font-weight: 600;
-    font-size: 23px;
+    font-size: 20px;
     line-height: 28px;
 
 }
 .centerBlock{
-    width: 435px;
-    height: 60px;
+  
 
     display: flex;
     justify-content: center;
@@ -31,13 +35,13 @@
     font-family: 'Montserrat';
     font-style: normal;
     font-weight: 600;
-    font-size: 23px;
+    font-size: 20px;
     line-height: 28px;
     color: #ffff;
 }
 .button{
     width: 325px;
-    height: 65px;
+height: 100%;
 }
 
 
@@ -66,6 +70,6 @@
         width: 100%;
         height: 45px;
         margin-top: auto;
-        font-size: 20px !important;
+        font-size: 16px !important;
     }
 }

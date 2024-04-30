@@ -22,12 +22,7 @@ const TopMenu = () => {
         })
 
     }
-    const checkout = async () => {
-        (recordGroup as GroupedRecords).records.forEach(async record => {
-            await updateGroupRecordState(record.id, -1);
-            navigate('/current-orders')
-        })
-    }
+  
     return (
         <div className={style.topMenu}>
              <ButtonsList record={(recordGroup as GroupedRecords)} type='group'/>

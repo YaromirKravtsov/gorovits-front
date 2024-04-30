@@ -7,16 +7,15 @@
 }
 
 .topMenu {
-    max-height: 105px;
-    height: 105px;
+    max-height: 70px;
+    height: 70px;
     width: 100%;
     display: flex;
     flex-direction: row;
-    border-bottom: 4px solid #232323;
+    border-bottom: 2px solid #232323;
     align-items: center;
     padding: 0 40px;
     justify-content: center;
-
 }
 
 .flex {
@@ -29,11 +28,10 @@
     flex-direction: row;
     align-items: center;
     column-gap: 20px;
-    /*   min-width: 240px; */
     font-family: "Montserrat", sans-serif;
     font-style: normal;
     font-weight: 600;
-    font-size: 27px;
+    font-size: 24px;
     line-height: 32px;
     color: #232323;
 }
@@ -123,6 +121,7 @@
 @media (max-width: 1180px) {
     .main {
         width: 100vw;
+   
     }
 
     .topMenu {

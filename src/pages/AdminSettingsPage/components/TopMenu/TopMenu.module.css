@@ -6,6 +6,9 @@
 }
 .button{
     width: 300px;
+    height: 40px;
+    font-size: 20px;
+    font-weight: normal;
 }
 .logOutIcon{
 /*     margin-left: 30px; */

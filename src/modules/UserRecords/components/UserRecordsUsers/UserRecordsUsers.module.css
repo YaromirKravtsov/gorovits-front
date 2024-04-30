@@ -1,10 +1,10 @@
 .recordRow{
-    margin-top: 40px;
+    margin-top: 20px;
     display: flex;
     flex-direction: column;
     row-gap: 20px;
-    overflow-y: auto;
-    max-height: 700px;
+    overflow: initial;
+    max-height: 100%;
 }
 
 

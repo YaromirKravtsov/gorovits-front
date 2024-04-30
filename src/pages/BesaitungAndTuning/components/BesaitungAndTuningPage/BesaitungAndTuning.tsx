@@ -1,8 +1,8 @@
 import React from 'react'
-import Racket from '../../../../modules/Racket/components/Racket/Racket'
 import PageLayout from '../../../../components/Layout/PageLayout/PageLayout'
 import { Helmet } from 'react-helmet'
 import style from './BesaitungAndTuning.module.css'
+import UserRacketsRow from '../../../../modules/Racket/components/UserRacketsRow/UserRacketsRow'
 const BesaitungAndTuning = () => {
   
   const querstionText = `
@@ -14,7 +14,7 @@ const BesaitungAndTuning = () => {
       <title>Besaitung & Tuninng</title>
     </Helmet>
     <PageLayout  title = 'Besaitung & Tuninng' questionMarkText={querstionText} mainStyle={style.main}>
-        <Racket mode='user'/>
+        <UserRacketsRow/>
         </PageLayout>
     </>
   )

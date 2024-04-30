@@ -55,6 +55,25 @@ export class DataActions{
                 console.error('Error fetching and parsing the image', error);
             });
     }
-  
+    
+    static async checkImageAvailability(imageUrl:string) {
+        try {
+          const response = await fetch(imageUrl);
+          if (response.ok) {
+            // Если запрос успешен, но ответ пустой
+            if (response.status === 204 || response.status === 205) {
+              return false; // Изображение не доступно
+            } else {
+              return true; // Изображение доступно
+            }
+          } else {
+            return false; // Ошибка загрузки изображения
+          }
+        } catch (error) {
+          console.error('Ошибка загрузки изображения:', error);
+          return false; // Ошибка загрузки изображения
+        }
+      }
+      
     
 }

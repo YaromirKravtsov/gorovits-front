@@ -14,6 +14,7 @@ interface SidebarItemProps {
     onClick?: () => void; // Обновленный тип пропа onClick
     imgText?: string;
     profileImage?:string;
+    imageClassName?: string
 }
 
 const SidebarItem: FC<SidebarItemProps> = (props) => {
@@ -31,10 +32,10 @@ const SidebarItem: FC<SidebarItemProps> = (props) => {
         <Link to={props.rout} className={`${style.item} ${activeClass}`} onClick={ handelClick}>
              {props.profileImage ?
                 <div className={style.profileImage}>
-                     <MyImage src={`${props.profileImage}`} alt={props.text} className={`${style.profilePhoto}`}/>
+                     <MyImage src={`${props.profileImage}`} alt={props.text} className={`${style.profilePhoto} `}/>
                 </div>
                 :
-            <MyImage src={props.src} alt={props.text}  className={style.image}/>
+            <MyImage src={props.src} alt={props.text}  className={`${style.image} ${props.imageClassName}`}/>
             }
           
            

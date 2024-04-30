@@ -1,6 +1,6 @@
 .recordCard{
     width: 100%;
-    min-height: 235px;
+    min-height: 240px;
     height: 235px;
     padding: 25px;
     display: flex;
@@ -28,7 +28,7 @@
     color: #FFFFFF;
 }
 .rightTopBlock{
-    width: 325px;
+    width: 360px;
     height: 65px;
     font-family: 'Roboto';
     font-style: normal;
@@ -44,7 +44,7 @@
     align-items: center;
 }
 .button{
-    width: 325px;
+    width: 360px;
     height: 65px;
 }
 @media (max-width: 1520px) {

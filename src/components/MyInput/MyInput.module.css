@@ -13,9 +13,9 @@
     line-height: 20px;
     color: #232323;
 }
-/* .input::placeholder{
-    color: ;
-} */
+.input::placeholder{
+    color: rgba(24, 24, 24, 0.5);
+}
 .passwordInput {
  
     margin: 0 !important;;

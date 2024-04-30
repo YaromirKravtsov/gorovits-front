@@ -13,8 +13,8 @@
 }
 
 .image {
-    width: 40px;
-    height: 40px;
+    width: 30px;
+    height: 30px;
 
 }
 
@@ -22,12 +22,12 @@
     display: flex;
     align-items: center;
     flex-direction: row;
-    margin-left: 15px;
+    margin-left: 7px;
 
-    font-family: 'Roboto';
+    font-family: 'Poppins';
 
-    font-weight: 400;
-    font-size: 24px;
+    font-weight: 300;
+    font-size: 18px;
     line-height: 23px;
     color: #FFFFFF;
 
@@ -36,8 +36,8 @@
 
 .profileImage {
     overflow: hidden;
-    width: 40px;
-    height: 40px;
+    width: 30px;
+    height: 30px;
     border-radius: 100%;
     background-color: #FFFFFF;
     display: flex;

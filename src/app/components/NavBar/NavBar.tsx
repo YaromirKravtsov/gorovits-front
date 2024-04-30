@@ -3,7 +3,7 @@ import React, { FC, LegacyRef, useEffect, useState } from 'react'
 
 import logo from '../../../assets/images/logo.png'
 import style from './NavBar.module.css'
-import ptIcon from '../../../assets/images/pulling-tunning-icon.png'
+import ptIcon from '../../../assets/images/tennistachse.png'
 import newUserIcon from '../../../assets/images/admin/new-user-icon.png'
 import termineIcon from '../../../assets/images/termine-icon.png'
 import { RouteNames } from '../../router'
@@ -38,8 +38,9 @@ const NavBar: FC<Props> = ({setWidth,className,setHeight}) => {
       <MyImage src={logo} alt='Gorovits logo'  className={style.logo} />
       {role == 'user' &&
         <>
-          <SidebarItem text='Besaitung & Tuninng' src={ptIcon} rout={RouteNames.BESAITUNG_AND_TUNING}
+          <SidebarItem text='Tennistasche' src={ptIcon} rout={RouteNames.BESAITUNG_AND_TUNING}
             isActive={navBarActiveItem === '/besaitung-tuning'}
+            imageClassName = {style.rackets}
           />
           <SidebarItem text='Termine' src={termineIcon} rout={RouteNames.TERMINE}
             isActive={navBarActiveItem === '/termine'}

@@ -34,7 +34,7 @@
     font-weight: 400;
     font-size: 18px;
     line-height: 20px;
-    color: rgba(24, 24, 24, 0.3);
+    color: rgba(24, 24, 24, 0.5);
     
 }
 .optionList{
@@ -44,7 +44,7 @@
     width: 100%;
     max-height: 330px;
     background: #FFFFFF;
-    border: 2px solid #232323;
+    border: 1px solid #232323;
     border-radius: 8px;
     padding: 15px 0px;
     display: flex;
@@ -62,7 +62,7 @@
     font-style: normal;
     font-weight: 400;
     font-size: 18px;
-    line-height: 20px;
+    line-height: 18px;
     color: #232323;
     cursor: pointer;
 
@@ -78,7 +78,7 @@
     font-family: 'Poppins';
     font-style: normal;
     font-weight: 400;
-    font-size: 20px;
+    font-size: 18px;
     line-height: 20px;
     color: #232323;
     margin-bottom: 5px;

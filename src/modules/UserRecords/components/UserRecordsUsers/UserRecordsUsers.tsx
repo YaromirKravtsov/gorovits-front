@@ -18,9 +18,7 @@ const UserRecordsUsers:FC = () => {
     },[])
   return (
     <div className={style.recordRow}>
-
       {
-        
         isRecordsLoading?
         <Loader/>
         :
@@ -36,8 +34,6 @@ const UserRecordsUsers:FC = () => {
       }
         </>
       }
-      
-
     </div>
   )
 }

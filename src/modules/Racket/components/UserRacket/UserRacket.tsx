@@ -1,4 +1,4 @@
-import React, { FC, useEffect } from 'react';
+import React, { FC, useEffect, useState } from 'react';
 import style from './UserRacket.module.css';
 import { useActions } from '../../../../hooks/useActions';
 import { useTypedSelector } from '../../../../hooks/useTypedSelector';
@@ -10,6 +10,8 @@ import MyButton from '../../../../UI/MyButton/MyButton';
 import { useNavigate } from 'react-router-dom';
 import MyImage from '../../../../UI/MyImage/MyImage';
 import { ITuningRecord } from '../../../../models/IRecord';
+import racketIcon from '../../../../assets/images/racket-icon.png'
+import { DataActions } from '../../../../helpers/DataActions';
 interface Props {
   racket: IRacket,
 }
@@ -17,22 +19,34 @@ interface Props {
 
 const UserRacket: FC<Props> = ({ racket }) => {
   const navigate = useNavigate();
+  const [isRacketAvalivle, setIsRacketAvalivle] = useState<boolean>(true)
+  const [isStringAvalivle, setIsStringAvalivle] = useState<boolean>(true)
+
+
+  useEffect(()=>{
+    const fetch = async () =>{
+      setIsRacketAvalivle(await DataActions.checkImageAvailability(racket?.racketModel?.imgLink))
+      setIsStringAvalivle(await DataActions.checkImageAvailability(racket?.pulling.string.imgLink))
+    }
+    fetch()
+  },[])
   return (
     <div className={style.racket}>
       <GradientBlackBlock className={style.racketBlock}>
-      <div style ={{textAlign:'center'}}>
-        <div className={style.racketNumber}>Schläger Nr. {racket.number}</div>
-        <div className={style.racketCode}>{racket.code}</div>
-        <BorderMenu className={style.borderBlock}>
-          <div className={style.borderBlockTitle}>Besaitet</div>
-          <div className={style.borderBlockSubTitle}>{RecordHeler.formatStringHardnes(racket.pulling.stringHardness)}</div>
-          <div className={style.borderBlockStrings}>{RecordHeler.formatStringsName(racket.pulling.longString, racket.pulling.crossString)}</div>
-          <MyButton mode='white' className={style.RacketButton} onClick={() => navigate(`/besaitungsverlauf-für-Schläger?id=${racket.id}&number=${racket.number}`)}>Verlauf</MyButton>
-        </BorderMenu>
+        <div style={{ textAlign: 'center' }}>
+          <div className={style.racketNumber}>Schläger Nr. {racket.number}</div>
+          <div className={style.racketCode}>{racket.code}</div>
+          <BorderMenu className={style.borderBlock}>
+            <div className={style.borderBlockTitle}>Besaitet</div>
+            <div className={style.borderBlockSubTitle}>{RecordHeler.formatStringHardnes(racket.pulling.stringHardness)}</div>
+            <div className={style.borderBlockStrings}>{RecordHeler.formatStringsName(racket.pulling.longString, racket.pulling.crossString)}</div>
+            <MyButton mode='white' className={style.RacketButton} onClick={() => navigate(`/besaitungsverlauf-für-Schläger?id=${racket.id}&number=${racket.number}`)}>Verlauf</MyButton>
+          </BorderMenu>
         </div>
         <div className={style.imageBlock}>
-          <MyImage alt='' src={racket?.racketModel?.imgLink || ''} className={style.stringImage} />
-          <MyImage alt='' src={racket?.racketModel?.imgLink || ''} className={style.racketgImage} />
+          <MyImage alt='Es gab ein Problem beim Laden des Bildes ' src={isRacketAvalivle?  racket?.pulling.string.imgLink: ''} className={style.stringImage} />
+          <MyImage alt='Es gab ein Problem beim Laden des Bildes ' src={isRacketAvalivle?  racket?.racketModel?.imgLink: ''} className={style.racketgImage} />
+
         </div>
         <BorderMenu className={style.borderBlock}>
           <div className={style.borderBlockTitle}>Tuning</div>

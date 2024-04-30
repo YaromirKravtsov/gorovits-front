@@ -13,7 +13,14 @@ const QuestionMark:FC<QuestionMark> = ({text,droPosition = 'bottom-left',size ='
   const [isOpen,setIsOpen] = useState<boolean>()
   return (
     <div>
-        <RoundIconButton imageClassName = {`${size == 'small' && style.smallIcon}`}className ={`${style.icon} ${size == 'small'? style.small:''}`} src = {questionIcon} onClick = {()=>setIsOpen(!isOpen) }onMouseOut={()=>setIsOpen(true)} onMouseLeave={()=>setIsOpen(false)} />
+        <div  className ={`${style.icon} ${size == 'small'? style.small:''}`} 
+        onClick = {()=>setIsOpen(!isOpen) }onMouseOut={()=>setIsOpen(true)} 
+        onMouseLeave={()=>setIsOpen(false)}
+        onMouseEnter={()=>setIsOpen(true)}
+        >
+          
+          <img src = {questionIcon} className={`${size == 'small' ? style.smallIcon : style.iconImg}`} alt="" />
+        </div>
          <div className={`${style.textBlock} ${isOpen? style.open : ''} ${droPosition == 'bottom-right' ?style.bottomRight: ''}`} >
             {text}
          </div>

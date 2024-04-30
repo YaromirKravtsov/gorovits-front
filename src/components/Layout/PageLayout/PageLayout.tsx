@@ -15,8 +15,8 @@ interface PageLayoutProps {
 }
 
 const PageLayout: FC<PageLayoutProps> = (props) => {
-  const { setIsNavOpen, setWindowWidth, setWindowHight } = useActions()
-  const {isNavOpen,windowHeight} = useTypedSelector(state => state.adaptive)
+  const { setIsNavOpen } = useActions()
+  const {isNavOpen} = useTypedSelector(state => state.adaptive)
 
   const onClick = () =>{
     setIsNavOpen(!isNavOpen)
@@ -24,34 +24,14 @@ const PageLayout: FC<PageLayoutProps> = (props) => {
   const topMenu = useRef<HTMLDivElement>(null);
   const main = useRef<HTMLDivElement>(null);
   
-  const [mainHeight, setMainHeight] = useState<number>();
+
   const location = useLocation()
 
 
-  const [key, setKey] = useState(0);
-  useEffect(() => {
-    main.current?.addEventListener('scroll', handleScroll);
-    if (main.current && topMenu.current) {
-      setMainHeight(windowHeight - topMenu.current.offsetHeight);
-    }
-    return () => {
-      main.current?.removeEventListener('scroll', handleScroll);
-    };
-  }, []);
+
 
 
   const [isLoading, setIsLoading] = useState(false);
-  const handleScroll = () => {
-    if (main.current&&main.current?.scrollTop <= -150) {
-      setIsLoading(true);
-      setKey(prevKey => prevKey + 1); 
-      setTimeout(()=>{
-        setIsLoading(false);
-      },500)
-    }else{
-      setIsLoading(false);
-    }
-  };
 
   return (
     <div className={style.component}>
@@ -70,7 +50,7 @@ const PageLayout: FC<PageLayoutProps> = (props) => {
 
         </div>
       </div>
-      <div className={`${style.main} ${props.mainStyle}`} ref = {main} style={{height: mainHeight }}>
+      <div className={`${style.main} ${props.mainStyle}`} ref = {main} style={{height: `calc(100vh - ${topMenu?.current?.offsetHeight}px)` }}>
         {isLoading&&<Loader size='small'/>}
         {!isLoading && 
            <> {props.children}</>
