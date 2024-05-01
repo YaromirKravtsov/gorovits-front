@@ -27,7 +27,7 @@ const UserRacket: FC<Props> = ({ racket }) => {
     const fetch = async () => {
 
       setIsRacketAvalivle(await DataActions.checkImageAvailability(racket?.racketModel?.imgLink) && racket?.racketModel?.imgLink !== null)
-      setIsStringAvalivle(await DataActions.checkImageAvailability(racket?.pulling?.string?.imgLink) && racket?.racketModel?.imgLink !== null)
+      setIsStringAvalivle(await DataActions.checkImageAvailability(racket?.pulling?.string?.imgLink) && racket?.pulling?.string?.imgLink !== null)
     }
     fetch()
   }, [])
@@ -47,12 +47,12 @@ const UserRacket: FC<Props> = ({ racket }) => {
         <div className={style.imageBlock}>
           <MyImage
             alt='Es gab ein Problem beim Laden des Bildes'
-            src={racket?.pulling.string?.imgLink ? racket?.pulling.string.imgLink : ''}
+            src={racket?.pulling.string?.imgLink ? racket?.pulling.string?.imgLink : ''}
             className={style.stringImage}
           />
           <MyImage
             alt='Es gab ein Problem beim Laden des Bildes'
-            src={racket?.racketModel?.imgLink ? racket?.racketModel.imgLink : ''}
+            src={racket?.racketModel?.imgLink ? racket?.racketModel?.imgLink : ''}
             className={style.racketgImage}
           />
 
