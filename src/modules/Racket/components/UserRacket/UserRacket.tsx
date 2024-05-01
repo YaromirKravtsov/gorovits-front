@@ -23,15 +23,15 @@ const UserRacket: FC<Props> = ({ racket }) => {
   const [isStringAvalivle, setIsStringAvalivle] = useState<boolean>(true)
 
 
-  useEffect(()=>{
-    const fetch = async () =>{
+  useEffect(() => {
+    const fetch = async () => {
       console.log(racket?.pulling.string.imgLink);
       console.log(racket?.racketModel?.imgLink)
       setIsRacketAvalivle(await DataActions.checkImageAvailability(racket?.racketModel?.imgLink) && racket?.racketModel?.imgLink !== null)
       setIsStringAvalivle(await DataActions.checkImageAvailability(racket?.pulling.string.imgLink) && racket?.racketModel?.imgLink !== null)
     }
     fetch()
-  },[])
+  }, [])
   return (
     <div className={style.racket}>
       <GradientBlackBlock className={style.racketBlock}>
@@ -46,8 +46,17 @@ const UserRacket: FC<Props> = ({ racket }) => {
           </BorderMenu>
         </div>
         <div className={style.imageBlock}>
-          <MyImage alt='Es gab ein Problem beim Laden des Bildes' src={isStringAvalivle ? racket?.pulling.string.imgLink: ''} className={style.stringImage} />
-          <MyImage alt='Es gab ein Problem beim Laden des Bildes' src={isRacketAvalivle ? racket?.racketModel?.imgLink: ''} className={style.racketgImage} />
+          <MyImage
+            alt='Es gab ein Problem beim Laden des Bildes'
+            src={racket?.pulling.string?.imgLink ? racket?.pulling.string.imgLink : ''}
+            className={style.stringImage}
+          />
+          <MyImage
+            alt='Es gab ein Problem beim Laden des Bildes'
+            src={racket?.racketModel?.imgLink ? racket?.racketModel.imgLink : ''}
+            className={style.racketgImage}
+          />
+
         </div>
         <BorderMenu className={style.borderBlock}>
           <div className={style.borderBlockTitle}>Tuning</div>
