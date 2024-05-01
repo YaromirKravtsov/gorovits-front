@@ -44,9 +44,8 @@ const UserRacket: FC<Props> = ({ racket }) => {
           </BorderMenu>
         </div>
         <div className={style.imageBlock}>
-          <MyImage alt='Es gab ein Problem beim Laden des Bildes ' src={isRacketAvalivle?  racket?.pulling.string.imgLink: ''} className={style.stringImage} />
-          <MyImage alt='Es gab ein Problem beim Laden des Bildes ' src={isRacketAvalivle?  racket?.racketModel?.imgLink: ''} className={style.racketgImage} />
-
+          <MyImage alt='Es gab ein Problem beim Laden des Bildes' src={isStringAvalivle ? racket?.pulling.string.imgLink: ''} className={style.stringImage} />
+          <MyImage alt='Es gab ein Problem beim Laden des Bildes' src={isRacketAvalivle ? racket?.racketModel?.imgLink: ''} className={style.racketgImage} />
         </div>
         <BorderMenu className={style.borderBlock}>
           <div className={style.borderBlockTitle}>Tuning</div>
