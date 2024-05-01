@@ -27,7 +27,7 @@ const UserRacket: FC<Props> = ({ racket }) => {
     const fetch = async () => {
 
       setIsRacketAvalivle(await DataActions.checkImageAvailability(racket?.racketModel?.imgLink) && racket?.racketModel?.imgLink !== null)
-      setIsStringAvalivle(await DataActions.checkImageAvailability(racket?.pulling.string.imgLink) && racket?.racketModel?.imgLink !== null)
+      setIsStringAvalivle(await DataActions.checkImageAvailability(racket?.pulling?.string?.imgLink) && racket?.racketModel?.imgLink !== null)
     }
     fetch()
   }, [])
