@@ -1,30 +1,37 @@
 .recordBlock {
     width: 100%;
-    height: 190px;
-    min-height: 190px;
-    padding: 15px 35px;
-    display: grid;
-    grid-template-columns: 90% 10%;
+/*     max-width: calc(100vw - 400px); */
+    height: 115px;
+    min-height: 115px;
 
+    display: flex;
+    flex-direction: row;
 }
 
 .mainRow {
-    min-width: 100%;
+
+    min-width: 90%;
     width: 100%;
+    max-width: 100%;
     display: flex;
     flex-direction: row;
+    justify-content: space-around;
+  /*   align-items: center; */
     max-height: 100%;
     overflow-y: hidden;
+    padding: 10px 0;
 }
 
 .section {
+  
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
     max-height: 100%;
-    width: 300px;
-    border-right: 1px solid #ffff;
+    max-width: 300px;
+    min-width: 200px;
+/*     border-right: 1px solid #ffff; */
 }
 
 .section:last-child {
@@ -34,6 +41,11 @@
 .line {
     width: 90%;
     min-height: 1px;
+    background-color: #ffff;
+}
+.verticalLine{
+    width: 1px;
+    min-height: 90%;
     background-color: #ffff;
 }
 .mainSection  .line:last-child{
@@ -52,9 +64,9 @@
     min-height: 50%;
     font-family: 'Montserrat';
     font-style: normal;
-    font-weight: 600;
-    font-size: 24px;
-    line-height: 30px;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 23px;
     letter-spacing: 0.04em;
     color: #FFFFFF;
 
@@ -70,14 +82,18 @@
     padding: 20px 0;
     font-family: 'Montserrat';
     font-style: normal;
-    font-weight: 600;
-    font-size: 24px;
-    line-height: 30px;
+    font-weight: 500;
+    font-size: 18px;
+    line-height:20px;
     letter-spacing: 0.04em;
     color: #FFFFFF;
 }
 
 .buttonRow {
+    max-width: 10%;
+    width: 0px;
+    min-width: 0;
+    padding: 7px 0;
     display: flex;
     flex-direction: column;
     margin-left: auto;
@@ -111,7 +127,7 @@
 }
 
 .comment{
-    font-size: 20px;
+    font-size: 18px;
 }
 
 .pdfAction{
@@ -125,14 +141,17 @@
 
 @media(max-width: 1500px){
     .fragment{
-        font-size: 18px;
+        font-size: 16px;
+        line-height: 20px;
+        font-weight: normal;
     }
     .section{
-        font-size: 19px;  
+        font-size: 16px;  
+        font-weight: normal;
     }
     .recordBlock {
         width: 100%;
-        height: 160px;
-        min-height: 160px;
+        height: 100px;
+        min-height: 100px;
     }
 }

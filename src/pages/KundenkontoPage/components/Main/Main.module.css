@@ -6,6 +6,21 @@
     width: 100%;
     min-height: 45px;
 }
+.userInfo{
+    display: flex;
+    flex-direction: row;
+    column-gap: 20px;
+}
+@media (max-width: 1200px), (max-height: 700px){
+    .userInfo{
+        column-gap: 0px; 
+    }
+}
+@media (max-width: 600px) {
+    .userInfo{
+        column-gap: 0px; 
+    }
+}
 @media (max-width: 600px) {
     .topRow{
         flex-direction: column !important;

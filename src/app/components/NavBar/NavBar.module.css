@@ -9,6 +9,7 @@
   /* width: 30px !important; */
   transform: rotate(-20deg);
 }
+
 @media (max-width: 600px){
     .navBar{
       width: 340px;

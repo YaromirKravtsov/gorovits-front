@@ -7,22 +7,36 @@ import style from './Main.module.css';
 import Row from '../../../../components/Layout/Row/Row';
 import MyButton from '../../../../UI/MyButton/MyButton';
 import NewRackets from '../../../../modules/NewRackets/components/NewRackets/NewRackets';
-import { AccountService } from '../../api/AccountService';
+import { AccountService, AdminUser } from '../../api/AccountService';
 import { mapRacketsResponseToINewRacket } from '../../helpres';
 import InfoFlutter from '../../../../UI/InfoFlutter/InfoFlutter';
 import { useTypedSelector } from '../../../../hooks/useTypedSelector';
+import { ISUser, IUser } from '../../../../models/IUser';
+import FlutterMenu from '../../../../UI/FlutterMenu/FlutterMenu';
+import MyImage from '../../../../UI/MyImage/MyImage';
+import PersonalnfoNormal from '../../../../modules/PersonalInfo/PersonalInfoNoraml/PersonalInfoNoraml';
 
 const Main = () => {
   const { userId } = useParams();
-  const { getUserInfo, setNewRackets } = useActions();
-  const { userInfo } = useTypedSelector(state => state.user)
+  const {  setNewRackets } = useActions();
+
+  const [userInfo,setUserInfo] = useState<AdminUser>({
+    email: '',
+    fullName: '',
+    phoneNumber: '',
+    photoLink: ''
+  });
+
   const [isAccountDelete, setIsAccountDelete] = useState<boolean>();
   const navigate = useNavigate()
   useEffect(() => {
     const fetch = async () => {
-      await getUserInfo(Number(userId));
+      const userInfo =  await AccountService.getUserInfo(Number(userId));
+      
+      setUserInfo(userInfo.data)
+      console.log(userInfo.data)
       const { data } = await AccountService.getUserRackets(Number(userId));
-      console.log(data)
+
       const newracketsData = mapRacketsResponseToINewRacket(data)
       console.log(newracketsData)
       setNewRackets(newracketsData)
@@ -48,10 +62,12 @@ const Main = () => {
         />
       }
       <Row className={style.topRow}>
-        <UserPhoto className={style.userPhoto} />
-        <Personalnformation isEditing={false} />
+        <FlutterMenu shadow='small' className={style.userPhoto} >
+          <MyImage src ={userInfo.photoLink}  alt={`${userInfo.fullName} photo`} className={style.userPhotoImg}/>
+        </FlutterMenu>
+        <PersonalnfoNormal userInfo={userInfo} />
         <div className={style.buttonRow}>
-          <MyButton mode='black' className={style.button} link={`/benutzer-bestellung/?userId=${userInfo.userId}&fullName=${userInfo.fullName}`}>
+          <MyButton mode='black' className={style.button} link={`/benutzer-bestellung/?userId=${Number(userId)}&fullName=${userInfo.fullName}`}>
             Geschichte zu Aufträgen
           </MyButton>
           <MyButton mode='black' className={`${style.button} ${style.delete}`} onClick={() => setIsAccountDelete(true)}>

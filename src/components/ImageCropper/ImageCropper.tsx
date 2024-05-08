@@ -24,15 +24,15 @@ const ImageCropper: FC<Props> = ({ onCropDone, aspect, className, internalImage 
     const [zoom, setZoom] = useState<number>(1);
     const [rotation, setRotation] = useState<number>(0);
     const [croppedArea, setCroppedArea] = useState<Area | null>(null);
-   
+
     const [image, setImage] = useState<string>(internalImage)
     const [isInCrop, setIsInCrop] = useState<boolean>()
     const onCropComplete = (croppedAreaPercentage: Area, croppedAreaPixels: Area) => {
         setCroppedArea(croppedAreaPixels);
     };
-    const [isLoading,setIsLoading] = useState<boolean>(false)
+    const [isLoading, setIsLoading] = useState<boolean>(false)
     useEffect(() => {
-        DataActions.convertImageToBase64(internalImage,img =>{
+        DataActions.convertImageToBase64(internalImage, img => {
             setImage(img)
         })
     }, [internalImage])
@@ -114,34 +114,39 @@ const ImageCropper: FC<Props> = ({ onCropDone, aspect, className, internalImage 
         inputRef.current?.click(); // Убедитесь, что inputRef.current существует перед вызовом click
     };
     const [isHovered, setIsHovered] = useState<boolean>(false);
-    const {setGlobalError} = useActions()
-    const fetchRemoveBg = async() =>{
+    const { setGlobalError } = useActions()
+    const fetchRemoveBg = async () => {
         setIsLoading(true)
-        try{
-            const {data} = await $api.post('racket/remove-bg',{
+        try {
+            const { data } = await $api.post('racket/remove-bg', {
                 base64Image: image
             }) as AxiosResponse<string>;
             console.log(data)
             setImage(data);
-        }catch(error){
+        } catch (error) {
             setGlobalError(getErrorText(error));
             console.log(error)
-        }finally{
+        } finally {
             setIsLoading(false)
         }
     }
 
 
-    const handelAddPhoto = () =>{
-    
+    const handelAddPhoto = () => {
+
         if (croppedArea) {
-            handelCropDone(croppedArea, rotation) 
+            handelCropDone(croppedArea, rotation)
         }
 
     }
+
+
+    useEffect(()=>{
+        console.log(isHovered)
+    },[isHovered])
     return (
         <>
-            <HoverEffect setIsHovered={setIsHovered}>
+            <HoverEffect setIsHovered={setIsHovered} className={style.hoverBlock}>
                 <input type="file"
                     accept="image/*"
                     ref={inputRef}
@@ -150,7 +155,7 @@ const ImageCropper: FC<Props> = ({ onCropDone, aspect, className, internalImage 
                 />
                 {internalImage == '' ?
                     <button className={style.addPhotoIcon} onClick={onChooseImg} >
-                        <svg width="29" height="29" viewBox="0 0 29 29" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <svg width="25" height="25" viewBox="0 0 29 29" fill="none" xmlns="http://www.w3.org/2000/svg" >
                             <rect x="12.5" width="4" height="29" fill="white" />
                             <rect y="16.5" width="4" height="29" transform="rotate(-90 0 16.5)" fill="white" />
                         </svg>
@@ -164,7 +169,7 @@ const ImageCropper: FC<Props> = ({ onCropDone, aspect, className, internalImage 
                         {isHovered &&
                             <DimOverlay className={style.actionButtons}>
                                 <button className={style.addPhotoIcon} onClick={onChooseImg} >
-                                    <svg width="29" height="29" viewBox="0 0 29 29" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <svg width="29" height="29" viewBox="0 0 29 29" fill="none" xmlns="http://www.w3.org/2000/svg" className={style.plusIcon}>
                                         <rect x="12.5" width="4" height="29" fill="white" />
                                         <rect y="16.5" width="4" height="29" transform="rotate(-90 0 16.5)" fill="white" />
                                     </svg>
@@ -187,32 +192,36 @@ const ImageCropper: FC<Props> = ({ onCropDone, aspect, className, internalImage 
             {isInCrop &&
                 <FlutterMenu shadow='all' className={style.editFlutter}>
                     <div className={style.cropperMain}>
-                        {isLoading?
-                        <Loader/>
-                        :
-                        <>
-                        <Cropper
-                            image={image}
-                            aspect={aspect}
-                            crop={crop}
-                            zoom={zoom}
-                            rotation={rotation}
-                            onCropChange={setCrop}
-                            onZoomChange={setZoom}
-                            onCropComplete={onCropComplete}
-                            style={{
-                                containerStyle: {
-                                    width: "100%",
-                                    height: "100%",
-                                    border: '1px solid #000'
-                                },
-                                mediaStyle: {
-                                    transform: `rotate(${rotation}deg)`
-                                }
-                            }}
-                        />
-                        </>
-                    }
+                        {isLoading ?
+                            <Loader />
+                            :
+                            <>
+                                <Cropper
+                                    image={image}
+                                    aspect={aspect}
+                                    crop={crop}
+                                    zoom={zoom}
+                                    rotation={rotation}
+                                    minZoom={0.5} // Минимальный уровень масштабирования
+                                    maxZoom={3} // Максимальный уровень масштабирования
+                                    onCropChange={setCrop}
+                                    onZoomChange={setZoom}
+                                    onCropComplete={onCropComplete}
+                                    zoomSpeed={0.1}
+                                    restrictPosition={false}
+                                    style={{
+                                        containerStyle: {
+                                            width: "100%",
+                                            height: "100%",
+                                            border: '1px solid #000'
+                                        },
+                                        mediaStyle: {
+                                            transform: `rotate(${rotation}deg)`
+                                        }
+                                    }}
+                                />
+                            </>
+                        }
                         <MyButton mode='black' onClick={rotateImage} className={style.rotate}>
                             <svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" className={style.rotateImg}>
                                 <g clip-path="url(#clip0_1109_173)">
@@ -228,15 +237,15 @@ const ImageCropper: FC<Props> = ({ onCropDone, aspect, className, internalImage 
                         </MyButton>
                     </div>
                     <MyButton mode='black' border onClick={fetchRemoveBg} className={style.rmbg}>
-                    Den Hintergrund entfernen
+                        Den Hintergrund entfernen
                     </MyButton>
                     <div className={style.buttonsRow}>
-                    <MyButton mode='white' border onClick={() => setIsInCrop(false)}>
-                        Schließen
-                    </MyButton>
-                    <MyButton mode='black' border onClick={handelAddPhoto}>
-                    Hinzufügen
-                    </MyButton>
+                        <MyButton mode='white' border onClick={() => setIsInCrop(false)} className={style.button}>
+                            Schließen
+                        </MyButton>
+                        <MyButton mode='black' border onClick={handelAddPhoto} className={style.button}>
+                            Hinzufügen
+                        </MyButton>
                     </div>
 
                 </FlutterMenu>

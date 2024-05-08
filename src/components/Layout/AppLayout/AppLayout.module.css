@@ -28,6 +28,12 @@
     min-width: 340px;
   }
 }
+@media (max-width: 1300px),(max-height: 700px){
+  .navBar{
+    width: 280px;
+    min-width: 280px;
+  }
+}
 
 /* @media (max-width: 1180px){
   .navBar{

@@ -1,6 +1,6 @@
 .flutter {
-  width: 260px;
-  height: 350px;
+  width: 200px;
+  height: 250px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -32,7 +32,7 @@
 
 .editButton {
   position: absolute;
-  width: 215px !important;
+  width: 90%;
   height: 45px !important;
   font-size: 20px !important;
   z-index: 11 !important;
@@ -82,10 +82,11 @@
     padding: 0;
   }
 }
-@media (max-width: 1700px) {
- /*  .flutter{
-    width: 600px;
-  } */
+@media (max-width: 1200px), (max-height: 700px) {
+  .flutter {
+    width: 160px;
+    height: 200px;
+  }
 }
 
 @media (max-width: 600px) {

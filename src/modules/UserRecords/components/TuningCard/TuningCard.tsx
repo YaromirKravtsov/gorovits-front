@@ -43,7 +43,7 @@ const TuningCard: FC<Props> = ({ record }) => {
             </div>
           </BorderMenu>
         </Column>
-        {windowWidth >= 600 &&
+        {windowWidth >= 990 &&
           <RacketStringPhoto /* mode */ racketSrc={(record as IPullingRecord).pulling.userRacket?.racketModel?.imgLink || ''} stringSrc={(record as IPullingRecord).pulling?.string?.imgLink || ''} />
         }
         <Column className={style.blockColumn}>

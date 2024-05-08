@@ -16,7 +16,6 @@ const TerminePage:FC = () => {
     </Helmet>
          <PageLayout title = 'Termine' questionMarkText={questionText}>
               <TerminePageMain/>
-      
         </PageLayout>
     </div>
   )

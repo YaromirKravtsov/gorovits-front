@@ -1,19 +1,18 @@
 .flutterMenu{
     width: 935px;
-    
-    padding: 40px;
-    padding-bottom: 60px;
+    padding: 20px 40px;
+    padding-bottom: 40px;
 }
 .mainColumn{
     width: 100%;
     flex-direction: column;
 }
 .title{
-    margin-bottom: 40px;
+    margin-bottom: 20px;
     font-family: 'Roboto';
     font-style: normal;
     font-weight: 500;
-    font-size: 27px;
+    font-size: 24px;
     line-height: 32px;
     text-align: center;
     color: #232323;
@@ -27,7 +26,8 @@
 }
 .button{
     width: 390px;
-    height: 60px;
+    height: 45px;
+    font-size: 20px;
 }
 .buttonRow{
     width: 100%;
@@ -40,36 +40,43 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    margin-top: 20px;
+    margin-top: 0px;
 }
 .hidden{
     display: none !important;
 }
 
+@media (max-width: 950px){
 
+    .flutterMenu{
+        width: 95%;
+    }
+    .inputsRow{
+        column-gap: 20px;
+    }
+
+}
 @media (max-width: 600px){
     .flutterMenu{
         width: 100%;
-
+        height: 100%;
+        position: relative !important;
+        border-radius: 0;
         padding: 0;
+        z-index: 1;
     }
     .buttonRow{
-    /*     position: absolute;
-        bottom: 10px; */
         width: 100%;
-  /*       margin-top: auto; */
-        
     }
     .actioveButtons{
         width: 100%;
         min-width: 100%;
         flex-direction:column-reverse;
         row-gap: 20px;
- /*        margin-top: 0; */
     }
     .button{
         width: 100%;
-        font-size: 22px;
+
     }
     .inputsRow{
         justify-content: start;

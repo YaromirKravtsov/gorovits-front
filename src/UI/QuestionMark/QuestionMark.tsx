@@ -2,7 +2,7 @@ import React, { FC, useState } from 'react'
 import RoundIconButton from '../RoundIconButton/RoundIconButton'
 import questionIcon from '../../assets/images/question-icon.png';
 import style from './QuestionMark.module.css'
-type DroPosition = 'bottom-left' |'bottom-right'  
+type DroPosition = 'bottom-left' |'bottom-right' | 'center'
 type Size = 'large' |'small'  
 interface QuestionMark{
     text: string;
@@ -21,7 +21,7 @@ const QuestionMark:FC<QuestionMark> = ({text,droPosition = 'bottom-left',size ='
           
           <img src = {questionIcon} className={`${size == 'small' ? style.smallIcon : style.iconImg}`} alt="" />
         </div>
-         <div className={`${style.textBlock} ${isOpen? style.open : ''} ${droPosition == 'bottom-right' ?style.bottomRight: ''}`} >
+         <div className={`${style.textBlock} ${isOpen? style.open : ''} ${droPosition == 'bottom-right' ?style.bottomRight: ''} ${droPosition == 'center' && style.positionCenter}`} >
             {text}
          </div>
     </div>

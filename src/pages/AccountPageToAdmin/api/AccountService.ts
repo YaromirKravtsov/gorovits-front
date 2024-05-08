@@ -1,6 +1,6 @@
 import { AxiosResponse } from "axios";
 import $api from "../../../app/api/http";
-import { IUser } from "../../../models/IUser";
+import { ISUser, IUser } from "../../../models/IUser";
 export interface RacketsResponse {
     code: string;
     currentPllingId: number;
@@ -36,9 +36,18 @@ export interface RacketsResponse {
     } | null;
     userId: number;
 }
+
+export interface AdminUser {
+    email: string;
+    fullName: string;
+/*     id: number; */
+    phoneNumber: string;
+    photoLink: string;
+
+}
 export class AccountService {
-    static getUserInfo(userId: number): Promise<AxiosResponse<IUser>> {
-        return $api.get<IUser>(`/users/info/${userId}`);
+    static getUserInfo(userId: number): Promise<AxiosResponse<AdminUser>> {
+        return $api.get<AdminUser>(`/users/info/${userId}`);
     }
 
     static getUserRackets(userId: number): Promise<AxiosResponse<RacketsResponse[]>> {

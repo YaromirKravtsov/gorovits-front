@@ -1,49 +1,75 @@
-.main{
+.main {
     display: flex;
     flex-direction: column;
-    row-gap: 20px;
+    row-gap: 10px;
 }
 
-.input{
+.input {
     width: 100%;
-    font-size: 22px;
+    font-size: 18px;
+    height: 40px;
 }
 
-.inpitTitle{
+.inpitTitle {
     font-family: 'Poppins';
     font-style: normal;
     font-weight: 600;
-    font-size: 22px;
+    font-size: 18px;
     line-height: 22px;
     letter-spacing: 0.01em;
     color: #000000;
     opacity: 0.5;
 }
-
-.inputRow{
-
+.inputRow {
+    row-gap: 10px;
 }
 
 @media (max-width: 1500px) {
-    .main{
+    .main {
         display: flex;
         flex-direction: column;
         row-gap: 20px;
     }
-    .input{
+
+    .input {
         height: 37px !important;
 
     }
-    .inpitTitle,.input{
+
+    .inpitTitle,
+    .input {
         font-size: 18px;
     }
-    .main{
+
+    .main {
         row-gap: 10px;
     }
 }
+
+@media (max-width: 1200px),
+(max-height: 700px) {
+    .main {
+        row-gap: 10px;
+    }
+
+    .inpitTitle,
+    .input {
+        font-size: 16px;
+    }
+
+    .input {
+        height: 35px !important;
+
+    }
+
+    .inputRow {
+        row-gap: 2px;
+    }
+}
+
 @media (max-width: 600px) {
-    .main{
-  
+    .main {
+
         row-gap: 5px;
     }
 }

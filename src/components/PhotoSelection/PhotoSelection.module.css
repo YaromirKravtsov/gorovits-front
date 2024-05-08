@@ -1,26 +1,22 @@
 .changePhotoFlutter {
-    display: flex;
-    flex-direction: column;
-    padding: 40px 60px;
-    width: 900px;
+    width: 650px;
+    height: 500px;
     height: auto;
 }
 
-.adminFlutter {
-    padding: 15px 60px;
-    height: 300px;
-}
 
 .changePhotoItem {
     cursor: pointer;
-    width: 150px;
-    height: 190px;
+    width: 120px;
+    height: 160px;
     display: flex;
     justify-content: center;
     align-items: center;
     border-radius: 40px;
     padding: 0;
     overflow: hidden;
+
+
 }
 
 .changePhoto {
@@ -33,6 +29,7 @@
     object-position: center !important;
     border-radius: 40px;
 }
+
 
 .edditTitle {
 
@@ -52,10 +49,12 @@
     margin-top: 35px;
     margin-bottom: 60px;
     width: 100%;
+    row-gap: 20px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
 }
+
 
 .buttons {
     display: flex;
@@ -67,24 +66,30 @@
     box-shadow: 0px 0px 40px rgba(0, 0, 0, 0.7);
 }
 
-@media (max-width: 1700px) {
-    .changePhotoFlutter {
-        width: 650px;
-        height: 500px;
-        height: auto;
-    }
 
-    .photosItems {
-        
-        row-gap: 20px;
-    }
-
-    .changePhotoItem {
-        width: 120px;
-        height: 160px;
-    }
+/*================admin============= */
+.adminFlutter {
+    padding: 0px;
+    width: 700px;
+    height: auto;
+   
+    flex-direction: row;
+    align-items: center;
 }
 
+.adminFlutter >.photosItems {
+    margin: 0;
+   /*  height: 100%; */
+   justify-content: space-around;
+}
+.adminFlutter .changePhotoItem{
+    width: 115px;
+    height: 145px;
+    border-radius: 30px;
+}
+
+
+/* ============ */
 @media (max-width: 1500px) {
     .buttons{
         margin-top: 30px;
@@ -92,9 +97,9 @@
     .changePhotoFlutter{
         padding: 20px 40px;
     }
-    .adminFlutter > .changePhotoFlutter {
+    .adminFlutter   {
         width: auto;
-        height: 100%;
+    
         padding: 10px 20px;
     }
   
@@ -112,6 +117,11 @@
     .changePhotoItem {
         width: 110px;
         height: 140px;
+    }
+    .adminFlutter .changePhotoItem{
+        width: 115px;
+        height: 145px;
+        border-radius: 30px;
     }
 }
 
@@ -146,5 +156,13 @@
         /*    width: 170px; */
         min-width: 140px;
         height: 45px;
+    }
+}
+
+
+
+@media (max-height: 700px) {
+    .adminFlutter{
+        height: 200px;
     }
 }

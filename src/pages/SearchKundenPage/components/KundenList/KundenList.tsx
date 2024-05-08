@@ -28,7 +28,7 @@ const KundenList:FC<Props> = (props) => {
           </BorderMenu>
 
           <BorderMenu className={style.block}>
-            {user.phoneNumber}
+            {user.phoneNumber ||'Keine Telefonnummer '}
           </BorderMenu>
 
           <BorderMenu className={style.block}>

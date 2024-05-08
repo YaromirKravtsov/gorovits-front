@@ -1,21 +1,28 @@
-.errorInput{
+.errorInput {
     border: 20px solid #7877;
-    }
-.button{
+}
+
+/* .button {
     width: 390px;
     height: 60px;
-}
-.questionTextClass{
+} */
+
+.questionTextClass {
     width: 400px !important;
 }
 
 
-.input{
-    width: 360px/*  !important */;
+.input {
+    width: 360px
+        /*  !important */
+    ;
+    height: 45px;
+
+    font-size: 16px !important;
 }
 
-@media (max-width: 600px){
-    .input{
+@media (max-width: 600px) {
+    .input {
         width: 100%;
     }
 }

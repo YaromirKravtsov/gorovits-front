@@ -9,24 +9,23 @@
 }
 .item{
     width: 100%;
-    height: 155px;
-    min-height: 155px;
-    padding: 15px 30px;
+    height: 120px;
+    min-height: 120px;
+    padding: 0 30px;
     display: flex;
     flex-direction: row;
+    border-radius: 20px;
 
 }
-.editItem{
-    min-height: 190px !important;
-}
+
 .mainRow{
     display: flex;
     flex-direction: row;
-
+    padding: 15px;
 
 }
 .racketCode{
-    font-size: 20px;
+    font-size: 18px;
 }
 .contentBlock{
     width: 300px;
@@ -54,8 +53,8 @@
     font-family: 'Montserrat';
     font-style: normal;
     font-weight: 600;
-    font-size: 25px;
-    line-height: 30px;
+    font-size: 20px;
+    line-height: 20px;
     color: #FFFFFF;
 }
 .contentLine{
@@ -73,7 +72,7 @@
     font-family: 'Montserrat';
     font-style: normal;
     font-weight: 600;
-    font-size: 22px;
+    font-size: 18px;
     line-height: 30px;
     color: #FFFFFF;
 }
@@ -83,47 +82,69 @@
     width: 100%;
     justify-content: space-between;
     height: 100%;
+    padding: 5px 0;
+    
 }
 .button{
     margin-left: auto;
-    width: 50px;
-    height: 50px;
-    border-radius: 15px;
+    width: 35px;
+    height: 35px;
+    border-radius: 10px;
 
 }
 .edit{
     background-color: #FFBA00;
 }
 .buttonImg{
-    width: 30px;
-    height: 30px;
+    width: 25px;
+    height: 25px;
 }
 .delete{
     background: #C44637;
 }
 .delete img{
-    width: 40px;
-    height: 40px;
+    width: 30px;
+    height: 30px;
 }
 
-
+@media (max-width: 1700px){
+    .item{
+        height: 110px;
+        min-height: 110px;
+        padding: 0;
+        padding-right: 20px;
+    }
+    .contentBlock{
+        width: 250px;
+     
+    }
+}
 @media (max-width: 1500px){
+    .item{
+        height: 110px;
+        min-height: 110px;
+        padding: 0;
+        padding-right: 20px;
+    }
     .contentBlock{
         width: 190px;
      
     }
     .contentTitle{
-        font-size: 20px;
+        font-size: 18px;
+        font-weight: normal;
     }
     .contentText{
-        font-size: 18px;
+        font-weight: normal;
+        font-size: 16px;
         line-height: 20px;
         overflow-y: auto;
         padding-top: 13px;
     }
     .button{
-        width: 40px;
-        height: 40px;
+        width: 32px;
+        height: 32px;
+        border-radius: 8px;
     }
     .buttonImg{
         width: 25px;

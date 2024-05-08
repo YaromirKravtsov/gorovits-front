@@ -50,10 +50,8 @@ export const AdminRecordGroupActionCreators = {
     changePickUpTime:(recordId:number,time:Date) => async (dispatch: AppDispatch) =>{
         try{
             await AdminRecordGroupService.putPickUpTime(recordId,time);
-            dispatch(AdminRecordGroupActionCreators.updateGroupRecordState(recordId, 2))
-        
+            dispatch(AdminRecordGroupActionCreators.updateGroupRecordState(recordId, 2)) 
             dispatch(AdminRecordGroupActionCreators.putPickUpTime({recordId,time}))
-         
         }catch(e){
             console.log(e)
             dispatch(AuthActionCreators.setGlobalError(getErrorText(e)))

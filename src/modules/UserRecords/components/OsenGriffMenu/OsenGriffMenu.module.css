@@ -1,6 +1,6 @@
 .recordCard{
     width: 100%;
-    min-height: 240px;
+    min-height: 200px;
     height: 235px;
     padding: 25px;
     display: flex;
@@ -20,20 +20,23 @@
     font-style: normal;
     font-weight: 600;
     font-size: 24px;
-    line-height: 28px;
+    line-height: 20px;
     display: flex;
     align-items: center;
     text-align: center;
-
+    padding: 10px;
     color: #FFFFFF;
+}
+.longBlock,.rightTopBlock,.button{
+    height: 50px;
+    font-size: 18px;
 }
 .rightTopBlock{
     width: 360px;
-    height: 65px;
     font-family: 'Roboto';
     font-style: normal;
     font-weight: 500;
-    font-size: 25px;
+    font-size: 18px;
     line-height: 29px;
     display: flex;
     align-items: center;
@@ -45,11 +48,19 @@
 }
 .button{
     width: 360px;
-    height: 65px;
+    font-size: 20px;
+
 }
 @media (max-width: 1520px) {
+    .recordCard{
+        padding: 15px;
+    }
     .longBlock{
         width:470px;
+    }
+    .button,.rightTopBlock{
+        width: 230px;
+        font-size: 18px;
     }
 }
 @media (max-width: 950px) {
@@ -63,9 +74,9 @@
     }
 }
 
-@media (max-width: 600px){
-    .recordCard{
-        
+@media (max-width: 720px){
+    .topLeftBlockTitle{
+        line-height: 18px;
     }
     .blockColumn{
         width: 47%;
@@ -76,6 +87,7 @@
     }
     .longBlock{
     line-height: 20px;
+    height: auto;
     }
     .button{
         font-size: 18px;

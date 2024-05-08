@@ -25,6 +25,7 @@ const TopMenu = () => {
   
     return (
         <div className={style.topMenu}>
+                
              <ButtonsList record={(recordGroup as GroupedRecords)} type='group'/>
         </div>
     )

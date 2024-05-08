@@ -4,6 +4,7 @@ import MyButton from '../../../../UI/MyButton/MyButton';
 import MyImage from '../../../../UI/MyImage/MyImage';
 import arrow from '../../../../assets/images/arrow.png';
 import QuestionMark from '../../../../UI/QuestionMark/QuestionMark';
+import { useTypedSelector } from '../../../../hooks/useTypedSelector';
 interface Props {
   options: {
     text: string;
@@ -16,6 +17,7 @@ interface Props {
 }
 const DropDownButton: FC<Props> = (props) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
+  const {windowWidth} = useTypedSelector(state => state.adaptive)
   const handleClick = () => {
     if (isOpen) setIsOpen(false);
     else setIsOpen(true);
@@ -41,7 +43,7 @@ const DropDownButton: FC<Props> = (props) => {
   
 
   return (
-    <div>
+    <div className={style.main}>
 
 
       <MyButton onClick={() => handleClick()} className={`${style.button} ${props.className}`} mode='black'>{props.title} 
@@ -54,7 +56,7 @@ const DropDownButton: FC<Props> = (props) => {
               <button className={style.dropDownItemButton} key={index} onClick={() => handleSelect(option.value)}>{option.text}</button>
               {option.questionText &&
                 <>
-                  <QuestionMark text={option.questionText} droPosition='bottom-right' size='small' />
+                  <QuestionMark text={option.questionText} droPosition={windowWidth >= 580?'bottom-right' : 'center'} size='small' />
                 </>
               }
             </div>

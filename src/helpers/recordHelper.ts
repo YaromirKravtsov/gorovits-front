@@ -163,8 +163,8 @@ export default class RecordHeler {
         });
     }
 
-    static generateString= (length:number) => {
-        const charset = 'abcdefghijklmnopqrstuvwxyz0123456789--';
+    static generateDNA= (length:number) => {
+        const charset = '0123456789';
         let password = '';
         for (let i = 0; i < length; i++) {
             const randomIndex = Math.floor(Math.random() * charset.length);

@@ -10,7 +10,7 @@
     font-family: 'Roboto';
     font-style: normal;
     font-weight: 500;
-    font-size: 27px;
+    font-size: 24px;
     line-height: 32px;
     text-align: center;
     color: #000000;
@@ -19,7 +19,7 @@
     font-family: 'Roboto';
     font-style: normal;
     font-weight: 400;
-    font-size: 24px;
+    font-size: 20px;
     line-height: 28px;
     text-align: center;
     color: #000000;
@@ -33,12 +33,14 @@
 .button{
     width: 220px;
     height: 50px;
+    font-size: 20px;
 }
 
 @media (max-width: 600px) {
     .menu{
         justify-content: space-between;
-        width: 95%;
+        width: 75%;
+        height: 220px;
         padding: 30px 15px;
     }
     .buttonRow{
@@ -46,8 +48,13 @@
 /*         flex-direction: column !important; */
 /*         row-gap: 20px; */
     }
+
+    .text{
+        font-size: 18px;
+    }
     .button{
         width: 45%;
-        font-size: 20px;
+        font-size: 18px;
+        height: 40px;
     }
 }

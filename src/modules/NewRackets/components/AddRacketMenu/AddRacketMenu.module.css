@@ -1,5 +1,5 @@
 .main{
-    padding: 30px 60px;
+    padding: 30px 40px;
     display: flex;
     flex-direction: column;
 }
@@ -10,7 +10,7 @@
 font-family: 'Roboto';
 font-style: normal;
 font-weight: 500;
-font-size: 27px;
+font-size: 24px;
 line-height: 32px;
 
 text-align: center;
@@ -20,17 +20,18 @@ color: #30484D;
 
 }
 .mainRow{
-    margin-top: 25px;
+    margin-top: 20px;
     width: 100%;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    column-gap: 60px;
+    column-gap: 40px;
     row-gap: 30px;
 }
 .button{
     margin-top: 10px;
     width: 100%;
-    height: 50px;
+    height: 45px;
+    font-size: 20px;
 }
 .errorInput{
     position: absolute;
@@ -42,22 +43,38 @@ color: #30484D;
     line-height: 17px;
     color: #FF2430;
 }
-
-@media (max-height: 1500px) {
+.input{
+    height: 45px;
+}
+@media (max-width: 1500px) {
     .main{
         height: 95vh;
         padding: 15px 60px;
     }
     .mainRow{
         column-gap: 60px;
-        row-gap: 15px;
+        row-gap: 10px;
     }
-}
+
+    .button{
+        margin-top: 10px;
+        width: 100%;
+        height: 45px;
+        font-size: 18px;
+        font-weight: 400;
+    }
+}    
 @media (max-height: 920px) {
     
 }
 @media (max-height: 920px) {
     .mainRow{
         height: 600px;
+    }
+}
+
+@media (max-width: 600px){
+    .errorInput {
+        transform: translateY(75px);
     }
 }

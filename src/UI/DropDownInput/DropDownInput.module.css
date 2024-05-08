@@ -1,43 +1,46 @@
-.main{
+.main {
     position: relative;
 }
 
-.select{
+.select {
 
     background-color: #fff;
-    width: 395px;
-    height: 50px;
+
     width: 360px;
-    height: 50px;
+    height: 45px;
     border: 2px solid #232323;
     border-radius: 5px;
-    padding: 0 15px;
+    padding: 0 10px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
     cursor: pointer;
- 
+
 }
-.grad{
+
+.grad {
     transform: rotate(0deg) !important;
 }
-.arrow{
+
+.arrow {
     z-index: 1;
     transform: rotate(180deg);
     width: 23px;
     height: 13px;
 }
-.defaultValue{
+
+.defaultValue {
     font-family: 'Poppins';
     font-style: normal;
     font-weight: 400;
     font-size: 18px;
     line-height: 20px;
     color: rgba(24, 24, 24, 0.5);
-    
+
 }
-.optionList{
+
+.optionList {
     z-index: 100;
     position: absolute;
     transform: translateY(5px);
@@ -46,39 +49,41 @@
     background: #FFFFFF;
     border: 1px solid #232323;
     border-radius: 8px;
-    padding: 15px 0px;
+    padding: 10px 0px;
     display: flex;
     flex-direction: column;
-/*     row-gap: 10px; */
 }
-.option:hover{
+
+.option:hover {
     background-color: rgba(24, 24, 24, 0.3);
 }
-.option{    
+
+.option {
     width: 100%;
     background-color: #fff;
     border: none;
     font-family: 'Poppins';
     font-style: normal;
     font-weight: 400;
-    font-size: 18px;
+    font-size: 16px;
     line-height: 18px;
     color: #232323;
     cursor: pointer;
 
-    padding: 0 17px;
-    height: 30px;
+    padding: 0 10px;
+    height: 23px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     text-align: start;
 }
-.vorgeschlagene{
-    padding: 0 17px;
+
+.vorgeschlagene {
+    padding: 0 10px;
     font-family: 'Poppins';
     font-style: normal;
     font-weight: 400;
-    font-size: 18px;
+    font-size: 16px;
     line-height: 20px;
     color: #232323;
     margin-bottom: 5px;

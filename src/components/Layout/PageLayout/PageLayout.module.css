@@ -117,6 +117,13 @@
     }
 
 }
+@media (max-width: 1200px), (max-height: 700px){
+    .title {
+        line-height: 20px;
+        font-size: 20px;
+        letter-spacing: -0.02em;
+    }
+}
 
 @media (max-width: 1180px) {
     .main {
@@ -136,11 +143,7 @@
         z-index: 10;
     }
 
-    .title {
-        line-height: 20px;
-        font-size: 22px;
-        letter-spacing: -0.02em;
-    }
+
 
 }
 
@@ -172,16 +175,16 @@
     }
 
 
-    .topMenuElemet {
-        width: 40%;
-    }
-}
 
-@media (max-height: 780px) {
     .topMenu {
         height: 60px;
 
     }
+
+}
+
+@media (max-height: 780px) {
+ 
 }
 
 @media (max-width: 600px) {

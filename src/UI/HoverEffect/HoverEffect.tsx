@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 interface HoverEffectProps {
   children: React.ReactNode;
   setIsHovered: (value: boolean) => void;
+  className?: string
 }
 
 const HoverEffect: React.FC<HoverEffectProps> = (props) => {
@@ -13,6 +14,7 @@ const HoverEffect: React.FC<HoverEffectProps> = (props) => {
     <div 
       onMouseEnter={() => {props.setIsHovered(true); props.setIsHovered(true)}}
       onMouseLeave={() => {props.setIsHovered(false); props.setIsHovered(false)}}
+      className = {props.className||''}
     >
       {props.children}
     </div>

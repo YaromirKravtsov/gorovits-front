@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useState } from 'react'
+import { FC, useEffect, useState } from 'react'
 import style from './UserPhoto.module.css'
 import { useTypedSelector } from '../../hooks/useTypedSelector'
 import FlutterMenu from '../../UI/FlutterMenu/FlutterMenu'

@@ -155,16 +155,17 @@ const StringFlutterMenu: FC<Props> = (props) => {
             <FlutterMenu shadow='all' className={style.flutterMenu}>
                 <div className={style.title}>{props.action == 'add' ? 'Saite hinzufügen' : 'Saite bearbeiten'} </div>
                 <div className={style.mainRow}>
-                    <InputRow label='Hersteller'>
+                    <InputRow label='Hersteller' className={style.inputRow}>
                         <DropDownInput options={manufactursOptions} defaultValue={'Wählen Sie einen Hersteller'}
                             /*   error={errors.racketManufacterId}
                               setError={value => setErrors(prev => ({ ...prev, racketManufacterId: value }))} */
                             value={stringManufacterId} onChange={setStringManufacterId}
                             defaultOptions={manufactursOptions}
+                            className={style.input}
                         />
 
                     </InputRow>
-                    <InputRow label='Saitenname'>
+                    <InputRow label='Saitenname' className={style.inputRow}>
                         <MyInput placeholder='Saitenname eingeben'
                             value={stringModel}
                             onChange={setStringModel}
@@ -173,7 +174,7 @@ const StringFlutterMenu: FC<Props> = (props) => {
                             setError={value => setErrors(prev => ({ ...prev, racketModel: value }))}
                         />
                     </InputRow>
-                    <InputRow label='Saiten Foto'>
+                    <InputRow label='Saiten Foto' className={style.inputRow}>
                         <div className={`${style.photoSelect} ${errors.image && style.photoSelectError}`}>
                             <ImageCropper
                                 onCropDone={setImage}
@@ -186,10 +187,10 @@ const StringFlutterMenu: FC<Props> = (props) => {
                     </InputRow>
                 </div>
                 <div className={style.buttonsRow} >
-                    <MyButton mode='white' border onClick={() => props.setIsOpen(false)}>
+                    <MyButton mode='white' border onClick={() => props.setIsOpen(false)} className={style.button}>
                         Schließen
                     </MyButton>
-                    <MyButton mode='black' onClick={handelSubmit}>
+                    <MyButton mode='black' onClick={handelSubmit} className={style.button}>
                         Seite  hinzufüg
                     </MyButton>
                 </div>

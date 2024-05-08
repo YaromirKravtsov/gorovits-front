@@ -65,14 +65,16 @@ export interface ITuningRecord extends Record{
 export interface IOsebandwechselRecord extends Record{
     userRacket:{
         code:string,
-        number: number
+        number: number,
+        racketModelId: number;
     }
 }
 
 export interface IGriffreparaturRecord extends Record{
     userRacket:{
         code:string,
-        number: number
+        number: number,
+        racketModelId: number;
     },
     handelSize: number;
 }

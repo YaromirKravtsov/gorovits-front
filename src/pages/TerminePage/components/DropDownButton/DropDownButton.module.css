@@ -1,3 +1,7 @@
+.main{
+    position: relative;
+}
+
 .button{
     justify-content: space-between;
     padding: 0 20px;

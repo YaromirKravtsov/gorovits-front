@@ -1,7 +1,7 @@
 import { AxiosResponse } from "axios";
 import $api from "../../../app/api/http";
 
-import { IUser } from "../../../models/IUser";
+import { ISUser, IUser } from "../../../models/IUser";
 import { INewRacket } from "../../../models/INewRackets";
 import { SelectedImage } from "../../../components/PhotoSelection/PhotoSelection";
 
@@ -13,7 +13,7 @@ interface Response {
 export class NewUserService {
   static async createUser(
     rackets: INewRacket[],
-    userInfo: IUser,
+    userInfo: ISUser,
     image: SelectedImage,
   ): Promise<AxiosResponse<Response>> {
     const formData = new FormData();

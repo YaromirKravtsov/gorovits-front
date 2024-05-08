@@ -1,10 +1,9 @@
 .flutterMenu{
     width: 100%;
-    padding: 25px 40px;
+    padding: 25px;
+    padding-top: 10px;
     position: relative !important;
-    height: 420px ;
-    display: flex;
-    flex-direction: column;
+    height: auto;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -21,15 +20,15 @@
     font-family: 'Roboto';
     font-style: normal;
     font-weight: 500;
-    font-size: 33px;
+    font-size: 24px;
     line-height: 32px;
     color: #232323;
-    margin-bottom: 30px;
+/*     margin-bottom: 30px; */
 }
 .button{
-  
+    font-size: 20px;
     width: 450px;
-    height: 57px ;
+    height: 45px ;
     border-radius: 10px;
 }
 .nullError{
@@ -41,24 +40,25 @@
  
     opacity: 0.9;
 }
-@media (max-width: 1500px){
+@media (max-width: 1500px), (max-height: 700px) {
     .title{
         margin-bottom: 0;
-        font-size: 24px;
+        font-size: 20px;
     }
     .button{
-        width: 370px;
+        width: 340px;
         height: 38px;
-        font-size: 20px;
+        font-size: 18px;
     }
     .flutterMenu{
         height: 285px;
         padding: 15px 25px;
     }
 }
+
 @media (max-width: 600px){
     .flutterMenu{
-        padding: 15px 20px;
+        padding: 15px;
         margin-bottom: 30px;
         height: auto;
     }
@@ -68,12 +68,12 @@
     }
     .title{
         margin-bottom: 0;
-        font-size: 24px;
+        font-size: 20px;
     }
     .button{
         width: 100%;
         margin-top: 20px;
-        height: 50px !important;
+        height: 40px !important;
     }
 
 }

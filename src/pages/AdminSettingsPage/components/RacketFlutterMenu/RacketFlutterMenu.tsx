@@ -142,16 +142,17 @@ const RacketFlutterMenu: FC<Props> = (props) => {
             <FlutterMenu shadow='all' className={style.flutterMenu}>
                 <div className={style.title}>{props.action == 'add' ? 'Schläger hinzufügen' : 'Schläger bearbeiten'} </div>
                 <div className={style.mainRow}>
-                    <InputRow label='Hersteller'>
+                    <InputRow label='Hersteller' className={style.inputRow}>
                         <DropDownInput options={manufactursOptions} defaultValue={'Wählen Sie einen Hersteller'}
                             error={errors.racketManufacterId}
                             setError={value => setErrors(prev => ({ ...prev, racketManufacterId: value }))}
                             value={racketManufacterId} onChange={setRacketManufacterId}
                             defaultOptions={manufactursOptions}
+                            className={style.input}
                         />
 
                     </InputRow>
-                    <InputRow label='Schlägermodell'>
+                    <InputRow label='Schlägermodell' className={style.inputRow}>
                         <MyInput placeholder='Schlägermodell eingeben'
                             value={racketModel}
                             onChange={setRacketModel}
@@ -166,7 +167,7 @@ const RacketFlutterMenu: FC<Props> = (props) => {
 
                         <ImageCropper
                             onCropDone={setImage}
-                            aspect={2.75}
+                            aspect={2.615}
                             className={style.imageCropper}
                             internalImage={image}
                         />
@@ -175,10 +176,10 @@ const RacketFlutterMenu: FC<Props> = (props) => {
                     </div>
                 </div>
                 <div className={style.buttonsRow} >
-                    <MyButton mode='white' border onClick={() => props.setIsOpen(false)}>
+                    <MyButton mode='white' border onClick={() => props.setIsOpen(false)} className={style.button}>
                         Schließen
                     </MyButton>
-                    <MyButton mode='black' onClick={handelSubmit}>
+                    <MyButton mode='black' onClick={handelSubmit} className={style.button}>
                         Schläger hinzufügen
                     </MyButton>
                 </div>

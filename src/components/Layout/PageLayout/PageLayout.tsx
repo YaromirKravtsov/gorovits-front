@@ -24,12 +24,15 @@ const PageLayout: FC<PageLayoutProps> = (props) => {
   const topMenu = useRef<HTMLDivElement>(null);
   const main = useRef<HTMLDivElement>(null);
   
-
   const location = useLocation()
 
+  const [topMenuHeight, setTopMenuHeight] = useState(0);
 
-
-
+  useEffect(() => {
+    if (topMenu.current) {
+      setTopMenuHeight(topMenu.current.offsetHeight);
+    }
+  }, []); // Запустить только при первом рендере
 
   const [isLoading, setIsLoading] = useState(false);
 
@@ -50,7 +53,8 @@ const PageLayout: FC<PageLayoutProps> = (props) => {
 
         </div>
       </div>
-      <div className={`${style.main} ${props.mainStyle}`} ref = {main} style={{height: `calc(100vh - ${topMenu?.current?.offsetHeight}px)` }}>
+     
+      <div className={`${style.main} ${props.mainStyle}`} ref = {main} style={{height: `calc(100vh - ${topMenuHeight}px)` }}>
         {isLoading&&<Loader size='small'/>}
         {!isLoading && 
            <> {props.children}</>

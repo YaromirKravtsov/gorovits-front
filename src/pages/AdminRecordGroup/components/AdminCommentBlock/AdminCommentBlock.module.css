@@ -1,12 +1,17 @@
+.adminComment {
 
-.adminComment{
     display: flex;
     flex-direction: column;
-    margin-top: 30px;
+    margin-top: auto;
 }
-.adminCommentButton{
+
+.adminCommentButton {
+    width: 250px;
+    height: 45px;
+    font-size: 20px;
 }
-.admintCommentInput{
+
+.admintCommentInput {
     border: 2px solid #232323;
     margin-top: 20px;
     width: 100%;
@@ -14,16 +19,32 @@
     border-radius: 8px;
     padding: 15px;
 
-font-family: 'Poppins';
-font-style: normal;
-font-weight: 400;
-font-size: 18px;
-line-height: 20px;
-color: #232323;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 20px;
+    color: #232323;
 
 
-}/* color: rgba(24, 24, 24, 0.3); */
+}
 
-.admintCommentInput::placeholder{
+/* color: rgba(24, 24, 24, 0.3); */
+
+.admintCommentInput::placeholder {
     color: rgba(24, 24, 24, 0.4);
+}
+
+@media (max-width: 1300px){
+    .admintCommentInput{
+        margin-top: 10px;
+        font-size: 16px;
+    }
+    .adminCommentButton{
+        font-weight: normal;
+        font-size: 18px;
+        width: 200px;
+        height: 40px;
+
+    }
 }

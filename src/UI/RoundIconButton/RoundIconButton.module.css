@@ -17,11 +17,11 @@
     height: 30px;
 }
 
-@media (max-width:1500px){
+@media (max-width:1400px){
     .button{
         border: 0;
-        width: 40px;
-        height: 40px;
+        width: 35px;
+        height: 35px;
     }
     .img{
         width: 33px;

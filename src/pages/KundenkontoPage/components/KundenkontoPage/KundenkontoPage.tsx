@@ -1,23 +1,10 @@
-import { FC, useEffect, useState } from 'react'
+import { FC } from 'react'
 import PageLayout from '../../../../components/Layout/PageLayout/PageLayout';
-import { useTypedSelector } from '../../../../hooks/useTypedSelector';
-import { useActions } from '../../../../hooks/useActions';
-
 import KundenKontoTopMenu from '../KundenKontoTopMenu/KundenKontoTopMenu';
-import AktuellenTermine from '../AktuellenTermine/AktuellenTermine';
-import Row from '../../../../components/Layout/Row/Row';
-import style from './KundenkontoPage.module.css'
-import KundenKontoService from '../../api/services/UserInfoService';
-import { GetAktuallenTermineResponse } from '../../api/responses/UserInfoResponse';
-import FlutterMenu from '../../../../UI/FlutterMenu/FlutterMenu';
-import LastPulling from '../LastPulling/LastPulling';
-import UserInfo from '../UserInfo/UserInfo';
 import { Helmet } from 'react-helmet';
 import Main from '../Main/Main';
-import ChangePasswordMenu from '../../../../components/ChangePasswordMenu/ChangePasswordMenu';
 
 const KundenkontoPage: FC = () => {
-  
   const pageText = 'Auf der Seite "Dein Kundenkonto" kannst du dein Profilbild, deinen Namen, deine E-Mail-Adresse und Telefonnummer sowie deine aktuellen Themen und Laufzeiten ohne iTunes anzeigen. Außerdem kannst du dein Passwort ändern und deine Benutzerinformationen aktualisieren.'
   return (
     <>

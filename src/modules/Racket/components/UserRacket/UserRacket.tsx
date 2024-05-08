@@ -32,7 +32,7 @@ const UserRacket: FC<Props> = ({ racket }) => {
     fetch()
   }, [])
   return (
-    <div className={style.racket}>
+   
       <GradientBlackBlock className={style.racketBlock}>
         <div style={{ textAlign: 'center' }}>
           <div className={style.racketNumber}>Schläger Nr. {racket.number}</div>
@@ -47,19 +47,18 @@ const UserRacket: FC<Props> = ({ racket }) => {
         <div className={style.imageBlock}>
           <MyImage
             alt='Es gab ein Problem beim Laden des Bildes'
-            src={racket?.pulling.string?.imgLink ? racket?.pulling.string?.imgLink : ''}
+            src={racket?.pulling.string?.imgLink || ''}
             className={style.stringImage}
           />
           <MyImage
             alt='Es gab ein Problem beim Laden des Bildes'
-            src={racket?.racketModel?.imgLink ? racket?.racketModel?.imgLink : ''}
+            src={racket?.racketModel?.imgLink || ''}
             className={style.racketgImage}
           />
 
         </div>
         <BorderMenu className={style.borderBlock}>
           <div className={style.borderBlockTitle}>Tuning</div>
-
           {RecordHeler.isTuning(racket.tuning) ?
 
             <div className={`${style.borderBlockSubTitle} ${style.borderBlockTuning}`}>
@@ -78,7 +77,7 @@ const UserRacket: FC<Props> = ({ racket }) => {
 
         </BorderMenu>
       </GradientBlackBlock>
-    </div>
+
   )
 }
 

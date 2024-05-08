@@ -1,24 +1,54 @@
 .main {
     display: flex;
     flex-direction: column;
-    height: 100vh; /* Растянуть блок на 100% высоты окна браузера */
+    height: 100vh;
+    /* Растянуть блок на 100% высоты окна браузера */
 }
-.topRow{
+
+.topRow {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     column-gap: 30px;
 }
 
-.inputs{
+/* .inputs{
     max-width: 100%;
     min-width: 150px;
     width: auto;
+} */
+.userInfo {
+    width: auto;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    row-gap: 20px;
 }
 
-@media (max-width: 1300px){
-    .inputs{
-
-    width: 250px;
+.input {
+    width: 100%;
+    height: 40px;
 }
+
+@media (max-width: 1300px) {
+    .input {
+        width: 260px;
+    }
+    .userInfo{
+        row-gap: 10px;
+    }
+
+}
+
+@media (max-height: 750px) {
+    .input {
+        height: 35px;
+ /*        font-size: 16px; */
+    }
+    .label{
+        font-size: 16px;
+    }
+    .inputRow{
+        row-gap:3px;
+    }
 }

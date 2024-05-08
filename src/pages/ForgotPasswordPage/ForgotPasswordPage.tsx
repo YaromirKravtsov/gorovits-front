@@ -35,7 +35,7 @@ const ForgotPasswordPage = () => {
       <FlutterMenu className={style.flutter} shadow={windowWidth >= 600 ? 'small' : 'all'}>
 
         <MyImage alt='sds' src={logo} className={style.image} />
-        <div>
+        <div className={style.mainRow}>
           <InputRow label='Email' >
             <MyInput
               placeholder='Email eingeben' name='email'
@@ -46,6 +46,7 @@ const ForgotPasswordPage = () => {
             />
           </InputRow>
           <MyButton mode='black' className={style.button} onClick={handelLogin}>Senden</MyButton>
+          <MyButton mode='white' border className={style.button} link ={'/login'}>Zurück</MyButton>
         </div>
       </FlutterMenu >
       {isWeiterOpen&&

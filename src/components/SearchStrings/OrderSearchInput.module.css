@@ -1,12 +1,16 @@
+.main{
+    position: relative;
+}
+
 .serachRow{
     width: 360px;
-    height: 50px;
+    height: 45px;
     border: 2px solid #232323;
     border-radius: 5px;
     display: flex;
     flex-direction: row;
     align-items: center;
-    padding: 0 15px;
+    padding: 0 10px;
 }
 .searchIcon{
     margin-left: auto;
@@ -20,7 +24,7 @@
     font-family: 'Poppins';
     font-style: normal;
     font-weight: 400;
-    font-size: 18px;
+    font-size: 16px;
     line-height: 20px;
     color: #232323;
     padding: 0;
@@ -33,7 +37,7 @@
     font-family: 'Poppins';
     font-style: normal;
     font-weight: 400;
-    font-size: 18px;
+    font-size: 16px;
     line-height: 22px;
     display: flex;
     align-items: center;
@@ -71,7 +75,7 @@
 font-family: 'Poppins';
 font-style: normal;
 font-weight: 400;
-font-size: 20px;
+font-size: 18px;
 line-height: 20px;
 color: #232323;
 margin-bottom: 5px;
@@ -83,14 +87,14 @@ padding: 0 15px;
 .stringsItem{
     min-width: 100%;
     width: 100%;
-    min-height: 25px;
-    height: 25px;
+    min-height: 20px;
+    height: 20px;
     padding: 0 15px;
     cursor: pointer;
     font-family: 'Poppins';
     font-style: normal;
     font-weight: 400;
-    font-size: 18px;
+    font-size: 16px;
     line-height: 20px;
     color: #232323;
     display: flex;
@@ -118,4 +122,8 @@ padding: 0 15px;
     .dropDownBlock{
         width: 100%;
     }
+    .errorInput {
+        transform: translate(-15px,35px);
+    }
 }
+

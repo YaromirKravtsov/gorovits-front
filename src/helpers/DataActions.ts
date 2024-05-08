@@ -60,18 +60,17 @@ export class DataActions{
         try {
           const response = await fetch(imageUrl);
           if (response.ok) {
-            // Если запрос успешен, но ответ пустой
             if (response.status === 204 || response.status === 205) {
-              return false; // Изображение не доступно
+              return false;
             } else {
-              return true; // Изображение доступно
+              return true;
             }
           } else {
-            return false; // Ошибка загрузки изображения
+            return false; 
           }
         } catch (error) {
           console.error('Ошибка загрузки изображения:', error);
-          return false; // Ошибка загрузки изображения
+          return false; 
         }
       }
       

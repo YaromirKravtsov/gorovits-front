@@ -83,7 +83,7 @@ const QRCodeGenerator: React.FC<QRCodeGeneratorProps> = ({ value, className }) =
 
       <div>
         <MyButton onClick={() => setCodeType(true)} className={className}>
-          <QRCode value={value} className={style.qrImg} height={30} />
+          <QRCode value={value} className={style.qrImg} height={20} />
         </MyButton>
 
       </div>

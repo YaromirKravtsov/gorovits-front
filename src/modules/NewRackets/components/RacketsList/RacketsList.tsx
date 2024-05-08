@@ -48,7 +48,6 @@ const RacketsList:FC<Props> = (props) => {
 
     }
 
-    const qrCodeValue = 'Ваша строка для генерации QR-кода';
 
  
   return (
@@ -59,7 +58,7 @@ const RacketsList:FC<Props> = (props) => {
         <GradientBlackBlock className={`${style.item} ${props.editMode ? style.editItem :''}`} key ={index}>
           <div className={style.mainRow}>
             <div className={style.contentBlock}>
-                <div className={style.contentTitle}>Schläger Nr. {racket.number} <br /> <div className={style.racketCode}>{racket.code} </div> </div>
+                <div className={style.contentTitle}>Schläger Nr. {racket.number} <br /> <div className={style.racketCode}>DNA {racket.code} </div> </div>
                 <div className={style.contentLine}></div>
                 <div className={style.contentText}>{racket.racketModelName}</div>
             </div>

@@ -49,8 +49,8 @@ const LoginForm = () => {
       <FlutterMenu className={style.flutter} shadow={windowWidth >=600 ?'small': 'all'}>
 
         <MyImage alt='sds' src={logo} className={style.image} />
-        <div >
-          <InputRow label='Email' > 
+        <div className={style.mainRow}>
+          <InputRow label='Email' className={style.inputRow}> 
   
             <MyInput
               placeholder='Email eingeben' name='email'
@@ -65,7 +65,7 @@ const LoginForm = () => {
           
           </InputRow>
           
-          <InputRow label='Passwort' >
+          <InputRow label='Passwort' className={style.inputRow}>
             <MyInput
 
               placeholder='Passwort eingeben' name='password'

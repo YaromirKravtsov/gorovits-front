@@ -1,11 +1,13 @@
 .main {
     display: flex;
     flex-direction: column;
+    height: 100%;
 }
 
 .topRow {
     column-gap: 30px;
     height: auto;
+  
 }
 
 .buttonRow {
@@ -19,8 +21,9 @@
     width: 100%;
 }
 .button {
-    width: 400px;
-    height: 60px;
+    width: 350px;
+    height: 45px;
+    font-size: 20px;
 }
 
 .delete {
@@ -29,19 +32,27 @@
 }
 
 .userPhoto {
-    height: 300px;
+    width: 190px;
+    height: 240px;
+}
+
+.userPhotoImg{
+    display: block;
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    object-position: center !important;
+    border-radius: 40px;
 }
 
 @media (max-width: 1500px) {
     .button {
-        width: 300px;
-        height: 60px;
-        font-size: 20px;
-        height: 45px;
+        width: 260px;
+        height: 40px;
+        font-size: 18px;
+        font-weight: normal;
     }
-    .userPhoto{
-        
-    }
+   
 }
 @media (max-height: 750px) {
 .userPhoto {

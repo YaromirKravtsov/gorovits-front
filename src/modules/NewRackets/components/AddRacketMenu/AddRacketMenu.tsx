@@ -166,7 +166,7 @@ const AddRacketMenu: FC<Props> = (props) => {
     if (isValid) {
 
 
-      const racketData = { ...newRacketData, code: RecordHeler.generateString(12) }
+      const racketData = { ...newRacketData, code: RecordHeler.generateDNA(5) }
       if (props.racket) {
         if (props.editMode) {
           try {
@@ -210,11 +210,13 @@ const AddRacketMenu: FC<Props> = (props) => {
               placeholder='Schlägernummer eingeben'
               error={errors.number}
               setError={(value: boolean) => setErrors(prev => ({ ...prev, number: value }))}
+              className={style.input}
             />
           </InputRow>
           <InputRow label='Bar code'>
             <MyInput onChange={(value: string) => setNewRacketData(prev => ({ ...prev, code: value }))} value={newRacketData.code}
               placeholder='Bar code eingeben'
+              className={style.input}
             />
           </InputRow>
 
@@ -267,6 +269,7 @@ const AddRacketMenu: FC<Props> = (props) => {
               error={errors.stringHardness}
               setError={(value: boolean) => setErrors(prev => ({ ...prev, stringHardness: value }))}
               value={(newRacketData).stringHardness}
+              className={style.input}
             />
           </InputRow>
           <InputRow label='Schwunggewicht'>
@@ -274,6 +277,7 @@ const AddRacketMenu: FC<Props> = (props) => {
               onChange={(value: string) => setNewRacketData(prev => ({ ...prev, swingWeight: value }))}
               value={newRacketData.swingWeight}
               placeholder='Schwunggewicht eingeben'
+              className={style.input}
 
             />
           </InputRow>
@@ -282,6 +286,7 @@ const AddRacketMenu: FC<Props> = (props) => {
               onChange={(value: string) => setNewRacketData(prev => ({ ...prev, balancePoint: value }))}
               value={newRacketData.balancePoint}
               placeholder='Balancepunkt eingeben'
+              className={style.input}
 
             />
           </InputRow>
@@ -291,6 +296,7 @@ const AddRacketMenu: FC<Props> = (props) => {
               onChange={(value: string) => setNewRacketData(prev => ({ ...prev, totalWeight: value }))}
               value={newRacketData.totalWeight}
               placeholder='Gesamtgewicht eingeben'
+              className={style.input}
 
             />
           </InputRow>

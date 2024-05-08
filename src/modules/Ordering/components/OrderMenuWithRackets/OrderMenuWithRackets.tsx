@@ -29,7 +29,7 @@ interface Props {
     title: string,
     recordType?: number
 }
-const OrderMenuWithRackets: FC<Props> = ({recordType =1,...props}) => {
+const OrderMenuWithRackets: FC<Props> = ({ recordType = 1, ...props }) => {
 
     // in redux state, actions
     const { isDateBlockOpen, userRackets } = useTypedSelector(state => state.order)
@@ -115,7 +115,7 @@ const OrderMenuWithRackets: FC<Props> = ({recordType =1,...props}) => {
         }
     }
     const handelPullingClose = () => {
-        if(windowWidth <= 600){
+        if (windowWidth <= 600) {
             navigate(RouteNames.TERMINE)
         }
         setIsOrderOpen(false);
@@ -132,21 +132,20 @@ const OrderMenuWithRackets: FC<Props> = ({recordType =1,...props}) => {
 
     return (
         <>
-
             <OrderFlutterMenu title={props.title + pullingOrderTitle[currentOrderRecord]} onSubmit={handelChooseTime} hidden={blockHidden} onClose={handelPullingClose}
-            buttons = {
-                <div className={style.buttonRow}>
-                    {currentOrderRecord > 0&&
-                        <MyButton className={style.button} mode='white' border onClick={prevRacket}>Zur vorherigen Schläger</MyButton>
-                      
-                    }
-                    {userRackets.length - 1 > currentOrderRecord &&
-                        <MyButton className={`${style.button} ${style.buttonLeft}`} mode='black' onClick={handleNextClick}>Weitere Schläger hinzufügen</MyButton>
-                    }
-                </div>
-            }
-            
-            
+                buttons={
+                    <div className={style.buttonRow}>
+                        {currentOrderRecord > 0 &&
+                            <MyButton className={style.button} mode='white' border onClick={prevRacket}>Zur vorherigen Schläger</MyButton>
+
+                        }
+                        {userRackets.length - 1 > currentOrderRecord &&
+                            <MyButton className={`${style.button} ${style.buttonLeft}`} mode='black' onClick={handleNextClick}>Weitere Schläger hinzufügen</MyButton>
+                        }
+                    </div>
+                }
+
+
             >
                 <RacketsDropBlock onChange={(value: number) => props.setRecordData({ ...(props.recordData), racketId: value })} error={props.inputsErrors.racketId}
                     defaultValue={'Wählen Sie einen Schläger'}
@@ -156,7 +155,7 @@ const OrderMenuWithRackets: FC<Props> = ({recordType =1,...props}) => {
                 />
                 {props.children}
                 {/* =============Buttons============== */}
-                
+
 
             </OrderFlutterMenu>
             {

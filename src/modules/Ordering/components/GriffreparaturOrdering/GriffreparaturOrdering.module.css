@@ -15,4 +15,8 @@
     .input{
         width: 100%;
     }
+    .errorInput {
+        transform: translateY(75px);
+    }
 }
+

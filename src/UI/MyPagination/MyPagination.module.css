@@ -4,6 +4,11 @@
 }
 .mehrLaden{
     margin: 0 auto;
+
+    width: 150px;
+    height: 45px;
+    font-size: 20px;
+
 }
 .buttonContainer{
     width: 100% !important;
@@ -11,4 +16,13 @@
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+@media (max-width: 1500px){
+    .mehrLaden{
+        width: 130px;
+        height: 35px;
+        font-size: 18px;
+        font-weight: normal;
+    }
 }

@@ -28,17 +28,17 @@ const PullingCard: FC<Props> = (props) => {
   return (
     <GradientBlackBlock className={style.pullingCard}>
       <Row className={style.mainRow}>
-        <Column>
+        <Column className={style.column}>
           <BorderMenu className={style.leftTop}>
             {props.type == 'racketStory' && <>Zuletzt besaitet am {FormatDate.SqlToDate(props?.pulling?.record?.dateTime)}</>}
             {props.type == 'userStory' && <>Schläger Nr. {props.pulling?.userRacket?.number}</>}
           </BorderMenu>
           <BorderMenu className={style.leftButton}>
             <div className={style.stringHardnes}>{props?.pulling?.stringHardness && RecordHeler.formatStringHardnes(props?.pulling?.stringHardness)}</div>
-            <div className={style.stringName}>{RecordHeler.formatStringsName(props?.pulling?.longString, props?.pulling?.crossString)}</div>
+            <div className={style.stringName}>{RecordHeler.formatStringsName(props?.pulling?.longString, props?.pulling?.crossString).replace('(Eigene Tennissaite)','')}</div>
           </BorderMenu>
         </Column>
-        {windowWidth >= 600 &&
+        {windowWidth >= 900 &&
            <RacketStringPhoto
            racketSrc={props?.pulling.userRacket.racketModel.imgLink}
            stringSrc={props?.pulling.string.imgLink}
@@ -46,10 +46,10 @@ const PullingCard: FC<Props> = (props) => {
         
         }
      
-        <Column>
+        <Column className={style.column}>
           {props.type == 'userStory' &&
             <BorderMenu className={`${style.dateTimeBlock} ${style.leftTop}`}>
-              <div>Neu bespannt:</div><div> {FormatDate.SqlToDate(props.pulling.record.dateTime)/* { props.pulling.record.dateTime} */}</div>
+              <div>Neu bespannt <br />{FormatDate.SqlToDate(props.pulling.record.dateTime)}</div>
             </BorderMenu>
           }
 

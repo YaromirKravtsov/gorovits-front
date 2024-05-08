@@ -7,3 +7,9 @@ export interface IUser{
    
     phoneNumber?: string;
 }
+export interface ISUser {
+    email:string,
+    fullName: string,
+    phoneNumber: string
+  }
+

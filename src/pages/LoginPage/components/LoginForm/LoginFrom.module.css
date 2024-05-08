@@ -73,14 +73,28 @@ color: #404040;
 
 @media (max-width: 600px) {
     .flutter{
-        width: 100%;
-        height: 100%;
+        padding: 0;
+        width: 100vw;
+        height: 100vh;
         border-radius: 0;
         justify-content: center;
-        padding: 0 50px;
+/*         padding: 0 50px; */
     }
     .input{
         width: 100%;
         max-width: 100%;
+    }
+}
+@media (max-width: 400px) {
+    .input,.button{
+        width: 100%;
+        max-width: 100%;
+    }
+    .input{
+        height: 40px;
+    }
+    .mainRow{
+        width: 90%;
+        max-width: 90%;
     }
 }

@@ -19,6 +19,7 @@ import logoWhite from '../../../../assets/images/logo-white.png'
 import fs from 'fs';
 import DatesHelper from '../../../../modules/Ordering/helpers/DatesHelper';
 import FormatDate from '../../../../helpers/dates';
+import { useTypedSelector } from '../../../../hooks/useTypedSelector';
 interface Props {
   record: IRecord;
 }
@@ -36,14 +37,12 @@ const AdminRecordCard: FC<Props> = (props) => {
   const [racketNeed, setRacketNeed] = useState<boolean>(true)
   const [mainConent, setMainConent] = useState<string[] | null>([])
 
-
-
   useEffect(() => {
     setRecord(props.record)
     const fetch = async () => {
       let userRacket;
       let racketModelId
-
+      console.log(record)
       switch (record.recordType) {
         case 0:
         case 1:
@@ -63,13 +62,13 @@ const AdminRecordCard: FC<Props> = (props) => {
         case 3:
           userRacket = (record as IOsebandwechselRecord).userRacket;
           setMainConent(null)
-          racketModelId = (record as IOsebandwechselRecord).userRacketId
+          racketModelId = userRacket.racketModelId;
           break;
         case 4:
           userRacket = (record as IGriffreparaturRecord).userRacket;
           const mainSrtring = `Griffgröße: ` + (record as IGriffreparaturRecord).handleSize
           setMainConent([mainSrtring])
-          racketModelId = (record as IOsebandwechselRecord).userRacketId
+          racketModelId = userRacket.racketModelId
           break;
         case 8:
           const reckets = (record as IRacketsTestRecord).testRackets;
@@ -90,17 +89,12 @@ const AdminRecordCard: FC<Props> = (props) => {
 
         })
         if (racketModelId) {
+          console.log(racketModelId)
           const { data } = await AdminRecordGroupService.getNameByModelId(racketModelId)
           setRacketModel(data)
         }
       }
-      //===
-
-
-
-
-      //===
-
+      //====
     }
     fetch();
 
@@ -202,7 +196,7 @@ const AdminRecordCard: FC<Props> = (props) => {
       font: font,
     });
 
-    const racketCode = `Code: ${racketData.code}`
+    const racketCode = `DNA: ${racketData.code}`
     page.drawText(racketCode, {
       x: centerX - font.widthOfTextAtSize(racketCode, 11) / 2, // Центрирование по горизонтали
       y: page.getSize().height / 2 - cmToPt(1) - 11,
@@ -336,7 +330,7 @@ const AdminRecordCard: FC<Props> = (props) => {
     link.download = RecordHeler.getNameByRecordType(record.recordType) + '_' + record.user?.fullName;
     link.click();
   };
-
+  const { recordGroup } = useTypedSelector(state => state.recordGroup)
   return (
     <>
       {isStringEditOpen &&
@@ -346,35 +340,41 @@ const AdminRecordCard: FC<Props> = (props) => {
       <GradientBlackBlock className={style.recordBlock}>
         <div className={style.mainRow}>
           {racketNeed &&
-            <div className={style.section}>
-              <div className={style.fragment}>{racketData.number} <br /> {racketData.code}</div>
-              <div className={style.line}></div>
-              <div className={style.fragment}>{racketModel}</div>
-            </div>
+            <>
+              <div className={style.section}>
+                <div className={style.fragment}>{racketData.number} <br />DNA {racketData.code}</div>
+                <div className={style.line}></div>
+                <div className={style.fragment}>{racketModel}</div>
+              </div>
+              <div className={style.verticalLine}></div>
+            </>
           }
           {mainConent !== null &&
-            <div className={`${style.section} ${style.mainSection}`} onClick={handelStringsEditOpen}>
-              {mainConent.map(string =>
-                <div>
-                  {string}
-                </div>
-              )}
+            <>
+              <div className={`${style.section} ${style.mainSection}`} onClick={handelStringsEditOpen}>
+                {mainConent.map(string =>
+                  <div>
+                    {string}
+                  </div>
+                )}
 
-            </div>
+              </div>
+              <div className={style.verticalLine}></div>
+            </>
           }
           <div className={`${style.section} ${style.mainSection}`} style={{ color: stateColor }}>{stateString}</div>
+          <div className={style.verticalLine}></div>
           <div className={style.section}>
             <div className={style.fragment}>User Comment</div>
             <div className={style.line}></div>
             <div className={`${style.fragment} ${style.comment}`}>{record.userComment == '' ? <> Kein Kommentar</> : record.userComment}</div>
           </div>
-
-     
+          
         </div>
 
         <div className={style.buttonRow}>
-          
-        {record.recordType == 1 || record.recordType == 0 &&
+
+          {record.recordType == 1 || record.recordType == 0 &&
             <MyButton mode='white' className={style.pdfAction} onClick={generatePDF}>
               <svg width="40" height="40" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M21.7509 0H3.24963V30H26.7503V4.99937L21.7509 0Z" fill="#E8E8E8" />
@@ -387,7 +387,10 @@ const AdminRecordCard: FC<Props> = (props) => {
               </svg>
             </MyButton>
           }
-          <ButtonsList record={record} type='single' />
+
+          {recordGroup.records.length <= 1 ? '' :
+            <ButtonsList record={record} type='single' />
+          }
         </div>
       </GradientBlackBlock>
     </>

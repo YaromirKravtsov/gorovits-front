@@ -9,11 +9,13 @@ import { getErrorText } from '../../../../helpers/FormDataGeneration';
 import { AxiosError } from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { SelectedImage } from '../../../../components/PhotoSelection/PhotoSelection';
+import { ISUser } from '../../../../models/IUser';
 interface Props{
-  photo: SelectedImage
+  photo: SelectedImage,
+  userInfo:  ISUser  
 }
-const TopMenu:FC<Props> = (props) => {
-    const {userInfo} = useTypedSelector(state=> state.user);
+const TopMenu:FC<Props> = ({userInfo, ...props}) => {
+
     const {newRackets} = useTypedSelector(state=> state.newRackets);
     const [isErrorMenuOpen, setIsErrorMenuOpen] = useState<boolean>();
     const {setGlobalError} = useActions()
@@ -42,10 +44,12 @@ const TopMenu:FC<Props> = (props) => {
     
     
     const handelClick = async () =>{
+      console.log(userInfo)
       if(validateFields()){
         try{
+   
           const {data} = await NewUserService.createUser( newRackets, userInfo, props.photo);
-          navigate(`/user-account/${data.userId}`)
+          navigate(`/user-account/${data.userId}`) 
         }catch(e: any){
           getErrorText(e)
           console.log(e)

@@ -12,7 +12,7 @@ const Main = () => {
     const { recordGroup, isLoading } = useTypedSelector(state => state.recordGroup)
   
     return (
-        <div>
+        <div className={style.main}>
             {
 
                 isLoading ?

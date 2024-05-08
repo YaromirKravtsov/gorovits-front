@@ -1,8 +1,7 @@
 .selectDateMenu{
     width: 935px;
-    height: 700px;
+    height: 650px;
     padding: 40px;
-    margin-bottom: 60px;
     display: flex;
     flex-direction: column;
 }
@@ -11,7 +10,7 @@
     font-family: 'Roboto';
     font-style: normal;
     font-weight: 500;
-    font-size: 27px;
+    font-size: 24px;
     line-height: 32px;
     text-align: center;
     color: #30484D;
@@ -137,7 +136,7 @@
 
 }
 .buttonRow{
-    margin-top: 50px !important;
+    margin-top: 20px !important;
     margin-top: auto;
     display: flex;
     flex-direction: row;
@@ -146,7 +145,7 @@
 
 .button{
     width: 360px;
-    height: 50px;
+    height: 45px;
 }
 .booked{
     background: rgba(217, 217, 217, 0.3);
@@ -156,18 +155,29 @@
 .selected{
     box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.8);
 }
+@media (max-width: 950px){
+    .selectDateMenu{
+        width: 95%;
+    }
+
+}
 @media (max-width: 600px){
+    .line{
+        width: 1px;
+        min-width: 1px;
+        background: rgba(0, 0, 0, 0.3);
+    }
+    .line{
+        
+    }
     .currentWeek{
-    
         height: 100%;
         display: flex;
         flex-direction: column;
         margin-top: 15px;
-   /*      max-height: calc(100% - 300px); */
     
     }
     .buttonRow{
-
         width: 100%;
         margin-top: auto;
         flex-direction: column-reverse !important;
@@ -176,6 +186,7 @@
     }
     .dateTimeColumn{
         width: 15.3%;
+   
     }
     .dateTime{
         height: 35px ;
@@ -183,7 +194,8 @@
     }
     .button{
         width: 100%;
-        height: 60px;
+        height: 45px;
+        font-size: 18px;
     }
     .selectDateMenu{
      
@@ -192,8 +204,14 @@
         padding: 0;
     }
     .weekBlock{
-        width: 100px;
+        width: 90px;
+        font-size: 14px;
+    }
+
+    .weekDay{
+        line-height: 18px;
         font-size: 16px;
+
     }
     .arrowBLock{
         width: 40px;
@@ -201,6 +219,58 @@
     .arrow{
         width: 30px;
         height: 8px;
+    }
+}
+
+@media (max-width: 400px){
+    .arrowBLock,.weekBlock{
+        line-height: 16px;
+        height: 20px;
+    }
+
+    .currentWeek{
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        margin-top: 10px;
+        max-height: 420px;
+    
+    }
+
+    .buttonRow{
+        margin-top: auto;
+        row-gap: 10px;
+    }
+}
+@media (max-width: 480px){
+    .dateTime{
+        min-height: 25px;
+        height: 25px;
+        border-radius: 5px;
+        font-size: 16px;
+        font-weight: 400;
+
+    }
+
+
+    .arrowBLock,.weekBlock{
+        line-height: 14px;
+        font-size: 13px;
+        height: 18px;
+    }
+}
+
+@media (max-width: 430px){
+    .arrowBLock{
+        width: 25px;
+
+    }
+    .arrow{
+        width: 90%;
+        height: auto;
+    }
+    .weeksBlock{
+        column-gap: 3px;
     }
 }
 

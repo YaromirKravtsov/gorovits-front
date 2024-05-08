@@ -1,6 +1,6 @@
 .qrImg{
-    width: 30px !important;
-    height: 30px  !important;
+    width: 20px !important;
+    height: 20px  !important;
 
 }
 .flutter{
@@ -25,3 +25,4 @@
 .closeButton{
     margin-top: auto;
 }
+

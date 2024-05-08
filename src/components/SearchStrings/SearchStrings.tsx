@@ -26,7 +26,6 @@ const SearchStrings: FC<Props> = (props) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [filteredStrings, setFilteredStrings] = useState<IString[]>([]);
   const componentRef = useRef<HTMLDivElement>(null);
-
   useEffect(() => {
     setValue(props.value.name);
     
@@ -77,7 +76,7 @@ const SearchStrings: FC<Props> = (props) => {
   }, []);
 
   return (
-    <div ref={componentRef}>
+    <div ref={componentRef} className={style.main}>
       <div className={style.serachRow}>
         <input
           type="text"
@@ -95,7 +94,6 @@ const SearchStrings: FC<Props> = (props) => {
           <div className={style.dropDownBlock}>
             <div className={style.dropTitle}>Vorgeschlagene</div>
             {filteredStrings.map(string =>
-          
               <div className={style.stringsItem} onClick={() => onSelect(string)}>{string.name}</div>
             )}
           </div>

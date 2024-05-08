@@ -5,6 +5,10 @@
     row-gap: 20px;
     overflow: initial;
     max-height: 100%;
+/*     max-width: 100%;
+    width: 90%;
+    overflow-y: hidden;
+    position: relative; */
 }
 
 

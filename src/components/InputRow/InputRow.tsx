@@ -3,6 +3,7 @@ import style from './InputRow.module.css';
 import questionMark from '../../assets/images/question-icon.png';
 import Column from '../Layout/Column/Column';
 import QuestionMark from '../../UI/QuestionMark/QuestionMark';
+import { useTypedSelector } from '../../hooks/useTypedSelector';
 
 
 interface Props {
@@ -16,12 +17,12 @@ interface Props {
 }
 
 const InputRow: FC<Props> = ({questionMark = false,...props}) => {
-  const [isQuestionOpen, setIsQuestionOpen] = useState<boolean>(false);
+  const {windowWidth} = useTypedSelector(state => state.adaptive)
 
   return (
     <Column className={`${style.inputsRow} ${props.className}`}>
       <div className={`${style.label} ${props.labelClass}`}>
-        {props.label} {questionMark&&<QuestionMark text={String(props.questionText)} size='small' />}
+        {props.label} {questionMark&&<QuestionMark text={String(props.questionText)} size='small'droPosition ={windowWidth>= 600 ? 'bottom-left' : 'center'} />}
       </div>
       {props.children}
     </Column>

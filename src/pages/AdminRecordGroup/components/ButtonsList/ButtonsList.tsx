@@ -113,6 +113,7 @@ const ButtonsList: FC<Props> = ({ record, type }) => {
     }
     return (
         <>
+     
             {record.recordType <= 4 ?
                 <>
                     {isDateChanging &&

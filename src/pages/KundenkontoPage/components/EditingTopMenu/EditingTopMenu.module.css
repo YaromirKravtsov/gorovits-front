@@ -13,7 +13,8 @@
 }
 .button{
     width: 250px;
-    height: 55px;
+    height: 40px;
+    font-size: 20px;
     margin-right: 100px;
 }
 
