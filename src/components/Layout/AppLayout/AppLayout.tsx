@@ -50,31 +50,28 @@ const AppLayout: FC = () => {
 
 
   useEffect(() => {
-    
+
     document.addEventListener('click', e => handleClickOutside(e, isNavOpen));
     return () => {
       document.removeEventListener('click', e => handleClickOutside(e, isNavOpen));
-  
+
     };
   }, []);
 
 
 
   return (
-    <div className={`${style.app} ${isNavOpen && style.openNavBar}`} style  = {{left:`${-navBarWidth}px`}}>
+    <div className={`${style.app} ${isNavOpen && style.openNavBar}`} style={{ left: `${-navBarWidth}px` }}>
 
 
 
       <NavBar setWidth={setNavBarWidth} setHeight={setNavBarHeight} className={`${style.navBar}`} />
- 
-      
-       <Content className={style.content} topStyle={{ height: contentHeight }}>
-        <AppRouter />
-      </Content>
-      
-     
 
-        
+      <div className={style.content} style={{ height: contentHeight,width: contentWidth }} >
+        <AppRouter />
+      </div>
+
+
     </div>
   )
 }

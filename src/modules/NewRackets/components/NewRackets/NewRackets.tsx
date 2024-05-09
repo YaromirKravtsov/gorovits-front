@@ -12,6 +12,7 @@ interface Props{
 }
 
 const NewRackets:FC<Props> = (props) => {
+    
   const [isNewRacketOpen, setIsNewRacketOpen] = useState<boolean>(false)
   return (
     <>

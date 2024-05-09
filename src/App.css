@@ -11,8 +11,9 @@ body{
 }
 /* @media (max-width:600px) {
   body{
-    overflow: auto;
+    overflow: inherit;
   }
+  
 } */
 *{
   box-sizing: border-box;

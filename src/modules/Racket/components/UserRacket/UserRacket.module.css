@@ -19,6 +19,7 @@
 }
 
 .racketCode {
+    margin-top: -23px;
     font-family: 'Montserrat';
     font-style: normal;
     font-weight: 500;
@@ -26,7 +27,7 @@
     line-height: 16px;
     letter-spacing: 0.04em;
     color: #FFFFFF;
-    margin-bottom: 7px;
+  
 }
 
 .borderBlock {
@@ -88,9 +89,7 @@
     align-items: center;
 
 }
-.racketgImage {
-    padding: 40px 0;
-}
+
 .stringImage {
     font-family: 'Montserrat';
     transform: rotate(-90deg) translate(-30px, -45px);
@@ -101,6 +100,10 @@
     writing-mode: vertical-rl; 
     text-align: center;
     color: #fff;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .racketgImage {
@@ -120,7 +123,11 @@
     margin: auto;
 }
 
-
+@media (max-height:1300px) {
+    .racketBlock{
+        width: 290px;
+    }
+}
 @media (max-height:900px) {
     .racketBlock{
         max-height: 720px;
@@ -133,9 +140,10 @@
         height: 100px;
     }
     .racketgImage {
-        width: 267px;
-        min-height: 115px;
-        height: 105px;
+        min-width: 240px;
+        max-width: 240px;
+        max-height: 98px;
+        min-height: 98px;
     }
 }
 
@@ -163,6 +171,7 @@
     }
     .borderBlock{
         height: 165px;
+     
     }
     .borderBlockStrings{
         margin-top: 3px;
@@ -175,9 +184,8 @@
         margin: auto 0px;
     }
     .racketgImage {
-        width: 250px;
-        min-height: 101px;
-        height: 101px;
+        min-width: 220px;
+        min-height: 105px;
     }
     .stringImage {
         width: 90px;
@@ -190,8 +198,8 @@
         height: 80px;
     }
     .racketgImage{
-        height: 85px;
-        min-height: 85px;
+        height: 100px;
+        min-height: 100px;
         width: 210px;
     }
     .racketBlock{
@@ -200,54 +208,19 @@
     }
 }
 
-@media (max-height:700px ) and (min-width: 700px)  {
+/* @media (max-height:700px ) and (min-width: 700px)  {
 
 
-}
-@media (max-height:670px) {
-    .stringImage{
-        width: 80px;
-        height: 80px;
-    }
-    .racketgImage{
-        height: 85px;
-        min-height: 85px;
-        width: 210px;
-    }
- 
-    .racketBlock{
-        max-height: 580px;
-        justify-content: space-between;
-    }
-    .racketBlock{
-        max-height: 580px;
-        justify-content: space-between;
-    }
-}
-
+} */
 
 @media (max-width:600px) {
-/*     .imageBlock{
-        display: none;
-    } */
-/*     .racketBlock {
-        max-height: 650px;
-        padding: 12px 0;
-        max-width: 270px;
-        min-width: 270px;
+    .racketBlock{
         height: 97%;
-        margin-bottom: auto;
     }
-
-    .stringImage {
-        width: 90px;
-        height: 90px;
-    } */
-
     .racketgImage {
-        width: 267px;
-        min-height: 115px;
-        height: 105px;
+        width: 240px;
+        min-height: 92px;
+        height: 92px;
     }
 
     .racketNumber {
@@ -276,5 +249,50 @@
     }
     .borderBlockTuning{
         margin-top: auto;
+    }
+}
+
+@media (max-height:670px) {
+    .stringImage{
+        width: 70px;
+        height: 70px;
+        transform: rotate(-90deg) translate(-30px, -35px);
+    }
+    .racketgImage{
+        height: 85px;
+        min-height: 85px;
+        max-height: 85px;
+        min-width: 210px;
+        max-width: 210px;
+        padding: 0;
+    }
+ 
+    .racketBlock{
+        max-height: 580px;
+        justify-content: space-between;
+    }
+    .racketBlock{
+        max-height: 580px;
+        justify-content: space-between;
+    }
+    .RacketButton{
+        height: 30px;
+    }
+}
+
+@media (max-height:600px) {
+    .stringImage{
+        width: 60px;
+        height: 60px;
+        transform: rotate(-90deg) translate(-30px, -35px);
+    }
+    .racketgImage{
+        transform: rotate(-90deg) translateY(20px);
+        height: 85px;
+        min-height: 60px;
+        max-height: 60px;
+        min-width: 160px;
+        max-width: 160px;
+        padding: 0;
     }
 }

@@ -1,79 +1,25 @@
-.slick-slider {
-    max-width: 100% !important;
-    max-height: 800px;
+
+
+  .swiper-slide{
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
   }
-  
-  .slick-slide {
-    margin-right: 30px; /* Расстояние между слайдами */
-  }
-  .slick-prev, .slick-next {    
-    background: #232323 !important;
-    width: 50px !important;
-    height: 50px !important;
+
+  .swiper-pagination {
+    bottom: 0px !important; 
     position: absolute;
-    top: 50% !important; /* расположить кнопки по вертикали посередине слайдера */
-    transform: translateY(-50%);
-    cursor: pointer;
-    z-index: 5 !important;
-    color: #232323 !important;
-
-    display: flex !important;
-    justify-content: center !important;
-    align-items: center !important;
-    border-radius: 15px !important;
+    z-index: 100;
   }
   
-  .slick-next {
-   transform: translate(30px,-50%) !important;
-
+  .swiper-pagination-bullet {
+    width: 8px;
+    height: 8px;
+    background-color: #000; 
+    opacity: 0.5; 
   }
   
-  .slick-prev {
-    transform: translate(-30px,-50%) !important;
+  .swiper-pagination-bullet-active {
+    opacity: 1.0; 
   }
-  .slick-prev::before ,.slick-next::before{
-    content: '' !important;
-  }
-  @media (max-width: 1500px) {
-    .slick-slide {
-      margin-right: 20px; /* Расстояние между слайдами */
-    }
-  }
-  @media (max-width: 600px) {
-    .slick-prev, .slick-next {  
-      display: none !important;  
-    }
-    .slick-slide {
-     
-      margin-right: 20px; /* Расстояние между слайдами */
-    }
-    .slick-dots{
-      display: block !important;
-      bottom: 0px !important;
-    }
-    .slick-slide{
-      width: 100vw !important;
-      display: flex !important;
-      justify-content: center !important;
-    }
-  }
-
-  @media (max-height:721px) {
-    .slick-dots{
-      display: block !important;
-      bottom: 20px !important;
-    }
-  }
-  @media (max-height:700px) {
-    .slick-dots{
-      display: block !important;
-      bottom: 40px !important;
-    }
-    
-  }
-  @media (max-height:670px) {
-    .slick-dots{
-      display: block !important;
-      bottom: 30px !important;
-    }
-  }
+  

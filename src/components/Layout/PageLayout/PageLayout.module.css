@@ -162,7 +162,7 @@
     }
 
     .main {
-        overflow-x: hidden;
+        position: relative;
         overflow-y: auto;
         padding: 10px;
 
@@ -195,8 +195,9 @@
     }
 
     .main {
-        overflow-x: hidden;
-        overflow-y: auto;
+        overflow-x:hidden;
+        overflow-y: scroll;
+       /*  height: 300px !important; */
         padding: 10px;
 
     }

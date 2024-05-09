@@ -26,6 +26,20 @@
     flex-direction: column;
     margin: 0 auto;
 }
+
+.racketImage,.stringImage{
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 18px;
+    text-align: center;
+    color: #fff;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 @media (max-width:1520px) {
     .racketImage{
     }

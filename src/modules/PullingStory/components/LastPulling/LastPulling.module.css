@@ -6,14 +6,14 @@
     align-items: center;
     justify-content: space-between;
 }
-/* Du hast noch nichts besaitet. Höchste Zeit uns zu besuchen! */
+
 
 .noPullingText{
     margin: auto 0;
     font-family: 'Roboto';
     font-style: normal;
     font-weight: 500;
-    font-size: 27px;
+    font-size: 18px;
     line-height: 32px;
     display: flex;
     align-items: center;

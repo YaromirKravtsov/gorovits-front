@@ -21,7 +21,7 @@
     position: absolute;
     transform: translateY(10px);
     width: 350px;
-    z-index: 1;
+    z-index: 10;
     background: #FFFFFF;
     border-radius: 10px;
 
@@ -75,6 +75,16 @@
     .button{
         width: 300px;
         height: 45px;
+        font-size: 18px;
+    }
+    .dropDownList{
+        padding: 10px;
+        width: 300px;
+        row-gap: 5px;
+    }
+
+    .dropDownItemButton{
+        font-size: 16px;
     }
 }
 @media (max-width: 600px) {

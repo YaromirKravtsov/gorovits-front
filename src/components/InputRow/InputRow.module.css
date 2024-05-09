@@ -45,6 +45,12 @@
 .questionOpen{
 
 }
+
+@media (max-width: 1500px) {
+    .label{
+        font-size: 16px;
+    }
+}
 @media (max-width: 600px) {
     .input{
         width: 100%;

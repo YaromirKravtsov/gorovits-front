@@ -28,3 +28,10 @@
     color: #232323;
     margin-bottom: 10px;
 }
+
+
+@media (max-width: 1500px){
+    .label{
+        font-size: 16px;
+    }
+}

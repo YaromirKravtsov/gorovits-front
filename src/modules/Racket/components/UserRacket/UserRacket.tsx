@@ -34,7 +34,7 @@ const UserRacket: FC<Props> = ({ racket }) => {
   return (
    
       <GradientBlackBlock className={style.racketBlock}>
-        <div style={{ textAlign: 'center' }}>
+        
           <div className={style.racketNumber}>Schläger Nr. {racket.number}</div>
           <div className={style.racketCode}>{racket.code}</div>
           <BorderMenu className={style.borderBlock}>
@@ -43,15 +43,15 @@ const UserRacket: FC<Props> = ({ racket }) => {
             <div className={style.borderBlockStrings}>{RecordHeler.formatStringsName(racket.pulling.longString, racket.pulling.crossString)}</div>
             <MyButton mode='white' className={style.RacketButton} onClick={() => navigate(`/besaitungsverlauf-für-Schläger?id=${racket.id}&number=${racket.number}`)}>Verlauf</MyButton>
           </BorderMenu>
-        </div>
+       
         <div className={style.imageBlock}>
           <MyImage
-            alt='Es gab ein Problem beim Laden des Bildes'
+            alt='Ladefehler des Bildes'
             src={racket?.pulling.string?.imgLink || ''}
             className={style.stringImage}
           />
           <MyImage
-            alt='Es gab ein Problem beim Laden des Bildes'
+            alt='Ladefehler des Bildes'
             src={racket?.racketModel?.imgLink || ''}
             className={style.racketgImage}
           />

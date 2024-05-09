@@ -26,10 +26,18 @@
     color: #FF2430;
 }
 
+
+@media (max-width: 1500px){
+    .inputLabel{
+        font-size: 16px;
+    }
+}
+
 @media (max-width: 600px){
     .inputLabelBlock{
         width: 100%;
     }
+
     .dropDown{
         width: 100%;
         min-width: 100%;

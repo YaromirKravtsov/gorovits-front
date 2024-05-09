@@ -1,4 +1,5 @@
 .racketsRow {
+/*     padding: 0 20px; */
     width: 100%;
     max-width: 100%;
     height: 100%;
@@ -6,15 +7,10 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-
-
 }
+
 .racketsRowPadding{
     padding: 0 30px;
-}
-.slick-slider {
-    width: 100% !important;
-    min-width: 100% !important;
 }
 
 
@@ -26,25 +22,65 @@
 }
 
 .nextArrowIcon {
-    transform: rotate(-90deg) /* translateX(10px) */ !important;
+    transform: rotate(-90deg) !important;
+    
 }
 
 .prevArrowIcon {
     transform: rotate(90deg);
 }
-@media (max-width: 1450px) {
-    
+.arrow{
+    background: #232323 ;
+    width: 40px ;
+    height: 40px ;
+    position: relative;
+    top: 50% ; 
+    transform: translateY(-50%);
+    cursor: pointer;
+    z-index: 5;
+    color: #232323 ;
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+
+    border-radius: 8px;
 }
+.prevArrow{
+    transform: translate(-20px,-20px);
+}
+.nextArrow{
+    transform: translate(20px, -20px);
+}
+/* A */
 @media (max-width: 1520px) {
-/*     .racketsRow{
-        padding: 0 20px;
-    }  */
+    .prevArrow{
+        transform: translate(0px,-20px);
+    }
+    .nextArrow{
+        transform: translate(0px, -20px);
+    }
 }
 
 @media (max-width: 600px) {
+
+    .prevArrow{
+        transform: translate(20px,-20px);
+    }
+    .nextArrow{
+      
+        transform: translate(-20px, -20px);
+    }
+    .arrow{
+        width: 30px;
+        height: 30px;
+    }
+    .arrow img{
+        width: 23px;
+        height: 12px;
+    }
     .racketsRow{
        
-        padding: 0;
+        margin-bottom: 20px;
     } 
     .one{
         justify-content: center;

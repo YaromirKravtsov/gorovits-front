@@ -10,18 +10,23 @@
         width: 100%;
         display: flex;
         flex-direction: row;
+        margin-bottom: 10px;
     }
     .buttonLeft{
+        font-size: 20px;
         margin-left: auto;
     }
-    
-    @media (max-width: 600px) {
-        .button{
-            width: 100%;
-            font-size: 22px;
+    @media (max-width: 1500px) {
+  
+        .buttonLeft,.button{
+            width: 360px;
+            font-size: 18px;
+            margin-left: auto;
+            font-weight: normal;
         }
+    }
+    @media (max-width: 600px) {
         .buttonRow{
-
             margin-top: auto;
             width: 100%;
             display: flex;

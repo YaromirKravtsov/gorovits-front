@@ -17,6 +17,7 @@ import { getErrorText } from '../../../../helpers/FormDataGeneration'
 import { v4 as uuidv4 } from 'uuid';
 import QRCode from 'qrcode.react'
 import RecordHeler from '../../../../helpers/recordHelper'
+import { useParams } from 'react-router-dom'
 
 interface ModelManufacturereDefault {
   model: string,
@@ -29,7 +30,8 @@ interface Props {
   racket?: INewRacket
 }
 const AddRacketMenu: FC<Props> = (props) => {
-
+  const { userId } = useParams();
+  console.log(userId)
   const { addNewRacket, updateNewRacket, setGlobalError } = useActions()
   const { newRackets } = useTypedSelector(state => state.newRackets)
   const [newRacketData, setNewRacketData] = useState<INewRacket>({
@@ -93,6 +95,7 @@ const AddRacketMenu: FC<Props> = (props) => {
 
   //===
   useEffect(() => {
+   
     const fetch = async () => {
       const strings = await MainServise.getStrins()
       setStrings(strings.data);
@@ -109,6 +112,7 @@ const AddRacketMenu: FC<Props> = (props) => {
       //setModelManufacturereDefault
     }
   }, [])
+
   useEffect(() => {
     if (props.racket) {
 
@@ -162,11 +166,12 @@ const AddRacketMenu: FC<Props> = (props) => {
     const id = newRackets.length > 0 ? newRackets[newRackets.length - 1].id + 1 : 0;
     setNewRacketData(prev => ({ ...prev, id: id }));
 
-
+   
     if (isValid) {
 
 
       const racketData = { ...newRacketData, code: RecordHeler.generateDNA(5) }
+      
       if (props.racket) {
         if (props.editMode) {
           try {
@@ -181,10 +186,11 @@ const AddRacketMenu: FC<Props> = (props) => {
           updateNewRacket(racketData)
         }
       } else {
+      
         if (props.editMode) {
           try {
-
-            await NewRacketsService.createNewRacket(userInfo.userId, [racketData])
+          
+            await NewRacketsService.createNewRacket(Number(userId), [racketData])
             addNewRacket(racketData)
           } catch (e) {
             console.log(e)

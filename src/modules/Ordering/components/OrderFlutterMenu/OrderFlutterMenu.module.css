@@ -45,7 +45,15 @@
 .hidden{
     display: none !important;
 }
-
+@media (max-width: 1500px) {
+  
+    .button{
+        height: 40px;
+        width: 360px;
+        font-size: 18px;
+        font-weight: normal;
+    }
+}
 @media (max-width: 950px){
 
     .flutterMenu{

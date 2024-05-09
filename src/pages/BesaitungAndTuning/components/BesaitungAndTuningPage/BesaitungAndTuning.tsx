@@ -6,14 +6,14 @@ import UserRacketsRow from '../../../../modules/Racket/components/UserRacketsRow
 const BesaitungAndTuning = () => {
   
   const querstionText = `
-  Auf der Seite "Besaitung & Tuninng" werden alle Schläger, deren Bespannungen und Tuning-Optionen dargestellt. Zusätzlich gibt es die Möglichkeit, die Bespannungshistorie jedes Schlägers einzusehen.
+  Auf der Seite "Tennistasche" werden alle Schläger, deren Bespannungen und Tuning-Optionen dargestellt. Zusätzlich gibt es die Möglichkeit, die Bespannungshistorie jedes Schlägers einzusehen.
   `
   return (
     <>
     <Helmet>
-      <title>Besaitung & Tuninng</title>
+      <title>Tennistasche</title>
     </Helmet>
-    <PageLayout  title = 'Besaitung & Tuninng' questionMarkText={querstionText} mainStyle={style.main}>
+    <PageLayout  title = 'Tennistasche' questionMarkText={querstionText} mainStyle={style.main}>
         <UserRacketsRow/>
         </PageLayout>
     </>

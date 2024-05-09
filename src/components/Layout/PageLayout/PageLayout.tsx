@@ -16,7 +16,7 @@ interface PageLayoutProps {
 
 const PageLayout: FC<PageLayoutProps> = (props) => {
   const { setIsNavOpen } = useActions()
-  const {isNavOpen} = useTypedSelector(state => state.adaptive)
+  const {isNavOpen,windowHeight} = useTypedSelector(state => state.adaptive)
 
   const onClick = () =>{
     setIsNavOpen(!isNavOpen)
@@ -54,7 +54,7 @@ const PageLayout: FC<PageLayoutProps> = (props) => {
         </div>
       </div>
      
-      <div className={`${style.main} ${props.mainStyle}`} ref = {main} style={{height: `calc(100vh - ${topMenuHeight}px)` }}>
+      <div className={`${style.main} ${props.mainStyle}`} ref = {main} style={{height: `${windowHeight - topMenuHeight}px` }}>
         {isLoading&&<Loader size='small'/>}
         {!isLoading && 
            <> {props.children}</>

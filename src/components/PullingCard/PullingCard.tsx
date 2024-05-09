@@ -24,7 +24,8 @@ interface Props {
 }
 
 const PullingCard: FC<Props> = (props) => {
-  const {windowWidth} = useTypedSelector(state => state.adaptive)
+  const { windowWidth } = useTypedSelector(state => state.adaptive)
+  console.log(props?.pulling)
   return (
     <GradientBlackBlock className={style.pullingCard}>
       <Row className={style.mainRow}>
@@ -35,17 +36,20 @@ const PullingCard: FC<Props> = (props) => {
           </BorderMenu>
           <BorderMenu className={style.leftButton}>
             <div className={style.stringHardnes}>{props?.pulling?.stringHardness && RecordHeler.formatStringHardnes(props?.pulling?.stringHardness)}</div>
-            <div className={style.stringName}>{RecordHeler.formatStringsName(props?.pulling?.longString, props?.pulling?.crossString).replace('(Eigene Tennissaite)','')}</div>
+            <div className={style.stringName}>{RecordHeler.formatStringsName(props?.pulling?.longString, props?.pulling?.crossString).replace('(Eigene Tennissaite)', '')}</div>
           </BorderMenu>
         </Column>
         {windowWidth >= 900 &&
-           <RacketStringPhoto
-           racketSrc={props?.pulling.userRacket.racketModel.imgLink}
-           stringSrc={props?.pulling.string.imgLink}
-         />
-        
+          <>
+   
+            <RacketStringPhoto
+              racketSrc={props?.pulling.userRacket.racketModel.imgLink}
+              stringSrc={props?.pulling.string ?props?.pulling.string.imgLink :''}
+
+            />
+          </>
         }
-     
+
         <Column className={style.column}>
           {props.type == 'userStory' &&
             <BorderMenu className={`${style.dateTimeBlock} ${style.leftTop}`}>

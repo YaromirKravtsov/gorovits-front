@@ -1,16 +1,18 @@
-import React, { FC, useEffect, useState } from 'react'
+import React, { FC, useEffect, useRef, useState } from 'react';
 import { useActions } from '../../../../hooks/useActions';
 import { useTypedSelector } from '../../../../hooks/useTypedSelector';
 import UserRacket from '../UserRacket/UserRacket';
-import style from './UserRacketsRow.module.css'
+import { Swiper, SwiperSlide } from 'swiper/react';
+
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+import style from './UserRacketsRow.module.css';
 import Loader from '../../../../UI/Loader/Loader';
+import { Swiper as SwiperClass } from 'swiper/types';
+import './slider.css';
 import arrow from '../../../../assets/images/arrow.png'
-import './slider.css'
-// Slider 
-import Slider, { Settings } from 'react-slick';
-import 'slick-carousel/slick/slick.css';
-import 'slick-carousel/slick/slick-theme.css';
-import MyButton from '../../../../UI/MyButton/MyButton';
+import { Navigation, Pagination } from 'swiper/modules';
 interface ArrowProps {
   className?: string;
   onClick?: () => void;
@@ -18,68 +20,46 @@ interface ArrowProps {
 
 const NextArrow: FC<ArrowProps> = ({ className, onClick }) => {
   return (
-    <div className={`${className} `} style={{ ...style, display: "block" }} onClick={onClick}>
-      <img src={arrow} alt="Next" className={style.nextArrowIcon}/>
+    <div className={`${className} ${style.arrow}  ${style.nextArrow}`} style={{ ...style, display: "block" }} onClick={onClick}>
+      <img src={arrow} alt="Next" className={style.nextArrowIcon} />
+      <>{console.log(arrow)}</>
+
+
     </div>
   );
 }
 
 const PrevArrow: FC<ArrowProps> = ({ className, onClick }) => {
   return (
-    <div className={className} style={{ ...style, display: "block" }} onClick={onClick}>
-      <img src={arrow} alt="Previous" className={style.prevArrowIcon}/>
+    <div className={`${className} ${style.arrow} ${style.prevArrow} `} style={{ ...style, display: "block" }} onClick={onClick}>
+
+
+      <img src={arrow} alt="Previous" className={style.prevArrowIcon} />
     </div>
   );
 }
+
+
+
 const UserRacketsRow: FC = () => {
   const { fetchRackets } = useActions();
-  const { userInfo } = useTypedSelector(state => state.user)
+  const { userInfo } = useTypedSelector(state => state.user);
   const { rackets, isLoading } = useTypedSelector(state => state.racket);
-  const { windowWidth, windowHeight } = useTypedSelector(state => state.adaptive);
-  const [sliderSettings, setSliderSettings] = useState<{}>({})
+  const { windowWidth } = useTypedSelector(state => state.adaptive);
+  const nextRef = useRef<HTMLDivElement>(null);
+  const prevRef = useRef<HTMLDivElement>(null);
+
+  const [swiperInstance, setSwiperInstance] = useState<SwiperClass | null>(null);
+
   useEffect(() => {
     fetchRackets(userInfo.userId);
-    
-    // Создаем объект с настройками слайдера
-    let slidesToShow: number = 0;
-    if(windowWidth <= 600){
-      slidesToShow = 1
-    }else if(windowWidth<=1480){
-      slidesToShow = 2
-    }else if(windowWidth<=1650){
-      slidesToShow = 3
-    }
-    else{
-      slidesToShow = 4
-    }
-    /* windowWidth <= 600 ? 1 :(1180 <= windowWidth ? 2: 4); */
-    
-    const newSliderSettings:Settings = {
-      infinite: true,
-      speed: 300,
-      slidesToShow: slidesToShow,
-      slidesToScroll: 1,
-      variableWidth: true,
-      centerMode: false,
-      centerPadding: '0',
-      cssEase: 'ease-in-out',
-      dots: windowWidth <= 600
-    };
+  }, [userInfo.userId]);
 
-  
-    if (windowWidth >= 600) {
-    /*   // @ts-ignore */
-      newSliderSettings.nextArrow = <NextArrow/>;
-    /*    // @ts-ignore */
-      newSliderSettings.prevArrow = <PrevArrow/>;
-    }
-    
-    // Устанавливаем новые настройки слайдера
-    setSliderSettings(newSliderSettings);
-  }, [windowWidth, windowHeight]);
-  
+  if (isLoading) {
+    return <Loader />;
+  }
 
-  if (rackets.length <= 4 && windowWidth >= 1650 || rackets.length <= 1 && windowWidth <= 1650) {
+  if ((rackets.length <= 3 && windowWidth >= 990) || (rackets.length <= 4 && windowWidth >= 1590) || rackets.length == 1) {
     return (
       <div className={`${style.racketsRow} ${style.one}`}>
         {isLoading ?
@@ -93,32 +73,47 @@ const UserRacketsRow: FC = () => {
         }
       </div>
     )
-
   }
-
   return (
-    <div className={`${style.racketsRow} ${windowWidth >= 600 && style.racketsRowPadding}`}>
-
-      {isLoading ?
+    <div className={style.racketsRow}>
  
-        <>
-               <Loader />
-            {console.log('workkk')}
-        </>
-        :
-        <>
+      {windowWidth >= 600 &&
+        <div ref={prevRef}>
+          <PrevArrow onClick={() => swiperInstance?.slidePrev()} />
+        </div>
+      }
+      <Swiper
+        spaceBetween={30} // расстояние между слайдами
+        slidesPerView={windowWidth <= 700 ? 1 : (windowWidth <= 990 || (windowWidth <= 1500 && rackets.length >= 4 && windowWidth >= 1180)) ? 2 : (windowWidth <= 1740) ? 3 : 4} // адаптивное количество слайдов
+        loop={true} // бесконечная прокрутка
+        onSlideChange={() => console.log('slide change')}
+        modules={[Navigation, Pagination]}
 
-          <Slider {...sliderSettings}>
-            {rackets.map((racket) =>
-              <UserRacket key={racket.id} racket={racket} />
-            )}
+        navigation={{
+          nextEl: nextRef.current,
+          prevEl: prevRef.current
+        }}
+        onSwiper={(swiper: SwiperClass) => {
+          swiper.navigation.init();
+          swiper.navigation.update();
+          setSwiperInstance(swiper); // Сохранение экземпляра swiper
+        }}
+        pagination={{ clickable: true }}
+      >
 
-          </Slider>
-
-        </>
+        {rackets.map((racket) => (
+          <SwiperSlide key={racket.id}>
+            <UserRacket racket={racket} />
+          </SwiperSlide>
+        ))}
+      </Swiper>
+      {windowWidth >= 600 &&
+        <div ref={nextRef}>
+          <NextArrow onClick={() => swiperInstance?.slideNext()} />
+        </div>
       }
     </div>
-  )
-}
+  );
+};
 
-export default UserRacketsRow
+export default UserRacketsRow;

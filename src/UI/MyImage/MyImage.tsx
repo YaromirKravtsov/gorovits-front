@@ -22,7 +22,7 @@ const MyImage: FC<MyImageProps>= (props) => (
      className={props.className}
     />
     :
-    <img alt={props.alt}
+    <img alt={'Ladefehler des Bildes' || props.alt}
     src={props.src} 
     style ={{width:props.width, height: props.height}}
     className={props.className}

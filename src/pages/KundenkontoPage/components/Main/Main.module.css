@@ -11,6 +11,16 @@
     flex-direction: row;
     column-gap: 20px;
 }
+.main{
+    height: 100%;
+
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+
+    position: relative;
+    overflow-y: auto;
+}
 @media (max-width: 1200px), (max-height: 700px){
     .userInfo{
         column-gap: 0px; 

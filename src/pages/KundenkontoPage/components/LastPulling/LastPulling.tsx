@@ -1,11 +1,10 @@
-import React, { useEffect, useState } from 'react'
+import  { useEffect } from 'react'
 import FlutterMenu from '../../../../UI/FlutterMenu/FlutterMenu'
 import style from './LastPulling.module.css'
 import Row from '../../../../components/Layout/Row/Row'
 import MyButton from '../../../../UI/MyButton/MyButton'
 import { useNavigate } from 'react-router-dom'
 import PullingStory from '../../../../modules/PullingStory/components/PullingStory/PullingStory'
-import { useActions } from '../../../../hooks/useActions'
 import { useTypedSelector } from '../../../../hooks/useTypedSelector'
 import RateMenu from '../../../../modules/PullingStory/components/RateMenu/RateMenu'
 const LastPulling = () => {
@@ -33,6 +32,7 @@ const LastPulling = () => {
             </MyButton>
           }
         </Row>
+        
         <PullingStory type='last' />
         {windowWidth <= 600 &&
           <MyButton mode='black' className={style.button}
