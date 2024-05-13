@@ -51,7 +51,7 @@
 
 .errorInput {
     position: absolute;
-    transform: translateY(80px);
+    transform: translateY(0px);
     font-family: 'Poppins';
     font-style: normal;
     font-weight: 400;
@@ -59,14 +59,38 @@
     line-height: 17px;
     color: #FF2430;
 }
-
+@media (max-width: 1500px){
+    .passwordRow{
+        width: 290px;
+        height: 35px;
+    }
+    .passwordInput{
+        width: 80% !important;
+        height: 25px !important ;
+        margin: auto 0 !important;
+    }
+    .eyeIconButton{
+        width: 30px;
+        height: 30px;
+        margin-left: auto;
+        margin-right:5px;
+    }
+    .eyeIcon{
+        width: 20px;
+        height: 18px;
+    }
+}
 @media (max-width: 1300px),(max-height: 700px){
+    .errorInput {
+        position: absolute;
+        transform: translateY(0px);
+    }
     .input {
         font-size: 16px;
     }
 }
 @media (max-width: 600px){
     .errorInput {
-        transform: translateY(75px);
+        transform: translateY(0px);
     }
 }

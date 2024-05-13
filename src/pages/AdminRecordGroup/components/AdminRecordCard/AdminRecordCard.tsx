@@ -20,6 +20,7 @@ import fs from 'fs';
 import DatesHelper from '../../../../modules/Ordering/helpers/DatesHelper';
 import FormatDate from '../../../../helpers/dates';
 import { useTypedSelector } from '../../../../hooks/useTypedSelector';
+import InfoFlutter from '../../../../UI/InfoFlutter/InfoFlutter';
 interface Props {
   record: IRecord;
 }
@@ -141,7 +142,7 @@ const AdminRecordCard: FC<Props> = (props) => {
     }
   }, [record])
 
-
+  const [isUserCommentOpen,setIsUserCommentOpen] = useState<boolean>(false);
 
   const generatePDF = async () => {
     const pdfDoc = await PDFLib.PDFDocument.create();
@@ -333,6 +334,7 @@ const AdminRecordCard: FC<Props> = (props) => {
   const { recordGroup } = useTypedSelector(state => state.recordGroup)
   return (
     <>
+    {isUserCommentOpen}
       {isStringEditOpen &&
         <ChangeStringsFlutter handelEdit={handelStringsEdit} setIsOpen={setIsStringEditOpen} strings={strings} record={(record as IPullingRecord)} />
       }
@@ -367,7 +369,9 @@ const AdminRecordCard: FC<Props> = (props) => {
           <div className={style.section}>
             <div className={style.fragment}>User Comment</div>
             <div className={style.line}></div>
-            <div className={`${style.fragment} ${style.comment}`}>{record.userComment == '' ? <> Kein Kommentar</> : record.userComment}</div>
+            <div className={`${style.fragment} ${style.comment}`}
+            onClick={() => setIsUserCommentOpen(!(record.userComment == ''))}
+            >{ record.userComment == '' ? <> Kein Kommentar</> : RecordHeler.splitString(record.userComment,20)}</div>
           </div>
           
         </div>
@@ -391,6 +395,10 @@ const AdminRecordCard: FC<Props> = (props) => {
           {recordGroup.records.length <= 1 ? '' :
             <ButtonsList record={record} type='single' />
           }
+          {isUserCommentOpen &&
+          <InfoFlutter text={record.userComment} title  = 'User Comment' onisOpen={setIsUserCommentOpen}/>
+          }
+
         </div>
       </GradientBlackBlock>
     </>

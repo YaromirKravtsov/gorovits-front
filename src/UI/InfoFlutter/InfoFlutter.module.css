@@ -1,43 +1,74 @@
-.flutter{
-    width: 700px;
-    height: 300px;
+.flutter {
+    width: 600px;
+    height: 240px;
     display: flex;
     flex-direction: column;
-    padding: 40px;
+    padding: 20px;
     justify-content: center;
     align-items: center;
 }
 
-.title{
+.title {
 
     font-family: 'Roboto';
     font-style: normal;
     font-weight: 500;
-    font-size: 27px;
+    font-size: 22px;
     line-height: 32px;
     text-align: center;
 
     color: #000000;
 }
-.text{
-    margin: auto 0 ;
+
+.text {
+    margin: auto 0;
     font-family: 'Roboto';
     font-style: normal;
     font-weight: 400;
-    font-size: 24px;
+    font-size: 18px;
     line-height: 28px;
     text-align: center;
     color: #000000;
 }
 
-.button{
+.button {
     margin-top: auto;
     width: 300px;
-    height: 50px;
+    height: 45px;
+    font-size: 20px;
 }
-.buttonRow{
+
+.buttonRow {
     width: 100%;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    column-gap: 20px;
+}
+
+@media (max-width: 1500px) {
+
+    .flutter {
+
+    }
+
+
+
+    .title {
+        font-size: 18px;
+        font-weight: normal;
+
+    }
+
+    .text{
+        font-size: 16px;
+        padding: 0 20px;
+    }
+
+    .button {
+        height: 40px;
+        font-size: 18px;
+        font-weight: normal;
+
+    }
 }

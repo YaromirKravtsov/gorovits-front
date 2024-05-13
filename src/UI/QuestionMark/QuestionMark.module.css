@@ -47,8 +47,12 @@
     transform: translate(10px, 0px);
 }
 
-
-
+@media (max-width: 450px) {
+    .textBlock{
+        transform: translate(-220px, 5px);
+        min-height: auto;
+    }
+}
 
 @media (max-width: 400px) {
     .icon {

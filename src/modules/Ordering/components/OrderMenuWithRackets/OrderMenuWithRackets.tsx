@@ -62,7 +62,7 @@ const OrderMenuWithRackets: FC<Props> = ({ recordType = 1, ...props }) => {
     useEffect(() => {
         if (orderRecords[currentOrderRecord]) {
             props.setRecordData(orderRecords[currentOrderRecord] as OrderRecord);
-
+            console.log(orderRecords[currentOrderRecord] as OrderRecord)
         }
     }, [currentOrderRecord, orderRecords]);
 

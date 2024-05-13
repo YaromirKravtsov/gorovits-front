@@ -31,7 +31,7 @@ const BesaitungCard: FC<Props> = ({ record }) => {
         <Column className={style.blockColumn}>
           <BorderMenu className={style.topBlock}>
             <div className={style.topLeftBlockTitle}>Schläger Nr. {(record as IPullingRecord).pulling.userRacket.number}</div>
-            <div className={style.topLeftBlockSubTitle}>{(record as IPullingRecord).pulling.userRacket.code}</div>
+            <div className={style.topLeftBlockSubTitle}>DNA {(record as IPullingRecord).pulling.userRacket.code}</div>
           </BorderMenu>
           <BorderMenu className={style.BottomLeftBlock}>
             <div className={style.stringHardnes}> {RecordHeler.formatStringHardnes((record as IPullingRecord).pulling.stringHardness)}</div>

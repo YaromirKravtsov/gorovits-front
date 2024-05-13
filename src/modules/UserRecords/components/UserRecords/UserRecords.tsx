@@ -15,11 +15,6 @@ const UserRecords: FC<Props> = () => {
       {role == 'user' &&
         <UserRecordsUsers />
       }
-            {role == 'admin' &&
-        <>
-          <UserRecordsAdmin toUser/>
-        </>
-}
     </>
   )
 }

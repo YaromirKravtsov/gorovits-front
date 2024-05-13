@@ -72,20 +72,24 @@
         min-height: 137px;
         flex-wrap: wrap;
         row-gap: 10px;
+        font-weight: normal;
     }
     .leftBlock,.centerBlock{
         text-align: center;
         font-size: 16px;
         padding: 5px;
         width: 45%;
+        font-weight: normal;
     }
     .leftBlock{
         line-height: 18px;
+        font-weight: normal;
     }
     .button{
         width: 100%;
         height: 40px;
         margin-top: auto;
         font-size: 16px !important;
+        font-weight: normal;
     }
 }

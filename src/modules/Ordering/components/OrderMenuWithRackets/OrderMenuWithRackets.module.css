@@ -5,6 +5,8 @@
         width: 390px;
         height: 40px;
         max-height:40px;
+        font-size: 20px;
+
     }
     .buttonRow{
         width: 100%;
@@ -17,11 +19,15 @@
         margin-left: auto;
     }
     @media (max-width: 1500px) {
-  
         .buttonLeft,.button{
             width: 360px;
             font-size: 18px;
-            margin-left: auto;
+            font-weight: normal;
+        }
+        .button{
+            height: 35px;
+            width: 290px;
+            font-size: 18px;
             font-weight: normal;
         }
     }
@@ -29,8 +35,11 @@
         .buttonRow{
             margin-top: auto;
             width: 100%;
-            display: flex;
+            flex-direction: column;
             flex-direction: column-reverse;
-            row-gap: 25px;
+            row-gap: 10px;
+        }
+        .button{
+            width: 100%;
         }
     }

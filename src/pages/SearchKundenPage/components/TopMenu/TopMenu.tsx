@@ -3,7 +3,7 @@ import MyInput from '../../../../components/MyInput/MyInput';
 import style from './TopMenu.module.css'
 import MyButton from '../../../../UI/MyButton/MyButton';
 interface Props{
-    onSearch:(string:string)=>void
+  setSearchQuery:(string:string)=>void
 }
 const TopMenu:FC<Props> = (props) => {
   const [searchInput, setSearchInput] = useState<string>('');
@@ -12,7 +12,7 @@ const TopMenu:FC<Props> = (props) => {
       setSearchInput(value)
   } 
   const handelSeach = ()=>{
-    props.onSearch(searchInput);
+    props.setSearchQuery(searchInput);
 
   }
 

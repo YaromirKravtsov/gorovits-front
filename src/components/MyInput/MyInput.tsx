@@ -55,7 +55,7 @@ const MyInput: FC<Props> = (props) => {
     );
   }
   return (
-    <>
+    <div>
       <InputMask
         className={`${style.input} ${props.className} ${props.error ? style.error : ''}`}
         mask={props.mask ? props.mask : ''}
@@ -69,7 +69,7 @@ const MyInput: FC<Props> = (props) => {
       {props.error &&
         <div className={style.errorInput}>Das Feld muss ausgefüllt werden </div>
       }
-    </>
+    </div>
   );
 };
 

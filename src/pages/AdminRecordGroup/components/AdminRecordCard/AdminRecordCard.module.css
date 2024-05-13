@@ -18,7 +18,7 @@
     justify-content: space-around;
   /*   align-items: center; */
     max-height: 100%;
-    overflow-y: hidden;
+/*     overflow-y: hidden; */
     padding: 10px 0;
 }
 
@@ -28,8 +28,9 @@
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
+    text-align: center;
     max-height: 100%;
-    max-width: 300px;
+    max-width: 200px;
     min-width: 200px;
 /*     border-right: 1px solid #ffff; */
 }
@@ -54,7 +55,7 @@
 
 .fragment {
 
-    overflow-y: auto;
+/*     overflow-y: auto; */
     text-align: center;
     display: flex;
     justify-content: center;
@@ -75,11 +76,11 @@
 
 .mainSection{
     max-height: 100%;
-    overflow-y: auto;
+/*     overflow-y: auto; */
     text-align: center;
     justify-content: space-around;
     flex-direction: column;
-    padding: 20px 0;
+    padding: 5px 0;
     font-family: 'Montserrat';
     font-style: normal;
     font-weight: 500;
@@ -91,7 +92,7 @@
 
 .buttonRow {
     max-width: 10%;
-    width: 0px;
+    width: 10%;
     min-width: 0;
     padding: 7px 0;
     display: flex;
@@ -99,6 +100,7 @@
     margin-left: auto;
     height: 100%;
     justify-content: space-between;
+    align-items: center;
 }
 
 .button {
@@ -148,10 +150,21 @@
     .section{
         font-size: 16px;  
         font-weight: normal;
+        max-width: 250px;
+        max-width: 250px;
     }
     .recordBlock {
         width: 100%;
         height: 100px;
         min-height: 100px;
+    }
+}
+
+@media(max-width: 1220px){
+    .section{
+        font-size: 16px;  
+        font-weight: normal;
+        max-width: 200px;
+        max-width: 200px;
     }
 }

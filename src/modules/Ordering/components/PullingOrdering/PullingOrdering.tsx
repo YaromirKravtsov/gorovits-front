@@ -20,10 +20,13 @@ const PullingOrdering: FC<Props> = (props) => {
 
     // in redux state, actions
     const { userInfo } = useTypedSelector(state => state.user)
-    const { orderRecords } = useTypedSelector(state => state.orderRecord);
+    const { orderRecords ,currentOrderRecord} = useTypedSelector(state => state.orderRecord);
     const { strings } = useTypedSelector(state => state.order);
     const { createRecord } = useActions();
     //===
+ /*    const [currentOrder,setCurrentOrder] = useState<OrderRecord>() */
+    
+   /*  orderRecords[currentOrderRecord].longStrings.isYour  */
 
     const [pullingData, setPullingData] = useState<OrderRecord>({
         id: 0,
@@ -32,20 +35,47 @@ const PullingOrdering: FC<Props> = (props) => {
         longStrings: {
             name: '',
             id: 0,
+            isYour: false
         },
         crossStrings: {
             name: '',
             id: 0,
+            isYour: false
         },
         comment: ''
     })
+    console.log(pullingData)
+
+    //@ts-ignore
+    console.log(pullingData.longStrings.isYour)
+/*     useEffect(()=>{
+        setCurrentOrder(orderRecords[currentOrderRecord])
+    },[currentOrderRecord]) */
+
     const [dateTime, setDateTime] = useState<Date>(new Date());
-    const [isYourLong, setIsYourLong] = useState<{}>(
-        false
-    );
-    const [isYourCross, setIsYourCross] = useState<{}>(
-        false
-    );
+
+    const setIsYourLong = (value: boolean) => {
+        setPullingData((prev: OrderRecord) => ({
+            ...prev,
+            longStrings: {
+                //@ts-ignore
+                ...prev.longStrings,
+                isYour: value
+            }
+        }));
+    }
+/*     orderRecords[currentOrderRecord].longStrings.isYour  */
+    const setIsYourCross = (value: boolean) => {
+        setPullingData((prev: OrderRecord) => ({
+            ...prev,
+            crossStrings: {
+                //@ts-ignore
+                ...prev.crossStrings,
+                isYour: value
+            }
+        }));
+    }
+ 
     // in sattes
     const [inputsErrors, setInputsErrors] = useState<OrderRecordErrors>({
         racketId: false,
@@ -69,12 +99,13 @@ const PullingOrdering: FC<Props> = (props) => {
         return false;
     }
     const createPullingRecord = async () => {
+      
         const pullingsCreateData: CreatePullingDto[] = orderRecords.map((record: OrderRecord) => {
             const pulling = record as OrderPulling;
             return {
                 stringHardness: pulling.stringHardnes,
-                longString: pulling.longStrings.name + (isYourLong ? '(Eigene Tennissaite)' : ''),
-                crossString: pulling.crossStrings?.name + ((pulling.crossStrings?.name && isYourCross) ? '(Eigene Tennissaite)' : ''),
+                longString: pulling.longStrings.name + (pulling.longStrings.isYour ? '(Eigene Tennissaite)' : ''),
+                crossString: pulling.crossStrings?.name + ((pulling.crossStrings?.name && pulling.crossStrings.isYour) ? '(Eigene Tennissaite)' : ''),
                 stringId: pulling.longStrings.id,
                 userRacketId: pulling.racketId,
                 recordId: pulling.id,
@@ -85,11 +116,9 @@ const PullingOrdering: FC<Props> = (props) => {
                 userId: userInfo.userId,
             };
         })
-
         await createRecord(pullingsCreateData, userInfo.userId);
     }
-
-
+    
     return (
         <>
             <OrderMenuWithRackets title={props.type == 1 ? 'Express direkt beseitung' : 'Besaitung'} createRecord={createPullingRecord} setRecordData={(data: OrderRecord) => setPullingData(data)}
@@ -103,8 +132,8 @@ const PullingOrdering: FC<Props> = (props) => {
                 <InputRow label='Besaitungshärte'>
                     <OderInput
                         onChange={(value: string) => setPullingData(prev => ({ ...prev, stringHardnes: value }))}
-                        mask='99×99'
-                        placeholder='__×__'
+                        mask='99.9×99.9'
+                        placeholder='__._×__._'
                         error={(inputsErrors as OrderPullingsErrors).stringHardnes}
                         setError={(value: boolean) => setInputsErrors({ ...inputsErrors, stringHardnes: value })}
                         value={(pullingData as OrderPulling).stringHardnes}
@@ -120,7 +149,8 @@ const PullingOrdering: FC<Props> = (props) => {
                         value={(pullingData as OrderPulling).longStrings}
                     />
                     {(pullingData as OrderPulling).longStrings.name !== '' && (pullingData as OrderPulling).longStrings.id !== -1&&
-                        <CheckBox text='Eigene Tennissaite' setIsChecked={setIsYourLong} className={style.checkBox} />
+                          //@ts-ignore
+                        <CheckBox text='Eigene Tennissaite' setIsChecked={setIsYourLong} isChecked ={pullingData.longStrings.isYour} className={style.checkBox} />
                     }
 
                 </InputRow>
@@ -131,8 +161,9 @@ const PullingOrdering: FC<Props> = (props) => {
                         value={(pullingData as OrderPulling).crossStrings}
                     />
                     {(pullingData as OrderPulling).crossStrings.name !== '' && (pullingData as OrderPulling).crossStrings.id !== -1&&
-                        <CheckBox text='Eigene Tennissaite' setIsChecked={setIsYourLong} className={style.checkBox} />
-                    }
+                    //@ts-ignore
+                        <CheckBox text='Eigene Tennissaite'  setIsChecked={setIsYourCross} isChecked = {pullingData.crossStrings.isYour}className={style.checkBox} />
+                    }  
                 </InputRow>
                 <OrderComment onChange={(value: string) => setPullingData(prev => ({ ...prev, comment: value }))} value={pullingData.comment} />
             </OrderMenuWithRackets>

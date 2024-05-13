@@ -1,5 +1,5 @@
 .flutterMenu{
-    width: 935px;
+    width: 880px;
     padding: 20px 40px;
     padding-bottom: 40px;
 }
@@ -18,11 +18,10 @@
     color: #232323;
 }
 .inputsRow{
-
     justify-content: space-between;
     flex-wrap: wrap;
     column-gap: 53px;
-    row-gap: 25px;
+    row-gap: 20px;
 }
 .button{
     width: 390px;
@@ -46,13 +45,20 @@
     display: none !important;
 }
 @media (max-width: 1500px) {
-  
+    .flutterMenu{
+        width: 730px;
+        padding: 20px 40px;
+        padding-bottom: 40px;
+    }
     .button{
         height: 40px;
-        width: 360px;
+        width: 290px;
         font-size: 18px;
         font-weight: normal;
     }
+   /*  .inputsRow{
+        row-gap: 20x;
+    } */
 }
 @media (max-width: 950px){
 
@@ -80,7 +86,7 @@
         width: 100%;
         min-width: 100%;
         flex-direction:column-reverse;
-        row-gap: 20px;
+        row-gap: 10px;
     }
     .button{
         width: 100%;

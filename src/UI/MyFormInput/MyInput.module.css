@@ -61,7 +61,7 @@ color: #232323;
 .errorText{
     position: absolute;
 
-color: #FF2430;
+    color: #FF2430;
    transform: translateY(80px); 
     font-family: 'Poppins';
     font-style: normal;

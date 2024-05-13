@@ -1,43 +1,38 @@
-import React, { FC } from 'react'
+import React, { FC, useState } from 'react'
 import { IUser } from '../../../../models/IUser'
 import GradientBlackBlock from '../../../../UI/GradientBlackBlock/GradientBlackBlock';
 import style from './KundenList.module.css'
 import BorderMenu from '../../../../UI/BorderMenu/BorderMenu';
 import { useNavigate } from 'react-router-dom';
 import Loader from '../../../../UI/Loader/Loader';
-interface Props{
-  userList:IUser[],
-  isLoading: boolean
+import KundenCard from '../KundenCard/KundenCard';
+import MyPagination from '../../../../UI/MyPagination/MyPagination';
+import SearchKundenService from '../../api/SearchKundenService';
+interface Props {
+/*   userList: IUser[],
+  isLoading: boolean, */
+  searchQuery: string
 }
 
-const KundenList:FC<Props> = (props) => {
-  const navigate = useNavigate()
-  if(props.isLoading){
-      return <Loader/>
+const KundenList: FC<Props> = (props) => {
+  const [users,setUsers] = useState<IUser[]>([])
+/*   if (props.isLoading) {
+    return <Loader />
   }
-  if(props.userList.length <= 0){
+  if (props.userList.length <= 0) {
     return <div className={style.error}>Es wurden keine Benutzer gefunden </div>
-  }
+  } */
+
   return (
-    <div className={style.main}>
-      {props.userList.map((user,index)=>
-      <div onClick ={()=> navigate(`/user-account/${(user).id }`)}key ={index}>
-        <GradientBlackBlock className={style.gradientBlock}  >
-          <BorderMenu className={style.block}>
-            {user.fullName}
-          </BorderMenu>
-
-          <BorderMenu className={style.block}>
-            {user.phoneNumber ||'Keine Telefonnummer '}
-          </BorderMenu>
-
-          <BorderMenu className={style.block}>
-            {user.email}
-          </BorderMenu>
-        </GradientBlackBlock>
-      </div>
-        )}
-    </div>
+        <MyPagination
+            fetchData={(page:number, itemsPerPage:number, searchQuery:string) =>  SearchKundenService.findUsers(page, itemsPerPage, searchQuery)}
+            searchQuery={props.searchQuery}
+            renderItem={user =>  <KundenCard user={user} />}
+            itemsPerPage={12}
+            className={style.main}
+            list={users}
+            setList={setUsers}
+          />
   )
 }
 

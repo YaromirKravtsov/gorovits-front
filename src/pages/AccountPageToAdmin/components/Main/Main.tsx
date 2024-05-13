@@ -15,6 +15,9 @@ import { ISUser, IUser } from '../../../../models/IUser';
 import FlutterMenu from '../../../../UI/FlutterMenu/FlutterMenu';
 import MyImage from '../../../../UI/MyImage/MyImage';
 import PersonalnfoNormal from '../../../../modules/PersonalInfo/PersonalInfoNoraml/PersonalInfoNoraml';
+import DropDownButton from '../../../TerminePage/components/DropDownButton/DropDownButton';
+import RecordHeler from '../../../../helpers/recordHelper';
+import Ordering from '../../../../modules/Ordering/components/Ordering/Ordering';
 
 const Main = () => {
   const { userId } = useParams();
@@ -29,7 +32,10 @@ const Main = () => {
 
   const [isAccountDelete, setIsAccountDelete] = useState<boolean>();
   const navigate = useNavigate()
+
   useEffect(() => {
+    
+
     const fetch = async () => {
       const userInfo =  await AccountService.getUserInfo(Number(userId));
       
@@ -49,6 +55,24 @@ const Main = () => {
     setIsAccountDelete(false);
     navigate('/kunden')
   }
+
+  const { setIsOrderOpen } = useActions()
+  const [createReocrdType, setCreateReocrdType] = useState<number>(0);
+  const { isOpen } = useTypedSelector(state => state.order)
+  const { windowWidth } = useTypedSelector(state => state.adaptive)
+  const [werkstatt, beratung] = RecordHeler.getBelonging()
+
+  const handelSelect = (option: number) => {
+
+    if (windowWidth <= 600) {
+      navigate(`/terminbuchung/${option}`)
+      return;
+    }
+    setCreateReocrdType(option);
+    setIsOrderOpen(true);
+  }
+
+
   return (
     <div className={style.main}>
       {isAccountDelete &&
@@ -70,13 +94,17 @@ const Main = () => {
           <MyButton mode='black' className={style.button} link={`/benutzer-bestellung/?userId=${Number(userId)}&fullName=${userInfo.fullName}`}>
             Geschichte zu Aufträgen
           </MyButton>
+          <DropDownButton options={werkstatt} title='Werkstatt' onSelect={handelSelect} className={style.button}  dropClass = {style.dropBlock} />
+          <DropDownButton options={beratung} title='Beratung' onSelect={handelSelect} className={style.button} dropClass = {style.dropBlock}/>
           <MyButton mode='black' className={`${style.button} ${style.delete}`} onClick={() => setIsAccountDelete(true)}>
             Account löschen
           </MyButton>
         </div>
       </Row>
       <NewRackets editMode />
-
+      {isOpen &&
+        <Ordering recordType={createReocrdType} />
+      }
     </div>
   )
 }

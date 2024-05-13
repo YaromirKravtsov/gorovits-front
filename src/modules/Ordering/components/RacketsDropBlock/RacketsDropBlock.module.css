@@ -31,18 +31,26 @@
     .inputLabel{
         font-size: 16px;
     }
+    .errorInput{
+        transform: translateY(65px);
+    }
+    .dropDown{
+        width: 290px;
+        min-width: 290px;
+        height: 35px;
+    }
 }
 
 @media (max-width: 600px){
     .inputLabelBlock{
         width: 100%;
     }
-
     .dropDown{
         width: 100%;
-        min-width: 100%;
+        min-width: 290px;
+        height: 35px;
     }
     .errorInput {
-        transform: translateY(75px);
+        transform: translateY(60px);
     }
 }

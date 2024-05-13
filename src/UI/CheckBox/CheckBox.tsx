@@ -4,7 +4,8 @@ interface Props{
     setIsChecked: (value: boolean) => void,
     text: string,
     className?:string,
-    isChecked?: boolean
+    isChecked?: boolean,
+  
 }
 const CheckBox:FC<Props> = (props) => {
 
@@ -15,7 +16,7 @@ const CheckBox:FC<Props> = (props) => {
         props.setIsChecked(event.target.checked)
     };
     useEffect(()=>{
-        if(props.isChecked)
+       if(props.isChecked !== undefined)
         setIsChecked(props.isChecked)
     },[props.isChecked])
     return (

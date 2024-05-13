@@ -6,66 +6,68 @@ import MyButton from '../../../../UI/MyButton/MyButton';
 import { useActions } from '../../../../hooks/useActions';
 import { useTypedSelector } from '../../../../hooks/useTypedSelector';
 
-interface Props{
-    state:number,
-    setState: (vakue:number) => void
+interface Props {
+    state: number,
+    setState: (vakue: number) => void,
+    setSearchQuery: (value: string) => void
 }
-const TopMenu:FC<Props> = (props) => {
-    const stausOptions:Option[] = [
-            {
-                value: 1,
-                label: 'Auftrag', 
-            },
-            {
-                value: 2,
-                label: 'In Bearbeitung', 
-            },
-            {
-                value: 3,
-                label: 'Abholbereit', 
-            },
-            {
-                value: -1,
-                label: 'Abgeschlossen', 
-            },
-        
+const TopMenu: FC<Props> = (props) => {
+    const stausOptions: Option[] = [
+        {
+            value: 1,
+            label: 'Auftrag',
+        },
+        {
+            value: 2,
+            label: 'In Bearbeitung',
+        },
+        {
+            value: 3,
+            label: 'Abholbereit',
+        },
+        {
+            value: -1,
+            label: 'Abgeschlossen',
+        },
+
     ]
-    const {setRecordsSearchParams} = useActions();
-    const {recordsSearchParams} = useTypedSelector(state=> state.auth)
-   
+   /*  const { setRecordsSearchParams } = useActions(); */
+    const { recordsSearchParams } = useTypedSelector(state => state.auth)
+
     const [status, setStatus] = useState<number>(recordsSearchParams.state);
-    const { getRecordByStatusAndString } = useActions();
+
     const [inputString, setInputString] = useState<string>(recordsSearchParams.string);
-    const handelSearch = async () =>{
-        await getRecordByStatusAndString(status, inputString)
-        setRecordsSearchParams({
-            state:status,
-            string:inputString
-        })
+    const handelSearch = async () => {
+        props.setSearchQuery(inputString)
+        props.setState(status);
+      /*   setRecordsSearchParams({
+            state: status,
+            string: inputString
+        }) */
     }
 
-    useEffect(()=>{
-        const fetch = async() =>{
-            getRecordByStatusAndString(status, inputString)
+    useEffect(() => {
+        const fetch = async () => {
+            /*  getRecordByStatusAndString(status, inputString) */
         }
         fetch()
-    },[])
-    
-  return (
-    <div className ={style.topMenu}>
-        <MyInput onChange={setInputString} value={inputString} placeholder='Bestellungen suchen' className={style.input}/>
-        <DropDownInput
-        className={style.dwopDown}
-        onChange={setStatus}
-        value={status}
-        options={stausOptions}
-        defaultValue='Bestellstatus wählen'
-        />
-       <MyButton mode='black' onClick={handelSearch} className={style.button}>
-            Suchen
-       </MyButton>
-    </div>
-  )
+    }, [])
+
+    return (
+        <div className={style.topMenu}>
+            <MyInput onChange={setInputString} value={inputString} placeholder='Bestellungen suchen' className={style.input} />
+            <DropDownInput
+                className={style.dwopDown}
+                onChange={setStatus}
+                value={status}
+                options={stausOptions}
+                defaultValue='Bestellstatus wählen'
+            />
+            <MyButton mode='black' onClick={handelSearch} className={style.button}>
+                Suchen
+            </MyButton>
+        </div>
+    )
 }
 
 export default TopMenu

@@ -13,7 +13,8 @@ interface Props {
   }[],
   onSelect: (option: number) => void,
   title: string,
-  className?: string
+  className?: string,
+  dropClass?: string
 }
 const DropDownButton: FC<Props> = (props) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
@@ -44,13 +45,11 @@ const DropDownButton: FC<Props> = (props) => {
 
   return (
     <div className={style.main}>
-
-
       <MyButton onClick={() => handleClick()} className={`${style.button} ${props.className}`} mode='black'>{props.title} 
       <MyImage alt='arrow' src={arrow} className={`${style.arrow} ${isOpen && style.grad}`} /> 
       </MyButton>
       {isOpen &&
-        <div className={`${style.dropDownList} ${props.className}`}>
+        <div className={`${style.dropDownList} ${props.dropClass}`}>
           {props.options.map((option, index) =>
             <div className={style.dropDownItem}>
               <button className={style.dropDownItemButton} key={index} onClick={() => handleSelect(option.value)}>{option.text}</button>

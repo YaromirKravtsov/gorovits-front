@@ -136,7 +136,7 @@ export default class RecordHeler {
         const groupedRecords: { [key: string]: IRecord[] } = {};
     
         records.forEach(record => {
-            const { state, recordType, dateTime,  pickupTime, user ,adminComment} = record;
+            const { recordType, dateTime,  pickupTime, user ,adminComment} = record;
         
             const key = `${recordType}---${adminComment}---${dateTime}---${pickupTime}---${user?.fullName || ''}`;
     

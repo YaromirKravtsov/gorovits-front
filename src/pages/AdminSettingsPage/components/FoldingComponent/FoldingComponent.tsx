@@ -5,7 +5,6 @@ import MyButton from '../../../../UI/MyButton/MyButton';
 import arrowIcon from '../../../../assets/images/arrow.png'
 import plusIcon from '../../../../assets/images/plus.png'
 import FlutterMenu from '../../../../UI/FlutterMenu/FlutterMenu';
-import MyPagination from '../../../../UI/MyPagination/MyPagination';
 interface Props {
     onAdd: () => void,
     onSearch: (value: string) => void,

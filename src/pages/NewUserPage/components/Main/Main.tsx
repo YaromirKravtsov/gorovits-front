@@ -23,6 +23,7 @@ const Main: FC<Props> = (props) => {
         props.setUserInfo({
             email, fullName,phoneNumber
         })
+        console.log(/^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/.test(email))
     },[email,fullName, phoneNumber])
     return (
         <div className={style.main}>

@@ -18,7 +18,6 @@ const AdminSettingsPage = React.lazy(() => import('../../pages/AdminSettingsPage
 const OrderPage = React.lazy(() => import('../../modules/Ordering/components/OrderPage/OrderPage'));
 
 
-
 export interface IRoute{
     path:string;
     element: React.ComponentType;

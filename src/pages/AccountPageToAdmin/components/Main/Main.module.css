@@ -2,6 +2,7 @@
     display: flex;
     flex-direction: column;
     height: 100%;
+    row-gap: 20px ;
 }
 
 .topRow {
@@ -11,6 +12,7 @@
 }
 
 .buttonRow {
+    width: 350px;
     margin-left: auto;
     display: flex;
     flex-direction: column;
@@ -21,9 +23,12 @@
     width: 100%;
 }
 .button {
-    width: 350px;
-    height: 45px;
+    width: 100% !important;
+    height: 45px ;
     font-size: 20px;
+}
+.dropBlock{
+    width: 100%;
 }
 
 .delete {
@@ -47,10 +52,13 @@
 
 @media (max-width: 1500px) {
     .button {
-        width: 260px;
-        height: 40px;
-        font-size: 18px;
+     
+        height: 35px !important;
+        font-size: 18px !important;
         font-weight: normal;
+    }
+    .buttonRow,.dropBlock{
+        width: 270px !important;
     }
    
 }

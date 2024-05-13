@@ -129,9 +129,7 @@
     }
 }
 @media (max-height:900px) {
-    .racketBlock{
-        max-height: 720px;
-    }
+
     .imageBlock {
         height: 270px;
     }

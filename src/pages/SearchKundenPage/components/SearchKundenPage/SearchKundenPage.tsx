@@ -13,7 +13,8 @@ const SearchKundenPage = () => {
     const [userList,setUserList] = useState<IUser[]>([]);
     const {setGlobalError} = useActions()
     const [isLoading, setIsLoading] = useState<boolean>(false);
- 
+    const [searchQuery,setSearchQuery] = useState<string>('')
+  /* 
     const search = async (value:string)=>{
         try{
             setIsLoading(true)
@@ -27,13 +28,13 @@ const SearchKundenPage = () => {
             setGlobalError(getErrorText(e))
         }  
        
-    }
+    } */
     
-    useEffect(()=>{
+  /*   useEffect(()=>{
       const fetch = async() =>{
         try{
           setIsLoading(true)
-          const {data} =  await SearchKundenService.findUsers('');
+          const {data} =  await SearchKundenService.findUsers(page, itemsPerPage,'');
           setUserList(data)
           setIsLoading(false)
       }catch(e){
@@ -43,11 +44,11 @@ const SearchKundenPage = () => {
       }  
       }
       fetch()
-    },[])
+    },[]) */
   const questionMarkText = `Die Seite "Kunden" ermöglicht die Suche nach Kunden und den Zugriff auf deren individuelle Profile.`
   return (
-    <PageLayout title='Kunden' questionMarkText={questionMarkText}  topMenu ={<TopMenu onSearch = {search} />}>
-      <KundenList userList ={userList} isLoading ={isLoading}/>
+    <PageLayout title='Kunden' questionMarkText={questionMarkText}  topMenu ={<TopMenu setSearchQuery = {setSearchQuery} />}>
+      <KundenList /* userList ={userList} isLoading ={isLoading} */ searchQuery = {searchQuery}/>
       <Helmet>
         <title>Kunden</title>
       </Helmet>

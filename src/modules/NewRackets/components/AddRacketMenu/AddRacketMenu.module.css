@@ -1,41 +1,48 @@
-.main{
-    padding: 30px 40px;
+.main {
+    padding: 20px 40px;
     display: flex;
     flex-direction: column;
+    width: 850px;
+    height: auto  !important;
+    padding-bottom:30px;
 }
-.main input{
+
+.main input {
+    width: 330px;
+}
+
+.title {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 22px;
+    line-height: 32px;
+    text-align: center;
+    color: #30484D;
+
+}
+
+.mainRow {
     width: 100%;
-}
-.title{
-font-family: 'Roboto';
-font-style: normal;
-font-weight: 500;
-font-size: 24px;
-line-height: 32px;
-
-text-align: center;
-
-color: #30484D;
-
-
-}
-.mainRow{
     margin-top: 20px;
-    width: 100%;
+    height: auto;
     display: grid;
     grid-template-columns: 1fr 1fr;
     column-gap: 40px;
-    row-gap: 30px;
+    row-gap: 20px;
 }
-.button{
+
+.button {
     margin-top: 10px;
     width: 100%;
     height: 45px;
     font-size: 20px;
+    min-width: 360px;
 }
-.errorInput{
+
+.errorInput {
     position: absolute;
-    transform: translateY(80px);
+    transform: translateY(72px);
     font-family: 'Poppins';
     font-style: normal;
     font-weight: 400;
@@ -43,38 +50,77 @@ color: #30484D;
     line-height: 17px;
     color: #FF2430;
 }
-.input{
+
+.input {
+    min-width: 360px;
     height: 45px;
+    min-height: 45px;
+}
+.inpitRow{
+    width: 100%;
+    max-width: 100%;
+  /*   height: 10px ; */
+   
+}
+.buttonRow{
+    margin-top: 20px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    column-gap: 50px;
 }
 @media (max-width: 1500px) {
-    .main{
-        height: 95vh;
-        padding: 15px 60px;
-    }
-    .mainRow{
-        column-gap: 60px;
-        row-gap: 10px;
+    .main {
+        height: auto;
+        width: auto;
+        padding: 15px 40px;
+      /*   height: 580px !important; */
     }
 
-    .button{
+    .mainRow {
+        column-gap: 60px;
+        row-gap: 20px;
+        padding-bottom: 0;
+    }
+
+    .button {
         margin-top: 10px;
-        width: 100%;
+        min-width: 290px;
+        height: 35px !important;
         height: 45px;
         font-size: 18px;
         font-weight: 400;
     }
-}    
-@media (max-height: 920px) {
-    
-}
-@media (max-height: 920px) {
-    .mainRow{
-        height: 600px;
+
+    .input {
+        width: 290px !important;
+        min-width: 290px !important;
+        height: 35px !important;
+        min-height: 35px !important;
+      
+    }
+    .inpitRow{
+        row-gap: 5px;
+    }
+    .errorInput {
+        transform: translateY(60px);
+    }
+
+    .buttonRow{
+        margin-bottom: 20px;
     }
 }
 
-@media (max-width: 600px){
+/* @media (max-height: 920px) {}
+
+@media (max-height: 920px) {
+    .mainRow {
+        height: 600px;
+    }
+}
+ */
+@media (max-width: 600px) {
     .errorInput {
-        transform: translateY(75px);
+        transform: translateY(0px);
     }
 }

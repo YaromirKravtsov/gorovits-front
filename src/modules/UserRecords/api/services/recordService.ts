@@ -1,7 +1,10 @@
 import { AxiosResponse } from "axios";
 import { IPullingRecord, IRecord } from "../../../../models/IRecord";
 import $api from "../../../../app/api/http";
-
+interface RecordsBuStateRes {
+  totalCount: number,
+  data: IRecord[]
+}
 export class RecordService {
   static async getUserRecords(userId: number): Promise<AxiosResponse<IPullingRecord[]>> {
     return $api.get<IPullingRecord[]>('records/userId', {
@@ -11,22 +14,21 @@ export class RecordService {
     });
   }
 
-  static async getRecordByStatusAndString(status: number,string:string): Promise<AxiosResponse<IRecord[]>> {
-    return $api.get<IRecord[]>(`records/by-state`, {
+  static async getRecordByStatusAndString(page: number, pageSize: number,searchString: string, recordState: number): Promise<AxiosResponse<RecordsBuStateRes>> {
+    return $api.get<RecordsBuStateRes>(`records/by-state`, {
       params: {
-        state: status,
-        string: string,
+        page, pageSize, recordState, searchString
       },
     });
   }
   static async getRecords(userId: number, state: number, string: string): Promise<AxiosResponse<IRecord[]>> {
     return await $api<IRecord[]>('/records/user-state-string', {
-        params: {
-            userId,
-            state,
-            string
-        }
+      params: {
+        userId,
+        state,
+        string
+      }
     })
-}
-  
+  }
+
 }

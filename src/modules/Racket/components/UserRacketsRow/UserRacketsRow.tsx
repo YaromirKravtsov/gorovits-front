@@ -63,7 +63,9 @@ const UserRacketsRow: FC = () => {
     return (
       <div className={`${style.racketsRow} ${style.one}`}>
         {isLoading ?
-          <Loader />
+          <>
+            {windowWidth >= 600 ? <Loader /> : <Loader size='small'/>}
+          </>
           :
           <>
             {rackets.map((racket) =>
@@ -76,7 +78,7 @@ const UserRacketsRow: FC = () => {
   }
   return (
     <div className={style.racketsRow}>
- 
+
       {windowWidth >= 600 &&
         <div ref={prevRef}>
           <PrevArrow onClick={() => swiperInstance?.slidePrev()} />

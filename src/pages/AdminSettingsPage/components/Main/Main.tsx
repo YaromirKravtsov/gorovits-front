@@ -98,10 +98,10 @@ const Main = () => {
           setIsFolded={handelRacketsFoldering}
         >
           <MyPagination
-            fetchData={(page, itemsPerPage, searchQuery) => AdminSettingPageService.getRackets(page, itemsPerPage, searchQuery)}
+            fetchData={(page:number, itemsPerPage:number, searchQuery:string) => AdminSettingPageService.getRackets(page, itemsPerPage, searchQuery)}
             searchQuery={racketsSearchQeuery}
             renderItem={racket => <RacketCard racket={racket} key={racket.id} handelDelete={handelRacketDelete} handelEdit={handelRacketEdit} />}
-            itemsPerPage={9}
+            itemsPerPage={10}
             className={style.list}
             list={rackets}
             setList={setRackets}
@@ -116,10 +116,10 @@ const Main = () => {
           setIsFolded={handelStringsFoldering}
         >
           <MyPagination
-            fetchData={(page, itemsPerPage, searchQuery) => AdminSettingPageService.getStrings(page, itemsPerPage, searchQuery)}
+            fetchData={(page:number, itemsPerPage:number, searchQuery:string) => AdminSettingPageService.getStrings(page, itemsPerPage, searchQuery)}
             searchQuery={stringsSearchQeuery}
             renderItem={string => <StringCard string={string} key={string.id} handelDelete={handelStringDelete}handelEdit ={handelStringEdit} />}
-            itemsPerPage={12}
+            itemsPerPage={10}
             className={style.list}
             list={strings}
             setList={setStrings}

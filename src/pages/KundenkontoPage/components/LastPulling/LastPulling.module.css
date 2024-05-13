@@ -21,7 +21,7 @@
     font-family: 'Roboto';
     font-style: normal;
     font-weight: 500;
-    font-size: 24px;
+    font-size: 22px;
     line-height: 32px;
     color: #232323;
 /*     margin-bottom: 30px; */
@@ -34,6 +34,7 @@
 }
 .nullError{
     margin: auto;
+    font-size: 18px;
     
 }
 .editShadow{
@@ -56,13 +57,19 @@
         padding: 15px 25px;
     }
 }
-
+@media  (max-height: 620px) {
+    .flutterMenu{
+        min-height: 245px;
+        height: 245px;
+        padding: 15px 25px;
+    }
+}
 @media (max-width: 600px){
     .flutterMenu{
-        padding: 15px;
+        padding: 10px 20px;
         margin-bottom: 30px;
         height: auto;
-        min-height: 400px;
+        min-height: auto;
 
     }
     .topRow{
@@ -71,12 +78,14 @@
     }
     .title{
         margin-bottom: 0;
+ 
         font-size: 20px;
     }
     .button{
         width: 100%;
-        margin-top: 20px;
-        height: 40px !important;
+        margin-top: 10px;
+        height: 35px !important;
+        font-weight: normal;
     }
 
 }

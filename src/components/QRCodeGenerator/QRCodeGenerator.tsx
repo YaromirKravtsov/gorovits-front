@@ -90,15 +90,16 @@ const QRCodeGenerator: React.FC<QRCodeGeneratorProps> = ({ value, className }) =
 
       {codeType &&
         <FlutterMenu shadow='all' className={style.flutter}>
+          <div className={style.title}>Wählen Sie den Codetyp </div>
           <div className={style.flutterMain}>
             <div>
-              <QRCode value={value} size={256} onClick={handleDownloadQrCode} className={style.qrCode} />
+              <QRCode value={value} size={100} onClick={handleDownloadQrCode} className={style.qrCode} />
             </div>
             <div onClick={handleDownloadBarCode} className={style.barCode}>
               <Barcode value={value} format="CODE128" width={2} height={100} displayValue={false} />
             </div>
           </div>
-          <MyButton onClick={() => setCodeType(false)} className={style.closeButton}>
+          <MyButton onClick={() => setCodeType(false)} className={style.closeButton} border>
           Schließen
           </MyButton>
 

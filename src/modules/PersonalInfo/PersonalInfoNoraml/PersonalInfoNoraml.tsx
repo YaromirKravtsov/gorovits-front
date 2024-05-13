@@ -22,14 +22,16 @@ const PersonalnfoNormal: FC<Props> = (props) => {
     }else{
     
       setUserInfoLocal(userInfo as ISUser)
+      console.log(userInfoLocal)
     }
-  },[props.userInfo])
+  },[props.userInfo,userInfo])
   return (
     <div className={`${style.container} ${props.className? props.className: ''}`}>
       <div className={`${style.textRow}`}>
         <div className={style.title}>Name</div>
         <div className={style.text}>{userInfoLocal.fullName}</div>
       </div>
+  
       <div className={`${style.textRow}`}>
         <div className={style.title}>Email</div>
         <div className={style.text}>{userInfoLocal.email}</div>

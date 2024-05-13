@@ -3,12 +3,18 @@ import { IUser } from "../../../models/IUser";
 import $api from "../../../app/api/http";
 
 
-
+interface Res{
+     totalCount: number;
+      data: IUser[]; 
+}
 export default class SearchKundenService{
-    static async findUsers(inputString: string): Promise<AxiosResponse<IUser[]>>{
-        return $api.get<IUser[]>(`users/search`,{
+    static async findUsers(page:number, itemsPerPage:number, searchQuery:string): Promise<AxiosResponse<Res>>{
+        console.log(1212)
+        return $api.get<Res>(`users/search`,{
             params:{
-                string: inputString
+                page,
+                pageSize:itemsPerPage,
+                searchQuery
             }
         });
     }

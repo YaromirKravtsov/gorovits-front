@@ -39,13 +39,11 @@ export class NewUserService {
 
     // Добавление данных пользователя
     appendFormData(userInfo, 'userInfo');
-
-    // Добавление изображения
-    if (image.focusImage.name === 'custom' && image.uploadedFile) {
+     if (image.focusImage.name === 'custom' && image.uploadedFile) {
       formData.append('image', image.uploadedFile);
     }
     
-    formData.append('photoType', image.focusImage.name);
+    formData.append('photoType', image.focusImage.name == '' ? 'neutral' :image.focusImage.name);
     
     // Отправка запроса
     return $api.post<Response>('users', formData, {

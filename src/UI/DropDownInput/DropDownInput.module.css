@@ -35,7 +35,7 @@
     font-style: normal;
     font-weight: 400;
     font-size: 18px;
-    line-height: 20px;
+    line-height: 15px;
     color: rgba(24, 24, 24, 0.5);
 
 }
@@ -104,5 +104,15 @@
 @media (max-width: 1500px){
     .defaultValue{
         font-size: 16px;
+    }
+    .arrow {
+        z-index: 1;
+        transform: rotate(180deg);
+        width: 18.5px;
+        height: 10.5px;
+    }
+    .select {
+        width: 290px;
+        height: 35px;
     }
 }

@@ -95,7 +95,7 @@ const AddRacketMenu: FC<Props> = (props) => {
 
   //===
   useEffect(() => {
-   
+
     const fetch = async () => {
       const strings = await MainServise.getStrins()
       setStrings(strings.data);
@@ -166,12 +166,12 @@ const AddRacketMenu: FC<Props> = (props) => {
     const id = newRackets.length > 0 ? newRackets[newRackets.length - 1].id + 1 : 0;
     setNewRacketData(prev => ({ ...prev, id: id }));
 
-   
+
     if (isValid) {
 
 
       const racketData = { ...newRacketData, code: RecordHeler.generateDNA(5) }
-      
+
       if (props.racket) {
         if (props.editMode) {
           try {
@@ -186,10 +186,10 @@ const AddRacketMenu: FC<Props> = (props) => {
           updateNewRacket(racketData)
         }
       } else {
-      
+
         if (props.editMode) {
           try {
-          
+
             await NewRacketsService.createNewRacket(Number(userId), [racketData])
             addNewRacket(racketData)
           } catch (e) {
@@ -208,18 +208,18 @@ const AddRacketMenu: FC<Props> = (props) => {
   }
   return (
     <>
-      <FlutterMenu shadow='all' className={style.main}>
+      <FlutterMenu  shadow='all' className={style.main}>
         <div className={style.title}> {props.editMode ? 'Schläger bearbeiten' : 'Neuen Schläger registrieren'}</div>
         <div className={style.mainRow}>
-          <InputRow label='Schlägernummer'>
+          <InputRow label='Schlägernummer' className={style.inpitRow}>
             <MyInput onChange={(value: string) => setNewRacketData(prev => ({ ...prev, number: value }))} value={newRacketData.number}
               placeholder='Schlägernummer eingeben'
               error={errors.number}
               setError={(value: boolean) => setErrors(prev => ({ ...prev, number: value }))}
               className={style.input}
             />
-          </InputRow>
-          <InputRow label='Bar code'>
+          </InputRow >
+          <InputRow label='Bar code' className={style.inpitRow}>
             <MyInput onChange={(value: string) => setNewRacketData(prev => ({ ...prev, code: value }))} value={newRacketData.code}
               placeholder='Bar code eingeben'
               className={style.input}
@@ -227,23 +227,23 @@ const AddRacketMenu: FC<Props> = (props) => {
           </InputRow>
 
 
-          <InputRow label='Hersteller' >
+          <InputRow label='Hersteller' className={style.inpitRow}>
             <DropDownInput
               defaultValue={modelManufacturereDefault.manufactiors}
               value={0}
               options={formatOption(racketManufactureres)}
               onChange={(value: number) => renderRacketModels(value)}
-
+              className={style.input}
             />
           </InputRow>
 
-          <InputRow label='Schlägermodell'>
+          <InputRow label='Schlägermodell' className={style.inpitRow}>
             <DropDownInput
               defaultValue={modelManufacturereDefault.model}
               value={0}
               options={formatOption(currentRacketModels)}
               onChange={(value: number) => addModelToList(value)}
-
+              className={style.input}
             />
             {errors.racketModelId &&
               <div className={style.errorInput}>
@@ -251,34 +251,35 @@ const AddRacketMenu: FC<Props> = (props) => {
                 Das Feld muss ausgefüllt werden
               </div>}
           </InputRow>
-          <InputRow label='Längstsaiten'>
+          <InputRow label='Längstsaiten' className={style.inpitRow}>
             <SearchStrings
               onSelect={(value: StringOption) => setNewRacketData(prev => ({ ...prev, longString: value }))}
               strings={strings} value={newRacketData.longString}
               error={errors.longString}
               setError={(value: boolean) => setErrors(prev => ({ ...prev, longString: value }))}
+
             />
           </InputRow>
 
-          <InputRow label='Quersaiten' questionMark questionText=''>
+          <InputRow label='Quersaite' questionMark questionText='Wenn Sie keine Quersaite auswählen, wird sie gleich der Längstsaite sein' className={style.inpitRow}>
             <SearchStrings
               onSelect={(value: StringOption) => setNewRacketData(prev => ({ ...prev, crossString: value }))}
               strings={strings} value={newRacketData.crossString}
 
             />
           </InputRow>
-          <InputRow label='Besaitungshärte'>
+          <InputRow label='Besaitungshärte' className={style.inpitRow}>
             <MyInput
               onChange={(value: string) => setNewRacketData(prev => ({ ...prev, stringHardness: value }))}
-              mask='99×99'
-              placeholder='__×__'
+              mask='99.9×99.9'
+              placeholder='__._×__._'
               error={errors.stringHardness}
               setError={(value: boolean) => setErrors(prev => ({ ...prev, stringHardness: value }))}
               value={(newRacketData).stringHardness}
               className={style.input}
             />
           </InputRow>
-          <InputRow label='Schwunggewicht'>
+          <InputRow label='Schwunggewicht' className={style.inpitRow}>
             <MyInput
               onChange={(value: string) => setNewRacketData(prev => ({ ...prev, swingWeight: value }))}
               value={newRacketData.swingWeight}
@@ -287,7 +288,7 @@ const AddRacketMenu: FC<Props> = (props) => {
 
             />
           </InputRow>
-          <InputRow label='Balancepunkt'>
+          <InputRow label='Balancepunkt' className={style.inpitRow}>
             <MyInput
               onChange={(value: string) => setNewRacketData(prev => ({ ...prev, balancePoint: value }))}
               value={newRacketData.balancePoint}
@@ -297,7 +298,7 @@ const AddRacketMenu: FC<Props> = (props) => {
             />
           </InputRow>
 
-          <InputRow label='Gesamtgewicht'>
+          <InputRow label='Gesamtgewicht' className={style.inpitRow}>
             <MyInput
               onChange={(value: string) => setNewRacketData(prev => ({ ...prev, totalWeight: value }))}
               value={newRacketData.totalWeight}
@@ -307,13 +308,15 @@ const AddRacketMenu: FC<Props> = (props) => {
             />
           </InputRow>
 
+
+        </div>
+        <div className={style.buttonRow}>
           <MyButton mode='white' border className={style.button} onClick={() => props.onOpenChange(false)}>
             Schließen
           </MyButton>
           <MyButton mode='black' className={style.button} onClick={handelSubmit}>
             {props.editMode ? 'Bearbeiten ' : 'Registrieren'}
-          </MyButton>
-        </div>
+          </MyButton></div>
       </FlutterMenu>
     </>
   )

@@ -1,6 +1,6 @@
 .flutter {
     width: 700px;
-    height: 420px;
+    height: auto;
     padding: 20px 40px;
     display: flex;
     flex-direction: column;
@@ -17,7 +17,7 @@
 }
 .mainText{
     margin-top: 15px;
-    height: 50%;
+    height: 230px;
     overflow-y: auto;
 
 }

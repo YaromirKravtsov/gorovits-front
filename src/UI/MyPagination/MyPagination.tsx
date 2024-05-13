@@ -3,18 +3,17 @@ import Loader from '../Loader/Loader';
 import MyButton from '../MyButton/MyButton';
 import style from './MyPagination.module.css';
 import { AxiosResponse } from 'axios';
+type fetchDataType =
+    ((currentPage: number, itemsPerPage: number, searchQuery: string) => Promise<AxiosResponse<{ totalCount: number; data: any[] }>>) |
+    ((currentPage: number, itemsPerPage: number, searchQuery: string, state: number) => Promise<AxiosResponse<{ totalCount: number; data: any[] }>>);
 
-/* interface Item {
-    id: number;
-    // Добавьте другие свойства элемента
-}
- */
 interface Props {
-    fetchData: (currentPage: number, itemsPerPage: number, searchQuery: string) => Promise<AxiosResponse<{ totalCount: number; data: any[] }>>;
+    fetchData: fetchDataType
     itemsPerPage: number;
     renderItem: (item: any) => ReactNode;
     className: string;
     searchQuery: string,
+    state?: number;
     list: any[]
     setList: React.Dispatch<React.SetStateAction<any[]>>
 }
@@ -34,8 +33,13 @@ const MyPagination: FC<Props> = ({ fetchData, itemsPerPage, renderItem, classNam
         setTotalItems(0);
         props.setList([])
         setItems([]);
-        fetchMoreItems(0, searchQuery); // Передаем currentPage = 0 и актуальный searchQuery как аргументы
-    }, [searchQuery]);
+        if (props.state) {
+            fetchMoreItemsWidthState(0, searchQuery, props.state)
+        } else {
+            fetchMoreItems(0, searchQuery); // Передаем currentPage = 0 и актуальный searchQuery как аргументы
+
+        }
+    }, [searchQuery, props.state]);
     useEffect(() => {
         setItems(props.list);
     }, [props.list])
@@ -47,11 +51,12 @@ const MyPagination: FC<Props> = ({ fetchData, itemsPerPage, renderItem, classNam
 
             setIsLoading(true);
             try {
+                //@ts-expect-error
                 const response = await fetchData(page, itemsPerPage, query);
                 setTotalItems(response.data.totalCount);
-          
-
                 setItems(prev => [...prev, ...response.data.data]);
+                console.log(response.data)
+
                 props.setList(prev => [...prev, ...response.data.data])
                 setCurrentPage(prevPage => prevPage + 1);
 
@@ -68,12 +73,28 @@ const MyPagination: FC<Props> = ({ fetchData, itemsPerPage, renderItem, classNam
         }
     };
 
+    const fetchMoreItemsWidthState = async (page: number = currentPage, query: string = searchQuery, state: number) => {
+        console.log('fetchMoreItemsWidthState')
+        setIsLoading(true);
+        try {
+            const response = await fetchData(page, itemsPerPage, query, state);
+            const responseData = response.data; // Now TypeScript knows response.data exists
+            setTotalItems(responseData.totalCount);
+            setItems(prev => [...prev, ...responseData.data]);
+            props.setList(prev => [...prev, ...responseData.data]);
+            setCurrentPage(prevPage => prevPage + 1);
+        } catch (error) {
+            console.error(error);
+        } finally {
+            setIsLoading(false);
+        }
+    };
 
 
 
 
-    const hasMoreItems = items.length < totalItems;
-
+    const hasMoreItems = items.length  < totalItems-1;
+    console.log(items.length , totalItems-1 ,items.length  <= totalItems)
     return (
         <div ref={containerRef} className={className}>
 
@@ -83,8 +104,8 @@ const MyPagination: FC<Props> = ({ fetchData, itemsPerPage, renderItem, classNam
             }
             {hasMoreItems && (
                 <div className={style.buttonContainer}>
-                    
-                    <MyButton mode='black' onClick={fetchMoreItems} className={style.mehrLaden}>
+
+                    <MyButton mode='black' onClick={()=> props.state ? fetchMoreItemsWidthState(currentPage, searchQuery, props.state): fetchMoreItems(currentPage, searchQuery)} className={style.mehrLaden}>
                         Mehr laden
                     </MyButton>
                 </div>

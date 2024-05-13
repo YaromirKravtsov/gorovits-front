@@ -109,12 +109,16 @@ const SelectDateMenu: FC<Props> = (props) => {
     }
   };
 
+  const [currentWeeekIndex,setCurrentWeeekIndex] = useState<number>(0)
   const handelWeekSelect = (index: number) => {
     const weekIndex = showWeekNumber + index;
+    
     if (weeks[weekIndex]) {
+      setCurrentWeeekIndex(showWeekNumber + index)
       setCurrentWeek(weeks[weekIndex]);
 
     }
+    console.log(showWeekNumber + index)
   };
 
   const handleSlotSelect = (day: WeekDay, slotTime: string) => {
@@ -126,7 +130,14 @@ const SelectDateMenu: FC<Props> = (props) => {
   };
 
   const handelSubmit = () => {
-    if (selectedSlot == '') return;
+    if (selectedSlot == '') {
+      setIsNOSelected(true)
+      setTimeout(()=>
+        { setIsNOSelected(false)
+
+        },500)
+      return;
+    };
     setIsDateBlockOpen(false);
     setOrderRecords([]);
     setCurrentOrderRecord(0)
@@ -142,6 +153,10 @@ const SelectDateMenu: FC<Props> = (props) => {
     setIsDateBlockOpen(false)
     props.onClose();
   }
+
+
+  const [inNoSelected, setIsNOSelected] = useState<boolean>(false);
+
   return (
     <FlutterMenu shadow={windowWidth >= 600 ? 'all' : 'normal'} className={style.selectDateMenu}>
       <div className={style.blockTitle}>Termin auswählen</div>
@@ -156,7 +171,7 @@ const SelectDateMenu: FC<Props> = (props) => {
               <MyImage alt='' src={arrow} className={`${style.arrow}  ${style.rotate}`} />
             </div>
             {weekDays.map((el, index) =>
-              <div className={style.weekBlock} onClick={() => handelWeekSelect(index)}>
+              <div className={`${style.weekBlock} ${currentWeeekIndex == index ? style.weekBlockSelected:'' }`} onClick={() => handelWeekSelect(index)}>
                 {el}
               </div>
             )}
@@ -169,7 +184,9 @@ const SelectDateMenu: FC<Props> = (props) => {
           <div className={style.currentWeek}>
             <div className={style.daysBlock}>
               {currentWeek.slice(0, 6).map((day, index) =>
-                <div className={style.weekDay}>{weekShortDays[index]}<br />{DatesHelper.getDateMonth(day.date)} </div>
+              <>
+                <div className={`${style.weekDay}`}>{weekShortDays[index]}<br />{DatesHelper.getDateMonth(day.date)} </div>
+                </>
               )}
             </div>
             <div className={style.dateTimeBlock}>
@@ -180,7 +197,7 @@ const SelectDateMenu: FC<Props> = (props) => {
                     {day.slots.map(slot =>
                       <button
                         key={slot.time}
-                        className={`${style.dateTime} ${slot.isBooked ? style.booked : ''} ${selectedSlot === `${day.date} ${slot.time}` ? style.selected : ''}`}
+                        className={`${style.dateTime} ${slot.isBooked ? style.booked : ''} ${selectedSlot === `${day.date} ${slot.time}` ? style.selected : ''} ${inNoSelected && !slot.isBooked? style.dateTimeError: ''}`}
                         onClick={() => handleSlotSelect(day, slot.time)}
                         disabled={slot.isBooked}
                       >

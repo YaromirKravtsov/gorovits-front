@@ -1,6 +1,6 @@
 .selectDateMenu{
-    width: 935px;
-    height: 650px;
+    width: 900px;
+    height: auto;
     padding: 40px;
     display: flex;
     flex-direction: column;
@@ -24,7 +24,7 @@
 }
 .arrowBLock{
     cursor: pointer;
-    width: 120px;
+    width: 110px;
     height: 25px;
     background-color: #ffff;
     border: 1px solid #232323;
@@ -32,6 +32,9 @@
     display: flex;
     justify-content: center;
     align-items: center;
+}
+.weekBlockSelected{
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.8);
 }
 .arrow{
     width: 50px;
@@ -41,7 +44,7 @@
     transform: rotate(180deg);
 }
 .weekBlock{
-    width: 155px;
+    width: 150px;
     height: 25px;
     border: 1px solid #232323;
     border-radius: 3px;
@@ -64,7 +67,7 @@
 }
 .currentWeek{
     
-    height: 100%;
+    height: auto;
     display: flex;
     flex-direction: column;
     margin-top: 15px;
@@ -73,7 +76,7 @@
 }
 .daysBlock{
     padding-left: 5px;
-    padding-right: 13px;
+    padding-right: 5px;
     width: 100%;
     display: flex;
     flex-direction: row;
@@ -86,7 +89,7 @@
     justify-content: center;
     align-items: center;
     text-align: center;
-    width: 100px;
+
 
     font-family: 'Roboto';
     font-style: normal;
@@ -104,19 +107,23 @@
     justify-content: space-between;
     margin-top: 10px;
     max-height: 100%;
+    min-height: 300px;
     overflow-y: auto;
 }
 .dateTimeColumn{
-    width: 100px;
+
     display: flex;
     flex-direction: column;
     align-items: center;
     row-gap: 10px;
 }
+.dateTimeColumn,.weekDay{
+    width: 90px;
+}
 .dateTime{
     cursor: pointer;
     width: 100%;
-    min-height: 42px;
+    min-height: 35px;
     background: #fff;
     border-radius: 8px;
     border: 1px solid #BCBCBC;
@@ -135,6 +142,10 @@
 
 
 }
+
+.dateTimeError{
+    border: 2px solid red;
+}
 .buttonRow{
     margin-top: 20px !important;
     margin-top: auto;
@@ -144,8 +155,10 @@
 }
 
 .button{
-    width: 360px;
+    width: 390px;
     height: 45px;
+    font-size: 20px;
+
 }
 .booked{
     background: rgba(217, 217, 217, 0.3);
@@ -154,6 +167,29 @@
 }
 .selected{
     box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.8);
+}
+
+@media (max-width: 1500px){
+    .selectDateMenu{
+        width: 800px;
+    }
+    .weekDay,.dateTimeColumn{
+        width: 80px;
+    }
+
+    .weekBlock{
+        width: 130px;
+        height: 25px;
+    }
+    .arrowBLock{
+        width: 80px;
+    }
+    .button{
+        width: 290px;
+        height: 40px;
+        font-size: 18px;
+        font-weight: normal;
+    }
 }
 @media (max-width: 950px){
     .selectDateMenu{
@@ -274,3 +310,27 @@
     }
 }
 
+
+@media (max-height:700px){
+    .selectDateMenu{
+        padding: 0;
+        margin: 0;
+        box-shadow: none;
+        border-radius: 0;
+    }
+    .weekDay{
+        line-height: 18px;
+    }
+    .dateTimeBlock{
+        max-height: 270px;
+        min-height: 270px;
+    }
+    .buttonRow{
+        display: grid !important;
+        grid-template-columns: 1fr 1fr;
+        column-gap: 10px;
+    }
+    .button{
+        height: 40px;
+    }
+}

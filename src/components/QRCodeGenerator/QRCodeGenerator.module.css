@@ -4,8 +4,8 @@
 
 }
 .flutter{
-    width: 825px;
-    height: 410px;
+    width: 525px;
+    height: 310px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -24,5 +24,38 @@
 }
 .closeButton{
     margin-top: auto;
+    height: 40px;
+    width: 200px;
+    font-size: 20px;
 }
 
+.title{
+    align-items: center;
+    column-gap: 20px;
+    font-family: "Montserrat", sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 22px;
+    line-height: 32px;
+    color: #232323;
+    margin-bottom: 20px;
+}
+
+
+@media (max-width:1500px) {
+    .flutter{
+        width: 525px;
+        height: 260px;
+    }
+    .title{
+        font-size: 20px;
+        margin-bottom: 10px;
+    }
+    .closeButton{
+        margin-top: auto;
+        height: 35px;
+        width: 180px;
+        font-size: 18px;
+        font-weight: normal;
+    }
+}

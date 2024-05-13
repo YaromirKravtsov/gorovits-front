@@ -27,7 +27,7 @@ const StringCard: FC<Props> = ({ string, handelDelete, handelEdit }) => {
 
                 </>
             }
-            <HoverEffect setIsHovered={setIsHover}>
+        
                 <GradientBlackBlock className={style.stringBlock}>
                     <MyImage alt='' src={string.imgLink} className={style.stringImg} />
                     <div className={style.stringName}>{RecordHeler.splitString(string.name, 30)}</div>
@@ -47,7 +47,7 @@ const StringCard: FC<Props> = ({ string, handelDelete, handelEdit }) => {
                     </div>
 
                 </GradientBlackBlock>
-            </HoverEffect>
+            
         </>
     )
 }

@@ -136,6 +136,10 @@
         font-size: 18px;
         row-gap: 0px;
     }
+    .feedbackPhoto{
+        width: 30px;
+        height: 30px;
+    }
 }
 
 @media (max-width: 1200px),

@@ -3,6 +3,7 @@
     flex-direction: column;
     height: 100vh;
     /* Растянуть блок на 100% высоты окна браузера */
+    row-gap: 10px ;
 }
 
 .topRow {
@@ -12,11 +13,6 @@
     column-gap: 30px;
 }
 
-/* .inputs{
-    max-width: 100%;
-    min-width: 150px;
-    width: auto;
-} */
 .userInfo {
     width: 350px;
     display: flex;

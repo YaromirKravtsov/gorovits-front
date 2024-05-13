@@ -20,7 +20,6 @@ const Main = () => {
   useEffect(() => {
     setIsEditing(false)
     const effect = async () => {
-
       getUserInfo(userInfo.userId);
       const { data } = await UserInfoService.getAktuallenTermine(userInfo.userId, windowWidth >= 600 ? 2 : 1);
       setAktuellenTermine(data);

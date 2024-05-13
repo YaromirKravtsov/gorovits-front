@@ -39,7 +39,7 @@
 .BottomLeftBlock {
     margin-top: auto;
     width: 320px;
-    height: 145px;
+    height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -84,12 +84,15 @@
     font-family: 'Montserrat';
     font-style: normal;
     font-weight: 700;
-    font-size: 30px;
+    font-size: 26px;
     line-height: 35px;
     text-align: center;
     color: #FFFFFF;
 }
 @media (max-width: 1520px) {
+    .TuningParametrs{
+        line-height: 30px;
+    }
     .besaitungCard {
         padding: 15px;
         height: 200px;
@@ -162,6 +165,7 @@
     .topLeftBlockTitle,
     .topLeftBlockSubTitle {
         font-size: 16px;
+        font-weight: normal;
     }
 
     .topLeftBlockSubTitle {
@@ -174,18 +178,21 @@
 
     .stringHardnes {
         font-size: 24px;
+        font-weight: normal;
     }
     .strings {
         margin-top: -10px;
     }
     .topLeftBlockTitle{
         line-height: 18px;
+        font-weight: normal;
     }
     .button{
         font-size: 18px !important;
         width: 100% !important;
         height: 40px !important;
         min-width: 100% !important;
+        font-weight: normal;
         min-height: 40px !important;
     }
     .TuningParametrs{

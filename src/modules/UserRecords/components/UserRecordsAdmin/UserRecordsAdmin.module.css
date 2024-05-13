@@ -5,3 +5,9 @@
     overflow-y: auto;
     max-height: 750px;
 }
+
+@media (max-width:1500px){
+    .recordRow{
+        row-gap: 10px;
+    }
+}

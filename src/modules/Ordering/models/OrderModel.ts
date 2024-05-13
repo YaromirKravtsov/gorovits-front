@@ -1,12 +1,15 @@
-import { StringOption } from "../../../components/SearchStrings/SearchStrings";
 
+interface StringOption{
+    name: string;
+    id: number;
+    isYour: boolean;
+}
 
 export interface UserRackets {
     id: number,
     code:string
     number:string;
 }
-  
 export interface OrderPulling{
     id: number
     racketId: number,

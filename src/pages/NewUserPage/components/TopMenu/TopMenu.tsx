@@ -14,10 +14,11 @@ interface Props{
   photo: SelectedImage,
   userInfo:  ISUser  
 }
-const TopMenu:FC<Props> = ({userInfo, ...props}) => {
+const TopMenu:FC<Props> = ({userInfo, photo}) => {
 
     const {newRackets} = useTypedSelector(state=> state.newRackets);
     const [isErrorMenuOpen, setIsErrorMenuOpen] = useState<boolean>();
+    const [userPhoto,setUserPhoto] = useState<SelectedImage>(photo);
     const {setGlobalError} = useActions()
     const [errorText,setErrorText] = useState<string>('')
     const navigate = useNavigate()
@@ -25,16 +26,17 @@ const TopMenu:FC<Props> = ({userInfo, ...props}) => {
     const validateFields = ():boolean =>{
       
       if(userInfo.email == ''){
-        console.log(props.photo)
+        console.log(photo)
         setErrorText('Das E-Mail-Feld ist nicht ausgefüllt ')
+        setIsErrorMenuOpen(true)
+        return false;
+      }else if(!/^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/.test(userInfo.email)){
+        console.log(photo)
+        setErrorText('Das E-Mail-Feld muss email sein ')
         setIsErrorMenuOpen(true)
         return false;
       }else if(userInfo.fullName == ''){
         setErrorText('Das Name-Feld ist nicht ausgefüllt ')
-        setIsErrorMenuOpen(true)
-        return false;
-      }else if(props.photo.focusImage.name == ''){
-        setErrorText('Foto nicht ausgewählt  ')
         setIsErrorMenuOpen(true)
         return false;
       }
@@ -48,7 +50,7 @@ const TopMenu:FC<Props> = ({userInfo, ...props}) => {
       if(validateFields()){
         try{
    
-          const {data} = await NewUserService.createUser( newRackets, userInfo, props.photo);
+          const {data} = await NewUserService.createUser( newRackets, userInfo, photo);
           navigate(`/user-account/${data.userId}`) 
         }catch(e: any){
           getErrorText(e)
@@ -58,7 +60,7 @@ const TopMenu:FC<Props> = ({userInfo, ...props}) => {
       
        
       }
-      console.log(userInfo,props.photo, newRackets)
+      console.log(userInfo,photo, newRackets)
     }
   return (
     <div>
