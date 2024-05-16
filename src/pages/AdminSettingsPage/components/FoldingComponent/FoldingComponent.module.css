@@ -149,6 +149,12 @@
         max-height: 640px;
     }
 }
+@media (max-height: 900px) {
+    .mainRow{
+        height:530px;
+        max-height: 530px;
+    }
+}
 @media (max-height: 800px) {
     .topMenu {
         height: 20px;
@@ -157,11 +163,7 @@
         padding: 15px 30px;
 
     }
-    .mainRow{
 
-        height:430px;
-        max-height: 430px;
-    }
     .searchInput{
         height: 35px;
     }
@@ -183,3 +185,24 @@
         margin-left: -2px;
     }
 }  
+
+@media (max-height: 750px) {
+    .mainRow{
+        height:470px;
+        max-height: 470px;
+    }
+}
+
+@media (max-height: 700px) {
+    .mainRow{
+        height:420px;
+        max-height: 420px;
+    }
+}
+
+@media (max-height: 650px) {
+    .mainRow{
+        height:390px;
+        max-height: 390px;
+    }
+}

@@ -5,6 +5,7 @@ import MyButton from '../../../../UI/MyButton/MyButton';
 import arrowIcon from '../../../../assets/images/arrow.png'
 import plusIcon from '../../../../assets/images/plus.png'
 import FlutterMenu from '../../../../UI/FlutterMenu/FlutterMenu';
+import { useTypedSelector } from '../../../../hooks/useTypedSelector';
 interface Props {
     onAdd: () => void,
     onSearch: (value: string) => void,
@@ -20,6 +21,7 @@ const FoldingComponent: FC<Props> = ({ isFolded, ...props }) => {
         
         props.onSearch(inputValue);
     }
+ 
 
     return (
         <FlutterMenu className={`${style.foldingComponent}`} shadow='small'>

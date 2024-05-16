@@ -31,7 +31,7 @@ const RacketCard: FC<Props> = ({ racket, handelDelete, handelEdit }) => {
 
       <GradientBlackBlock className={style.racketBlock}>
         <MyImage alt='' src={racket.imgLink} className={style.racketImg} />
-        <div className={style.racketName}>{racket.manufacturer.name} {RecordHeler.splitString(racket?.name, 11)}</div>
+        <div className={style.racketName}>{racket.manufacturer.name}{racket?.name}</div>
 
         <div className={style.buttonRow}>
           <MyButton mode='white' className={`${style.actionsButton} ${style.editButton}`} onClick={() => { setIsEditing(true) }}>

@@ -13,6 +13,7 @@ import { DataActions } from '../../../../helpers/DataActions';
 import StringCard from '../StringCard/StringCard';
 import { IString } from '../../models/IString';
 import StringFlutterMenu from '../StringFlutterMenu/StringFlutterMenu';
+import { useTypedSelector } from '../../../../hooks/useTypedSelector';
 
 
 const Main = () => {
@@ -79,7 +80,7 @@ const Main = () => {
     console.log(data)
     setStrings(data);
   }
-
+  const {windowHeight} = useTypedSelector(state=> state.adaptive);
   return (
 
     <>
@@ -101,7 +102,7 @@ const Main = () => {
             fetchData={(page:number, itemsPerPage:number, searchQuery:string) => AdminSettingPageService.getRackets(page, itemsPerPage, searchQuery)}
             searchQuery={racketsSearchQeuery}
             renderItem={racket => <RacketCard racket={racket} key={racket.id} handelDelete={handelRacketDelete} handelEdit={handelRacketEdit} />}
-            itemsPerPage={10}
+            itemsPerPage={15 }
             className={style.list}
             list={rackets}
             setList={setRackets}
@@ -119,7 +120,7 @@ const Main = () => {
             fetchData={(page:number, itemsPerPage:number, searchQuery:string) => AdminSettingPageService.getStrings(page, itemsPerPage, searchQuery)}
             searchQuery={stringsSearchQeuery}
             renderItem={string => <StringCard string={string} key={string.id} handelDelete={handelStringDelete}handelEdit ={handelStringEdit} />}
-            itemsPerPage={10}
+            itemsPerPage={15}
             className={style.list}
             list={strings}
             setList={setStrings}

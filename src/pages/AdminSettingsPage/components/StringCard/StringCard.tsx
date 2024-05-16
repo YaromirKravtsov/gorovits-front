@@ -30,7 +30,7 @@ const StringCard: FC<Props> = ({ string, handelDelete, handelEdit }) => {
         
                 <GradientBlackBlock className={style.stringBlock}>
                     <MyImage alt='' src={string.imgLink} className={style.stringImg} />
-                    <div className={style.stringName}>{RecordHeler.splitString(string.name, 30)}</div>
+                    <div className={style.stringName}>{string.name}</div>
 
                     <div className={style.buttonRow}>
                         <MyButton mode='white' className={`${style.actionsButton} ${style.editButton}`} onClick={() => { setIsEditing(true) }}>
