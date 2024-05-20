@@ -16,6 +16,7 @@ import FileInput from '../../../../components/FileInput/FileInput';
 import ImageCropper from '../../../../components/ImageCropper/ImageCropper';
 import { Area } from 'react-easy-crop';
 import { DataActions } from '../../../../helpers/DataActions';
+import Loader from '../../../../UI/Loader/Loader';
 type Action = 'add' | 'edit'
 interface Props {
     action: Action,
@@ -44,7 +45,7 @@ const RacketFlutterMenu: FC<Props> = (props) => {
     })
     useEffect(() => {
         if (props.racket?.imgLink !== '' && props.racket?.imgLink) {
-            setImage(props.racket.imgLink)
+            setImage(props?.racket?.imgLink)
         }
         const fetch = async () => {
             try {
@@ -131,7 +132,9 @@ const RacketFlutterMenu: FC<Props> = (props) => {
     useEffect(() => {
         setErrors(prev => ({ ...prev, image: false }));
     }, [image])
-
+    console.log('image')
+    console.log(image)
+    console.log(image !== '')
 
 
 
@@ -161,17 +164,18 @@ const RacketFlutterMenu: FC<Props> = (props) => {
                             setError={value => setErrors(prev => ({ ...prev, racketModel: value }))}
                         />
                     </InputRow>
-                    <CheckBox text='als Testschläger im Sortiment' setIsChecked={setIsToTest} isChecked ={isToTest}/>
+                    <CheckBox text='als Testschläger im Sortiment' setIsChecked={setIsToTest} isChecked={isToTest} />
                     <div className={`${style.photoSelect} ${errors.image && style.photoSelectError}`}>
 
-
-                        <ImageCropper
-                            onCropDone={setImage}
-                            aspect={2.615}
-                            className={style.imageCropper}
-                            internalImage={image}
-                        />
-
+                        {(image !== '') ?
+                            <ImageCropper
+                                onCropDone={setImage}
+                                aspect={2.615}
+                                className={style.imageCropper}
+                                internalImage={image}
+                            /> :
+                            <Loader size='small' />
+                        }
 
                     </div>
                 </div>

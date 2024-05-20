@@ -13,6 +13,7 @@ import { getErrorText } from '../../../../helpers/FormDataGeneration'
 import ImageCropper from '../../../../components/ImageCropper/ImageCropper'
 import { DataActions } from '../../../../helpers/DataActions'
 import DropDownInput, { Option } from '../../../../UI/DropDownInput/DropDownInput'
+import Loader from '../../../../UI/Loader/Loader'
 type Action = 'add' | 'edit'
 interface Props {
     action: Action,
@@ -176,12 +177,18 @@ const StringFlutterMenu: FC<Props> = (props) => {
                     </InputRow>
                     <InputRow label='Saiten Foto' className={style.inputRow}>
                         <div className={`${style.photoSelect} ${errors.image && style.photoSelectError}`}>
+                            {image !== '' ?
+                            
+                        
                             <ImageCropper
                                 onCropDone={setImage}
                                 aspect={1}
                                 className={style.imageCropper}
                                 internalImage={image}
                             />
+                        :
+                        <Loader size='small'/>
+                        }
 
                         </div>
                     </InputRow>

@@ -24,14 +24,22 @@
 }
 
 .racketName {
-    margin-top: 5px;
+    width: 50%;
+    max-height: 100%;
     font-family: 'Montserrat';
     font-style: normal;
     font-weight: 600;
     font-size: 18px;
     line-height: 30px;
     color: #FFFFFF;
+    display: flex;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
 
+}
+
+.racketName span{
+    text-align: center;
 }
 .deleteButton{
     background: #C44637;

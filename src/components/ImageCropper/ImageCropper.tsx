@@ -20,6 +20,7 @@ interface Props {
 }
 
 const ImageCropper: FC<Props> = ({ onCropDone, aspect, className, internalImage }) => {
+    console.log(internalImage)
     const [crop, setCrop] = useState<Point>({ x: 0, y: 0 });
     const [zoom, setZoom] = useState<number>(1);
     const [rotation, setRotation] = useState<number>(0);
