@@ -170,7 +170,8 @@
 
     .topLeftBlockTitle,
     .topLeftBlockSubTitle {
-        font-size: 16px;
+        font-size: 14px;
+       
         font-weight: 400;
     }
 
@@ -189,7 +190,8 @@
         margin-top: 0;
     }
     .topLeftBlockTitle{
-        line-height: 18px;
+        font-size: 12px;
+        line-height: 12px;
         font-weight: 400;
     }
     .button{
@@ -204,8 +206,8 @@
 
 @media (max-width: 350px){
     .topLeftBlockTitle{
-        font-size: 16px;
-        line-height: 16px;
+  
+        line-height: 11px;
         font-weight: 400;
     }
 }

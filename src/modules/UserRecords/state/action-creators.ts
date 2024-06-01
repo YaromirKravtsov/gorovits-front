@@ -37,7 +37,7 @@ export const  RecordActionCreators = {
     deleteUserRecord: (id:number) => async (dispatch: AppDispatch) =>{
         try{
             dispatch(RecordActionCreators.setIsRecordsLoading(true));
-            const record = await $api.delete(`/records/${id}`);
+            const record = await $api.delete(`/records/to-user/${id}`);
             if(record){
                 dispatch(RecordActionCreators.deleteUserRecordFromState(id));
             }

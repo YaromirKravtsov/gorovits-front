@@ -44,7 +44,7 @@
     color: red;
     position: absolute;
     /*  top: 100px; */
-  /*   transform: translateY(-40px); */
+    transform: translateY(80px);
     font-family: 'Poppins';
     font-style: normal;
     font-weight: 400;
@@ -87,6 +87,10 @@
 }
 
 @media (max-width: 1500px) {
+    .errorText {
+
+        transform: translateY(65px);
+    }
     .input {
         height: 35px;
         width: 100%;

@@ -31,4 +31,7 @@
     .button{
         width: 100% !important;
     }
+    .buttonDrop{
+        width: 100%;
+    }
 }

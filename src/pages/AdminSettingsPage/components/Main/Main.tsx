@@ -28,16 +28,19 @@ const Main = () => {
   const [rackets, setRackets] = useState<IRacket[]>([]);
   const [strings, setStrings] = useState<IString[]>([]);
   const handelRacketsFoldering = () => {
-    if (isStringsFoldering) {
+/*     if (isStringsFoldering) {
       setIsStringsFoldering(false)
-    }
+    } */
+    setIsStringsFoldering(!isStringsFoldering)
     setIsRacketsFoldering(!isRacketsFoldering);
   }
   const handelStringsFoldering = () => {
-    if (isRacketsFoldering) {
+/*     if (isRacketsFoldering) {
       setIsRacketsFoldering(false)
     }
-    setIsStringsFoldering(!isStringsFoldering);
+    setIsStringsFoldering(!isStringsFoldering); */
+    setIsStringsFoldering(!isStringsFoldering)
+    setIsRacketsFoldering(!isRacketsFoldering);
   }
   const handelRacketDelete = async (id: number) => {
     try {

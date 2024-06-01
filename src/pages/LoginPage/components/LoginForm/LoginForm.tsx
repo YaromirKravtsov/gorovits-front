@@ -78,11 +78,12 @@ const LoginForm = () => {
             {errors.password &&
               <div className={style.errorTextField}>Das Passwort darf nicht leer sein  </div>
             }
-          </InputRow>
-          {
+                {
             error &&
             <div className={style.errorText}>{error}</div>
           }
+          </InputRow>
+      
 
 
           <MyButton mode='black' className={style.button} onClick={handelLogin}>Anmelden</MyButton>

@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useState } from 'react'
+import { FC, useEffect, useState } from 'react'
 import FlutterMenu from '../../../../UI/FlutterMenu/FlutterMenu';
 import style from './RacketFlutterMenu.module.css'
 import MyInput from '../../../../components/MyInput/MyInput';
@@ -7,14 +7,10 @@ import { AdminSettingPageService, RacketsManufactureres } from '../../api/AdminS
 import { useActions } from '../../../../hooks/useActions';
 import { getErrorText } from '../../../../helpers/FormDataGeneration';
 import InputRow from '../../../../components/InputRow/InputRow';
-import ImageUploader from '../../../../components/ImageUploader/ImageUploader';
 import MyButton from '../../../../UI/MyButton/MyButton';
 import { IRacket } from '../../models/IRacket';
-import addNewPhotoIcon from '../../../../assets/images/settings/add_new.png';
 import CheckBox from '../../../../UI/CheckBox/CheckBox';
-import FileInput from '../../../../components/FileInput/FileInput';
 import ImageCropper from '../../../../components/ImageCropper/ImageCropper';
-import { Area } from 'react-easy-crop';
 import { DataActions } from '../../../../helpers/DataActions';
 import Loader from '../../../../UI/Loader/Loader';
 type Action = 'add' | 'edit'

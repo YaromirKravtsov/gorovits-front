@@ -60,7 +60,6 @@ const ButtonsList: FC<Props> = ({ record, type }) => {
         }
     }
 
-
     const deleteRecord = async () => {
         if (type == 'single') {
             await deleteRecordFromGroup((record as IRecord).id);
@@ -115,7 +114,20 @@ const ButtonsList: FC<Props> = ({ record, type }) => {
     }
     return (
         <>
-     
+      {isDeleteMenuOpen &&
+                        <FlutterMenu shadow='all' className={style.recordFlutter}>
+                            <div className={style.recordFlutterTitle}>Bestellung löschen</div>
+                            <div className={style.recordFlutterText}>Sind Sie sicher, dass Sie den Bestellung löschen möchten? Diese Aktion kann nicht rückgängig gemacht werden</div>
+                            <div className={style.buttonRow}>
+                                <MyButton mode='white' onClick={() => setIsDeleteMenuOpen(false)} border className={style.recordFlutterButton}>
+                                    Abbrechen
+                                </MyButton>
+                                <MyButton mode='black' onClick={deleteRecord} className={style.recordFlutterButton}>
+                                    Stornieren
+                                </MyButton>
+                            </div>
+                        </FlutterMenu>
+                    }
             {record.recordType <= 4 ?
                 <>
                     {isDateChanging &&
@@ -132,20 +144,8 @@ const ButtonsList: FC<Props> = ({ record, type }) => {
                             </div>
                         </FlutterMenu>
                     }
-                    {isDeleteMenuOpen &&
-                        <FlutterMenu shadow='all' className={style.recordFlutter}>
-                            <div className={style.recordFlutterTitle}>Bestellung löschen</div>
-                            <div className={style.recordFlutterText}>Sind Sie sicher, dass Sie den Bestellung löschen möchten? Diese Aktion kann nicht rückgängig gemacht werden</div>
-                            <div className={style.buttonRow}>
-                                <MyButton mode='white' onClick={() => setIsDeleteMenuOpen(false)} border>
-                                    Abbrechen
-                                </MyButton>
-                                <MyButton mode='black' onClick={deleteRecord}>
-                                    Stornieren
-                                </MyButton>
-                            </div>
-                        </FlutterMenu>
-                    }
+                 
+                    
                     {record.state == 2 &&
 
                         <MyButton className={`${style.button} ${style.green}`} onClick={handelDone}>
@@ -163,6 +163,7 @@ const ButtonsList: FC<Props> = ({ record, type }) => {
                                 <MyImage className={style.buttonImage} src={changeTimeIcon} alt='' />
                             </MyButton>
                             <MyButton className={`${style.button} ${style.red}`} onClick={() => setIsDeleteMenuOpen(true)}>
+                                
                                 <MyImage className={style.buttonImage} src={deleteIcon} alt='' />
                             </MyButton>
                         </>

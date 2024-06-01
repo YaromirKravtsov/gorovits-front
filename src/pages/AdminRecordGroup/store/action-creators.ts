@@ -40,6 +40,7 @@ export const AdminRecordGroupActionCreators = {
     },
     deleteRecordFromGroup:(recordId:number) => async (dispatch: AppDispatch) =>{
         try{
+       
             await AdminRecordGroupService.deleteRecord(recordId);
          
         }catch(e){

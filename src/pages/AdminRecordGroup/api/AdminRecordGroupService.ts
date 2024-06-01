@@ -31,6 +31,7 @@ export class AdminRecordGroupService {
     }
 
     static async deleteRecord(reordId: number): Promise<AxiosResponse> {
+
         return $api.delete(`records/to-admin/${reordId}`);
 
     }

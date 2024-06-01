@@ -28,8 +28,8 @@ const TerminePageMain: FC = () => {
   return (
     <div className={style.mainRow}>
       <div className={style.buttonRow}>
-        <DropDownButton options={werkstatt} title='Werkstatt' onSelect={handelSelect} className={style.button} />
-        <DropDownButton options={beratung} title='Beratung' onSelect={handelSelect} className={style.button} />
+        <DropDownButton options={werkstatt} title='Werkstatt' onSelect={handelSelect} className={style.button} dropClass = {style.buttonDrop}/>
+        <DropDownButton options={beratung} title='Beratung' onSelect={handelSelect} className={style.button} dropClass = {style.buttonDrop}/>
       </div>
       <UserRecords />
 

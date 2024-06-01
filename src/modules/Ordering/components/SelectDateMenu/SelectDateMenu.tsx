@@ -156,7 +156,23 @@ const SelectDateMenu: FC<Props> = (props) => {
 
 
   const [inNoSelected, setIsNOSelected] = useState<boolean>(false);
+  
+  const blockRef = useRef<HTMLDivElement>(null);
+  const wraperRef = useRef<HTMLDivElement>(null);
+  const [blockHeight, setBlockHeight] = useState<number>(0);
+  const [wraperHeight, setWraperHeight] = useState<number>(0);
 
+  useEffect(() => {
+    console.log(blockRef.current)
+    if (blockRef.current) {
+      setBlockHeight(blockRef.current.offsetHeight);
+      
+    }
+    if(wraperRef.current){
+      setWraperHeight(wraperRef.current.offsetHeight);
+    }
+    console.log(blockHeight <=wraperHeight)
+  }, [blockRef.current,wraperRef.current]);
   return (
     <FlutterMenu shadow={windowWidth >= 600 ? 'all' : 'normal'} className={style.selectDateMenu}>
       <div className={style.blockTitle}>Termin auswählen</div>
@@ -182,17 +198,17 @@ const SelectDateMenu: FC<Props> = (props) => {
             </div>
           </div>
           <div className={style.currentWeek}>
-            <div className={style.daysBlock}>
+            <div className={style.daysBlock} style  = {{paddingRight: blockHeight <=wraperHeight? '5px' : '15px'}}>
               {currentWeek.slice(0, 6).map((day, index) =>
               <>
                 <div className={`${style.weekDay}`}>{weekShortDays[index]}<br />{DatesHelper.getDateMonth(day.date)} </div>
                 </>
               )}
             </div>
-            <div className={style.dateTimeBlock}>
+            <div className={style.dateTimeBlock} ref = {wraperRef}>
               {currentWeek.slice(0, 6).map((day,dayIndex) =>
                 <>
-                  <div className={style.dateTimeColumn} key={String(day.date)}>
+                  <div className={style.dateTimeColumn} key={String(day.date)} ref = {blockRef}>
 
                     {day.slots.map(slot =>
                       <button
@@ -206,7 +222,7 @@ const SelectDateMenu: FC<Props> = (props) => {
                     )}
 
                   </div>
-                  {(windowWidth <= 600 && dayIndex < currentWeek.slice(0, 6).length -1) &&   <div className={style.line}></div>}
+                  {(windowWidth <= 600 && dayIndex < currentWeek.slice(0, 6).length -1) &&   <div className={style.line} style = {{height:blockHeight}}></div>}
                 </>
               )}
             </div>

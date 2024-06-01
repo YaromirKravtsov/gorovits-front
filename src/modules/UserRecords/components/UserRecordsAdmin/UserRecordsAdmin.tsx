@@ -41,7 +41,7 @@ const UserRecordsAdmin: FC<Props> = (props) => {
             fetchData={(page, itemsPerPage, searchQuery,state) => RecordService.getRecordByStatusAndString(page, itemsPerPage, searchQuery,state)}
             searchQuery={props.searchQuery}
             renderItem={record =>   <AdminRecordCard record={record} toUser />}
-            itemsPerPage={20}
+            itemsPerPage={30}
             state={props.state}
             className={style.recordRow}
             list={records}

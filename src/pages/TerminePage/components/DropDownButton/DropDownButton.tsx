@@ -18,7 +18,7 @@ interface Props {
 }
 const DropDownButton: FC<Props> = (props) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
-  const {windowWidth} = useTypedSelector(state => state.adaptive)
+  const { windowWidth } = useTypedSelector(state => state.adaptive)
   const handleClick = () => {
     if (isOpen) setIsOpen(false);
     else setIsOpen(true);
@@ -41,12 +41,12 @@ const DropDownButton: FC<Props> = (props) => {
     setIsHover(data)
   }, [props.options])
 
-  
+
 
   return (
     <div className={style.main}>
-      <MyButton onClick={() => handleClick()} className={`${style.button} ${props.className}`} mode='black'>{props.title} 
-      <MyImage alt='arrow' src={arrow} className={`${style.arrow} ${isOpen && style.grad}`} /> 
+      <MyButton onClick={() => handleClick()} className={`${style.button} ${props.className}`} mode='black'>{props.title}
+        <MyImage alt='arrow' src={arrow} className={`${style.arrow} ${isOpen && style.grad}`} />
       </MyButton>
       {isOpen &&
         <div className={`${style.dropDownList} ${props.dropClass}`}>
@@ -55,7 +55,7 @@ const DropDownButton: FC<Props> = (props) => {
               <button className={style.dropDownItemButton} key={index} onClick={() => handleSelect(option.value)}>{option.text}</button>
               {option.questionText &&
                 <>
-                  <QuestionMark text={option.questionText} droPosition={windowWidth >= 580?'bottom-right' : 'center'} size='small' />
+                  <QuestionMark text={option.questionText} droPosition={windowWidth >= 580 ? 'bottom-right' : 'center'} size='small' />
                 </>
               }
             </div>
