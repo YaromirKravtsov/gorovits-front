@@ -39,10 +39,10 @@
 
 .leftButton {
     width: 300px;
-    padding: 25px 15px;
+    padding: 0px 15px;
     flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
+/*     justify-content: space-around; */
+/*     align-items: center; */
     margin-top: auto;
     height: 120px;
     text-align: center;
@@ -50,11 +50,13 @@
 
 .stringHardnes {
     font-size: 35px;
+    margin-top: auto;
 }
 
 .stringName {
 
-    margin-top: 20px;
+    margin-top: 10px;
+    margin-bottom: auto;
 }
 
 .centerBlock {
