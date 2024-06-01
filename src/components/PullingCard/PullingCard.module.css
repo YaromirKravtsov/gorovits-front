@@ -155,8 +155,9 @@
     }
 
     .stringName {
-        font-size: 16px;
-        line-height: 16px;
+        font-size: 12px;
+        line-height: 12px;
+        font-weight: normal;
         margin-top: 5px;
 
     }
@@ -168,6 +169,9 @@
 }
 
 @media (max-width: 600px) {
+/*     .stringName{
+        font-size: 100px;
+    } */
     .pullingCard {
         padding: 10px 10px;
         height: 250px;
