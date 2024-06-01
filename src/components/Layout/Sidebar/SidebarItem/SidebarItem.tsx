@@ -41,7 +41,7 @@ const SidebarItem: FC<SidebarItemProps> = (props) => {
            
             <div className={style.text}>
             {props.imgText ?
-                <MyImage src={props.imgText} alt={props.text} width={170} height={27}/>:<>{props.text}</> 
+                <MyImage src={props.imgText} alt={props.text}  className={style.shopImage}/>:<>{props.text}</> 
             }
             </div>
         </Link>

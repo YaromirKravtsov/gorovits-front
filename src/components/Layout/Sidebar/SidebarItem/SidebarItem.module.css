@@ -11,7 +11,10 @@
     background-color: #333333;
 
 }
-
+.shopImage{
+    width: 170px;
+    height: 27px;
+}
 .image {
     width: 30px;
     height: 30px;
@@ -60,6 +63,9 @@
     .image,.profileImage {
         width: 25px;
         height: 25px;
+    }
+    .shopImage{
+        width: 140px;
     }
 }
 @media (max-width: 1180px){
