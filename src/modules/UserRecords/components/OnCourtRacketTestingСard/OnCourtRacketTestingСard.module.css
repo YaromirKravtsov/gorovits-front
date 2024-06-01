@@ -98,7 +98,7 @@
     font-family: 'Roboto';
     font-style: normal;
     font-weight: 400;
-    font-size: 24px;
+    font-size: 22px;
     line-height: 40px;
     color: #000000;
 
@@ -140,7 +140,7 @@
     .delteButton,.moreInfoButton{
         width: 100%;
         height: 45px;
-        font-size: 20px;
+        font-size: 18px;
     }
     .flutter{
         width: 95%;
@@ -159,7 +159,7 @@
 
     }
     .flutterRacketsItem{
-        font-size: 20px;
+        font-size: 18px;
         line-height: 25px;
     }
 }

@@ -36,6 +36,7 @@ export const AdminRecordGroupActionCreators = {
         await AdminRecordGroupService.setState(recordId, state);
         dispatch(AdminRecordGroupActionCreators.putGroupState(state))
         dispatch(AdminRecordGroupActionCreators.putRecordState({recordId, state}))
+        window.location.href = window.location.href;
     },
     deleteRecordFromGroup:(recordId:number) => async (dispatch: AppDispatch) =>{
         try{
@@ -50,8 +51,8 @@ export const AdminRecordGroupActionCreators = {
     changePickUpTime:(recordId:number,time:Date) => async (dispatch: AppDispatch) =>{
         try{
             await AdminRecordGroupService.putPickUpTime(recordId,time);
-            dispatch(AdminRecordGroupActionCreators.updateGroupRecordState(recordId, 2)) 
             dispatch(AdminRecordGroupActionCreators.putPickUpTime({recordId,time}))
+            dispatch(AdminRecordGroupActionCreators.updateGroupRecordState(recordId, 2)) 
         }catch(e){
             console.log(e)
             dispatch(AuthActionCreators.setGlobalError(getErrorText(e)))

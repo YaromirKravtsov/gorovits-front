@@ -14,9 +14,6 @@ const LastPulling = () => {
   const handelGoToPullingHostory = () => {
     navigate('/besaitungen-des-benutzers')
   }
-  useEffect(()=>{
-
-  },[])
   return (
     <>
       <FlutterMenu shadow='small' className={`${style.flutterMenu} ${isEditing ? style.editShadow : ''}`}>
@@ -39,7 +36,6 @@ const LastPulling = () => {
             onClick={() => handelGoToPullingHostory()}
             disabled={isEditing}
           >
-
             Story Bespannungen
           </MyButton>
         }

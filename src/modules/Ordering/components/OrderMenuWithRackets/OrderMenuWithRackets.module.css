@@ -5,7 +5,7 @@
         width: 390px;
         height: 40px;
         max-height:40px;
-        font-size: 20px;
+        font-size: 18px;
 
     }
     .buttonRow{
@@ -15,19 +15,19 @@
         margin-bottom: 10px;
     }
     .buttonLeft{
-        font-size: 20px;
+        font-size: 18px;
         margin-left: auto;
     }
     @media (max-width: 1500px) {
         .buttonLeft,.button{
             width: 360px;
-            font-size: 18px;
+            font-size: 16px;
             font-weight: normal;
         }
         .button{
             height: 35px;
             width: 290px;
-            font-size: 18px;
+            font-size: 16px;
             font-weight: normal;
         }
     }

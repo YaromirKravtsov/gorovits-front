@@ -100,7 +100,7 @@ const MyPagination: FC<Props> = ({ fetchData, itemsPerPage, renderItem, classNam
 
             {items.map(item => <React.Fragment key={item.id}>{renderItem(item)}</React.Fragment>)}
             {isLoading &&
-                <Loader />
+                <Loader size='small' />
             }
             {hasMoreItems && (
                 <div className={style.buttonContainer}>

@@ -18,14 +18,14 @@
     font-family: 'Roboto';
     font-style: normal;
     font-weight: 500;
-    font-size: 24px;
+    font-size: 22px;
     line-height: 24px;
     color: #232323;
 }
 .topButton{
-    width: 400px;
-    height: 45px;
-    font-size: 20px;
+    width: 350px;
+    height: 35px;
+    font-size: 18px;
     font-weight: 500;
 }
 
@@ -38,13 +38,13 @@
     }
 
     .topTitle{
-        font-size: 22px;
+        font-size: 20px;
     }
     
     .topButton{
         width: 280px;
-        height: 40px;
-        font-size: 17px;
+        height: 35px;
+        font-size: 16px;
     }
 
 }
@@ -53,6 +53,5 @@
     .main{
         max-height: 330px;
         min-height: 330px;
-
     }
 }

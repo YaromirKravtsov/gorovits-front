@@ -63,33 +63,28 @@
     border-radius: 5px;
     display: flex;
     flex-direction: column;
-    /*     row-gap: 10px; */
+    row-gap: 10px;
 }
 
 .dropDownBlock:-webkit-scrollbar {
     width: 8px;
-    /* Ширина полосы прокрутки в вебкит браузерах */
 }
 
 .dropDownBlock::-webkit-scrollbar-thumb {
     background-color: rgba(0, 0, 0, 0.5);
-    /* Цвет ползунка */
     border-radius: 10px;
-    /* Радиус закругления углов ползунка */
 }
 
 .dropDownBlock::-webkit-scrollbar-track {
     background-color: rgba(255, 255, 255, 0.5);
-    /* Цвет трека */
     border-radius: 10px;
-    /* Радиус закругления углов трека */
 }
 
 .dropTitle {
     font-family: 'Poppins';
     font-style: normal;
     font-weight: 400;
-    font-size: 18px;
+    font-size: 16px;
     line-height: 20px;
     color: #232323;
     margin-bottom: 5px;
@@ -103,8 +98,7 @@
 .stringsItem {
     min-width: 100%;
     width: 100%;
-    min-height: 20px;
-    height: 20px;
+    height: auto;
     padding: 0 15px;
     cursor: pointer;
     font-family: 'Poppins';
@@ -121,7 +115,6 @@
 .errorInput {
     position: absolute;
     transform: translate(-15px, 30px);
-    /* Error text */
     font-family: 'Poppins';
     font-style: normal;
     font-weight: 400;

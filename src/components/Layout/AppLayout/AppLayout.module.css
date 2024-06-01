@@ -9,11 +9,11 @@
 
 }
 .navBar{
-  width: 350px;
-  min-width: 350px;
+  width: 280px;
+  min-width: 280px;
   left: 0 !important; /* Убираем !important */
   z-index: 100;
-  row-gap: 20px;
+  row-gap: 10px;
 }
 
 .openNavBar{
@@ -43,14 +43,14 @@
 }
 @media (max-width: 1500px){
   .navBar{
-    width: 340px;
-    min-width: 340px;
+    width: 230px;
+    min-width: 230px;
   }
 }
 @media (max-width: 1300px),(max-height: 700px){
   .navBar{
-    width: 280px;
-    min-width: 280px;
+    width: 240px;
+    min-width: 240px;
   }
 }
 

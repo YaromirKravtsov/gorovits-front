@@ -19,7 +19,7 @@
     font-family: 'Montserrat';
     font-style: normal;
     font-weight: 600;
-    font-size: 24px;
+    font-size: 22px;
     line-height: 20px;
     display: flex;
     align-items: center;
@@ -29,14 +29,14 @@
 }
 .longBlock,.rightTopBlock,.button{
     height: 50px;
-    font-size: 18px;
+    font-size: 16px;
 }
 .rightTopBlock{
     width: 360px;
     font-family: 'Roboto';
     font-style: normal;
     font-weight: 500;
-    font-size: 18px;
+    font-size: 16px;
     line-height: 29px;
     display: flex;
     align-items: center;
@@ -48,7 +48,7 @@
 }
 .button{
     width: 360px;
-    font-size: 20px;
+    font-size: 18px;
 
 }
 @media (max-width: 1520px) {
@@ -60,7 +60,7 @@
     }
     .button,.rightTopBlock{
         width: 230px;
-        font-size: 18px;
+        font-size: 16px;
     }
 }
 @media (max-width: 950px) {
@@ -93,7 +93,7 @@
     font-weight: normal;
     }
     .button{
-        font-size: 18px;
+        font-size: 16px;
         height: 40px;
         font-weight: normal;
     }

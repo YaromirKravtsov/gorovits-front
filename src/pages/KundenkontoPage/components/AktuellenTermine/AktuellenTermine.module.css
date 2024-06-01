@@ -13,16 +13,16 @@
     font-family: 'Roboto';
     font-style: normal;
     font-weight: 500;
-    font-size: 20px;
+    font-size: 18px;
     line-height: 32px;
     text-align: center;
     margin-bottom: 15px;
 }
 .title{
-    font-size: 22px;
+    font-size: 20px;
 }
 .noRecordText {
-    font-size: 18px;
+    font-size: 16px;
     margin: auto;
 }
 
@@ -66,7 +66,7 @@
     font-family: 'Montserrat';
     font-style: normal;
     font-weight: 600;
-    font-size: 18px;
+    font-size: 16px;
     line-height: 23px;
     color: #FFFFFF;
 }
@@ -85,7 +85,7 @@
     width: 300px !important;
     margin-top: auto;
     height: 45px;
-    font-size: 20px;
+    font-size: 18px;
 }
 
 
@@ -112,7 +112,7 @@
     .title {
         margin-top: 0;
         margin-bottom: 5px;
-        font-size: 20px;
+        font-size: 18px;
     }
 
 
@@ -139,14 +139,14 @@
 
     .noRecordText {
         margin: 0px;
-        font-size: 20px;
+        font-size: 18px;
         padding: 0 20px;
     }
 
     .noRecordButton {
         margin-top: 20px;
         height: 40px;
-        font-size: 18px;
+        font-size: 16px;
         /*      width: 300px; */
 
     }
@@ -191,7 +191,7 @@
     .noRecordButton {
         width: 100% !important;
         height: 35px;
-        font-size: 18px;
+        font-size: 16px;
         font-weight: normal;
     }
 }

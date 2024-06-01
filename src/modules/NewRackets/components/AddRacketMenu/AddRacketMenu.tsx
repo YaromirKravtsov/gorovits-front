@@ -83,7 +83,7 @@ const AddRacketMenu: FC<Props> = (props) => {
   const [strings, setStrings] = useState<IString[]>([] as IString[]);
   const [modelManufacturereDefault, setModelManufacturereDefault] = useState<ModelManufacturereDefault>({
     model: 'Wählen Sie die Firma',
-    manufactiors: 'Wählen Sie die Griffgröße'
+    manufactiors: 'Wählen Sie die Hersteller'
 
   });
   const [racketModels, setRacketModels] = useState<ModelAndManufactureres[]>([] as ModelAndManufactureres[]);
@@ -234,6 +234,7 @@ const AddRacketMenu: FC<Props> = (props) => {
               options={formatOption(racketManufactureres)}
               onChange={(value: number) => renderRacketModels(value)}
               className={style.input}
+              
             />
           </InputRow>
 

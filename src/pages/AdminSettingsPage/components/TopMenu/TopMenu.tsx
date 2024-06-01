@@ -52,7 +52,7 @@ const TopMenu = () => {
         <MyButton mode='black' onClick={() => setIsOpen(true)} className={style.button}>
           Passwort ändern
         </MyButton>
-        <RoundIconButton onClick={() => logout()} src={logoutIcon} className={style.logOutIcon} />
+        <RoundIconButton onClick={() => logout()} src={logoutIcon} className={style.logOutIcon} imageClassName={style.logOutIconImage}/>
       </div>
     </>
   )

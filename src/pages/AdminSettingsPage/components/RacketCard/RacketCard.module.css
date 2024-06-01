@@ -1,19 +1,19 @@
 .racketBlock {
     position: relative;
     width: 100%;
-    height: 50px;
-    min-height: 50px;
+    height: 40px;
+    min-height: 40px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
     padding: 0 20px;
-    border-radius: 20px;
+    border-radius: 15px;
 }
 
 .racketImg {
-    width: 100px;
-    height: 40px;
+    width: 90px;
+    height: 35px;
     font-family: 'Montserrat';
     font-style: normal;
     font-weight: 400;
@@ -29,7 +29,7 @@
     font-family: 'Montserrat';
     font-style: normal;
     font-weight: 600;
-    font-size: 18px;
+    font-size: 16px;
     line-height: 30px;
     color: #FFFFFF;
     display: flex;
@@ -55,13 +55,13 @@
     column-gap: 10px;
 }
 .actionsButton{
-    width: 35px;
-    height: 35px;
+    width: 30px;
+    height: 30px;
 }
 
 .actionsImg{
-    width: 35px;
-    height: 35px;
+    width: 30px;
+    height: 30px;
     margin: auto;
   
 }

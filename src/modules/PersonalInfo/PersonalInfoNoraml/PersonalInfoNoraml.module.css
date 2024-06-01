@@ -17,7 +17,7 @@
     font-family: 'Poppins';
     font-style: normal;
     font-weight: 600;
-    font-size: 18px;
+    font-size: 16px;
     line-height: 20px;
     letter-spacing: 0.01em;
     color: #000000;
@@ -28,14 +28,14 @@
     font-family: 'Poppins';
     font-style: normal;
     font-weight: 500;
-    font-size: 18px;
+    font-size: 16px;
     line-height: 27px;
     color: #232323;
     word-wrap: break-word;
 }
 @media (max-width: 1500px) {
     .title{
-        font-size: 18px;
+        font-size: 16px;
     }
     .text{
         font-size: 16px;

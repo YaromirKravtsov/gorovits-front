@@ -9,7 +9,6 @@ interface Props{
     user:IUser
 }
 const KundenCard:FC<Props> = ({user}) => {
-
     const navigate = useNavigate()
     return (
         <div onClick={() => navigate(`/user-account/${(user).id}`)}>
@@ -17,11 +16,9 @@ const KundenCard:FC<Props> = ({user}) => {
                 <BorderMenu className={style.block}>
                     {user.fullName}
                 </BorderMenu>
-
                 <BorderMenu className={style.block}>
                     {user.phoneNumber || 'Keine Telefonnummer '}
                 </BorderMenu>
-
                 <BorderMenu className={style.block}>
                     {user.email}
                 </BorderMenu>

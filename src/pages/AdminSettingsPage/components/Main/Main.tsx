@@ -80,7 +80,6 @@ const Main = () => {
     console.log(data)
     setStrings(data);
   }
-  const {windowHeight} = useTypedSelector(state=> state.adaptive);
   return (
 
     <>

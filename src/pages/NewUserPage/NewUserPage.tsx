@@ -7,8 +7,6 @@ import { useActions } from '../../hooks/useActions'
 import { SelectedImage } from '../../components/PhotoSelection/PhotoSelection'
 import { ISUser } from '../../models/IUser'
 
-
-
 const NewUserPage = () => {
   const [newUserPhoto,setNewUserPhoto] = useState<any>();
   const {setNewRackets} = useActions()

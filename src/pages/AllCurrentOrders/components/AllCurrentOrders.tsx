@@ -10,15 +10,15 @@ const AllCurrentOrders:FC = () => {
 
   const [state,setState] = useState<number>(1);
   const [searchQuery,setSearchQuery] = useState<string>('');
-  const questionMarkText = `Die Seite "Bestellungen" zeigt alle aktuellen Bestellungen an und ermöglicht es, deren Status zu aktualisieren und weitere Informationen darüber zu erhalten.  `
+  const questionMarkText = `Die Seite "Aktuelle Aufträge" zeigt alle aktuellen Aktuelle Aufträge an und ermöglicht es, deren Status zu aktualisieren und weitere Informationen darüber zu erhalten.  `
   
   return (
-    <PageLayout title="Bestellungen" questionMarkText={questionMarkText} flex topMenu ={
+    <PageLayout title="Aktuelle Aufträge" questionMarkText={questionMarkText} flex topMenu ={
     <TopMenu state = {state} setState = {setState} setSearchQuery = {setSearchQuery}
     />}>
         <UserRecordsAdmin state = {state} searchQuery = {searchQuery}/>
         <Helmet>
-        <title>Bestellungen</title>
+        <title>Aktuelle Aufträge</title>
       </Helmet>
     </PageLayout>
   )

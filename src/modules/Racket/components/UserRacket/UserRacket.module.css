@@ -12,10 +12,11 @@
     font-family: 'Montserrat';
     font-style: normal;
     font-weight: 600;
-    font-size: 20px;
+    font-size: 18px;
     line-height: 30px;
     letter-spacing: 0.04em;
     color: #FFFFFF;
+    margin-bottom: 5px;
 }
 
 .racketCode {
@@ -46,7 +47,7 @@
     font-family: 'Montserrat';
     font-style: normal;
     font-weight: 600;
-    font-size: 18px;
+    font-size: 16px;
     line-height: 24px;
     text-align: center;
     color: #FFFFFF;
@@ -67,7 +68,7 @@
     font-family: 'Montserrat';
     font-style: normal;
     font-weight: 600;
-    font-size: 18px;
+    font-size: 16px;
     line-height: 18px;
     color: #FFFFFF;
     padding: 0 9px;
@@ -78,8 +79,8 @@
 .RacketButton {
     margin-top: auto;
     width: 216px;
-    height: 40px;
-    font-size: 18px;
+    height: 35px;
+    font-size: 16px;
 }
 
 .imageBlock {
@@ -149,7 +150,7 @@
     .RacketButton{
         width: 90%;
         height: 40px;
-        font-size: 18px;
+        font-size: 16px;
     }
     .racketBlock{
         max-height: 680px;
@@ -222,7 +223,7 @@
     }
 
     .racketNumber {
-        font-size: 18px;
+        font-size: 16px;
     }
 
     .racketCode {

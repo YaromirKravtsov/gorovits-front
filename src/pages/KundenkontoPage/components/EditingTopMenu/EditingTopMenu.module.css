@@ -7,14 +7,15 @@
     margin-right: 15px;
 }
 .submitChangesIcon{
-    width: 35px !important;
-    height: 35px !important;
+    width: 25px !important;
+    height: 25px !important;
 
 }
+
 .button{
     width: 250px;
     height: 40px;
-    font-size: 20px;
+    font-size: 18px;
     margin-right: 100px;
 }
 

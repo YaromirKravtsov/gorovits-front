@@ -48,8 +48,9 @@ const LoginForm = () => {
     <>
       <FlutterMenu className={style.flutter} shadow={windowWidth >=600 ?'small': 'all'}>
 
-        <MyImage alt='sds' src={logo} className={style.image} />
+       
         <div className={style.mainRow}>
+          <MyImage alt='sds' src={logo} className={style.image} />
           <InputRow label='Email' className={style.inputRow}> 
   
             <MyInput

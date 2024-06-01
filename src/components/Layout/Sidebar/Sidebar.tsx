@@ -10,7 +10,7 @@ interface SidebarProps {
 }
   
 const Sidebar: FC<SidebarProps> = ({children,setWidth,className,setHeight}) => {
-    const {windowWidth,windowHeight} = useTypedSelector(state=> state.adaptive)
+    const {windowHeight} = useTypedSelector(state=> state.adaptive)
     const elRef = useRef<HTMLDivElement>(null)
     useEffect(() => {
       if (elRef.current) {

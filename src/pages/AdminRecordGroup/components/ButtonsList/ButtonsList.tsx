@@ -14,6 +14,7 @@ import { useTypedSelector } from '../../../../hooks/useTypedSelector'
 import MyInput from '../../../../components/MyInput/MyInput'
 import FormatDate from '../../../../helpers/dates'
 
+
 type Type = 'single' | 'group'
 interface Props {
     record: IRecord | GroupedRecords,
@@ -37,7 +38,7 @@ const ButtonsList: FC<Props> = ({ record, type }) => {
     const handelDone = async () => {
         if (type == 'group') {
             (record as GroupedRecords).records.forEach(async record => {
-                await updateGroupRecordState(record.id, 3);
+                await updateGroupRecordState(record.id, 3)
             })
         } else if (type == 'single') {
             await updateGroupRecordState((record as IRecord).id, 3);
@@ -100,6 +101,7 @@ const ButtonsList: FC<Props> = ({ record, type }) => {
         if (type == 'single') {
             await changePickUpTime((record as IRecord).id, new Date(selectedDate))
             updateQueryParam('pickupTime',selectedDate)
+            
         } else if (type == 'group') {
             (record as GroupedRecords).records.forEach(async (record) => {
                 await changePickUpTime((record as IRecord).id, new Date(selectedDate))

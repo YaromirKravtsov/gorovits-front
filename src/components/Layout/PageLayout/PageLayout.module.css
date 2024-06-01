@@ -31,7 +31,7 @@
     font-family: "Montserrat", sans-serif;
     font-style: normal;
     font-weight: 600;
-    font-size: 24px;
+    font-size: 20px;
     line-height: 32px;
     color: #232323;
 }
@@ -112,7 +112,7 @@
 
     .title {
         line-height: 20px;
-        font-size: 22px;
+        font-size: 20px;
         letter-spacing: -0.02em;
         font-weight: 500;
     }
@@ -121,7 +121,7 @@
 @media (max-width: 1200px), (max-height: 700px){
     .title {
         line-height: 20px;
-        font-size: 20px;
+        font-size: 18px;
         letter-spacing: -0.02em;
     }
 }
@@ -159,7 +159,7 @@
 @media (max-width: 780px) {
     .title {
         line-height: 20px;
-        font-size: 18px;
+        font-size: 16px;
         letter-spacing: -0.02em;
     }
 
@@ -172,7 +172,7 @@
 
     .title {
         line-height: 20px;
-        font-size: 18px;
+        font-size: 16px;
         letter-spacing: -0.02em;
     }
 

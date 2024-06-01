@@ -21,20 +21,20 @@
     font-family: 'Roboto';
     font-style: normal;
     font-weight: 500;
-    font-size: 22px;
+    font-size: 20px;
     line-height: 32px;
     color: #232323;
 /*     margin-bottom: 30px; */
 }
 .button{
-    font-size: 20px;
+    font-size: 18px;
     width: 450px;
     height: 45px ;
     border-radius: 10px;
 }
 .nullError{
     margin: auto;
-    font-size: 18px;
+    font-size: 16px;
     
 }
 .editShadow{
@@ -45,12 +45,12 @@
 @media (max-width: 1500px), (max-height: 700px) {
     .title{
         margin-bottom: 0;
-        font-size: 20px;
+        font-size: 18px;
     }
     .button{
         width: 340px;
         height: 38px;
-        font-size: 18px;
+        font-size: 16px;
     }
     .flutterMenu{
         height: 285px;
@@ -79,7 +79,7 @@
     .title{
         margin-bottom: 0;
  
-        font-size: 20px;
+        font-size: 18px;
     }
     .button{
         width: 100%;

@@ -28,7 +28,7 @@ const NewRackets:FC<Props> = (props) => {
             <RacketsList editMode = {props.editMode? true: false}/>
         </FlutterMenu>
         {isNewRacketOpen&&
-        <AddRacketMenu   onOpenChange = {setIsNewRacketOpen} editMode = {props.editMode? true: false}/>
+            <AddRacketMenu   onOpenChange = {setIsNewRacketOpen} editMode = {props.editMode? true: false}/>
         }
     </>
   )

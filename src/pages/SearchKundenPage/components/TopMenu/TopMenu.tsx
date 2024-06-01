@@ -15,7 +15,7 @@ const TopMenu:FC<Props> = (props) => {
     props.setSearchQuery(searchInput);
 
   }
-
+  
   return (
     <div className={style.topMenu}>
         <MyInput onChange={handelChange} placeholder='Benutzerinformationen eingeben' value={searchInput}

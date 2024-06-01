@@ -106,7 +106,7 @@
     .actionButton{
         width: 47%;
         height: 40px;
-        font-size: 20px;
+        font-size: 18px;
     }
     .photosItems {
         margin: 0;
@@ -137,6 +137,8 @@
     .changePhotoFlutter {
         width: 95%;
         padding: 20px;
+        display: flex;
+        flex-direction: column;
     }
 
     .photosItems {

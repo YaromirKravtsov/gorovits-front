@@ -40,11 +40,11 @@ const MyInput: FC<Props> = (props) => {
             type={isPasswordHidden ? 'password' : 'text'}
    
           />
-          {props.value !== ''&&
-          <button className={style.eyeIconButton}>
+          
+          <button className={style.eyeIconButton} style={{ opacity: props.value !== '' ? '1' : '0' }}>
             <img src={  isPasswordHidden?hiddenPass: noHiddenPass} alt="" className={style.eyeIcon} onClick={() =>setIsPasswordHidden(prev => !prev) }/>
           </button>
-          }
+          
           
         </div>
 

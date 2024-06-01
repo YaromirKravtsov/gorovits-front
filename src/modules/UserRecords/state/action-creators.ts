@@ -22,18 +22,6 @@ export const  RecordActionCreators = {
             console.log((error as Error).message)
         }
     },
-/*     getRecordByStatusAndString: (status: number,string:string) => async( dispatch: AppDispatch) =>{
-        try{
-            dispatch(RecordActionCreators.setIsRecordsLoading(true));
-            const {data} = await RecordService.getRecordByStatusAndString(status,string);
-          
-            dispatch(RecordActionCreators.setRecords(data));
-        }catch(error){
-            dispatch(AuthActionCreators.setGlobalError(getErrorText(error)))
-            dispatch(RecordActionCreators.setError((error as Error).message))
-            console.log((error as Error).message)
-        }
-    }, */
     getUserRecordsByString: (userId:number,status: number,string:string) => async( dispatch: AppDispatch) =>{
         try{
             dispatch(RecordActionCreators.setIsRecordsLoading(true));

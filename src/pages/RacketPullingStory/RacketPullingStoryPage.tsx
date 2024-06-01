@@ -10,7 +10,7 @@ import { useLocation } from 'react-router-dom';
 const RacketPullingStoryPage = () => {
 
     const questionText = `
-      
+    Auf der Seite Besaitungsverlauf können Sie die Besaitungshistorie Ihres Schlägers einsehen.
     `;
     const location = useLocation();
     const params = new URLSearchParams(location.search);

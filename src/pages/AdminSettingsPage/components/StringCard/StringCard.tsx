@@ -15,7 +15,6 @@ interface Props {
     handelEdit: (string: IString) => void,
 }
 const StringCard: FC<Props> = ({ string, handelDelete, handelEdit }) => {
-    const [isHover, setIsHover] = useState<boolean>(false);
     const [isEditing, setIsEditing] = useState<boolean>(false)
 
     return (

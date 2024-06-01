@@ -31,7 +31,8 @@ export class AdminRecordGroupService {
     }
 
     static async deleteRecord(reordId: number): Promise<AxiosResponse> {
-        return $api.delete(`records/${reordId}`);
+        return $api.delete(`records/to-admin/${reordId}`);
+
     }
 
     static async putPickUpTime(recordId: number, time: Date): Promise<AxiosResponse> {
