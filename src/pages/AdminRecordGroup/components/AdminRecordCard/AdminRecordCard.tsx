@@ -80,7 +80,9 @@ const AdminRecordCard: FC<Props> = (props) => {
           setMainConent(testModelsName)
           setRacketNeed(false)
           break;
-        
+        default:
+          setMainConent(null);
+          setRacketNeed(false)
       }
       console.log(mainConent)
       if (record.recordType <= 4 && userRacket) {
@@ -141,6 +143,7 @@ const AdminRecordCard: FC<Props> = (props) => {
       setMainConent([stringHardnes, strings])
     }
   }, [record])
+
   const [isUserCommentOpen,setIsUserCommentOpen] = useState<boolean>(false);
 
   const generatePDF = async () => {
