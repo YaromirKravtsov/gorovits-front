@@ -295,32 +295,66 @@ const AdminRecordCard: FC<Props> = (props) => {
       return text.replace('(Eigene Tennissaite)', '').trim();
     }
 
-    const longString = removeSubstring((record as IPullingRecord).pulling.longString)
-    const crossString = removeSubstring((record as IPullingRecord).pulling.crossString)
-    page.drawText(longString, {
-      x: borderTextX,
-      y: borderBlockY + borderBlockHeight - 40,
-      size: fontSize,
-      color: PDFLib.rgb(0, 0, 0),
-      font: fontBold,
-    });
+    const maxLineLength = 33;
 
-    page.drawText(wrapText(crossString, borderBlockWidth), {
-      x: borderTextX,
-      y: borderBlockY + borderBlockHeight - 60,
-      size: fontSize,
-      color: PDFLib.rgb(0, 0, 0),
-      font: fontBold,
-    });
+function splitText(text: string, maxLength: number) {
+  const lines = [];
+  let currentLine = '';
 
+  text.split(' ').forEach(word => {
+    if ((currentLine + word).length > maxLength) {
+      lines.push(currentLine.trim());
+      currentLine = word + ' ';
+    } else {
+      currentLine += word + ' ';
+    }
+  });
 
-    page.drawText(isEigene ? '(eigene Rolle)' : '', {
-      x: borderTextX,
-      y: borderBlockY + borderBlockHeight - 70,
-      size: fontSize,
-      color: PDFLib.rgb(0, 0, 0),
-      font: fontBold,
-    });
+  lines.push(currentLine.trim());
+  return lines;
+}
+
+const longString = removeSubstring((record as IPullingRecord).pulling.longString);
+const crossString = removeSubstring((record as IPullingRecord).pulling.crossString);
+
+const longStringLines = splitText(longString, maxLineLength);
+const crossStringLines = splitText(crossString, maxLineLength);
+
+let currentY = borderBlockY + borderBlockHeight - 40;
+
+// Отрисовка строк longString
+longStringLines.forEach((line, index) => {
+  page.drawText(line, {
+    x: borderTextX,
+    y: currentY,
+    size: fontSize,
+    color: PDFLib.rgb(0, 0, 0),
+    font: fontBold,
+  });
+  currentY -= 12;
+});
+
+// Отрисовка строк crossString
+crossStringLines.forEach((line, index) => {
+  page.drawText(line, {
+    x: borderTextX,
+    y: currentY,
+    size: fontSize,
+    color: PDFLib.rgb(0, 0, 0),
+    font: fontBold,
+  });
+  currentY -= 20;
+});
+
+// Отрисовка isEigene
+page.drawText(isEigene ? '(eigene Rolle)' : '', {
+  x: borderTextX,
+  y: currentY,
+  size: fontSize,
+  color: PDFLib.rgb(0, 0, 0),
+  font: fontBold,
+});
+
     const pdfBytes = await pdfDoc.save();
     const blob = new Blob([pdfBytes], { type: 'application/pdf' });
     const url = URL.createObjectURL(blob);
