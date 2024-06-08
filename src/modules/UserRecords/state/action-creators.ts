@@ -11,10 +11,10 @@ export const  RecordActionCreators = {
     setRecords:(records: IRecord[]):SetRecorsdAction =>({type: RecordActionEmun.SET_RECORDS, payload: records}),
     setError:(error: string):SetErrorAction =>({type: RecordActionEmun.SET_ERROR, payload: error}),
     setIsRecordsLoading:(value: boolean):SetIsLoadingAction =>({type: RecordActionEmun.SET_IS_LOADING, payload: value}),
-    getUserRecords: (userId:number) => async (dispatch: AppDispatch) =>{
+    getUserRecords: (userId:number,state: 'all'|'') => async (dispatch: AppDispatch) =>{
         try{
             dispatch(RecordActionCreators.setIsRecordsLoading(true));
-            const {data} = await RecordService.getUserRecords(userId);
+            const {data} = await RecordService.getUserRecords(userId,state);
             dispatch(RecordActionCreators.setRecords(data));
         }catch(error){
             dispatch(AuthActionCreators.setGlobalError(getErrorText(error)))
@@ -52,7 +52,7 @@ export const  RecordActionCreators = {
             dispatch(OrderRecordActionCreators.setOrderRecords([])); 
              dispatch(RecordActionCreators.setIsRecordsLoading(true)); 
              await $api.post(`/records`,recordData);
-            dispatch(RecordActionCreators.getUserRecords(userId));
+            dispatch(RecordActionCreators.getUserRecords(userId,''));
         }catch(error){
             dispatch(AuthActionCreators.setGlobalError(getErrorText(error)))
             dispatch(RecordActionCreators.setError((error as Error).message));

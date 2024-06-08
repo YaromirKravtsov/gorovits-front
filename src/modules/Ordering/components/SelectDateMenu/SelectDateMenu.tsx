@@ -187,7 +187,7 @@ const SelectDateMenu: FC<Props> = (props) => {
               <MyImage alt='' src={arrow} className={`${style.arrow}  ${style.rotate}`} />
             </div>
             {weekDays.map((el, index) =>
-              <div className={`${style.weekBlock} ${currentWeeekIndex == index ? style.weekBlockSelected:'' }`} onClick={() => handelWeekSelect(index)}>
+              <div key ={el} className={`${style.weekBlock} ${currentWeeekIndex == index ? style.weekBlockSelected:'' }`} onClick={() => handelWeekSelect(index)}>
                 {el}
               </div>
             )}
@@ -201,7 +201,7 @@ const SelectDateMenu: FC<Props> = (props) => {
             <div className={style.daysBlock} style  = {{paddingRight: blockHeight <=wraperHeight? '5px' : '15px'}}>
               {currentWeek.slice(0, 6).map((day, index) =>
               <>
-                <div className={`${style.weekDay}`}>{weekShortDays[index]}<br />{DatesHelper.getDateMonth(day.date)} </div>
+                <div key ={index} className={`${style.weekDay}`}>{weekShortDays[index]}<br />{DatesHelper.getDateMonth(day.date)} </div>
                 </>
               )}
             </div>

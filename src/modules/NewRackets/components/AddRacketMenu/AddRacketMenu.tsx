@@ -18,6 +18,9 @@ import { v4 as uuidv4 } from 'uuid';
 import QRCode from 'qrcode.react'
 import RecordHeler from '../../../../helpers/recordHelper'
 import { useParams } from 'react-router-dom'
+import StringingHardnessInput from '../../../../components/StringingHardnessInput/StringingHardnessInput'
+import { isValidString } from '../../../../components/StringingHardnessInput/isValidStringHardness'
+
 
 interface ModelManufacturereDefault {
   model: string,
@@ -68,7 +71,7 @@ const AddRacketMenu: FC<Props> = (props) => {
     const { number, stringHardness, longString, stringId, racketModelId } = newRacketData;
     const errorsL: { [key: string]: boolean } = {
       number: number.trim() === '',
-      stringHardness: stringHardness.trim() === '',
+      stringHardness: !isValidString(stringHardness),
       longString: longString.name.trim() === '',
       stringId: stringId === 0,
       racketModelId: racketModelId === 0
@@ -208,7 +211,7 @@ const AddRacketMenu: FC<Props> = (props) => {
   }
   return (
     <>
-      <FlutterMenu  shadow='all' className={style.main}>
+      <FlutterMenu shadow='all' className={style.main}>
         <div className={style.title}> {props.editMode ? 'Schläger bearbeiten' : 'Neuen Schläger registrieren'}</div>
         <div className={style.mainRow}>
           <InputRow label='Schlägernummer' className={style.inpitRow}>
@@ -234,7 +237,7 @@ const AddRacketMenu: FC<Props> = (props) => {
               options={formatOption(racketManufactureres)}
               onChange={(value: number) => renderRacketModels(value)}
               className={style.input}
-              
+
             />
           </InputRow>
 
@@ -270,10 +273,17 @@ const AddRacketMenu: FC<Props> = (props) => {
             />
           </InputRow>
           <InputRow label='Besaitungshärte' className={style.inpitRow}>
-            <MyInput
+       {/*      <MyInput
               onChange={(value: string) => setNewRacketData(prev => ({ ...prev, stringHardness: value }))}
               mask='99.9×99.9'
               placeholder='__._×__._'
+              error={errors.stringHardness}
+              setError={(value: boolean) => setErrors(prev => ({ ...prev, stringHardness: value }))}
+              value={(newRacketData).stringHardness}
+              className={style.input}
+            /> */}
+            <StringingHardnessInput
+              onChange={(value: string) => setNewRacketData(prev => ({ ...prev, stringHardness: value }))}
               error={errors.stringHardness}
               setError={(value: boolean) => setErrors(prev => ({ ...prev, stringHardness: value }))}
               value={(newRacketData).stringHardness}

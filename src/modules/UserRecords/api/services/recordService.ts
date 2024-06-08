@@ -6,10 +6,11 @@ interface RecordsBuStateRes {
   data: IRecord[]
 }
 export class RecordService {
-  static async getUserRecords(userId: number): Promise<AxiosResponse<IPullingRecord[]>> {
+  static async getUserRecords(userId: number, state:  'all'|''): Promise<AxiosResponse<IPullingRecord[]>> {
     return $api.get<IPullingRecord[]>('records/userId', {
       params: {
-        userId: userId,
+        userId ,
+        state
       },
     });
   }

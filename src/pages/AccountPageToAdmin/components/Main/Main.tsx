@@ -21,7 +21,7 @@ import Ordering from '../../../../modules/Ordering/components/Ordering/Ordering'
 
 const Main = () => {
   const { userId } = useParams();
-  const {  setNewRackets } = useActions();
+  const {  setNewRackets,setUser } = useActions();
 
   const [userInfo,setUserInfo] = useState<AdminUser>({
     email: '',
@@ -35,14 +35,16 @@ const Main = () => {
 
   useEffect(() => {
     
-
     const fetch = async () => {
       const userInfo =  await AccountService.getUserInfo(Number(userId));
       
       setUserInfo(userInfo.data)
       console.log(userInfo.data)
       const { data } = await AccountService.getUserRackets(Number(userId));
-
+      setUser({
+        userId: Number(userId),
+        fullName: userInfo.data.fullName
+      })
       const newracketsData = mapRacketsResponseToINewRacket(data)
       console.log(newracketsData)
       setNewRackets(newracketsData)

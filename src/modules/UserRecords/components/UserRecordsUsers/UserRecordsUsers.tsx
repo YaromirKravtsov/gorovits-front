@@ -5,14 +5,18 @@ import { useActions } from '../../../../hooks/useActions';
 import style from './UserRecordsUsers.module.css'
 import Loader from '../../../../UI/Loader/Loader';
 import Record from '../../../../helpers/recordHelper';
-const UserRecordsUsers:FC = () => {
+interface Props{
+  state?: 'all'
+}
+const UserRecordsUsers:FC<Props> = (props) => {
     const {userInfo} = useTypedSelector(state=> state.user);
     const {records,isRecordsLoading} = useTypedSelector(state=> state.record);
     const {getUserRecords} = useActions();
     
     useEffect(()=>{
         const fetch = async() =>{
-             await getUserRecords(userInfo.userId);
+          const state = props.state == 'all' ? 'all' : ''
+             await getUserRecords(userInfo.userId,state);
         }
         fetch();
     },[])

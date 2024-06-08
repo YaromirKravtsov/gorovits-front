@@ -24,10 +24,6 @@ const AdminRecordGroup: FC = () => {
 }
 
   useEffect(() => {
-
-
-
-
     const fetch = async () => {
       if (dateTime && recordType) {
         const formattedDateTime = FormatDate.dateToSql(dateTime)
@@ -37,8 +33,9 @@ const AdminRecordGroup: FC = () => {
       }
     }
     fetch()
+    console.log(recordGroup.recordType)
   }, [])
-  const pageTitle = `${RecordHeler.getNameByRecordType(recordGroup.recordType)}, ${recordGroup.user?.fullName}`
+  const pageTitle = `${RecordHeler.getNameByRecordType(recordGroup.recordType) || ''}, ${recordGroup.user?.fullName}`
   return (
     <PageLayout title={pageTitle} questionMarkText='' topMenu={<TopMenu />}>
       <Main />

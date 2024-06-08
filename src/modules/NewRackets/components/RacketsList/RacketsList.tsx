@@ -85,8 +85,8 @@ const RacketsList: FC<Props> = (props) => {
                     swingWeight: racket.swingWeight,
                     balancePoint: racket.balancePoint,
                     totalWeight: racket.totalWeight
-                  }).map((el, index) =>
-                    <div key={index}>{el} </div>
+                  }).map((el) =>
+                    <div key={el}>{el} &nbsp;&nbsp;</div>
                   )
                 }
               </div>

@@ -94,7 +94,7 @@ const SearchStrings: FC<Props> = (props) => {
           <div className={style.dropDownBlock}>
             <div className={style.dropTitle}>Vorgeschlagene</div>
             {filteredStrings.map(string =>
-              <div className={style.stringsItem} onClick={() => onSelect(string)}>{string.name}</div>
+              <div className={style.stringsItem} onClick={() => onSelect(string)} key = {string.id}>{string.name}</div>
             )}
           </div>
         }
