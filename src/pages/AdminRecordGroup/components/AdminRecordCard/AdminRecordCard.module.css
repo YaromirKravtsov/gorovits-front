@@ -30,8 +30,10 @@
     align-items: center;
     text-align: center;
     max-height: 100%;
-    max-width: 200px;
-    min-width: 200px;
+/*     max-width: 350px;
+    min-width: 350px; */
+    max-width: 24.5%;
+    min-width: 24.5%;
 /*     border-right: 1px solid #ffff; */
 }
 
@@ -75,6 +77,8 @@
 }
 
 .mainSection{
+    width: 100%;
+/*     min-width: none; */
     max-height: 100%;
 /*     overflow-y: auto; */
     text-align: center;

@@ -18,7 +18,7 @@ const PullingRacketStory: FC = () => {
       await getRacketPullings(Number(id));
     }
     fetch()
-  }, [])
+  }, [Number(id)])
 
   const onRate = (pullingId: number) => {
     setRatingPillingId(pullingId);

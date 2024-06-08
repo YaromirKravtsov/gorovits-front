@@ -173,6 +173,7 @@ const SelectDateMenu: FC<Props> = (props) => {
     }
     console.log(blockHeight <=wraperHeight)
   }, [blockRef.current,wraperRef.current]);
+
   return (
     <FlutterMenu shadow={windowWidth >= 600 ? 'all' : 'normal'} className={style.selectDateMenu}>
       <div className={style.blockTitle}>Termin auswählen</div>
@@ -186,8 +187,9 @@ const SelectDateMenu: FC<Props> = (props) => {
             >
               <MyImage alt='' src={arrow} className={`${style.arrow}  ${style.rotate}`} />
             </div>
+           <>{console.log(weekDays)}</> 
             {weekDays.map((el, index) =>
-              <div key ={el} className={`${style.weekBlock} ${currentWeeekIndex == index ? style.weekBlockSelected:'' }`} onClick={() => handelWeekSelect(index)}>
+              <div key ={index} className={`${style.weekBlock} ${currentWeeekIndex == index ? style.weekBlockSelected:'' }`} onClick={() => handelWeekSelect(index)}>
                 {el}
               </div>
             )}

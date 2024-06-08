@@ -15,10 +15,10 @@ export class RecordService {
     });
   }
 
-  static async getRecordByStatusAndString(page: number, pageSize: number,searchString: string, recordState: number): Promise<AxiosResponse<RecordsBuStateRes>> {
+  static async getRecordByStatusAndString(page: number, pageSize: number,searchString: string, recordState: number,userId: 'all'|number): Promise<AxiosResponse<RecordsBuStateRes>> {
     return $api.get<RecordsBuStateRes>(`records/by-state`, {
       params: {
-        page, pageSize, recordState, searchString
+        page, pageSize, recordState, searchString,userId
       },
     });
   }

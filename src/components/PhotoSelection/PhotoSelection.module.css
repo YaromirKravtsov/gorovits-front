@@ -1,7 +1,10 @@
 .changePhotoFlutter {
     width: 650px;
+  
     height: 500px;
     height: auto;
+    display: flex;
+    flex-direction: column;
 }
 
 
@@ -87,7 +90,11 @@
     height: 145px;
     border-radius: 30px;
 }
-
+.actionButton{
+    width: 45%;
+    height: 45px;
+    font-size: 18px;
+}
 
 /* ============ */
 @media (max-width: 1500px) {
@@ -103,11 +110,7 @@
         padding: 10px 20px;
     }
   
-    .actionButton{
-        width: 47%;
-        height: 40px;
-        font-size: 18px;
-    }
+ 
     .photosItems {
         margin: 0;
         margin-top: 15px;

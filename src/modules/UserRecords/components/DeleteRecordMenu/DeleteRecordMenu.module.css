@@ -1,7 +1,7 @@
 .menu{
     width: 570px;
     height: 260px;
-    padding: 40px 45px;
+    padding: 30px 30px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -35,7 +35,19 @@
     height: 50px;
     font-size: 18px;
 }
-
+@media (max-width: 1300px) {
+    .menu{
+        justify-content: space-between;
+        width: 500px;
+        height: 220px;
+        padding: 30px 15px;
+    }
+    .button{
+        width: 45%;
+        font-size: 16px;
+        height: 40px;
+    }
+}
 @media (max-width: 600px) {
     .menu{
         justify-content: space-between;

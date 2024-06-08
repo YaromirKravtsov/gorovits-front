@@ -28,6 +28,7 @@ const DropDownInput: FC<Props> = (props) => {
     const [isPlaceholder, setIsPlaceholder] = useState<boolean>(true);
  
     useEffect(() => {
+            
         if (props.value !== undefined) {
             const selectedOption = props?.defaultOptions?.find(option => option.value === props.value);
             if (selectedOption) {

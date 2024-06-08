@@ -29,14 +29,13 @@ const AuthGuard: FC<AuthGuardProps> = (props) => {
     }, [])
 
     const [isNew, setIsNew] = useState<boolean>(false)
+    
     useEffect(() => {
         const fetch = async () => {
-
-
             const { data } = await AuthService.getIsNew(userInfo.userId as number)
             setIsNew(data);
         }
-        if (!isLoading && userInfo.userId) {
+        if (!isLoading && userInfo.userId && role !== 'admin') {
             fetch()
         }
     }, [userInfo.userId])

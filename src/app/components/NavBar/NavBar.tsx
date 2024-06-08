@@ -39,7 +39,7 @@ const NavBar: FC<Props> = ({setWidth,className,setHeight}) => {
       {role == 'user' &&
         <>
           <SidebarItem text='Tennistasche' src={ptIcon} rout={RouteNames.BESAITUNG_AND_TUNING}
-            isActive={navBarActiveItem === '/besaitung-tuning'}
+            isActive={navBarActiveItem === '/tennistasche'}
             imageClassName = {style.rackets}
           />
           <SidebarItem text='Termine' src={termineIcon} rout={RouteNames.TERMINE}

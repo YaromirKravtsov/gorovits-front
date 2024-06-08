@@ -18,6 +18,8 @@ export class DataActions{
     } 
 
     static base64ToBlob(base64: string, contentType: string) {
+
+        console.log(base64)
         // Убедитесь, что строка корректно закодирована
         function isBase64(str: string) {
             try {

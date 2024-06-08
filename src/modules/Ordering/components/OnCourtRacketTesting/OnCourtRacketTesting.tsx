@@ -16,197 +16,181 @@ import { CreateRecordType } from '../../../../models/IRecord';
 import InputRow from '../../../../components/InputRow/InputRow';
 import { useNavigate } from 'react-router-dom';
 import { RouteNames } from '../../../../app/router';
-interface ModelManufacturereDefault{
-  model: string, 
+interface ModelManufacturereDefault {
+  model: string,
   manufactiors: string
 }
-interface SeelctedRacket{
+interface SeelctedRacket {
   name: string,
   modelId: number,
 }
-const OnCourtRacketTesting:FC = () => {
-  
-    const {isDateBlockOpen,racketsManufactureres,racketsModels} = useTypedSelector(state=> state.order);
-    const {userInfo} = useTypedSelector(state=> state.user);
-    const {setIsOrderOpen,setIsDateBlockOpen,getRacketsWithManufactiors,createRecord} = useActions()
-    const [orderBlockHidden, setOrderBlockHidden] = useState<boolean>(false);
-    //====
+const OnCourtRacketTesting: FC = () => {
 
-    const [dateTime, setDateTime] = useState<Date>(new Date())
-    const [comment, setComment] = useState<string>('')
+  const { isDateBlockOpen, racketsManufactureres, racketsModels } = useTypedSelector(state => state.order);
+  const { userInfo } = useTypedSelector(state => state.user);
+  const { setIsOrderOpen, setIsDateBlockOpen, getRacketsWithManufactiors, createRecord } = useActions()
+  const [orderBlockHidden, setOrderBlockHidden] = useState<boolean>(false);
+  //====
 
-    ///======================
-    const [currentRacketModels, setCurrentRacketModels] = useState<ModelAndManufactureres[]>([]);
-    const [modelManufacturereDefault, setModelManufacturereDefault] = useState<ModelManufacturereDefault>({
-      model: 'Wählen Sie die Firma',
-      manufactiors: 'Wählen Sie die Griffgröße'
+  const [dateTime, setDateTime] = useState<Date>(new Date())
+  const [comment, setComment] = useState<string>('')
 
-    });
-    const [selectedRackets, setSelectedRackets] = useState<SeelctedRacket[]>([]);
-    //====
-    useEffect(()=>{
-      const effect = async() =>{
-        await getRacketsWithManufactiors();
-      }
-      effect()
-      
-    },[])
-    useEffect(()=>{
+  ///======================
+  const [currentRacketModels, setCurrentRacketModels] = useState<ModelAndManufactureres[]>([]);
+  const [modelManufacturereDefault, setModelManufacturereDefault] = useState<ModelManufacturereDefault>({
+    model: 'Wählen Sie die Firma',
+    manufactiors: 'Wählen Sie die Griffgröße'
 
-    },[])
-    //===== helpers
-
-    const formatOption = (arr: ModelAndManufactureres[]) =>{
-      return arr.map(item => ({
-        value: item.id,
-        label: item.name
-      }));
+  });
+  const [selectedRackets, setSelectedRackets] = useState<SeelctedRacket[]>([]);
+  //====
+  useEffect(() => {
+    const effect = async () => {
+      await getRacketsWithManufactiors();
     }
+    effect()
+    console.log('странца запушена')
+  }, [])
 
-    const getModelBuManufacuresId = (id: number) => {
-        const models:ModelAndManufactureres[] =  racketsModels.filter((item)=>{
-            return item.rocketManufacturerId == id;
-        })
-        const currentModels = models.filter(model => !selectedRackets.some(selected => selected.modelId === model.id));
+  //===== helpers
 
-        return currentModels;
-    }
-    const setPlaseholder = () =>{
-      setTimeout(()=>{
-        setModelManufacturereDefault({
-          model: 'Wählen Sie die Firma',
-          manufactiors: 'Wählen Sie die Griffgröße'
-        })
-      },20)
+  const formatOption = (arr: ModelAndManufactureres[]) => {
+    return arr.map(item => ({
+      value: item.id,
+      label: item.name
+    }));
+  }
+
+  const getModelBuManufacuresId = (id: number) => {
+    const models: ModelAndManufactureres[] = racketsModels.filter((item) => {
+      return item.rocketManufacturerId == id;
+    })
+    const currentModels = models.filter(model => !selectedRackets.some(selected => selected.modelId === model.id));
+
+    return currentModels;
+  }
+  const setPlaseholder = () => {
+    setTimeout(() => {
       setModelManufacturereDefault({
-        model: '',
-        manufactiors: ''
+        model: 'Wählen Sie die Firma',
+        manufactiors: 'Wählen Sie die Griffgröße'
       })
-    }
-    //===== work with models and manufactiors
-    const renderRacketModels = (manufactiorId:number ) =>{
-      const models = getModelBuManufacuresId(manufactiorId)
-      setCurrentRacketModels(models)
-    }
-    const deleteRacketFromList = (modelId:number) =>{
-      setSelectedRackets(prev =>(
-        prev.filter(racket =>{
-          return racket.modelId !== modelId
-        })
-      ))
-    }
-    const addModelToList = (modelId:number)=>{
-      setPlaseholder();
-      const model = racketsModels.find(model => model.id == modelId) as ModelAndManufactureres
-      const manufactior = racketsManufactureres.find(item => item.id == model.rocketManufacturerId) as ModelAndManufactureres
-    
-      const selectedRacket :SeelctedRacket = {
-        modelId: modelId,
-        name: manufactior.name + " " + model.name
-      }
-      setSelectedRackets(prev =>([...prev,selectedRacket]))
+    }, 20)
+    setModelManufacturereDefault({
+      model: '',
+      manufactiors: ''
+    })
+  }
+  //===== work with models and manufactiors
+  const renderRacketModels = (manufactiorId: number) => {
+    const models = getModelBuManufacuresId(manufactiorId)
+    setCurrentRacketModels(models)
+  }
+  const deleteRacketFromList = (modelId: number) => {
+    setSelectedRackets(prev => (
+      prev.filter(racket => {
+        return racket.modelId !== modelId
+      })
+    ))
+  }
+  const addModelToList = (modelId: number) => {
+    setPlaseholder();
+    const model = racketsModels.find(model => model.id == modelId) as ModelAndManufactureres
+    const manufactior = racketsManufactureres.find(item => item.id == model.rocketManufacturerId) as ModelAndManufactureres
 
-      setCurrentRacketModels([])
+    const selectedRacket: SeelctedRacket = {
+      modelId: modelId,
+      name: manufactior.name + " " + model.name
     }
+    setSelectedRackets(prev => ([...prev, selectedRacket]))
 
-    //====
-    const {windowWidth}  = useTypedSelector(state=> state.adaptive);
-    const navigate = useNavigate()
-    const handelCloseOrderBlock = () =>{
-      if(windowWidth <= 600){
-        navigate(RouteNames.TERMINE)
-    }
-      setIsOrderOpen(false)
-    }
+    setCurrentRacketModels([])
+  }
 
-    //===
-    const handelTimeSelect = () =>{
-      setOrderBlockHidden(true)
-      setIsDateBlockOpen(true)
+  //====
+  const { windowWidth } = useTypedSelector(state => state.adaptive);
+  const navigate = useNavigate()
+  const handelCloseOrderBlock = () => {
+    if (windowWidth <= 600) {
+      navigate(RouteNames.TERMINE)
     }
+    setIsOrderOpen(false)
+  }
 
-    const handelSubmit = async()=>{
-      
-  
-      const record:CreateRecordType = {
+  //===
+  const handelTimeSelect = () => {
+    if (selectedRackets.length <= 0) {
+      alert('Mindestens einen Schläger hinzufügen ')
+      return;
+    }
+    setOrderBlockHidden(true)
+    setIsDateBlockOpen(true)
+  }
+
+  const handelSubmit = async () => {
+ 
+      const record: CreateRecordType = {
         recordType: 8,
         dateTime: dateTime,
         userComment: comment,
         userId: userInfo.userId,
         state: 1,
-        testRackets: selectedRackets.map(racket =>{
+        testRackets: selectedRackets.map(racket => {
           return racket.modelId
         })
       }
-
       setIsOrderOpen(false)
-      await createRecord([record], userInfo.userId) 
+      await createRecord([record], userInfo.userId)
     }
-    const grifSize:Option[] =[
-        {
-            value: 1,
-            label: '1'
-        },
-        {
-            value: 2,
-            label: '2'
-        },
-        {
-            value: 3,
-            label: '3'
-        },
-        {
-            value: 4,
-            label: '4'
-        },
-    ]
+  
+
   return (
     <div>
-        <OrderFlutterMenu title = {'On Court Tennisschläger - Test buchen'}
+      <OrderFlutterMenu title={'On Court Tennisschläger - Test buchen'}
         onClose={handelCloseOrderBlock}
         onSubmit={handelTimeSelect}
-        hidden ={orderBlockHidden}
-        >
-            <InputRow label='Hersteller' /* questionText ={questionText} questionMark questionTextClass = {style.questionTextClass} */>
-                <DropDownInput
-                    defaultValue={modelManufacturereDefault.manufactiors}
-                    value={0}
-                    options={formatOption(racketsManufactureres)}
-                    onChange={(value: number) => renderRacketModels(value)}
-                    className={style.button}
-                />
-            </InputRow>
+        hidden={orderBlockHidden}
+      >
+        <InputRow label='Hersteller' /* questionText ={questionText} questionMark questionTextClass = {style.questionTextClass} */>
+          <DropDownInput
+            defaultValue={modelManufacturereDefault.manufactiors}
+            value={0}
+            options={formatOption(racketsManufactureres)}
+            onChange={(value: number) => renderRacketModels(value)}
+            className={style.button}
+          />
+        </InputRow>
 
-            <InputRow label='Schlägermodell' /* questionText ={questionText} questionMark questionTextClass = {style.questionTextClass} */>
-                <DropDownInput
-                    defaultValue={modelManufacturereDefault.model}
-                    value={0}
-                    options={formatOption(currentRacketModels)}
-                    onChange={(value: number) =>  addModelToList(value)}
-                    className={style.button}
-                />
-            </InputRow>
-          <GradientBlackBlock className={style.racketsBlock}>
-            <div className={style.racketBlockTitle}>Ausgewählte Schläger:</div>
-            <div className={style.racketsList}>
-              {selectedRackets.map(racket =>
-                <div className={style.racketItem}>
-                  {racket.name}
+        <InputRow label='Schlägermodell' /* questionText ={questionText} questionMark questionTextClass = {style.questionTextClass} */>
+          <DropDownInput
+            defaultValue={modelManufacturereDefault.model}
+            value={0}
+            options={formatOption(currentRacketModels)}
+            onChange={(value: number) => addModelToList(value)}
+            className={style.button}
+          />
+        </InputRow>
+        <GradientBlackBlock className={style.racketsBlock}>
+          <div className={style.racketBlockTitle}>Ausgewählte Schläger:</div>
+          <div className={style.racketsList}>
+            {selectedRackets.map(racket =>
+              <div className={style.racketItem}>
+                {racket.name}
 
-                  <button className={style.deleteButton} onClick={ ()=> deleteRacketFromList(racket.modelId)}>
-                      <img alt = '' src  ={deleteItemIcon}  className={style.deleteImage}/>
-                  </button>
-                </div>
-              )}
-            </div>
-          </GradientBlackBlock>
-        <OrderComment onChange={(value:string) => setComment(value)} value = {comment}/>
-        </OrderFlutterMenu>
-       
-        {isDateBlockOpen&&
-            <SelectDateMenu  recordType={2} onSelect={(value:Date)=>setDateTime(value)} onSubmit={handelSubmit} onClose={() => {setOrderBlockHidden(false);setIsDateBlockOpen(false)}}/>
-        }
-      
+                <button className={style.deleteButton} onClick={() => deleteRacketFromList(racket.modelId)}>
+                  <img alt='' src={deleteItemIcon} className={style.deleteImage} />
+                </button>
+              </div>
+            )}
+          </div>
+        </GradientBlackBlock>
+        <OrderComment onChange={(value: string) => setComment(value)} value={comment} />
+      </OrderFlutterMenu>
+
+      {isDateBlockOpen &&
+        <SelectDateMenu recordType={2} onSelect={(value: Date) => setDateTime(value)} onSubmit={handelSubmit} onClose={() => { setOrderBlockHidden(false); setIsDateBlockOpen(false) }} />
+      }
+
     </div>
   )
 }

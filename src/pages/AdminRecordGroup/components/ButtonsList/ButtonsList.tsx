@@ -96,7 +96,15 @@ const ButtonsList: FC<Props> = ({ record, type }) => {
       };
 
     const [selectedDate, setSelectedDate] = useState<string>('');
+    const [selectedDateError, setSelectedDateError] = useState<boolean>();
+
+    console.log(selectedDate)
     const changePichUpTime = async () => {
+        if(selectedDate.trim() == ''){
+            setSelectedDateError(true)
+            return;
+        }
+        setSelectedDateError(false)
         if (type == 'single') {
             await changePickUpTime((record as IRecord).id, new Date(selectedDate))
             updateQueryParam('pickupTime',selectedDate)
@@ -134,11 +142,13 @@ const ButtonsList: FC<Props> = ({ record, type }) => {
                         <FlutterMenu shadow='all' className={style.recordFlutter}>
                             <div className={style.recordFlutterTitle}>Wählen Sie eine Zeit </div>
                             <MyInput type='datetime-local' value={selectedDate} onChange={setSelectedDate} placeholder='' className={style.changeTimeInput} />
+                            {selectedDateError && <div className={style.selectedDateError}>Bitte wählen Sie eine Zeit</div>}
+                          
                             <div className={style.buttonRow}>
-                                <MyButton mode='white' onClick={() => setIsDateSchanging(false)} border>
+                                <MyButton mode='white' onClick={() => setIsDateSchanging(false)} border className={style.timeButton}>
                                     Abbrechen
                                 </MyButton>
-                                <MyButton mode='black' onClick={changePichUpTime}>
+                                <MyButton mode='black' onClick={changePichUpTime} className={style.timeButton}>
                                     Erstellen
                                 </MyButton>
                             </div>

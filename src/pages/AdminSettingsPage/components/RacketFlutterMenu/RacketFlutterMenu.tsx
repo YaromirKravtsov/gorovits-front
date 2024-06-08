@@ -81,14 +81,13 @@ const RacketFlutterMenu: FC<Props> = (props) => {
     const handelSubmit = async () => {
         if (validate()) {
             const formData = new FormData();
-
-
             formData.append('isTestAvailable', isToTest.toString())
             formData.append('rocketManufacturerId', racketManufacterId.toString())
             formData.append('name', racketModel)
-            const isEditidImg = image.split(':')[0] == 'http'
+            const isEditidImg = image.split(':')[0].includes('http')
             let file
             if (!isEditidImg) {
+       
                 const blob = DataActions.base64ToBlob(image, 'image/png')
                 file = new File([blob], '1', {
                     type: 'image/png'
@@ -162,8 +161,8 @@ const RacketFlutterMenu: FC<Props> = (props) => {
                     </InputRow>
                     <CheckBox text='als Testschläger im Sortiment' setIsChecked={setIsToTest} isChecked={isToTest} />
                     <div className={`${style.photoSelect} ${errors.image && style.photoSelectError}`}>
-
-                        {(image !== '') ?
+           
+                        {(image !== '' || props.action == 'add') ?
                             <ImageCropper
                                 onCropDone={setImage}
                                 aspect={2.615}

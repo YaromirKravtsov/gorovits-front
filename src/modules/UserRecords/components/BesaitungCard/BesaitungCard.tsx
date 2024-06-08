@@ -35,7 +35,7 @@ const BesaitungCard: FC<Props> = ({ record }) => {
           </BorderMenu>
           <BorderMenu className={style.BottomLeftBlock}>
             <div className={style.stringHardnes}> {RecordHeler.formatStringHardnes((record as IPullingRecord).pulling.stringHardness)}</div>
-            <div className={`${style.topLeftBlockTitle} ${style.strings}`}>  {RecordHeler.formatStringsName((record as IPullingRecord).pulling.longString, (record as IPullingRecord).pulling.crossString).replace('(Eigene Tennissaite)','')}</div>
+            <div className={`${style.topLeftBlockTitle} ${style.strings}`}>  {RecordHeler.formatStringsName((record as IPullingRecord).pulling.longString.replace('(Eigene Tennissaite)',''), (record as IPullingRecord).pulling.crossString).replace('(Eigene Tennissaite)','')}</div>
           </BorderMenu>
         </Column>
         {windowWidth >= 990 &&

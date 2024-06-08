@@ -103,7 +103,7 @@ const StringFlutterMenu: FC<Props> = (props) => {
             const stringMan = manufactursOptions.find(string => string.value == stringManufacterId)
 
             formData.append('name', (stringManufacterId == 0 ? '' : stringMan?.label + ' ') + stringModel)
-            const isEditidImg = image.split(':')[0] == 'http';
+            const isEditidImg = image.split(':')[0].includes('http')
             console.log(image)
             let file
             if (!isEditidImg) {
@@ -177,7 +177,7 @@ const StringFlutterMenu: FC<Props> = (props) => {
                     </InputRow>
                     <InputRow label='Saiten Foto' className={style.inputRow}>
                         <div className={`${style.photoSelect} ${errors.image && style.photoSelectError}`}>
-                            {image !== '' ?
+                            {image !== '' || props.action == 'add' ?
                             
                         
                             <ImageCropper

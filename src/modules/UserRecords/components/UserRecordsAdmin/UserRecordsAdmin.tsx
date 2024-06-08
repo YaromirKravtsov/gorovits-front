@@ -10,23 +10,21 @@ import { GroupedRecords, IRecord } from '../../../../models/IRecord';
 import { RrcordsSearchParams } from '../../../../app/state/auth/types';
 import { RecordService } from '../../api/services/recordService';
 import MyPagination from '../../../../UI/MyPagination/MyPagination';
+import { userInfo } from 'os';
+import { useLocation, useParams } from 'react-router-dom';
 interface Props {
   state: number,
-  searchQuery: string
+  searchQuery: string,
+  isToSpecificUser?: boolean
 }
 const UserRecordsAdmin: FC<Props> = (props) => {
   const {  isRecordsLoading, } = useTypedSelector(state => state.record)
   const [records,setRecords] = useState<GroupedRecords[]>([])
+  const location = useLocation();
+  const searchParams = new URLSearchParams(location.search);
+  const userId = searchParams.get('userId');
 
-  useEffect(() => {
-    const fetch = async() => {
-      const {data} = await RecordService.getRecordByStatusAndString(0,10,props.searchQuery,props.state)
-      console.log(data)
-    }
-    fetch()
-
-  }, [props.searchQuery,props.state])
-
+  console.log(userId)
   return (
     <div className={'style.recordRow'}>
       {
@@ -35,21 +33,17 @@ const UserRecordsAdmin: FC<Props> = (props) => {
           :
           <>
             {
-             
-        
-            <MyPagination
-            fetchData={(page, itemsPerPage, searchQuery,state) => RecordService.getRecordByStatusAndString(page, itemsPerPage, searchQuery,state)}
-            searchQuery={props.searchQuery}
-            renderItem={record =>   <AdminRecordCard record={record} toUser />}
-            itemsPerPage={30}
-            state={props.state}
-            className={style.recordRow}
-            list={records}
-            setList={setRecords}
-          />
-
-
-             
+              <MyPagination
+              fetchData={(page, itemsPerPage, searchQuery,state,userId) => RecordService.getRecordByStatusAndString(page, itemsPerPage, searchQuery,state,userId)}
+              searchQuery={props.searchQuery}
+              renderItem={record =>   <AdminRecordCard record={record} toUser = {!props.isToSpecificUser} />}
+              itemsPerPage={10}
+              state={props.state}
+              className={style.recordRow}
+              list={records}
+              setList={setRecords}
+              userId={props.isToSpecificUser ? Number(userId) : 'all'}
+            />
             }
           </>
       }

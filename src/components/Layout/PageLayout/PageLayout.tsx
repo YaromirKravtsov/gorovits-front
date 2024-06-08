@@ -39,7 +39,7 @@ const PageLayout: FC<PageLayoutProps> = (props) => {
   return (
     <div className={style.component}>
       <div className={`${style.topMenu} ${props.flex ? style.flex : ''}`} ref = {topMenu}>
-        <div className={style.title} style = {{minWidth: location.pathname == '/besaitung-tuning'? '80%': ''}}>
+        <div className={style.title} style = {{minWidth: location.pathname == '/tennistasche'? '80%': ''}}>
           <div className={`${style.BurderMenuIcon} `} onClick={onClick} id ='BurgerMenuIcon'>
             <div className={style.line1}></div>
             <div className={style.line2}></div>

@@ -58,6 +58,10 @@ const UserRacketsRow: FC = () => {
   if (isLoading) {
     return <Loader />;
   }
+  if (rackets.length<= 0) {
+    return <div className={style.noRackets}>Sie haben keine Schläger</div>;
+    
+  }
 
   if ((rackets.length <= 3 && windowWidth >= 990) || (rackets.length <= 4 && windowWidth >= 1590) || rackets.length == 1) {
     return (

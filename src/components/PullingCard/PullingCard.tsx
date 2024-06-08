@@ -29,6 +29,7 @@ const PullingCard: FC<Props> = (props) => {
   return (
     <GradientBlackBlock className={style.pullingCard}>
       <Row className={style.mainRow}>
+        
         <Column className={style.column}>
           <BorderMenu className={style.leftTop}>
             {props.type == 'racketStory' && <>Zuletzt besaitet am {FormatDate.SqlToDate(props?.pulling?.record?.dateTime)}</>}
@@ -36,7 +37,7 @@ const PullingCard: FC<Props> = (props) => {
           </BorderMenu>
           <BorderMenu className={style.leftButton}>
             <div className={style.stringHardnes}>{props?.pulling?.stringHardness && RecordHeler.formatStringHardnes(props?.pulling?.stringHardness)}</div>
-            <div className={style.stringName}>{RecordHeler.formatStringsName(props?.pulling?.longString, props?.pulling?.crossString).replace('(Eigene Tennissaite)', '')}</div>
+            <div className={style.stringName}>{RecordHeler.formatStringsName(props?.pulling?.longString.replace('(Eigene Tennissaite)', ''), props?.pulling?.crossString).replace('(Eigene Tennissaite)', '')}</div>
           </BorderMenu>
         </Column>
         {windowWidth >= 900 &&

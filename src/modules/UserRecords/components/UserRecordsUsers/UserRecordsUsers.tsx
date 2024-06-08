@@ -15,11 +15,13 @@ const UserRecordsUsers:FC<Props> = (props) => {
     
     useEffect(()=>{
         const fetch = async() =>{
-          const state = props.state == 'all' ? 'all' : ''
+            const state = props.state == 'all' ? 'all' : ''
+            console.log(state,userInfo.userId)
              await getUserRecords(userInfo.userId,state);
         }
         fetch();
-    },[])
+    },[userInfo.userId])
+    console.log(userInfo.userId)
   return (
     <div className={style.recordRow}>
       {

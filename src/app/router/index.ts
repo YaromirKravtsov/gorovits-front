@@ -27,7 +27,7 @@ export enum RouteNames{
     LOGIN = '/login',
     KUNDENKONTO = '/account',
     FORGOT_PASSWORD = '/passwort-vergessen',
-    BESAITUNG_AND_TUNING = '/besaitung-tuning',
+    BESAITUNG_AND_TUNING = '/tennistasche',
     TERMINE = '/termine',
     BESAITUNG_DES_BENUTZERS= '/besaitungen-des-benutzers',
     BesaitungsverlauFürSchläger= '/besaitungsverlauf-für-Schläger',

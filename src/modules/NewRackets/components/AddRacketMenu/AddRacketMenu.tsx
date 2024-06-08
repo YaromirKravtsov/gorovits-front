@@ -171,9 +171,11 @@ const AddRacketMenu: FC<Props> = (props) => {
 
 
     if (isValid) {
+      const code =  newRacketData.code.trim() == ''?RecordHeler.generateDNA(5): newRacketData.code;
+  
+      console.log(code)
 
-
-      const racketData = { ...newRacketData, code: RecordHeler.generateDNA(5) }
+      const racketData = { ...newRacketData, code: code }
 
       if (props.racket) {
         if (props.editMode) {
