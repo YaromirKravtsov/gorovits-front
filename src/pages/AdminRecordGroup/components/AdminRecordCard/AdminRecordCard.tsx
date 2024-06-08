@@ -43,7 +43,7 @@ const AdminRecordCard: FC<Props> = (props) => {
     const fetch = async () => {
       let userRacket;
       let racketModelId
-      console.log(record)
+      console.log(record.recordType)
       switch (record.recordType) {
         case 0:
         case 1:
@@ -55,10 +55,13 @@ const AdminRecordCard: FC<Props> = (props) => {
             racketModelId = (userRacket).racketModelId;
           setMainConent([stringHardnes, strings])
           break;
+     
         case 2:
+          console.log(RecordHeler.renderTuningData((record as ITuningRecord).tuning))
           userRacket = (record as IPullingRecord).pulling.userRacket;
           setMainConent(RecordHeler.renderTuningData((record as ITuningRecord).tuning))
           racketModelId = userRacket.racketModelId;
+          console.log(mainConent)
           break;
         case 3:
           userRacket = (record as IOsebandwechselRecord).userRacket;
@@ -79,10 +82,9 @@ const AdminRecordCard: FC<Props> = (props) => {
           setMainConent(testModelsName)
           setRacketNeed(false)
           break;
-        default:
-          setMainConent(null);
-          setRacketNeed(false)
+        
       }
+      console.log(mainConent)
       if (record.recordType <= 4 && userRacket) {
         setRacketData({
           number: `Schläger Nr. ${userRacket.number}`,
@@ -135,7 +137,7 @@ const AdminRecordCard: FC<Props> = (props) => {
     }
   }
   useEffect(() => {
-    if ((record as IPullingRecord).pulling) {
+    if ((record as IPullingRecord).pulling && (record.recordType == 0 || record.recordType == 1)) {
       const stringHardnes = RecordHeler.formatStringHardnes((record as IPullingRecord).pulling.stringHardness)
       const strings = RecordHeler.formatStringsName((record as IPullingRecord).pulling.longString, (record as IPullingRecord).pulling.crossString);
       setMainConent([stringHardnes, strings])
@@ -365,6 +367,7 @@ page.drawText(isEigene ? '(eigene Rolle)' : '', {
     link.download = RecordHeler.getNameByRecordType(record.recordType) + '_' + record.user?.fullName;
     link.click();
   };
+
   const { recordGroup } = useTypedSelector(state => state.recordGroup)
   return (
     <>
@@ -385,6 +388,7 @@ page.drawText(isEigene ? '(eigene Rolle)' : '', {
               <div className={style.verticalLine}></div>
             </>
           }
+         
           {mainConent !== null &&
             <>
               <div className={`${style.section} ${style.mainSection}`} onClick={handelStringsEditOpen}>
