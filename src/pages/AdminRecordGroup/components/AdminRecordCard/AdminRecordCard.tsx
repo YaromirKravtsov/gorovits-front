@@ -43,7 +43,7 @@ const AdminRecordCard: FC<Props> = (props) => {
     const fetch = async () => {
       let userRacket;
       let racketModelId
-      console.log(record.recordType)
+      console.log(record)
       switch (record.recordType) {
         case 0:
         case 1:
@@ -55,13 +55,11 @@ const AdminRecordCard: FC<Props> = (props) => {
             racketModelId = (userRacket).racketModelId;
           setMainConent([stringHardnes, strings])
           break;
-     
         case 2:
           console.log(RecordHeler.renderTuningData((record as ITuningRecord).tuning))
           userRacket = (record as IPullingRecord).pulling.userRacket;
           setMainConent(RecordHeler.renderTuningData((record as ITuningRecord).tuning))
           racketModelId = userRacket.racketModelId;
-          console.log(mainConent)
           break;
         case 3:
           userRacket = (record as IOsebandwechselRecord).userRacket;
@@ -143,7 +141,6 @@ const AdminRecordCard: FC<Props> = (props) => {
       setMainConent([stringHardnes, strings])
     }
   }, [record])
-
   const [isUserCommentOpen,setIsUserCommentOpen] = useState<boolean>(false);
 
   const generatePDF = async () => {
