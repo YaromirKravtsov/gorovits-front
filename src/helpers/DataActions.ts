@@ -17,8 +17,24 @@ export class DataActions{
         return [newElement, ...arr]
     } 
 
-    static base64ToBlob(base64:string, contentType:string) {
-        const byteCharacters = atob(base64.replace(/^data:image\/(png|jpeg|jpg);base64,/, ''));
+    static base64ToBlob(base64: string, contentType: string) {
+        // Убедитесь, что строка корректно закодирована
+        function isBase64(str: string) {
+            try {
+                return btoa(atob(str)) === str;
+            } catch (err) {
+                return false;
+            }
+        }
+    
+        // Удалите префикс, если он есть
+        const base64Cleaned = base64.replace(/^data:image\/(png|jpeg|jpg);base64,/, '');
+    
+        if (!isBase64(base64Cleaned)) {
+            throw new Error("The string to be decoded is not correctly encoded.");
+        }
+    
+        const byteCharacters = atob(base64Cleaned);
         const byteArrays = [];
     
         for (let offset = 0; offset < byteCharacters.length; offset += 512) {
@@ -34,6 +50,7 @@ export class DataActions{
         const blob = new Blob(byteArrays, { type: contentType });
         return blob;
     }
+    
     
     static convertImageToBase64(url:string, callback:(value:any) => void) {
         // Загрузка изображения
