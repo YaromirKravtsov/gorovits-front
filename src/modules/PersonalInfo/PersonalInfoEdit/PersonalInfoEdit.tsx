@@ -36,7 +36,7 @@ const PersonalnfoEdit:FC = ({}) => {
           <MyInput onChange={(value)=> setEmail(value)} placeholder='E-Mail eingeben'  value = {email}  name='email' className={style.input} />
         </InputRow>
         <InputRow label='Telefonnummer' labelClass={style.inpitTitle} className={style.inputRow}>
-          <MyInput name ='phoneNumber' onChange={(value)=> setPhoneNumber(value)} placeholder='E-Mail telefonnummer'value = {phoneNumber} className={style.input}/>
+          <MyInput name ='phoneNumber' onChange={(value)=> setPhoneNumber(value)} placeholder='Telefonnummer eingeben'value = {phoneNumber} className={style.input}/>
         </InputRow>
     </div>
   )

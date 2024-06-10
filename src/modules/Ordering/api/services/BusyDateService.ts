@@ -6,5 +6,5 @@ export default class BusyDateService{
     static async getBusyDates(recordType: number): Promise<AxiosResponse<BusyDateResponse>>{
         return $api.get<BusyDateResponse>(`records/busy-date/${recordType}`)
     }
-
+    
 }

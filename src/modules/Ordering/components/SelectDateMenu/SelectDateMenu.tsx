@@ -12,6 +12,7 @@ import MyButton from '../../../../UI/MyButton/MyButton'
 import { weekShortDays } from '../../constants/WeekConstant'
 import { useNavigate } from 'react-router-dom'
 import RecordHeler from '../../../../helpers/recordHelper'
+import moment from 'moment'
 export type TimeSlot = {
   time: string;
   isBooked: boolean;
@@ -43,23 +44,32 @@ const SelectDateMenu: FC<Props> = (props) => {
   useEffect(() => {
 
     const effect = async () => {
-
       await getBusyDates(props.recordType);
-
     };
     effect();
   }, []);
 
   useEffect(() => {
-
     if (!isLoading && Object.keys(busyDates).length !== 0) {
-      console.log(busyDates)
-      const week = DatesHelper.generateSchedule(String(new Date()), busyDates?.records, props.recordType);
+      const now = moment().tz('Europe/Berlin');
+  
+
+
+      const saturdayEvening = now.clone().day(6).hour(17).minute(59).second(0).millisecond(0);
+      const nextMonday = now.clone().day(1).startOf('day');
+      const startDate = now.isAfter(saturdayEvening) || now.day() === 0 ? nextMonday : now;
+
+
+      // Генерация расписания с учетом Берлинского времени
+      const week = DatesHelper.generateSchedule(startDate.format(), busyDates.records, props.recordType);
       setWeeks(week);
       setCurrentWeek(week[0]);
       updateWeeksDays(0);
     }
   }, [isLoading, busyDates]);
+
+
+
 
   useEffect(() => {
     updateWeeksDays(showWeekNumber); // Обновление при изменении недели
@@ -123,7 +133,6 @@ const SelectDateMenu: FC<Props> = (props) => {
 
   const handleSlotSelect = (day: WeekDay, slotTime: string) => {
     setSelectedSlot(`${day.date} ${slotTime}`);
-
     const data = DatesHelper.combineDateAndTime(String(day.date), slotTime);
     console.log(data)
     props.onSelect(data);
